@@ -1,0 +1,103 @@
+import { motion } from "framer-motion";
+import { TransitionLink } from "@/components/transition/transition-link";
+
+export function Hero() {
+  return (
+    <section className="bg-dark pt-32 pb-20">
+      <div className="container mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <motion.p
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-base font-medium text-[#ffffffcc] mb-6 tracking-widest flex items-center gap-3"
+          >
+            <motion.span
+              className="inline-block w-8 h-[1px] bg-[#ffffff]"
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              style={{ transformOrigin: "left" }}
+            />
+            SOMOS MAZZMKT ESTRATEGIA & CREATIVIDAD
+          </motion.p>
+
+          <div
+            className="font-bold text-[#ffffff] mb-8"
+            style={{
+              fontSize: "clamp(40px, 8vw, 100px)",
+              lineHeight: "1.08",
+              fontWeight: 700,
+            }}
+          >
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="font-bold text-[#ffffff]"
+              style={{ fontSize: "inherit", lineHeight: "inherit", fontWeight: "inherit" }}
+            >
+              DISENAMOS MARCAS
+            </motion.h1>
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="font-bold text-[#ffffff]"
+              style={{ fontSize: "inherit", lineHeight: "inherit", fontWeight: "inherit" }}
+            >
+              QUE SE ENTIENDEN,
+            </motion.h1>
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="font-bold"
+              style={{
+                fontSize: "inherit",
+                lineHeight: "inherit",
+                fontWeight: "inherit",
+                WebkitTextStroke: "1.5px #ffffff",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              SE SIENTEN Y RESPONDEN
+            </motion.h1>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="flex items-center gap-6"
+          >
+            <TransitionLink
+              to="/proyectos"
+              className="group inline-flex items-center gap-3 text-[#ffffff] text-base font-semibold uppercase tracking-wide"
+            >
+              VER PROYECTOS
+              <motion.span
+                className="inline-block"
+                animate={{ x: [0, 5, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+              >
+                →
+              </motion.span>
+            </TransitionLink>
+            <motion.div
+              className="hidden md:block h-[1px] bg-[#ffffff30] flex-1 max-w-[200px]"
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 1, delay: 0.8 }}
+              style={{ transformOrigin: "left" }}
+            />
+          </motion.div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
