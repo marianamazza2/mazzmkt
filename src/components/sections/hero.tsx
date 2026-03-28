@@ -14,7 +14,7 @@ export function Hero() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-base font-medium text-[#ffffffcc] mb-6 tracking-widest flex items-center gap-3"
+            className="text-base font-medium text-[#ffffffcc] mb-6 tracking-widest flex items-center gap-3 font-geist"
           >
             <motion.span
               className="inline-block w-8 h-[1px] bg-[#ffffff]"
@@ -61,8 +61,7 @@ export function Hero() {
                 fontSize: "inherit",
                 lineHeight: "inherit",
                 fontWeight: "inherit",
-                WebkitTextStroke: "1.5px #ffffff",
-                WebkitTextFillColor: "transparent",
+                color: "#ffffff",
               }}
             >
               SE SIENTEN Y RESPONDEN
@@ -77,7 +76,7 @@ export function Hero() {
           >
             <TransitionLink
               to="/proyectos"
-              className="group inline-flex items-center gap-3 text-[#ffffff] text-base font-semibold uppercase tracking-wide"
+              className="group inline-flex items-center gap-3 text-[#ffffff] text-base font-semibold uppercase tracking-wide font-geist"
             >
               VER PROYECTOS
               <motion.span

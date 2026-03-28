@@ -48,7 +48,7 @@ function ProjectPage() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-base font-medium text-[#f1ede1cc] mb-8 tracking-widest flex items-center gap-3"
+              className="text-base font-medium text-[#f1ede1cc] mb-8 tracking-widest flex items-center gap-3 font-geist"
             >
               <motion.span
                 className="inline-block w-8 h-[1px] bg-[#f1ede1]"
@@ -87,7 +87,7 @@ function ProjectPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.05 }}
-                  className="w-full"
+                  className="w-full overflow-hidden rounded-sm"
                 >
                   <img
                     src={src}
@@ -103,7 +103,7 @@ function ProjectPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="aspect-video bg-[#1a1a1a] relative overflow-hidden"
+              className="aspect-video bg-[#1a1a1a] relative overflow-hidden rounded-sm"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-[#2a2a2a] to-[#1a1a1a]" />
               <div className="absolute inset-0 flex items-center justify-center">
@@ -129,7 +129,7 @@ function ProjectPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
               >
-                <h2 className="text-base font-medium text-[#141414aa] mb-4 uppercase tracking-widest">
+                <h2 className="text-base font-medium text-[#141414aa] mb-4 uppercase tracking-widest font-geist">
                   Info del Proyecto
                 </h2>
                 <p className="text-xl text-[#141414] leading-relaxed">
@@ -145,7 +145,7 @@ function ProjectPage() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.1 }}
                 >
-                  <h2 className="text-base font-medium text-[#141414aa] mb-4 uppercase tracking-widest">
+                  <h2 className="text-base font-medium text-[#141414aa] mb-4 uppercase tracking-widest font-geist">
                     Qué hicimos
                   </h2>
                   <ul className="space-y-4">
@@ -209,7 +209,7 @@ function ProjectPage() {
             transition={{ duration: 0.6 }}
             className="mb-16"
           >
-            <h2 className="text-base font-medium text-[#f1ede1aa] mb-6 tracking-widest">
+            <h2 className="text-base font-medium text-[#f1ede1aa] mb-6 tracking-widest font-geist">
               RESULTADOS
             </h2>
             <p
@@ -239,7 +239,7 @@ function ProjectPage() {
                 >
                   {result.value}
                 </p>
-                <p className="text-base font-medium text-[#f1ede1aa] uppercase tracking-widest">
+                <p className="text-base font-medium text-[#f1ede1aa] uppercase tracking-widest font-geist">
                   {result.metric}
                 </p>
               </motion.div>

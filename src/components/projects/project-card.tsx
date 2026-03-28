@@ -1,4 +1,5 @@
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useRef } from "react";
 import type { Project } from "@/types";
 import { TransitionLink } from "@/components/transition/transition-link";
@@ -7,10 +8,13 @@ interface ProjectCardProps {
   project: Project;
   index: number;
   size?: "small" | "medium" | "large";
+  onMouseEnter?: (project: Project) => void;
+  onMouseLeave?: () => void;
 }
 
-export function ProjectCard({ project, index, size = "medium" }: ProjectCardProps) {
+export function ProjectCard({ project, index, size = "medium", onMouseEnter, onMouseLeave }: ProjectCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
 
   // Mouse position for 3D tilt effect
   const mouseX = useMotionValue(0);
@@ -39,6 +43,8 @@ export function ProjectCard({ project, index, size = "medium" }: ProjectCardProp
   const handleMouseLeave = () => {
     mouseX.set(0);
     mouseY.set(0);
+    setIsHovered(false);
+    onMouseLeave?.();
   };
 
   const sizeClasses = {
@@ -56,13 +62,14 @@ export function ProjectCard({ project, index, size = "medium" }: ProjectCardProp
       transition={{ duration: 0.6, delay: index * 0.05 }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      onMouseEnter={() => { setIsHovered(true); onMouseEnter?.(project); }}
       style={{
         rotateX,
         rotateY,
         transformStyle: "preserve-3d",
         perspective: 1000,
       }}
-      className={`group relative ${sizeClasses[size]}`}
+      className={`group relative overflow-hidden ${sizeClasses[size]}`}
     >
       <TransitionLink
         to="/proyectos/$slug"
@@ -70,7 +77,7 @@ export function ProjectCard({ project, index, size = "medium" }: ProjectCardProp
         className="block h-full w-full"
       >
         {/* Card container */}
-        <div className="relative h-full w-full overflow-hidden bg-[#141414]">
+        <div className="relative h-full w-full overflow-hidden bg-[#141414] rounded-sm">
           {/* Animated gradient overlay that follows cursor */}
           <motion.div
             className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none"
@@ -107,7 +114,7 @@ export function ProjectCard({ project, index, size = "medium" }: ProjectCardProp
               transition={{ duration: 0.4, delay: index * 0.05 + 0.2 }}
               className="mb-3"
             >
-              <span className="inline-block px-3 py-1 text-[10px] font-semibold tracking-widest uppercase bg-[#f1ede1] text-[#141414]">
+              <span className="inline-block px-3 py-1 text-[10px] font-semibold tracking-widest uppercase bg-[#f1ede1] text-[#141414] font-geist">
                 {project.category}
               </span>
             </motion.div>
@@ -153,6 +160,25 @@ export function ProjectCard({ project, index, size = "medium" }: ProjectCardProp
           </div>
         </div>
       </TransitionLink>
+
+      {/* Floating card — aparece en hover, sin overlay */}
+      <AnimatePresence>
+        {isHovered && project.image && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.88, rotate: -2 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            exit={{ opacity: 0, scale: 0.88, rotate: 2 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-40 w-[65%] h-[65%] shadow-xl border border-[#14141410] overflow-hidden rounded-sm pointer-events-none"
+          >
+            <img
+              src={project.image}
+              alt={project.title}
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 }

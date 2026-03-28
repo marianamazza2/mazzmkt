@@ -4,10 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "sync-images": "node scripts/sync-images.mjs",
-    "predev": "node scripts/sync-images.mjs",
     "dev": "vite",
-    "prebuild": "node scripts/sync-images.mjs",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"

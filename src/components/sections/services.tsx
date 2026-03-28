@@ -101,7 +101,7 @@ function ServiceCard({
       onMouseLeave={handleMouseLeave}
       className="group relative"
     >
-      <div className="relative border border-[#14141420] h-full hover:border-[#141414] hover:bg-[#141414] transition-all duration-300 overflow-hidden">
+      <div className="relative border border-[#14141420] h-full hover:border-[#141414] hover:bg-[#141414] transition-all duration-300 overflow-hidden rounded-sm">
         {/* Cursor-following glow */}
         <motion.div
           className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0"
@@ -201,7 +201,7 @@ function ServiceCardDark({
       onMouseLeave={handleMouseLeave}
       className="group relative"
     >
-      <div className="relative border border-[#ffffff20] h-full hover:border-[#f1ede1] hover:bg-[#f1ede1] transition-all duration-300 overflow-hidden">
+      <div className="relative border border-[#ffffff20] h-full hover:border-[#f1ede1] hover:bg-[#f1ede1] transition-all duration-300 overflow-hidden rounded-sm">
         {/* Cursor-following glow */}
         <motion.div
           className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0"
@@ -270,7 +270,7 @@ export function Services() {
             transition={{ duration: 0.6 }}
             className="mb-20"
           >
-            <p className="text-base font-medium text-[#ffffffaa] mb-6 tracking-widest flex items-center gap-3">
+            <p className="text-base font-medium text-[#ffffffaa] mb-6 tracking-widest flex items-center gap-3 font-geist">
               <motion.span
                 className="inline-block w-8 h-[1px] bg-[#ffffff]"
                 initial={{ scaleX: 0 }}
@@ -292,8 +292,7 @@ export function Services() {
               LO QUE HACEMOS{" "}
               <span
                 style={{
-                  WebkitTextStroke: "1.5px #ffffff",
-                  WebkitTextFillColor: "transparent",
+                  color: "#ffffff",
                 } as React.CSSProperties}
               >
                 &raquo;
@@ -321,7 +320,7 @@ export function Services() {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <p className="text-base font-medium text-[#141414aa] mb-6 tracking-widest flex items-center gap-3">
+          <p className="text-base font-medium text-[#141414aa] mb-6 tracking-widest flex items-center gap-3 font-geist">
             <motion.span
               className="inline-block w-8 h-[1px] bg-[#141414]"
               initial={{ scaleX: 0 }}
@@ -343,8 +342,7 @@ export function Services() {
             SERVICIOS{" "}
             <span
               style={{
-                WebkitTextStroke: "1.5px #141414",
-                WebkitTextFillColor: "transparent",
+                color: "#141414",
               } as React.CSSProperties}
             >
               AI
@@ -369,7 +367,7 @@ export function Services() {
           >
             <TransitionLink
               to="/contacto"
-              className="group inline-flex items-center gap-3 text-[#141414] text-base font-semibold uppercase tracking-wide hover:opacity-70 transition-opacity"
+              className="group inline-flex items-center gap-3 text-[#141414] text-base font-semibold uppercase tracking-wide hover:opacity-70 transition-opacity font-geist"
             >
               QUIERO AUTOMATIZAR MI NEGOCIO
               <motion.span

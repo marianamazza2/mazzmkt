@@ -50,11 +50,12 @@ export function Header() {
                 key={item.href}
                 to={item.href}
                 className={cn(
-                  "text-sm font-medium transition-colors tracking-wide",
+                  "text-sm font-bold transition-colors tracking-wide uppercase",
                   pathname === item.href
                     ? "text-[#ffffff]"
                     : "text-[#ffffffcc] hover:text-[#ffffff]"
                 )}
+                style={{ fontFamily: "var(--font-geist)" }}
               >
                 {item.title}
                 {pathname === item.href && (
@@ -94,11 +95,12 @@ export function Header() {
                   key={item.href}
                   to={item.href}
                   className={cn(
-                    "text-lg font-medium py-2",
+                    "text-lg font-bold py-2 uppercase",
                     pathname === item.href
                       ? "text-[#ffffff]"
                       : "text-[#ffffff99]"
                   )}
+                  style={{ fontFamily: "var(--font-geist)" }}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.title}

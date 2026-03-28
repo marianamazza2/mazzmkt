@@ -55,7 +55,7 @@ export function Intro() {
             <br />
             <AnimatedWords text="ELEVAMOS SU PRESENCIA DIGITAL" />
             <br />
-            <span style={{ WebkitTextStroke: "1.5px #141414", WebkitTextFillColor: "transparent" } as React.CSSProperties}>
+            <span style={{ color: "#141414" } as React.CSSProperties}>
               <AnimatedWords text="Y CONECTAMOS CON INTELIGENCIA." />
             </span>
           </h2>

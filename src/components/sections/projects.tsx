@@ -1,33 +1,11 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { TransitionLink } from "@/components/transition/transition-link";
-
-const projects = [
-  {
-    id: 1,
-    title: "PROYECTO 01",
-    category: "BRANDING & WEB",
-    image: "/images/projects/project-1.jpg",
-    slug: "proyecto-1",
-  },
-  {
-    id: 2,
-    title: "PROYECTO 02",
-    category: "DESARROLLO WEB",
-    image: "/images/projects/project-2.jpg",
-    slug: "proyecto-2",
-  },
-  {
-    id: 3,
-    title: "PROYECTO 03",
-    category: "MARKETING DIGITAL",
-    image: "/images/projects/project-3.jpg",
-    slug: "proyecto-3",
-  },
-];
+import type { Project } from "@/types";
+import { projects as allProjects } from "@/data/projects";
 
 // Mini project card with 3D tilt
-function ProjectCard({ project, index }: { project: (typeof projects)[0]; index: number }) {
+function ProjectCard({ project, index }: { project: Project; index: number }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -80,21 +58,22 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
             }}
           />
 
-          <div className="absolute inset-0 bg-gradient-to-br from-[#2a2a2a] to-[#0f0f0f]" />
+          {project.image ? (
+            <img
+              src={project.image}
+              alt={project.title}
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+          ) : (
+            <div className="absolute inset-0 bg-gradient-to-br from-[#2a2a2a] to-[#0f0f0f]" />
+          )}
 
-          {/* Large number */}
-          <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
-            <span
-              className="text-[#ffffff] font-bold select-none transition-all duration-500 group-hover:scale-110 group-hover:opacity-[0.08]"
-              style={{ fontSize: "clamp(80px, 15vw, 200px)", opacity: 0.04 }}
-            >
-              0{project.id}
-            </span>
-          </div>
+          {/* Dark overlay */}
+          <div className="absolute inset-0 bg-[#141414]/50 group-hover:bg-[#141414]/40 transition-colors duration-300" />
 
           {/* Content */}
           <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8 z-20">
-            <span className="inline-block self-start px-3 py-1 text-[10px] font-semibold tracking-widest uppercase bg-[#ffffff] text-[#141414] mb-3">
+            <span className="inline-block self-start px-3 py-1 text-[10px] font-semibold tracking-widest uppercase bg-[#ffffff] text-[#141414] mb-3 font-geist">
               {project.category}
             </span>
             <h3 className="text-lg font-bold text-[#ffffff] group-hover:translate-x-2 transition-transform duration-300">
@@ -117,6 +96,8 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
 }
 
 export function Projects() {
+  const latestProjects = allProjects.slice(-3);
+
   return (
     <section className="bg-dark py-24 md:py-32 relative overflow-hidden">
       {/* Subtle grid background */}
@@ -139,7 +120,7 @@ export function Projects() {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <p className="text-base font-medium text-[#ffffffaa] mb-6 tracking-widest flex items-center gap-3">
+          <p className="text-base font-medium text-[#ffffffaa] mb-6 tracking-widest flex items-center gap-3 font-geist">
             <motion.span
               className="inline-block w-8 h-[1px] bg-[#ffffff]"
               initial={{ scaleX: 0 }}
@@ -161,8 +142,7 @@ export function Projects() {
             PROYECTOS{" "}
             <span
               style={{
-                WebkitTextStroke: "1.5px #ffffff",
-                WebkitTextFillColor: "transparent",
+                color: "#ffffff",
               } as React.CSSProperties}
             >
               &raquo;
@@ -172,7 +152,7 @@ export function Projects() {
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          {projects.map((project, index) => (
+          {latestProjects.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
         </div>
@@ -186,7 +166,7 @@ export function Projects() {
         >
           <TransitionLink
             to="/proyectos"
-            className="group inline-flex items-center gap-3 text-[#ffffff] text-base font-semibold uppercase tracking-wide hover:opacity-70 transition-opacity"
+            className="group inline-flex items-center gap-3 text-[#ffffff] text-base font-semibold uppercase tracking-wide hover:opacity-70 transition-opacity font-geist"
           >
             VER TODOS LOS PROYECTOS
             <motion.span

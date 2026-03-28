@@ -1,5 +1,5 @@
 import type { Project } from "@/types";
-import { projectImages } from "./project-images.generated";
+import { projectImages } from "virtual:project-images";
 
 export const projects: Project[] = [
   {
@@ -77,7 +77,15 @@ export const projects: Project[] = [
     title: "Griselda di Napoli",
     client: "Agente Inmobiliaria",
     category: "Branding Digital",
-    description: "",
+    description:
+      "Branding completo para Griselda di Napoli: identidad visual aplicada a papelería profesional y presencia digital.",
+    about:
+      "Griselda di Napoli es agente inmobiliaria independiente con una trayectoria sólida en el sector. Nos contactó para desarrollar un branding que transmitiera confianza, profesionalidad y cercanía, y que pudiera trasladarse tanto a sus materiales físicos como a su comunicación en redes.",
+    work: [
+      "Empezamos por definir la estrategia de marca: propósito, valores, público objetivo y tono de comunicación. Griselda trabaja con personas en momentos importantes de su vida, por lo que la marca tenía que comunicar seguridad y calidez a partes iguales.",
+      "Con esa base construimos la identidad visual: paleta cromática, logotipo y sus variantes, tipografías y recursos gráficos que refuerzan una estética limpia y sofisticada, coherente con el sector inmobiliario premium.",
+      "Llevamos la identidad a la práctica con las piezas que Griselda necesitaba para su día a día: tarjetas personales para el primer contacto, hojas troqueladas para presentaciones y propuestas, y el diseño de feed para sus redes sociales, logrando una presencia unificada y reconocible.",
+    ],
     image: "/images/projects/griselda-di-napoli/cover.webp",
     images: projectImages["griselda-di-napoli"],
     results: [],

@@ -24,14 +24,7 @@ function AnimatedText({
             delay: delay + i * 0.055,
             ease: [0.16, 1, 0.3, 1],
           }}
-          style={
-            hollow
-              ? {
-                  WebkitTextStroke: "1px #ffffff",
-                  WebkitTextFillColor: "transparent",
-                }
-              : undefined
-          }
+          style={undefined}
         >
           {char === " " ? "\u00A0" : char}
         </motion.span>
@@ -68,7 +61,7 @@ export function PageCTA() {
           >
             <TransitionLink
               to="/contacto"
-              className="inline-flex items-center gap-3 bg-[#ffffff] text-[#141414] px-10 py-5 text-base font-semibold uppercase tracking-wide hover:bg-[#ffffff] transition-colors"
+              className="inline-flex items-center gap-3 bg-[#ffffff] text-[#141414] px-10 py-5 text-base font-semibold uppercase tracking-wide hover:bg-[#ffffff] transition-colors font-geist rounded-sm"
             >
               EMPEZAR PROYECTO
               <motion.span

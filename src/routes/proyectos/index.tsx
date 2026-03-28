@@ -64,6 +64,7 @@ function ProyectosPage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-base font-medium text-[#f1ede1cc] mb-8 tracking-widest flex items-center gap-3"
+              style={{ fontFamily: "var(--font-geist)" }}
             >
               <motion.span
                 className="inline-block w-8 h-[1px] bg-[#f1ede1]"
@@ -100,8 +101,7 @@ function ProyectosPage() {
                 fontSize: "clamp(40px, 8vw, 100px)",
                 lineHeight: "1.08",
                 fontWeight: 700,
-                WebkitTextStroke: "1px #ffffff",
-                WebkitTextFillColor: "transparent",
+                color: "#ffffff",
               }}
             >
               TRABAJO
@@ -130,7 +130,7 @@ function ProyectosPage() {
                 <p className="text-4xl md:text-5xl font-bold text-[#ffffff]">
                   {projects.length}+
                 </p>
-                <p className="text-xs uppercase tracking-widest text-[#f1ede1aa] mt-1">
+                <p className="text-xs uppercase tracking-widest text-[#f1ede1aa] mt-1 font-geist">
                   Proyectos
                 </p>
               </div>
@@ -138,16 +138,8 @@ function ProyectosPage() {
                 <p className="text-4xl md:text-5xl font-bold text-[#ffffff]">
                   98%
                 </p>
-                <p className="text-xs uppercase tracking-widest text-[#f1ede1aa] mt-1">
+                <p className="text-xs uppercase tracking-widest text-[#f1ede1aa] mt-1 font-geist">
                   Satisfacción
-                </p>
-              </div>
-              <div>
-                <p className="text-4xl md:text-5xl font-bold text-[#ffffff]">
-                  3.5x
-                </p>
-                <p className="text-xs uppercase tracking-widest text-[#f1ede1aa] mt-1">
-                  ROI Promedio
                 </p>
               </div>
             </motion.div>
@@ -165,7 +157,7 @@ function ProyectosPage() {
               transition={{ duration: 1.5, repeat: Infinity }}
               className="w-[1px] h-16 bg-gradient-to-b from-[#f1ede1] to-transparent"
             />
-            <span className="text-[10px] uppercase tracking-widest text-[#f1ede1aa] rotate-90 origin-center translate-y-8">
+            <span className="text-[10px] uppercase tracking-widest text-[#f1ede1aa] rotate-90 origin-center translate-y-8 font-geist">
               Scroll
             </span>
           </motion.div>

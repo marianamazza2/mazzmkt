@@ -111,7 +111,7 @@ function SobreMiPage() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-base font-medium text-[#ffffffcc] mb-6 tracking-widest flex items-center gap-3"
+              className="text-base font-medium text-[#ffffffcc] mb-6 tracking-widest flex items-center gap-3 font-geist"
             >
               <motion.span
                 className="inline-block w-8 h-[1px] bg-[#ffffff]"
@@ -158,7 +158,7 @@ function SobreMiPage() {
               <br />
               ESTRATEGIA, CREATIVIDAD Y TECNOLOGIA
               <br />
-              <span style={{ WebkitTextStroke: "1.5px #141414", WebkitTextFillColor: "transparent" } as React.CSSProperties}>
+              <span style={{ color: "#141414" } as React.CSSProperties}>
                 PARA QUE LAS MARCAS BRILLEN CON INTENCION.
               </span>
             </motion.h2>
@@ -179,7 +179,7 @@ function SobreMiPage() {
             transition={{ duration: 0.6 }}
             className="mb-16"
           >
-            <p className="text-base font-medium text-[#ffffffaa] mb-6 tracking-widest flex items-center gap-3">
+            <p className="text-base font-medium text-[#ffffffaa] mb-6 tracking-widest flex items-center gap-3 font-geist">
               <span className="inline-block w-8 h-[1px] bg-[#ffffff]" />
               ACERCA DE MAZZMKT!
             </p>
@@ -320,7 +320,7 @@ function SobreMiPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <p className="text-base font-medium text-[#ffffffaa] mb-6 tracking-widest flex items-center gap-3">
+              <p className="text-base font-medium text-[#ffffffaa] mb-6 tracking-widest flex items-center gap-3 font-geist">
                 <span className="inline-block w-8 h-[1px] bg-[#ffffff]" />
                 NOSOTRXS
               </p>

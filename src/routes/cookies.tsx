@@ -26,7 +26,7 @@ function CookiesPage() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-base font-medium text-[#f1ede1cc] mb-6 tracking-widest flex items-center gap-3"
+              className="text-base font-medium text-[#f1ede1cc] mb-6 tracking-widest flex items-center gap-3 font-geist"
             >
               <motion.span
                 className="inline-block w-8 h-[1px] bg-[#f1ede1]"
