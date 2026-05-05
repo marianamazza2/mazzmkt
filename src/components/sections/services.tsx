@@ -6,54 +6,60 @@ import { TransitionLink } from "@/components/transition/transition-link";
 const mainServices = [
   {
     icon: Code,
-    title: "DISENO Y DESARROLLO WEB",
-    subtitle: "SITIOS WEB | LANDINGS",
-    description: "Sitios web modernos, rapidos y disenados para convertir.",
+    title: "TU WEB LISTA EN DIAS",
+    subtitle: "SITIOS WEB | LANDINGS | E-COMMERCE",
+    description: "Disenamos y desarrollamos tu web en tiempo record. Velocidad real, tecnologia de ultima generacion y diseno que impacta.",
+  },
+  {
+    icon: Zap,
+    title: "APPS & PLATAFORMAS A MEDIDA",
+    subtitle: "WEBAPPS | CRM | SAAS | PORTALES",
+    description: "Desarrollamos la herramienta digital que tu negocio necesita. Desde un CRM propio hasta una plataforma completa, construida exactamente como la imaginas.",
   },
   {
     icon: Palette,
-    title: "BRANDING",
-    subtitle: "ESTRATEGIA | IDENTIDAD DE MARCA",
-    description: "Creamos marcas con proposito, coherencia e identidad visual que conecta.",
+    title: "BRANDING QUE DEJA HUELLA",
+    subtitle: "IDENTIDAD VISUAL | ESTRATEGIA | POSICIONAMIENTO",
+    description: "Construimos marcas que la gente recuerda. Desde el nombre hasta cada pixel: coherencia, caracter y una identidad visual que genera confianza instantanea.",
   },
   {
     icon: Megaphone,
-    title: "PUBLICIDAD DIGITAL",
+    title: "PUBLICIDAD QUE GENERA RESULTADOS",
     subtitle: "SEO | SEM | GOOGLE & META ADS | SOCIAL MEDIA",
-    description: "Disenamos estrategias que generan alcance, trafico y resultados medibles.",
+    description: "Disenamos estrategias de publicidad digital que llevan a tus clientes ideales directo a tu negocio. Alcance real, posicionamiento y crecimiento.",
   },
 ];
 
 const aiServices = [
   {
-    icon: MessageCircle,
-    title: "FLUJOS DE WHATSAPP",
-    description: "Creamos flujos y entrenamos tu WhatsApp Business.",
+    icon: Globe,
+    title: "WEBS CON AI",
+    description: "Tu web, landing o e-commerce lista en tiempo record. Diseno a medida, alto rendimiento tecnico y resultados desde el primer dia.",
   },
   {
     icon: Bot,
     title: "ASISTENTES AI",
-    description: "Bots personalizados que hablan con tu tono de marca.",
+    description: "Un asistente que conoce tu negocio al 100%, atiende a tus clientes 24/7 y nunca deja escapar una oportunidad de venta.",
+  },
+  {
+    icon: MessageCircle,
+    title: "VENTAS POR WHATSAPP",
+    description: "Automatiza respuestas, califica leads y cierra ventas en el canal donde tus clientes ya estan. Sin esfuerzo manual.",
   },
   {
     icon: Zap,
-    title: "MKT AUTOMATIZADO",
-    description: "Integraciones para conectar tus canales, CRM y campanas.",
-  },
-  {
-    icon: BarChart3,
-    title: "OPTIMIZACION CON AI",
-    description: "Analizamos datos y mejoramos resultados con inteligencia.",
+    title: "MARKETING EN PILOTO AUTOMATICO",
+    description: "Conecta tus canales, CRM y campanas en un sistema que trabaja por ti mientras tu te enfocas en hacer crecer tu negocio.",
   },
   {
     icon: Sparkles,
-    title: "CONTENIDO AI",
-    description: "Videos, voces, textos e imagenes creados con IA.",
+    title: "CONTENIDO SIN LIMITE",
+    description: "30 dias de contenido en pocas horas. Videos, copys, voiceovers e imagenes con calidad profesional generados con IA.",
   },
   {
-    icon: Globe,
-    title: "WEBS CON AI",
-    description: "Sitios webs y landings creados en tiempo record.",
+    icon: BarChart3,
+    title: "OPTIMIZACION INTELIGENTE",
+    description: "Analizamos tus datos, detectamos exactamente que frena tu crecimiento y aplicamos mejoras que se ven directamente en resultados.",
   },
 ];
 
@@ -301,7 +307,7 @@ export function Services() {
           </motion.div>
 
           {/* Main Services */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             {mainServices.map((service, index) => (
               <ServiceCardDark key={service.title} service={service} index={index} />
             ))}
@@ -329,7 +335,7 @@ export function Services() {
               transition={{ duration: 0.8 }}
               style={{ transformOrigin: "left" }}
             />
-            Y ADEMAS...
+            INTELIGENCIA ARTIFICIAL
           </p>
           <h2
             className="font-bold text-[#141414]"
@@ -339,14 +345,8 @@ export function Services() {
               fontWeight: 700,
             }}
           >
-            SERVICIOS{" "}
-            <span
-              style={{
-                color: "#141414",
-              } as React.CSSProperties}
-            >
-              AI
-            </span>{" "}
+            TU NEGOCIO EN{" "}
+            <span className="text-[#141414aa]">MODO AI</span>{" "}
             <span className="text-[#141414aa]">&raquo;</span>
           </h2>
         </motion.div>
@@ -369,7 +369,7 @@ export function Services() {
               to="/contacto"
               className="group inline-flex items-center gap-3 text-[#141414] text-base font-semibold uppercase tracking-wide hover:opacity-70 transition-opacity font-geist"
             >
-              QUIERO AUTOMATIZAR MI NEGOCIO
+              QUIERO MI NEGOCIO CON AI
               <motion.span
                 className="inline-block"
                 animate={{ x: [0, 5, 0] }}

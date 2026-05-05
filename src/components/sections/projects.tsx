@@ -4,15 +4,13 @@ import { TransitionLink } from "@/components/transition/transition-link";
 import type { Project } from "@/types";
 import { projects as allProjects } from "@/data/projects";
 
-// Mini project card with 3D tilt
+// Mini project card
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
   const springConfig = { damping: 25, stiffness: 150 };
-  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [6, -6]), springConfig);
-  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-6, 6]), springConfig);
   const glowX = useSpring(useTransform(mouseX, [-0.5, 0.5], [0, 100]), springConfig);
   const glowY = useSpring(useTransform(mouseY, [-0.5, 0.5], [0, 100]), springConfig);
 
@@ -35,14 +33,9 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
+      whileHover={{ x: 8 }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      style={{
-        rotateX,
-        rotateY,
-        transformStyle: "preserve-3d",
-        perspective: 1000,
-      }}
     >
       <TransitionLink to="/proyectos/$slug" params={{ slug: project.slug }} className="group block">
         <div className="aspect-[4/5] relative overflow-hidden bg-[#1a1a1a]">
@@ -96,7 +89,9 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 }
 
 export function Projects() {
-  const latestProjects = allProjects.slice(-3);
+  const latestProjects = [...allProjects]
+    .sort((a, b) => Number(b.id) - Number(a.id))
+    .slice(0, 3);
 
   return (
     <section className="bg-dark py-24 md:py-32 relative overflow-hidden">

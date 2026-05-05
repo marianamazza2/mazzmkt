@@ -70,7 +70,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
             placeholder="Buscar proyectos..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-12 pr-4 py-3 bg-transparent border border-[#14141420] text-[#141414] placeholder:text-[#141414aa] focus:border-[#141414] focus:outline-none transition-colors text-sm"
+            className="w-full pl-12 pr-4 py-3 bg-transparent border border-[#14141420] text-[#141414] placeholder:text-[#141414aa] focus:border-[#141414] focus:outline-none transition-colors text-sm rounded-sm"
           />
           {searchQuery && (
             <button
@@ -83,7 +83,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
         </div>
 
         {/* View Mode Toggle */}
-        <div className="flex items-center gap-2 border border-[#14141420] p-1">
+        <div className="flex items-center gap-2 border border-[#14141420] p-1 rounded-sm">
           <button
             onClick={() => setViewMode("showcase")}
             className={`p-2 transition-colors ${
@@ -143,7 +143,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
       <div className="flex flex-wrap gap-2">
         <motion.button
           onClick={() => setActiveCategory(null)}
-          className={`px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-all duration-300 cursor-pointer font-geist ${
+          className={`px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-all duration-300 cursor-pointer font-geist rounded-sm ${
             activeCategory === null
               ? "bg-[#141414] text-[#f1ede1]"
               : "border border-[#14141430] text-[#141414] hover:border-[#141414]"
@@ -159,7 +159,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
             <motion.button
               key={category}
               onClick={() => setActiveCategory(category === activeCategory ? null : category)}
-              className={`px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-all duration-300 cursor-pointer font-geist ${
+              className={`px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-all duration-300 cursor-pointer font-geist rounded-sm ${
                 activeCategory === category
                   ? "bg-[#141414] text-[#f1ede1]"
                   : "border border-[#14141430] text-[#141414] hover:border-[#141414]"
@@ -229,6 +229,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
                     <ProjectListItem
                       project={project}
                       index={index}
+                      total={filteredProjects.length}
                       onMouseEnter={setHoveredProject}
                       onMouseLeave={() => setHoveredProject(null)}
                     />
@@ -236,6 +237,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
                     <ProjectShowcaseItem
                       project={project}
                       index={index}
+                      total={filteredProjects.length}
                       onMouseEnter={setHoveredProject}
                       onMouseLeave={() => setHoveredProject(null)}
                     />
@@ -279,7 +281,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
           viewport={{ once: true }}
           className="text-center pt-8"
         >
-          <button className="px-8 py-4 border border-[#141414] text-[#141414] text-sm font-semibold uppercase tracking-wider hover:bg-[#141414] hover:text-[#f1ede1] transition-all duration-300">
+          <button className="px-8 py-4 border border-[#141414] text-[#141414] text-sm font-semibold uppercase tracking-wider hover:bg-[#141414] hover:text-[#f1ede1] transition-all duration-300 rounded-sm">
             Cargar más proyectos
           </button>
         </motion.div>
@@ -356,6 +358,14 @@ function ShowcaseImage({ project }: { project: Project }) {
 
         {/* Hover border */}
         <div className="absolute inset-0 border border-[#f1ede100] group-hover/img:border-[#f1ede130] transition-colors duration-300 z-20 pointer-events-none" />
+
+        {/* Clickable overlay */}
+        <TransitionLink
+          to="/proyectos/$slug"
+          params={{ slug: project.slug }}
+          className="absolute inset-0 z-30 cursor-pointer"
+          aria-label={`Ver proyecto ${project.title}`}
+        />
       </div>
 
       {/* Small card centrada sobre la imagen, sin overlay */}
@@ -384,11 +394,13 @@ function ShowcaseImage({ project }: { project: Project }) {
 function ProjectShowcaseItem({
   project,
   index,
+  total,
   onMouseEnter,
   onMouseLeave,
 }: {
   project: Project;
   index: number;
+  total: number;
   onMouseEnter: (project: Project) => void;
   onMouseLeave: () => void;
 }) {
@@ -413,7 +425,7 @@ function ProjectShowcaseItem({
           {/* Index + category */}
           <div className="flex items-center gap-4">
             <span className="text-4xl font-bold text-[#14141418] font-geist select-none">
-              {String(index + 1).padStart(2, "0")}
+              {String(total - index).padStart(2, "0")}
             </span>
             <span className="text-[10px] font-semibold tracking-widest uppercase text-[#141414aa] font-geist">
               {project.category}
@@ -472,25 +484,27 @@ function ProjectShowcaseItem({
 function ProjectListItem({
   project,
   index,
+  total,
   onMouseEnter,
   onMouseLeave,
 }: {
   project: Project;
   index: number;
+  total: number;
   onMouseEnter: (project: Project) => void;
   onMouseLeave: () => void;
 }) {
   return (
     <motion.a
       href={`/proyectos/${project.slug}`}
-      className="group flex items-center gap-6 p-6 border border-[#14141420] hover:border-[#141414] hover:bg-[#141414] transition-all duration-300"
+      className="group flex items-center gap-6 p-6 border border-[#14141420] hover:border-[#141414] hover:bg-[#141414] transition-all duration-300 rounded-sm"
       whileHover={{ x: 8 }}
       onMouseEnter={() => onMouseEnter(project)}
       onMouseLeave={onMouseLeave}
     >
       {/* Number */}
       <span className="text-4xl font-bold text-[#14141420] group-hover:text-[#f1ede130] transition-colors w-16 shrink-0">
-        {String(index + 1).padStart(2, "0")}
+        {String(total - index).padStart(2, "0")}
       </span>
 
       {/* Content */}

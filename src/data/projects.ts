@@ -3,6 +3,30 @@ import { projectImages } from "virtual:project-images";
 
 export const projects: Project[] = [
   {
+    id: "14",
+    title: "Enraíz",
+    client: "Cosmética Natural",
+    category: "Diseño y Desarrollo Web",
+    description:
+      "Branding completo y desarrollo web para Enraíz, una marca de cosmética natural con identidad visual artesanal y orgánica.",
+    about:
+      "Enraíz nació de la búsqueda de un nombre que fuera fuerza y concepto al mismo tiempo. 'Volver a lo que importa' es su territorio: cosmética natural con personalidad, honestidad y calidez. Un proyecto construido desde cero — del nombre a la web — donde cada decisión visual conecta con la esencia de la marca.",
+    work: [
+      "Empezamos con un brief express de marca: definimos la dirección creativa completa con paleta de colores (bordo #7B3437 como dominante, verde oliva #7B8255, marrón cálido #8C7054 y fondos crema), tipografías (Cormorant Garamond para display, DM Sans para cuerpo), tono de personalidad y estructura del sitio con 5 secciones.",
+      "Trabajamos el naming explorando seis direcciones (Terrea, Surca, Lavia, Almea, Enraíz, Muda). Se eligió Enraíz — un verbo disfrazado de nombre — porque tiene fuerza semántica y la tilde en la í se convierte en elemento gráfico de identidad.",
+      "Desarrollamos una guía de marca completa de 10 páginas: manifiesto, valores (honestidad, conexión, intención, calidez, tiempo), paleta con reglas de uso, sistema tipográfico, logotipo con versiones y área de protección, tono de voz con ejemplos de copy, aplicaciones en packaging, web y redes, dirección fotográfica, y sección de 'lo que no hacer'.",
+      "Para darle personalidad a la web creamos 7 recursos gráficos SVG decorativos en la paleta de marca: flor bordo, hoja marrón con textura stamp, manchas orgánicas verdes, planta tipo ficus, composición de esquina, patrón botánico disperso y hoja con efecto de impresión artesanal.",
+      "Diseñamos la imagen hero (1440×720px) en dos versiones iteradas: la composición floral se reubicó a la derecha para liberar espacio al texto y CTAs, sumando más hojas stamp, salpicaduras de tinta y texturas distribuidas por todo el canvas.",
+    ],
+    image: "/images/projects/enraiz/cover.webp",
+    images: projectImages["enraiz"],
+    results: [],
+    services: ["Diseño Web", "Desarrollo Web", "Branding Digital", "Identidad Visual", "Dirección Creativa"],
+    slug: "enraiz",
+    featured: false,
+    url: "https://enraiz.vercel.app/",
+  },
+  {
     id: "1",
     title: "TrainX",
     client: "WebApp Fitness",
@@ -16,6 +40,20 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    id: "7",
+    title: "AriFit",
+    client: "Entrenadora Personal",
+    category: "Diseño y Desarrollo Web",
+    description:
+      "Diseño y desarrollo del sitio web de AriFit, entrenadora personal en Barcelona.",
+    image: "/images/projects/arifit/cover.webp",
+    images: projectImages["arifit"],
+    results: [],
+    services: ["Diseño Web", "Desarrollo Web", "UX/UI"],
+    slug: "arifit",
+    featured: false,
+  },
+  {
     id: "2",
     title: "La Chingona",
     client: "Restaurante mexicano",
@@ -27,29 +65,6 @@ export const projects: Project[] = [
     services: ["Diseño Web", "Desarrollo Web"],
     slug: "la-chingona",
     featured: false,
-  },
-  {
-    id: "3",
-    title: "Luciana Herrera",
-    client: "Psicóloga",
-    category: "Diseño y Desarrollo Web",
-    description:
-      "Diseño y desarrollo del sitio web personal de Luciana Herrera Manara, Doctora en Psicología clínica en Barcelona.",
-    about:
-      "Luciana Herrera Manara es Doctora en Psicología con formación en las áreas clínica, psicosocial y de género. Ofrece acompañamiento terapéutico individual para jóvenes y personas adultas, en modalidad presencial y online desde Barcelona. Su enfoque integra la dimensión corporal, mental y emocional desde el vínculo terapéutico y centrado en la persona.",
-    work: [
-      "Comenzamos con una primera reunión con Luciana de la que, junto a Claude, generamos un brief estratégico completo: enfoque terapéutico, público objetivo y valores de marca como punto de partida.",
-      "Para la identidad visual elegimos una paleta cálida y sofisticada: carbón oscuro (#1E1C1A) como base, verde salvia (#7A9E7E) como acento y crema (#F5F0EB) para los textos, transmitiendo calma y profesionalidad.",
-      "La tipografía combina Cormorant Garamond en titulares, elegante y con carácter, con DM Sans en el cuerpo, aportando legibilidad moderna.",
-      "El resultado es un sitio minimalista, con espacio en blanco generoso y una jerarquía clara que guía al visitante de forma natural hacia el contacto.",
-    ],
-    image: "/images/projects/lh/cover.webp",
-    images: projectImages["lh"],
-    results: [],
-    services: ["Diseño Web", "Desarrollo Web"],
-    slug: "lh",
-    featured: false,
-    url: "https://www.lucianapsicologia.com/",
   },
   {
     id: "4",
@@ -71,6 +86,29 @@ export const projects: Project[] = [
     services: ["Dirección Creativa", "Identidad Visual", "Branding Digital"],
     slug: "aromas-andru",
     featured: false,
+  },
+  {
+    id: "3",
+    title: "Luciana Hedrera",
+    client: "Psicóloga",
+    category: "Diseño y Desarrollo Web",
+    description:
+      "Diseño y desarrollo del sitio web personal de Luciana Herrera Manara, Doctora en Psicología clínica en Barcelona.",
+    about:
+      "Luciana Herrera Manara es Doctora en Psicología con formación en las áreas clínica, psicosocial y de género. Ofrece acompañamiento terapéutico individual para jóvenes y personas adultas, en modalidad presencial y online desde Barcelona. Su enfoque integra la dimensión corporal, mental y emocional desde el vínculo terapéutico y centrado en la persona.",
+    work: [
+      "Comenzamos con una primera reunión con Luciana de la que, junto a Claude, generamos un brief estratégico completo: enfoque terapéutico, público objetivo y valores de marca como punto de partida.",
+      "Para la identidad visual elegimos una paleta cálida y sofisticada: carbón oscuro (#1E1C1A) como base, verde salvia (#7A9E7E) como acento y crema (#F5F0EB) para los textos, transmitiendo calma y profesionalidad.",
+      "La tipografía combina Cormorant Garamond en titulares, elegante y con carácter, con DM Sans en el cuerpo, aportando legibilidad moderna.",
+      "El resultado es un sitio minimalista, con espacio en blanco generoso y una jerarquía clara que guía al visitante de forma natural hacia el contacto.",
+    ],
+    image: "/images/projects/lh/cover.webp",
+    images: projectImages["lh"],
+    results: [],
+    services: ["Diseño Web", "Desarrollo Web"],
+    slug: "lh",
+    featured: false,
+    url: "https://www.lucianapsicologia.com/",
   },
   {
     id: "5",
