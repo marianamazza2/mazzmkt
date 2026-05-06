@@ -4,11 +4,9 @@ import { TransitionLink } from "@/components/transition/transition-link";
 function AnimatedText({
   text,
   delay = 0,
-  hollow = false,
 }: {
   text: string;
   delay?: number;
-  hollow?: boolean;
 }) {
   return (
     <span className="inline-block">
@@ -49,7 +47,7 @@ export function PageCTA() {
               <AnimatedText text="HAGAMOS CRECER" delay={0} />
             </div>
             <div className="overflow-hidden mb-10">
-              <AnimatedText text="TUS IDEAS" delay={0.4} hollow />
+              <AnimatedText text="TUS IDEAS" delay={0.4} />
             </div>
           </h2>
 
