@@ -70,8 +70,8 @@ const faqs: FAQ[] = [
     icon: Zap,
     question: "¿Que tecnologias usan para desarrollar?",
     answer:
-      "Trabajamos con el stack mas moderno del mercado: Next.js 16, React 19, TypeScript, Tailwind CSS 4, y Framer Motion para animaciones. Usamos herramientas de AI como Claude Code para acelerar desarrollo sin perder calidad. El resultado: webs ultra rapidas, SEO-friendly, y con un codigo limpio y mantenible.",
-    highlight: "Stack 2025: Next.js + React + AI = velocidad x3.",
+      "Trabajamos con el stack mas moderno del mercado: Next.js 16, React 19, TypeScript, Tailwind CSS 4, y Framer Motion para animaciones. Usamos herramientas de IA como Claude Code para acelerar desarrollo sin perder calidad. El resultado: webs ultra rapidas, SEO-friendly, y con un codigo limpio y mantenible.",
+    highlight: "Stack 2025: Next.js + React + IA = velocidad x3.",
   },
   // BRANDING
   {
@@ -149,24 +149,24 @@ const faqs: FAQ[] = [
       "Por supuesto. Entregamos reportes mensuales con metricas reales: alcance, engagement, crecimiento de seguidores, clicks, y conversiones. No nos quedamos en vanity metrics (likes). Lo que importa es si tus redes estan generando comunidad, confianza y, en ultima instancia, ventas.",
     highlight: "Reportes mensuales. Metricas que importan, no vanity metrics.",
   },
-  // AI
+  // IA
   {
     id: 13,
-    category: "AI",
+    category: "IA",
     icon: Bot,
     question: "¿Usan inteligencia artificial? ¿Eso afecta la calidad?",
     answer:
-      "Si, usamos AI como herramienta de productividad, no como reemplazo. Herramientas como Claude Code nos ayudan a escribir codigo mas rapido y con menos errores. Pero cada linea es revisada, cada decision es humana, y la estrategia creativa siempre viene de nosotr@s. La AI potencia, no reemplaza.",
-    highlight: "AI = mas rapido + misma calidad. Lo mejor de ambos mundos.",
+      "Si, usamos IA como herramienta de productividad, no como reemplazo. Herramientas como Claude Code nos ayudan a escribir codigo mas rapido y con menos errores. Pero cada linea es revisada, cada decision es humana, y la estrategia creativa siempre viene de nosotr@s. La IA potencia, no reemplaza.",
+    highlight: "IA = mas rapido + misma calidad. Lo mejor de ambos mundos.",
   },
   {
     id: 14,
-    category: "AI",
+    category: "IA",
     icon: Sparkles,
-    question: "¿Como aplican AI en marketing y contenido?",
+    question: "¿Como aplican IA en marketing y contenido?",
     answer:
-      "Usamos AI para acelerar investigacion de mercado, generar borradores de copy, analizar datos de campanas, crear variantes de anuncios para A/B testing, y automatizar tareas repetitivas. Pero la estrategia, la creatividad y la voz de marca siempre son humanas. La AI es el turbo, nosotros manejamos el volante.",
-    highlight: "AI para acelerar. Humanos para decidir.",
+      "Usamos IA para acelerar investigacion de mercado, generar borradores de copy, analizar datos de campanas, crear variantes de anuncios para A/B testing, y automatizar tareas repetitivas. Pero la estrategia, la creatividad y la voz de marca siempre son humanas. La IA es el turbo, nosotros manejamos el volante.",
+    highlight: "IA para acelerar. Humanos para decidir.",
   },
 ];
 
@@ -177,7 +177,7 @@ const categories = [
   "PUBLICIDAD",
   "SEO",
   "REDES SOCIALES",
-  "AI",
+  "IA",
 ];
 
 function FAQsPage() {

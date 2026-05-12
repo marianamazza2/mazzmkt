@@ -178,21 +178,28 @@ function ProjectPage() {
                 ))}
               </ul>
               {project.url && (
-                <a
-                  href={project.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3 bg-[#141414] text-[#f1ede1] px-8 py-4 text-sm font-semibold uppercase tracking-wide hover:bg-[#2a2a2a] transition-colors"
-                >
-                  Ver website
-                  <motion.span
-                    className="inline-block"
-                    animate={{ x: [0, 5, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                project.urlDisabled ? (
+                  <span className="inline-flex items-center gap-3 bg-[#141414]/40 text-[#f1ede1]/30 px-8 py-4 text-sm font-semibold uppercase tracking-wide cursor-not-allowed select-none">
+                    Acceso privado
+                    <span>🔒</span>
+                  </span>
+                ) : (
+                  <a
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-3 bg-[#141414] text-[#f1ede1] px-8 py-4 text-sm font-semibold uppercase tracking-wide hover:bg-[#2a2a2a] transition-colors"
                   >
-                    →
-                  </motion.span>
-                </a>
+                    {project.category === "WebApp" ? "Ver webapp" : "Ver website"}
+                    <motion.span
+                      className="inline-block"
+                      animate={{ x: [0, 5, 0] }}
+                      transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                    >
+                      →
+                    </motion.span>
+                  </a>
+                )
               )}
             </motion.div>
           </div>

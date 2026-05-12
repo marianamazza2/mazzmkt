@@ -416,7 +416,7 @@ function ProjectShowcaseItem({
       onMouseLeave={onMouseLeave}
       className="group py-10 md:py-14 relative"
     >
-      <div className={`flex flex-col md:flex-row gap-8 md:gap-12 items-center ${isEven ? "" : "md:flex-row-reverse"}`}>
+      <div className={`flex flex-col md:flex-row gap-8 md:gap-12 md:items-center ${isEven ? "" : "md:flex-row-reverse"}`}>
         {/* Image */}
         <ShowcaseImage project={project} />
 

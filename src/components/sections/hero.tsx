@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { TransitionLink } from "@/components/transition/transition-link";
+import { BlinkingCursor } from "@/components/ui/blinking-cursor";
 
 export function Hero() {
   return (
@@ -41,7 +42,7 @@ export function Hero() {
               className="font-bold text-[#ffffff]"
               style={{ fontSize: "inherit", lineHeight: "inherit", fontWeight: "inherit" }}
             >
-              DISENAMOS MARCAS
+              DISEÑAMOS MARCAS
             </motion.h1>
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
@@ -64,7 +65,7 @@ export function Hero() {
                 color: "#ffffff",
               }}
             >
-              SE SIENTEN Y RESPONDEN
+              SE SIENTEN Y RESPONDEN<BlinkingCursor className="text-[#ffffff60]" />
             </motion.h1>
           </div>
 

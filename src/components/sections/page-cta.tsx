@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { TransitionLink } from "@/components/transition/transition-link";
+import { BlinkingCursor } from "@/components/ui/blinking-cursor";
 
 function AnimatedText({
   text,
@@ -47,7 +48,7 @@ export function PageCTA() {
               <AnimatedText text="HAGAMOS CRECER" delay={0} />
             </div>
             <div className="overflow-hidden mb-10">
-              <AnimatedText text="TUS IDEAS" delay={0.4} />
+              <AnimatedText text="TUS IDEAS" delay={0.4} /><BlinkingCursor className="text-[#ffffff60]" />
             </div>
           </h2>
 
@@ -61,7 +62,7 @@ export function PageCTA() {
               to="/contacto"
               className="inline-flex items-center gap-3 bg-[#ffffff] text-[#141414] px-10 py-5 text-base font-semibold uppercase tracking-wide hover:bg-[#ffffff] transition-colors font-geist rounded-sm"
             >
-              EMPEZAR PROYECTO
+              COMENZAR PROYECTO
               <motion.span
                 className="inline-block"
                 animate={{ x: [0, 5, 0] }}

@@ -139,7 +139,7 @@ function ServicePage() {
                 lineHeight: "1.2",
               }}
             >
-              ¿Listo para empezar?
+              ¿Listo para comenzar?
             </h2>
             <p className="text-xl text-[#f1ede1aa] mb-12 max-w-2xl mx-auto">
               Hablemos sobre como podemos ayudarte con {service.title.toLowerCase()}.

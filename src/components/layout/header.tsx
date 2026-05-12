@@ -4,6 +4,7 @@ import { useRouterState } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { TransitionLink } from "@/components/transition/transition-link";
+import { BlinkingCursor } from "@/components/ui/blinking-cursor";
 
 const navigation = [
   { title: "HOME", href: "/" },
@@ -39,8 +40,8 @@ export function Header() {
       <nav className="container mx-auto px-6">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <TransitionLink to="/" className="text-2xl font-bold text-[#ffffff] tracking-tight">
-            MM <span className="text-[#ffffff80]">•</span>
+          <TransitionLink to="/" className="text-2xl font-bold text-[#ffffff] tracking-tight font-geist">
+            MM <span className="text-[#ffffff80]">•</span><BlinkingCursor className="text-[#ffffff80]" />
           </TransitionLink>
 
           {/* Desktop Navigation */}

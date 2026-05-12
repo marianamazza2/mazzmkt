@@ -74,7 +74,7 @@ const proceso = [
   {
     number: "02",
     icon: PenTool,
-    title: "DISENAMOS CON INTENCION",
+    title: "DISEÑAMOS CON INTENCIÓN",
     description: "Cada accion responde a un objetivo claro.",
   },
   {
@@ -87,7 +87,7 @@ const proceso = [
     number: "04",
     icon: Bot,
     title: "INTEGRAMOS INTELIGENCIA",
-    description: "AI y automatizacion para que las ideas fluyan.",
+    description: "IA y automatizacion para que las ideas fluyan.",
   },
 ];
 
@@ -100,7 +100,15 @@ function SobreMiPage() {
       />
 
       {/* Hero Section */}
-      <section className="bg-dark pt-32 pb-20">
+      <section
+        className="pt-32 pb-20"
+        style={{
+          backgroundColor: "#141414",
+          color: "#f1ede1",
+          backgroundImage: `radial-gradient(circle, rgba(255,255,255,0.09) 1px, #141414 1px)`,
+          backgroundSize: "22px 22px",
+        }}
+      >
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -169,7 +177,7 @@ function SobreMiPage() {
 
       {/* About Section */}
       <section className="bg-dark py-24 md:py-32 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[linear-gradient(#ffffff05_1px,transparent_1px),linear-gradient(90deg,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px]" />
+        <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(circle, #ffffff 1.5px, transparent 1.5px)", backgroundSize: "24px 24px", opacity: 0.35 }} />
 
         <div className="container mx-auto px-6 relative z-10">
           <motion.div

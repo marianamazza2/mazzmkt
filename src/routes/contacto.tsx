@@ -175,10 +175,10 @@ function ContactoPage() {
                       Email
                     </p>
                     <a
-                      href="mailto:hola@mazzmkt.com"
+                      href="mailto:mazzmkt360@gmail.com"
                       className="text-lg text-[#141414] hover:opacity-70 transition-opacity"
                     >
-                      hola@mazzmkt.com
+                      mazzmkt360@gmail.com
                     </a>
                   </div>
                 </div>

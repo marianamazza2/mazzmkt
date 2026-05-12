@@ -18,17 +18,15 @@ function ProyectosPage() {
       />
 
       {/* Hero Section */}
-      <section className="bg-dark pt-32 pb-20 overflow-hidden relative">
-        {/* Animated background grid */}
-        <div className="absolute inset-0 opacity-[0.03]">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `linear-gradient(#f1ede1 1px, transparent 1px), linear-gradient(90deg, #f1ede1 1px, transparent 1px)`,
-              backgroundSize: "60px 60px",
-            }}
-          />
-        </div>
+      <section
+        className="pt-32 pb-20 overflow-hidden relative"
+        style={{
+          backgroundColor: "#141414",
+          color: "#f1ede1",
+          backgroundImage: `radial-gradient(circle, rgba(255,255,255,0.09) 1px, #141414 1px)`,
+          backgroundSize: "22px 22px",
+        }}
+      >
 
         {/* Floating elements */}
         <motion.div

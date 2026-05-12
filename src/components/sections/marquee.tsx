@@ -3,13 +3,13 @@ import { motion } from "framer-motion";
 const words = [
   "ESTRATEGIA",
   "CREATIVIDAD",
+  "DEARROLLO WEB",
   "INTELIGENCIA ARTIFICIAL",
   "BRANDING",
-  "GROWTH",
-  "DISENO WEB",
-  "AUTOMATIZACION",
-  "INNOVACION",
-  "DATA DRIVEN",
+  "REDES SOCIALES",
+  "DISEÑO WEB",
+  "AUTOMATIZACIÓN",
+  "INNOVACIÓN",
   "PERFORMANCE",
 ];
 

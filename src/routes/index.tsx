@@ -16,7 +16,7 @@ function HomePage() {
     <>
       <SEOHead
         title="MAZZMKT | Estrategia & Creatividad"
-        description="Agencia de marketing digital. Disenamos marcas que se entienden, se sienten y responden. Estrategia, creatividad e inteligencia artificial."
+        description="Agencia de marketing digital. Diseñamos marcas que se entienden, se sienten y responden. Estrategia, creatividad e inteligencia artificial."
       />
       <Hero />
       <Marquee />

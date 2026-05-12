@@ -26,6 +26,7 @@ export interface Project {
   slug: string;
   featured: boolean;
   url?: string;
+  urlDisabled?: boolean;
 }
 
 export interface NavItem {

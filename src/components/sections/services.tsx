@@ -1,5 +1,5 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { Code, Palette, Megaphone, MessageCircle, Bot, Zap, BarChart3, Sparkles, Globe } from "lucide-react";
+import { Code, Palette, MessageCircle, Bot, Zap, Sparkles, Globe, Wand2, Search, Share2 } from "lucide-react";
 import { useRef } from "react";
 import { TransitionLink } from "@/components/transition/transition-link";
 
@@ -8,7 +8,7 @@ const mainServices = [
     icon: Code,
     title: "TU WEB LISTA EN DIAS",
     subtitle: "SITIOS WEB | LANDINGS | E-COMMERCE",
-    description: "Disenamos y desarrollamos tu web en tiempo record. Velocidad real, tecnologia de ultima generacion y diseno que impacta.",
+    description: "Diseñamos y desarrollamos tu web en tiempo record. Velocidad real, tecnologia de ultima generacion y diseno que impacta.",
   },
   {
     icon: Zap,
@@ -23,22 +23,22 @@ const mainServices = [
     description: "Construimos marcas que la gente recuerda. Desde el nombre hasta cada pixel: coherencia, caracter y una identidad visual que genera confianza instantanea.",
   },
   {
-    icon: Megaphone,
-    title: "PUBLICIDAD QUE GENERA RESULTADOS",
-    subtitle: "SEO | SEM | GOOGLE & META ADS | SOCIAL MEDIA",
-    description: "Disenamos estrategias de publicidad digital que llevan a tus clientes ideales directo a tu negocio. Alcance real, posicionamiento y crecimiento.",
+    icon: Share2,
+    title: "GESTION DE REDES SOCIALES",
+    subtitle: "CONTENIDO | COMUNIDAD | CRECIMIENTO",
+    description: "Gestionamos tus redes con estrategia y coherencia de marca. Contenido que engancha, comunidad que crece y presencia digital que convierte.",
   },
 ];
 
 const aiServices = [
   {
     icon: Globe,
-    title: "WEBS CON AI",
+    title: "WEBS CON IA",
     description: "Tu web, landing o e-commerce lista en tiempo record. Diseno a medida, alto rendimiento tecnico y resultados desde el primer dia.",
   },
   {
     icon: Bot,
-    title: "ASISTENTES AI",
+    title: "ASISTENTES IA",
     description: "Un asistente que conoce tu negocio al 100%, atiende a tus clientes 24/7 y nunca deja escapar una oportunidad de venta.",
   },
   {
@@ -47,9 +47,9 @@ const aiServices = [
     description: "Automatiza respuestas, califica leads y cierra ventas en el canal donde tus clientes ya estan. Sin esfuerzo manual.",
   },
   {
-    icon: Zap,
-    title: "MARKETING EN PILOTO AUTOMATICO",
-    description: "Conecta tus canales, CRM y campanas en un sistema que trabaja por ti mientras tu te enfocas en hacer crecer tu negocio.",
+    icon: Wand2,
+    title: "IA GENERATIVA",
+    description: "Imagenes de producto, avatares, reels y videos generados con IA. Produccion visual de alta calidad a escala, sin los tiempos ni costes de la produccion tradicional.",
   },
   {
     icon: Sparkles,
@@ -57,9 +57,9 @@ const aiServices = [
     description: "30 dias de contenido en pocas horas. Videos, copys, voiceovers e imagenes con calidad profesional generados con IA.",
   },
   {
-    icon: BarChart3,
-    title: "OPTIMIZACION INTELIGENTE",
-    description: "Analizamos tus datos, detectamos exactamente que frena tu crecimiento y aplicamos mejoras que se ven directamente en resultados.",
+    icon: Search,
+    title: "SEO CON IA",
+    description: "Posicionamiento organico acelerado con inteligencia artificial. Auditoria tecnica, keywords y contenido que Google quiere rankear.",
   },
 ];
 
@@ -346,7 +346,7 @@ export function Services() {
             }}
           >
             TU NEGOCIO EN{" "}
-            <span className="text-[#141414aa]">MODO AI</span>{" "}
+            <span className="text-[#141414aa]">MODO IA</span>{" "}
             <span className="text-[#141414aa]">&raquo;</span>
           </h2>
         </motion.div>
@@ -369,7 +369,7 @@ export function Services() {
               to="/contacto"
               className="group inline-flex items-center gap-3 text-[#141414] text-base font-semibold uppercase tracking-wide hover:opacity-70 transition-opacity font-geist"
             >
-              QUIERO MI NEGOCIO CON AI
+              QUIERO MI NEGOCIO CON IA
               <motion.span
                 className="inline-block"
                 animate={{ x: [0, 5, 0] }}
