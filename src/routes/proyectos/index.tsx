@@ -114,7 +114,7 @@ function ProyectosPage() {
               style={{ fontSize: "18px" }}
             >
               Cada proyecto es una historia de transformación digital.
-              Resultados medibles, diseño impecable, tecnología de vanguardia.
+              Diseño, tecnología de vanguardia y resultados.
             </motion.p>
 
             {/* Stats row */}
