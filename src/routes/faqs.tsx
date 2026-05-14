@@ -201,8 +201,15 @@ function FAQsPage() {
       />
 
       {/* Hero */}
-      <section className="bg-dark pt-32 pb-20">
-        <div className="container mx-auto px-6">
+      <section className="bg-dark pt-32 pb-20 relative overflow-hidden min-h-[600px]">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url('/images/hero-pattern.png')`,
+            opacity: 0.20,
+          }}
+        />
+        <div className="container mx-auto px-6 relative">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -235,7 +242,7 @@ function FAQsPage() {
             >
               PREGUNTAS
               <br />
-              <span className="text-[#ffffff50]">FRECUENTES &raquo;</span>
+              <span className="text-[#ffffff]">FRECUENTES &raquo;</span>
             </h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}

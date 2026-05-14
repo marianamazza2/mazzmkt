@@ -51,7 +51,7 @@ export function Intro() {
               fontWeight: 700,
             }}
           >
-            <AnimatedWords text="CREAMOS MARCAS," />
+            <AnimatedWords text="DESARROLLAMOS MARCAS," />
             <br />
             <AnimatedWords text="ELEVAMOS SU PRESENCIA DIGITAL" />
             <br />

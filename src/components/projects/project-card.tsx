@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform, useInView } from "framer-motion";
 import { useRef } from "react";
 import type { Project } from "@/types";
 import { TransitionLink } from "@/components/transition/transition-link";
@@ -15,6 +15,7 @@ interface ProjectCardProps {
 export function ProjectCard({ project, index, size = "medium", onMouseEnter, onMouseLeave }: ProjectCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
+  const isInView = useInView(cardRef, { once: false, margin: "-25% 0px -25% 0px" });
 
   // Mouse position for 3D tilt effect
   const mouseX = useMotionValue(0);
@@ -51,7 +52,7 @@ export function ProjectCard({ project, index, size = "medium", onMouseEnter, onM
     small: "aspect-square",
     medium: "aspect-[4/5]",
     large: "aspect-[4/3] md:col-span-2",
-    wide: "aspect-[16/7]",
+    wide: "aspect-[16/9]",
   };
 
   return (
@@ -122,7 +123,7 @@ export function ProjectCard({ project, index, size = "medium", onMouseEnter, onM
 
             {/* Title */}
             <h3
-              className="font-bold text-[#ffffff] mb-2 group-hover:translate-x-2 max-md:translate-x-2 transition-transform duration-300"
+              className="font-bold text-[#ffffff] mb-2"
               style={{
                 fontSize: size === "large" ? "clamp(24px, 3vw, 40px)" : "clamp(18px, 2vw, 28px)",
                 lineHeight: 1.1,
@@ -169,7 +170,7 @@ export function ProjectCard({ project, index, size = "medium", onMouseEnter, onM
         </div>
       )}
       <AnimatePresence>
-        {isHovered && project.image && (
+        {isInView && project.image && (
           <motion.div
             initial={{ opacity: 0, scale: 0.88, rotate: -2 }}
             animate={{ opacity: 1, scale: 1, rotate: 0 }}

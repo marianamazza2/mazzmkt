@@ -1,5 +1,5 @@
 import { useState, useMemo, useCallback, useEffect, useRef } from "react";
-import { motion, AnimatePresence, LayoutGroup, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion, AnimatePresence, LayoutGroup, useMotionValue, useSpring, useTransform, useInView } from "framer-motion";
 import { Search, Grid3X3, List, X } from "lucide-react";
 import { ProjectCard } from "./project-card";
 import { TransitionLink } from "@/components/transition/transition-link";
@@ -295,7 +295,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
 
 function ShowcaseImage({ project }: { project: Project }) {
   const imageRef = useRef<HTMLDivElement>(null);
-  const [isHovered, setIsHovered] = useState(false);
+  const isInView = useInView(imageRef, { once: false, margin: "-25% 0px -25% 0px" });
   const mouseX = useMotionValue(0.5);
   const mouseY = useMotionValue(0.5);
   const springConfig = { damping: 25, stiffness: 150 };
@@ -312,14 +312,12 @@ function ShowcaseImage({ project }: { project: Project }) {
   const handleMouseLeave = () => {
     mouseX.set(0.5);
     mouseY.set(0.5);
-    setIsHovered(false);
   };
 
   return (
     <div
       ref={imageRef}
       onMouseMove={handleMouseMove}
-      onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
       className="group/img w-full md:w-[58%] aspect-[16/10] relative shrink-0"
     >
@@ -368,9 +366,9 @@ function ShowcaseImage({ project }: { project: Project }) {
         />
       </div>
 
-      {/* Small card centrada sobre la imagen, sin overlay */}
+      {/* Small card centrada sobre la imagen, aparece al hacer scroll */}
       <AnimatePresence>
-        {isHovered && project.image && (
+        {isInView && project.image && (
           <motion.div
             initial={{ opacity: 0, scale: 0.88, rotate: -2 }}
             animate={{ opacity: 1, scale: 1, rotate: 0 }}
@@ -470,7 +468,7 @@ function ProjectShowcaseItem({
             params={{ slug: project.slug }}
             className="group/cta inline-flex items-center gap-2 text-sm font-semibold text-[#141414] hover:gap-4 transition-all duration-300 mt-2 w-fit"
           >
-            Ver proyecto
+            VER PROYECTO
             <span className="text-lg">→</span>
           </TransitionLink>
         </div>

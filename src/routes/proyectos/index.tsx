@@ -19,15 +19,19 @@ function ProyectosPage() {
 
       {/* Hero Section */}
       <section
-        className="pt-32 pb-20 overflow-hidden relative"
+        className="pt-32 pb-20 overflow-hidden relative min-h-[600px]"
         style={{
           backgroundColor: "#141414",
           color: "#f1ede1",
-          backgroundImage: `radial-gradient(circle, rgba(255,255,255,0.09) 1px, #141414 1px)`,
-          backgroundSize: "22px 22px",
         }}
       >
-
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url('/images/hero-pattern.png')`,
+            opacity: 0.20,
+          }}
+        />
         {/* Floating elements */}
         <motion.div
           className="absolute top-40 right-20 w-32 h-32 border border-[#f1ede110] rotate-45"

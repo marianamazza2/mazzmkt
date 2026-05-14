@@ -101,15 +101,20 @@ function SobreMiPage() {
 
       {/* Hero Section */}
       <section
-        className="pt-32 pb-20"
+        className="pt-32 pb-20 relative overflow-hidden min-h-[600px]"
         style={{
           backgroundColor: "#141414",
           color: "#f1ede1",
-          backgroundImage: `radial-gradient(circle, rgba(255,255,255,0.09) 1px, #141414 1px)`,
-          backgroundSize: "22px 22px",
         }}
       >
-        <div className="container mx-auto px-6">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url('/images/hero-pattern.png')`,
+            opacity: 0.20,
+          }}
+        />
+        <div className="container mx-auto px-6 relative">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -140,7 +145,7 @@ function SobreMiPage() {
             >
               HUMANO
               <br />
-              <span className="text-[#ffffff50]">Y DIGITAL &raquo;</span>
+              <span className="text-[#ffffff]">Y DIGITAL &raquo;</span>
             </h1>
           </motion.div>
         </div>
@@ -177,8 +182,6 @@ function SobreMiPage() {
 
       {/* About Section */}
       <section className="bg-dark py-24 md:py-32 relative overflow-hidden">
-        <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(circle, #ffffff 1.5px, transparent 1.5px)", backgroundSize: "24px 24px", opacity: 0.35 }} />
-
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

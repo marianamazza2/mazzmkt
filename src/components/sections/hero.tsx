@@ -4,8 +4,18 @@ import { BlinkingCursor } from "@/components/ui/blinking-cursor";
 
 export function Hero() {
   return (
-    <section className="bg-dark pt-32 pb-20">
-      <div className="container mx-auto px-6">
+    <section className="bg-dark pt-32 pb-20 relative overflow-hidden">
+      <div
+        className="absolute -inset-x-[2%] inset-y-0 bg-no-repeat"
+        style={{
+          backgroundImage: `url('/images/hero-home.png')`,
+          backgroundPosition: "center center",
+          backgroundSize: "100% auto",
+          opacity: 0.6,
+          animation: "tv-static 0.45s steps(1) infinite",
+        }}
+      />
+      <div className="container mx-auto px-6 relative">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -42,7 +52,7 @@ export function Hero() {
               className="font-bold text-[#ffffff]"
               style={{ fontSize: "inherit", lineHeight: "inherit", fontWeight: "inherit" }}
             >
-              DISEÑAMOS MARCAS
+              CREAMOS MARCAS
             </motion.h1>
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
@@ -65,7 +75,21 @@ export function Hero() {
                 color: "#ffffff",
               }}
             >
-              SE SIENTEN Y RESPONDEN<BlinkingCursor className="text-[#ffffff60]" />
+              SE SIENTEN
+            </motion.h1>
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="font-bold"
+              style={{
+                fontSize: "inherit",
+                lineHeight: "inherit",
+                fontWeight: "inherit",
+                color: "#ffffff",
+              }}
+            >
+              Y RESPONDEN<BlinkingCursor className="text-[#ffffff60]" />
             </motion.h1>
           </div>
 
