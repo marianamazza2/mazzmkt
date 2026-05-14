@@ -101,19 +101,12 @@ function SobreMiPage() {
 
       {/* Hero Section */}
       <section
-        className="pt-32 pb-20 relative overflow-hidden min-h-[600px]"
+        className="pt-24 pb-12 md:pt-32 md:pb-20 relative overflow-hidden"
         style={{
           backgroundColor: "#141414",
           color: "#f1ede1",
         }}
       >
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url('/images/hero-pattern.png')`,
-            opacity: 0.20,
-          }}
-        />
         <div className="container mx-auto px-6 relative">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -138,7 +131,7 @@ function SobreMiPage() {
             <h1
               className="font-bold text-[#ffffff]"
               style={{
-                fontSize: "clamp(40px, 8vw, 100px)",
+                fontSize: "clamp(24px, 5vw, 64px)",
                 lineHeight: "1.08",
                 fontWeight: 700,
               }}
@@ -152,7 +145,7 @@ function SobreMiPage() {
       </section>
 
       {/* Welcome Section */}
-      <section className="bg-light py-24 md:py-32">
+      <section className="bg-light py-14 md:py-24">
         <div className="container mx-auto px-6">
           <div className="max-w-6xl">
             <motion.h2
@@ -160,9 +153,9 @@ function SobreMiPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="font-bold text-[#141414] mb-12 uppercase"
+              className="font-bold text-[#141414] mb-10 uppercase"
               style={{
-                fontSize: "48px",
+                fontSize: "clamp(22px, 5vw, 48px)",
                 lineHeight: "1.15",
                 fontWeight: 700,
               }}
@@ -181,7 +174,7 @@ function SobreMiPage() {
       </section>
 
       {/* About Section */}
-      <section className="bg-dark py-24 md:py-32 relative overflow-hidden">
+      <section className="bg-dark py-14 md:py-24 relative overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -197,7 +190,7 @@ function SobreMiPage() {
             <h2
               className="font-bold text-[#ffffff]"
               style={{
-                fontSize: "clamp(40px, 7vw, 98px)",
+                fontSize: "clamp(22px, 3.5vw, 56px)",
                 lineHeight: "1.08",
                 fontWeight: 700,
               }}
@@ -261,7 +254,7 @@ function SobreMiPage() {
       </section>
 
       {/* Manifesto Section */}
-      <section className="bg-light py-24 md:py-40 border-t border-[#14141410]">
+      <section className="bg-light py-14 md:py-28 border-t border-[#14141410]">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -286,7 +279,7 @@ function SobreMiPage() {
             <blockquote
               className="font-bold text-[#141414] mb-12"
               style={{
-                fontSize: "clamp(24px, 4vw, 56px)",
+                fontSize: "clamp(18px, 3vw, 42px)",
                 lineHeight: "1.2",
                 fontWeight: 600,
               }}
@@ -320,7 +313,7 @@ function SobreMiPage() {
       </section>
 
       {/* Nosotrxs Section */}
-      <section className="bg-dark py-24 md:py-32 relative overflow-hidden">
+      <section className="bg-dark py-14 md:py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,#ffffff08_0%,transparent_60%)]" />
 
         <div className="container mx-auto px-6 relative z-10">
@@ -338,7 +331,7 @@ function SobreMiPage() {
               <h2
                 className="font-bold text-[#ffffff] mb-8"
                 style={{
-                  fontSize: "clamp(40px, 7vw, 98px)",
+                  fontSize: "clamp(22px, 3.5vw, 56px)",
                   lineHeight: "1.08",
                   fontWeight: 700,
                 }}
@@ -406,7 +399,7 @@ function SobreMiPage() {
       </section>
 
       {/* Lo que nos mueve Section */}
-      <section className="bg-light py-24 md:py-32 border-t border-[#14141410]">
+      <section className="bg-light py-14 md:py-24 border-t border-[#14141410]">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -422,7 +415,7 @@ function SobreMiPage() {
             <h2
               className="font-bold text-[#141414]"
               style={{
-                fontSize: "clamp(40px, 7vw, 98px)",
+                fontSize: "clamp(22px, 3.5vw, 56px)",
                 lineHeight: "1.08",
                 fontWeight: 700,
               }}
@@ -462,7 +455,7 @@ function SobreMiPage() {
       </section>
 
       {/* Creemos en Section */}
-      <section className="bg-dark py-24 md:py-32">
+      <section className="bg-dark py-14 md:py-24">
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
             <motion.div
@@ -477,7 +470,7 @@ function SobreMiPage() {
               <h2
                 className="font-bold text-[#ffffff]"
                 style={{
-                  fontSize: "clamp(40px, 7vw, 98px)",
+                  fontSize: "clamp(22px, 3.5vw, 56px)",
                   lineHeight: "1.08",
                   fontWeight: 700,
                 }}
@@ -514,7 +507,7 @@ function SobreMiPage() {
       </section>
 
       {/* Como trabajamos Section */}
-      <section className="bg-light py-24 md:py-32 border-t border-[#14141410]">
+      <section className="bg-light py-14 md:py-24 border-t border-[#14141410]">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -530,7 +523,7 @@ function SobreMiPage() {
             <h2
               className="font-bold text-[#141414]"
               style={{
-                fontSize: "clamp(40px, 7vw, 98px)",
+                fontSize: "clamp(22px, 3.5vw, 56px)",
                 lineHeight: "1.08",
                 fontWeight: 700,
               }}

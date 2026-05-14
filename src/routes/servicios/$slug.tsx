@@ -66,7 +66,7 @@ function ServicePage() {
             <h1
               className="font-bold text-[#ffffff] mb-6"
               style={{
-                fontSize: "clamp(36px, 6vw, 80px)",
+                fontSize: "clamp(22px, 3.5vw, 52px)",
                 lineHeight: "1.1",
                 fontWeight: 700,
               }}

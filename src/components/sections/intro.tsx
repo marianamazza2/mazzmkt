@@ -30,23 +30,13 @@ function AnimatedWords({ text, className, style }: { text: string; className?: s
 
 export function Intro() {
   return (
-    <section className="bg-light py-24 md:py-32 relative">
+    <section className="bg-light py-14 md:py-24 relative">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl">
-          {/* Animated line accent */}
-          <motion.div
-            className="w-16 h-[2px] bg-[#141414] mb-12"
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            style={{ transformOrigin: "left" }}
-          />
-
           <h2
-            className="font-bold text-[#141414] mb-12"
+            className="font-bold text-[#141414] mb-10"
             style={{
-              fontSize: "48px",
+              fontSize: "clamp(22px, 5vw, 48px)",
               lineHeight: "1.15",
               fontWeight: 700,
             }}

@@ -266,7 +266,7 @@ export function Services() {
   return (
     <>
       {/* Main Services - Dark Section */}
-      <section className="bg-dark py-24 md:py-32">
+      <section className="bg-dark py-14 md:py-24">
         <div className="container mx-auto px-6">
           {/* Header */}
           <motion.div
@@ -290,7 +290,7 @@ export function Services() {
             <h2
               className="font-bold text-[#ffffff]"
               style={{
-                fontSize: "clamp(40px, 7vw, 98px)",
+                fontSize: "clamp(22px, 3.5vw, 56px)",
                 lineHeight: "1.08",
                 fontWeight: 700,
               }}
@@ -316,7 +316,7 @@ export function Services() {
       </section>
 
       {/* AI Services - Light Section */}
-      <section className="bg-light py-24 md:py-32">
+      <section className="bg-light py-14 md:py-24">
         <div className="container mx-auto px-6">
           {/* AI Services Header */}
         <motion.div
@@ -340,7 +340,7 @@ export function Services() {
           <h2
             className="font-bold text-[#141414]"
             style={{
-              fontSize: "clamp(40px, 7vw, 98px)",
+              fontSize: "clamp(22px, 3.5vw, 56px)",
               lineHeight: "1.08",
               fontWeight: 700,
             }}

@@ -42,7 +42,7 @@ function CookiesPage() {
             <h1
               className="font-bold text-[#ffffff]"
               style={{
-                fontSize: "clamp(40px, 8vw, 100px)",
+                fontSize: "clamp(24px, 5vw, 64px)",
                 lineHeight: "1.08",
                 fontWeight: 700,
               }}

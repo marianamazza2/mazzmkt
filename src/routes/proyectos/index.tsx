@@ -19,44 +19,12 @@ function ProyectosPage() {
 
       {/* Hero Section */}
       <section
-        className="pt-32 pb-20 overflow-hidden relative min-h-[600px]"
+        className="pt-24 pb-12 md:pt-32 md:pb-20 overflow-hidden relative"
         style={{
           backgroundColor: "#141414",
           color: "#f1ede1",
         }}
       >
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url('/images/hero-pattern.png')`,
-            opacity: 0.20,
-          }}
-        />
-        {/* Floating elements */}
-        <motion.div
-          className="absolute top-40 right-20 w-32 h-32 border border-[#f1ede110] rotate-45"
-          animate={{
-            rotate: [45, 50, 45],
-            scale: [1, 1.05, 1],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        <motion.div
-          className="absolute bottom-20 left-20 w-20 h-20 bg-[#f1ede105]"
-          animate={{
-            y: [0, -20, 0],
-            rotate: [0, 5, 0],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
 
         <div className="container mx-auto px-6 relative">
           <div className="max-w-5xl">
@@ -87,7 +55,7 @@ function ProyectosPage() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="font-bold text-[#ffffff]"
               style={{
-                fontSize: "clamp(40px, 8vw, 100px)",
+                fontSize: "clamp(24px, 5vw, 64px)",
                 lineHeight: "1.08",
                 fontWeight: 700,
               }}
@@ -100,7 +68,7 @@ function ProyectosPage() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="font-bold"
               style={{
-                fontSize: "clamp(40px, 8vw, 100px)",
+                fontSize: "clamp(24px, 5vw, 64px)",
                 lineHeight: "1.08",
                 fontWeight: 700,
                 color: "#ffffff",
@@ -129,7 +97,7 @@ function ProyectosPage() {
               className="flex gap-12 mt-12"
             >
               <div>
-                <p className="text-4xl md:text-5xl font-bold text-[#ffffff]">
+                <p className="text-3xl md:text-5xl font-bold text-[#ffffff]">
                   {projects.length}+
                 </p>
                 <p className="text-xs uppercase tracking-widest text-[#f1ede1aa] mt-1 font-geist">
@@ -137,7 +105,7 @@ function ProyectosPage() {
                 </p>
               </div>
               <div>
-                <p className="text-4xl md:text-5xl font-bold text-[#ffffff]">
+                <p className="text-3xl md:text-5xl font-bold text-[#ffffff]">
                   98%
                 </p>
                 <p className="text-xs uppercase tracking-widest text-[#f1ede1aa] mt-1 font-geist">
@@ -167,7 +135,7 @@ function ProyectosPage() {
       </section>
 
       {/* Projects Section */}
-      <section className="bg-light py-20 md:py-32">
+      <section className="bg-light py-14 md:py-24">
         <div className="container mx-auto px-6">
           <ProjectsGrid projects={projects} />
         </div>

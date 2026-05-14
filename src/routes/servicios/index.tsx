@@ -26,7 +26,7 @@ function ServiciosPage() {
       />
 
       {/* Hero */}
-      <section className="bg-dark pt-32 pb-20">
+      <section className="bg-dark pt-24 pb-12 md:pt-32 md:pb-20">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -53,7 +53,7 @@ function ServiciosPage() {
             <h1
               className="font-bold text-[#ffffff]"
               style={{
-                fontSize: "clamp(40px, 8vw, 100px)",
+                fontSize: "clamp(24px, 5vw, 64px)",
                 lineHeight: "1.08",
                 fontWeight: 700,
               }}
@@ -65,7 +65,7 @@ function ServiciosPage() {
       </section>
 
       {/* Services Grid */}
-      <section className="bg-light py-24">
+      <section className="bg-light py-14 md:py-24">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {services.map((service, index) => {
