@@ -11,7 +11,7 @@ export function Hero() {
           backgroundImage: `url('/images/hero-home.png')`,
           backgroundPosition: "center center",
           backgroundSize: "100% auto",
-          opacity: 0.6,
+          opacity: 0.25,
           animation: "tv-static 0.45s steps(1) infinite",
         }}
       />
