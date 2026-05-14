@@ -277,14 +277,6 @@ export function Services() {
             className="mb-20"
           >
             <p className="text-base font-medium text-[#ffffffaa] mb-6 tracking-widest flex items-center gap-3 font-geist">
-              <motion.span
-                className="inline-block w-8 h-[1px] bg-[#ffffff]"
-                initial={{ scaleX: 0 }}
-                whileInView={{ scaleX: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                style={{ transformOrigin: "left" }}
-              />
               SERVICIOS DE MARKETING DIGITAL
             </p>
             <h2
@@ -327,14 +319,6 @@ export function Services() {
           className="mb-16"
         >
           <p className="text-base font-medium text-[#141414aa] mb-6 tracking-widest flex items-center gap-3 font-geist">
-            <motion.span
-              className="inline-block w-8 h-[1px] bg-[#141414]"
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              style={{ transformOrigin: "left" }}
-            />
             INTELIGENCIA ARTIFICIAL
           </p>
           <h2

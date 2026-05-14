@@ -21,14 +21,6 @@ export function Projects() {
           className="mb-16"
         >
           <p className="text-base font-medium text-[#ffffffaa] mb-6 tracking-widest flex items-center gap-3 font-geist">
-            <motion.span
-              className="inline-block w-8 h-[1px] bg-[#ffffff]"
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              style={{ transformOrigin: "left" }}
-            />
             NUESTRO TRABAJO
           </p>
           <h2

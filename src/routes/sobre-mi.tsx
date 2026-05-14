@@ -125,14 +125,7 @@ function SobreMiPage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-base font-medium text-[#ffffffcc] mb-6 tracking-widest flex items-center gap-3 font-geist"
-            >
-              <motion.span
-                className="inline-block w-8 h-[1px] bg-[#ffffff]"
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                style={{ transformOrigin: "left" }}
-              />
+            >           
               <span>SOBRE NOSOTROS</span>
             </motion.p>
             <h1

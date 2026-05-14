@@ -42,13 +42,6 @@ function ProyectosPage() {
               className="text-base font-medium text-[#f1ede1cc] mb-8 tracking-widest flex items-center gap-3"
               style={{ fontFamily: "var(--font-geist)" }}
             >
-              <motion.span
-                className="inline-block w-8 h-[1px] bg-[#f1ede1]"
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                style={{ transformOrigin: "left" }}
-              />
               <span className="opacity-50">MAZZMKT</span>
               <span className="opacity-30">/</span>
               <span>PROYECTOS</span>
