@@ -35,12 +35,22 @@ function AnimatedText({
 export function PageCTA() {
   return (
     <section className="bg-dark py-14 md:py-24 relative overflow-hidden">
+      <div className="hidden md:block absolute inset-0 overflow-hidden" style={{ transform: "scaleX(-1)" }}>
+        <div
+          className="absolute -inset-x-[6%] inset-y-0 bg-cover bg-center"
+          style={{
+            backgroundImage: "url('/images/hero-home.png')",
+            opacity: 0.14,
+            animation: "tv-static 0.45s steps(1) infinite",
+          }}
+        />
+      </div>
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center">
           <h2
             className="font-bold text-[#ffffff]"
             style={{
-              fontSize: "clamp(22px, 3.5vw, 52px)",
+              fontSize: "clamp(22px, 6vw, 80px)",
               lineHeight: "1.1",
             }}
           >

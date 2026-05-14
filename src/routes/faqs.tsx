@@ -235,7 +235,7 @@ function FAQsPage() {
             <h1
               className="font-bold text-[#ffffff]"
               style={{
-                fontSize: "clamp(24px, 5vw, 64px)",
+                fontSize: "clamp(22px, 8vw, 100px)",
                 lineHeight: "1.08",
                 fontWeight: 700,
               }}
@@ -441,7 +441,7 @@ function FAQsPage() {
               >
                 <p
                   className="font-bold text-[#ffffff] mb-2"
-                  style={{ fontSize: "clamp(20px, 3vw, 44px)" }}
+                  style={{ fontSize: "clamp(18px, 5vw, 56px)" }}
                 >
                   {stat.number}
                 </p>

@@ -5,6 +5,16 @@ import { BlinkingCursor } from "@/components/ui/blinking-cursor";
 export function Hero() {
   return (
     <section className="bg-dark pt-24 pb-12 md:pt-32 md:pb-20 relative overflow-hidden">
+      <div
+        className="hidden md:block absolute -inset-x-[2%] inset-y-0 bg-no-repeat"
+        style={{
+          backgroundImage: `url('/images/hero-home.png')`,
+          backgroundPosition: "center center",
+          backgroundSize: "100% auto",
+          opacity: 0.6,
+          animation: "tv-static 0.45s steps(1) infinite",
+        }}
+      />
       <div className="container mx-auto px-6 relative">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -23,7 +33,7 @@ export function Hero() {
           <div
             className="font-bold text-[#ffffff] mb-8"
             style={{
-              fontSize: "clamp(26px, 6.5vw, 76px)",
+              fontSize: "clamp(22px, 8vw, 100px)",
               lineHeight: "1.08",
               fontWeight: 700,
             }}

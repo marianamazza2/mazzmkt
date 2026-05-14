@@ -42,7 +42,7 @@ function PrivacidadPage() {
             <h1
               className="font-bold text-[#ffffff]"
               style={{
-                fontSize: "clamp(24px, 5vw, 64px)",
+                fontSize: "clamp(22px, 8vw, 100px)",
                 lineHeight: "1.08",
                 fontWeight: 700,
               }}

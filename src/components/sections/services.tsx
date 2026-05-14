@@ -290,7 +290,7 @@ export function Services() {
             <h2
               className="font-bold text-[#ffffff]"
               style={{
-                fontSize: "clamp(22px, 3.5vw, 56px)",
+                fontSize: "clamp(22px, 7vw, 98px)",
                 lineHeight: "1.08",
                 fontWeight: 700,
               }}
@@ -340,7 +340,7 @@ export function Services() {
           <h2
             className="font-bold text-[#141414]"
             style={{
-              fontSize: "clamp(22px, 3.5vw, 56px)",
+              fontSize: "clamp(22px, 7vw, 98px)",
               lineHeight: "1.08",
               fontWeight: 700,
             }}

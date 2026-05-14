@@ -25,7 +25,13 @@ function ProyectosPage() {
           color: "#f1ede1",
         }}
       >
-
+        <div
+          className="hidden md:block absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url('/images/hero-pattern.png')`,
+            opacity: 0.20,
+          }}
+        />
         <div className="container mx-auto px-6 relative">
           <div className="max-w-5xl">
             {/* Breadcrumb */}
@@ -55,7 +61,7 @@ function ProyectosPage() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="font-bold text-[#ffffff]"
               style={{
-                fontSize: "clamp(24px, 5vw, 64px)",
+                fontSize: "clamp(22px, 8vw, 100px)",
                 lineHeight: "1.08",
                 fontWeight: 700,
               }}
@@ -68,7 +74,7 @@ function ProyectosPage() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="font-bold"
               style={{
-                fontSize: "clamp(24px, 5vw, 64px)",
+                fontSize: "clamp(22px, 8vw, 100px)",
                 lineHeight: "1.08",
                 fontWeight: 700,
                 color: "#ffffff",

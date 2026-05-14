@@ -34,7 +34,7 @@ export function Projects() {
           <h2
             className="font-bold text-[#ffffff]"
             style={{
-              fontSize: "clamp(22px, 3.5vw, 56px)",
+              fontSize: "clamp(22px, 7vw, 98px)",
               lineHeight: "1.08",
               fontWeight: 700,
             }}
