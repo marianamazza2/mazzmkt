@@ -14,7 +14,7 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project, index, size = "medium", onMouseEnter, onMouseLeave }: ProjectCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
-  const [isHovered, setIsHovered] = useState(false);
+  const [, setIsHovered] = useState(false);
   const isInView = useInView(cardRef, { once: false, margin: "-25% 0px -25% 0px" });
 
   // Mouse position for 3D tilt effect
