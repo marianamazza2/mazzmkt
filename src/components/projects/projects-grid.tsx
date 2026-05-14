@@ -205,7 +205,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
                 viewMode === "list"
                   ? "flex flex-col gap-4"
                   : viewMode === "showcase"
-                  ? "flex flex-col divide-y divide-[#14141415]"
+                  ? "flex flex-col md:divide-y md:divide-[#14141415]"
                   : viewMode === "grid"
                   ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
                   : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr"
@@ -237,7 +237,6 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
                     <ProjectShowcaseItem
                       project={project}
                       index={index}
-                      total={filteredProjects.length}
                       onMouseEnter={setHoveredProject}
                       onMouseLeave={() => setHoveredProject(null)}
                     />
@@ -392,13 +391,11 @@ function ShowcaseImage({ project }: { project: Project }) {
 function ProjectShowcaseItem({
   project,
   index,
-  total,
   onMouseEnter,
   onMouseLeave,
 }: {
   project: Project;
   index: number;
-  total: number;
   onMouseEnter: (project: Project) => void;
   onMouseLeave: () => void;
 }) {
@@ -412,45 +409,37 @@ function ProjectShowcaseItem({
       transition={{ duration: 0.6, delay: index * 0.04 }}
       onMouseEnter={() => onMouseEnter(project)}
       onMouseLeave={onMouseLeave}
-      className="group py-10 md:py-14 relative"
+      className="group py-5 md:py-14 relative"
     >
-      <div className={`flex flex-col md:flex-row gap-8 md:gap-12 md:items-center ${isEven ? "" : "md:flex-row-reverse"}`}>
+      <div className={`flex flex-col md:flex-row gap-3 md:gap-12 md:items-center ${isEven ? "" : "md:flex-row-reverse"}`}>
         {/* Image */}
         <ShowcaseImage project={project} />
 
         {/* Content */}
-        <div className="flex-1 flex flex-col justify-center gap-4">
-          {/* Index + category */}
-          <div className="flex items-center gap-4">
-            <span className="text-4xl font-bold text-[#14141418] font-geist select-none">
-              {String(total - index).padStart(2, "0")}
-            </span>
-            <span className="text-[10px] font-semibold tracking-widest uppercase text-[#141414aa] font-geist">
-              {project.category}
-            </span>
-          </div>
+        <div className="flex-1 flex flex-col justify-center gap-2">
+          {/* Category + client label */}
+          <span className="text-[10px] font-semibold tracking-widest uppercase text-[#141414aa] font-geist">
+            {project.category}{!project.client.toLowerCase().startsWith("proyecto propio") && ` · ${project.client}`}
+          </span>
 
           {/* Title */}
           <h3
             className="font-bold text-[#141414] leading-[1.05]"
-            style={{ fontSize: "clamp(28px, 3.5vw, 52px)" }}
+            style={{ fontSize: "clamp(18px, 3.5vw, 52px)" }}
           >
             {project.title}
           </h3>
 
-          {/* Client */}
-          <p className="text-sm text-[#141414aa]">{project.client}</p>
-
           {/* Description */}
           {project.description && (
-            <p className="text-sm text-[#141414bb] leading-relaxed line-clamp-2 max-w-md">
+            <p className="hidden md:block text-sm text-[#141414bb] leading-relaxed line-clamp-2 max-w-md">
               {project.description}
             </p>
           )}
 
           {/* Results */}
           {project.results && project.results.length > 0 && (
-            <div className="flex gap-8 pt-4 border-t border-[#14141415]">
+            <div className="hidden md:flex gap-8 pt-4 border-t border-[#14141415]">
               {project.results.slice(0, 3).map((result) => (
                 <div key={result.metric}>
                   <p className="text-xl font-bold text-[#141414]">{result.value}</p>
@@ -466,7 +455,7 @@ function ProjectShowcaseItem({
           <TransitionLink
             to="/proyectos/$slug"
             params={{ slug: project.slug }}
-            className="group/cta inline-flex items-center gap-2 text-sm font-semibold text-[#141414] hover:gap-4 transition-all duration-300 mt-2 w-fit"
+            className="hidden md:inline-flex items-center gap-2 text-sm font-semibold text-[#141414] hover:gap-4 transition-all duration-300 mt-2 w-fit"
           >
             VER PROYECTO
             <span className="text-lg">→</span>
