@@ -49,8 +49,8 @@ export function ProjectCard({ project, index, size = "medium", onMouseEnter, onM
   };
 
   const sizeClasses = {
-    small: "aspect-square",
-    medium: "aspect-[4/5]",
+    small: "aspect-video md:aspect-square",
+    medium: "aspect-video md:aspect-[4/5]",
     large: "aspect-[4/3] md:col-span-2",
     wide: "aspect-[16/9]",
   };

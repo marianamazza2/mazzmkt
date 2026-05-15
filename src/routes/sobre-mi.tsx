@@ -131,8 +131,8 @@ function SobreMiPage() {
             <h1
               className="font-bold text-[#ffffff]"
               style={{
-                fontSize: "clamp(22px, 8vw, 100px)",
-                lineHeight: "1.08",
+                fontSize: "var(--font-display)",
+                lineHeight: "var(--lh-display)",
                 fontWeight: 700,
               }}
             >
@@ -155,8 +155,8 @@ function SobreMiPage() {
               transition={{ duration: 0.8 }}
               className="font-bold text-[#141414] mb-10 uppercase"
               style={{
-                fontSize: "clamp(22px, 5vw, 48px)",
-                lineHeight: "1.15",
+                fontSize: "var(--font-h2)",
+                lineHeight: "var(--lh-h2)",
                 fontWeight: 700,
               }}
             >
@@ -190,8 +190,8 @@ function SobreMiPage() {
             <h2
               className="font-bold text-[#ffffff]"
               style={{
-                fontSize: "clamp(22px, 7vw, 98px)",
-                lineHeight: "1.08",
+                fontSize: "var(--font-section)",
+                lineHeight: "var(--lh-section)",
                 fontWeight: 700,
               }}
             >
@@ -331,8 +331,8 @@ function SobreMiPage() {
               <h2
                 className="font-bold text-[#ffffff] mb-8"
                 style={{
-                  fontSize: "clamp(22px, 7vw, 98px)",
-                  lineHeight: "1.08",
+                  fontSize: "var(--font-section)",
+                  lineHeight: "var(--lh-section)",
                   fontWeight: 700,
                 }}
               >
@@ -415,8 +415,8 @@ function SobreMiPage() {
             <h2
               className="font-bold text-[#141414]"
               style={{
-                fontSize: "clamp(22px, 7vw, 98px)",
-                lineHeight: "1.08",
+                fontSize: "var(--font-section)",
+                lineHeight: "var(--lh-section)",
                 fontWeight: 700,
               }}
             >
@@ -470,8 +470,8 @@ function SobreMiPage() {
               <h2
                 className="font-bold text-[#ffffff]"
                 style={{
-                  fontSize: "clamp(22px, 7vw, 98px)",
-                  lineHeight: "1.08",
+                  fontSize: "var(--font-section)",
+                  lineHeight: "var(--lh-section)",
                   fontWeight: 700,
                 }}
               >
@@ -523,8 +523,8 @@ function SobreMiPage() {
             <h2
               className="font-bold text-[#141414]"
               style={{
-                fontSize: "clamp(22px, 7vw, 98px)",
-                lineHeight: "1.08",
+                fontSize: "var(--font-section)",
+                lineHeight: "var(--lh-section)",
                 fontWeight: 700,
               }}
             >

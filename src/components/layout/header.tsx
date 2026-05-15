@@ -72,7 +72,7 @@ export function Header() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-[#ffffff]"
+            className="md:hidden min-h-[44px] min-w-[44px] flex items-center justify-center text-[#ffffff]"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -100,7 +100,7 @@ export function Header() {
                   key={item.href}
                   to={item.href}
                   className={cn(
-                    "text-lg font-bold py-2 uppercase",
+                    "text-lg font-bold min-h-[44px] flex items-center uppercase",
                     pathname === item.href
                       ? "text-[#ffffff]"
                       : "text-[#ffffff99]"

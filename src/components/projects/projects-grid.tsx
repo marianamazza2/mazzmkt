@@ -1,6 +1,7 @@
 import { useState, useMemo, useCallback, useEffect, useRef } from "react";
 import { motion, AnimatePresence, LayoutGroup, useMotionValue, useSpring, useTransform, useInView } from "framer-motion";
-import { Search, Grid3X3, List, X } from "lucide-react";
+import type { PanInfo } from "framer-motion";
+import { Search, Grid3X3, List, X, SlidersHorizontal } from "lucide-react";
 import { ProjectCard } from "./project-card";
 import { TransitionLink } from "@/components/transition/transition-link";
 import type { Project } from "@/types";
@@ -56,34 +57,49 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
     setActiveCategory(null);
   };
 
+  const mobileLabel: Record<string, string> = {
+    "WebApp": "Webapp",
+    "Diseño y Desarrollo Web": "Web",
+    "Branding Digital": "Branding",
+    "Gestión de Redes Sociales": "Redes",
+  };
+
   const hasActiveFilters = searchQuery !== "" || activeCategory !== null;
 
   return (
     <div className="space-y-8">
       {/* Search and Filters Bar */}
-      <div className="flex flex-col md:flex-row gap-4 md:items-center md:justify-between">
-        {/* Search Input */}
-        <div className="relative flex-1 max-w-md">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-[#141414aa]" />
-          <input
-            type="text"
-            placeholder="Buscar proyectos..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-12 pr-4 py-3 bg-transparent border border-[#14141420] text-[#141414] placeholder:text-[#141414aa] focus:border-[#141414] focus:outline-none transition-colors text-sm rounded-sm"
-          />
-          {searchQuery && (
-            <button
-              onClick={() => setSearchQuery("")}
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-[#141414aa] hover:text-[#141414] transition-colors"
-            >
-              <X className="h-4 w-4" />
-            </button>
-          )}
+      <div className="flex flex-col gap-3 md:gap-4 md:flex-row md:items-center md:justify-between">
+        {/* Search Input + mobile filter button */}
+        <div className="flex items-center gap-2">
+          <div className="relative flex-1 md:max-w-md">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-[#141414aa]" />
+            <input
+              type="text"
+              placeholder="Buscar..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-12 pr-10 py-3 bg-transparent border border-[#14141420] text-[#141414] placeholder:text-[#141414aa] focus:border-[#141414] focus:outline-none transition-colors text-sm rounded-sm"
+            />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery("")}
+                className="absolute right-2 top-1/2 -translate-y-1/2 p-2 text-[#141414aa] hover:text-[#141414] transition-colors"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            )}
+          </div>
+          <button
+            className="md:hidden w-11 h-11 shrink-0 border border-[#14141420] rounded-sm flex items-center justify-center text-[#141414aa] hover:text-[#141414] hover:border-[#141414] transition-colors"
+            aria-label="Opciones de filtro"
+          >
+            <SlidersHorizontal className="h-4 w-4" />
+          </button>
         </div>
 
-        {/* View Mode Toggle */}
-        <div className="flex items-center gap-2 border border-[#14141420] p-1 rounded-sm">
+        {/* View Mode Toggle — hidden on mobile */}
+        <div className="hidden md:flex items-center gap-2 border border-[#14141420] p-1 rounded-sm">
           <button
             onClick={() => setViewMode("showcase")}
             className={`p-2 transition-colors ${
@@ -140,10 +156,10 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
       </div>
 
       {/* Category Filters */}
-      <div className="flex flex-wrap gap-2">
+      <div className="flex gap-2 overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:flex-wrap md:overflow-x-visible">
         <motion.button
           onClick={() => setActiveCategory(null)}
-          className={`px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-all duration-300 cursor-pointer font-geist rounded-sm ${
+          className={`snap-start shrink-0 whitespace-nowrap px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-all duration-300 cursor-pointer font-geist rounded-sm ${
             activeCategory === null
               ? "bg-[#141414] text-[#f1ede1]"
               : "border border-[#14141430] text-[#141414] hover:border-[#141414]"
@@ -151,7 +167,8 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >
-          Todos ({projects.length})
+          <span className="md:hidden">Todos</span>
+          <span className="hidden md:inline">Todos ({projects.length})</span>
         </motion.button>
         {categories.map((category) => {
           const count = projects.filter((p) => p.category === category).length;
@@ -159,7 +176,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
             <motion.button
               key={category}
               onClick={() => setActiveCategory(category === activeCategory ? null : category)}
-              className={`px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-all duration-300 cursor-pointer font-geist rounded-sm ${
+              className={`snap-start shrink-0 whitespace-nowrap px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-all duration-300 cursor-pointer font-geist rounded-sm ${
                 activeCategory === category
                   ? "bg-[#141414] text-[#f1ede1]"
                   : "border border-[#14141430] text-[#141414] hover:border-[#141414]"
@@ -167,7 +184,8 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              {category} ({count})
+              <span className="md:hidden">{mobileLabel[category] ?? category}</span>
+              <span className="hidden md:inline">{category} ({count})</span>
             </motion.button>
           );
         })}
@@ -195,99 +213,241 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
         )}
       </AnimatePresence>
 
-      {/* Projects Grid */}
-      <LayoutGroup>
-        <AnimatePresence mode="popLayout">
-          {filteredProjects.length > 0 ? (
-            <motion.div
-              layout
-              className={
-                viewMode === "list"
-                  ? "flex flex-col gap-4"
-                  : viewMode === "showcase"
-                  ? "flex flex-col md:divide-y md:divide-[#14141415]"
-                  : viewMode === "grid"
-                  ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-                  : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr"
-              }
-            >
-              {filteredProjects.map((project, index) => (
-                <motion.div
-                  key={project.id}
-                  layout
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.3 }}
-                  className={
-                    viewMode === "bento" && getCardSize(project, index) === "large"
-                      ? "md:col-span-2"
-                      : ""
-                  }
-                >
-                  {viewMode === "list" ? (
-                    <ProjectListItem
-                      project={project}
-                      index={index}
-                      total={filteredProjects.length}
-                      onMouseEnter={setHoveredProject}
-                      onMouseLeave={() => setHoveredProject(null)}
-                    />
-                  ) : viewMode === "showcase" ? (
-                    <ProjectShowcaseItem
-                      project={project}
-                      index={index}
-                      onMouseEnter={setHoveredProject}
-                      onMouseLeave={() => setHoveredProject(null)}
-                    />
-                  ) : (
-                    <ProjectCard
-                      project={project}
-                      index={index}
-                      size={viewMode === "grid" ? "medium" : getCardSize(project, index)}
-                      onMouseEnter={setHoveredProject}
-                      onMouseLeave={() => setHoveredProject(null)}
-                    />
-                  )}
-                </motion.div>
-              ))}
-            </motion.div>
-          ) : (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="py-20 text-center"
-            >
-              <p className="text-[#141414aa] text-lg mb-4">
-                No se encontraron proyectos
-              </p>
-              <button
-                onClick={clearFilters}
-                className="text-[#141414] underline hover:no-underline"
-              >
-                Limpiar filtros
-              </button>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </LayoutGroup>
+      {/* Mobile: Carousel */}
+      <div className="md:hidden">
+        {filteredProjects.length === 0 ? (
+          <div className="py-20 text-center">
+            <p className="text-[#141414aa] text-lg mb-4">No se encontraron proyectos</p>
+            <button onClick={clearFilters} className="text-[#141414] underline hover:no-underline">
+              Limpiar filtros
+            </button>
+          </div>
+        ) : (
+          <MobileProjectsCarousel
+            key={`${searchQuery}-${activeCategory}`}
+            projects={filteredProjects}
+          />
+        )}
+      </div>
 
-      {/* Load More - for future pagination */}
-      {filteredProjects.length >= 12 && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="text-center pt-8"
-        >
-          <button className="px-8 py-4 border border-[#141414] text-[#141414] text-sm font-semibold uppercase tracking-wider hover:bg-[#141414] hover:text-[#f1ede1] transition-all duration-300 rounded-sm">
-            Cargar más proyectos
-          </button>
-        </motion.div>
-      )}
+      {/* Desktop: Grid / Showcase / List / Bento */}
+      <div className="hidden md:block">
+        <LayoutGroup>
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.length > 0 ? (
+              <motion.div
+                layout
+                className={
+                  viewMode === "list"
+                    ? "flex flex-col gap-4"
+                    : viewMode === "showcase"
+                    ? "flex flex-col divide-y divide-[#14141415]"
+                    : viewMode === "grid"
+                    ? "grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
+                    : "grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 auto-rows-fr"
+                }
+              >
+                {filteredProjects.map((project, index) => (
+                  <motion.div
+                    key={project.id}
+                    layout
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    transition={{ duration: 0.3 }}
+                    className={
+                      viewMode === "bento" && getCardSize(project, index) === "large"
+                        ? "col-span-2"
+                        : ""
+                    }
+                  >
+                    {viewMode === "list" ? (
+                      <ProjectListItem
+                        project={project}
+                        index={index}
+                        total={filteredProjects.length}
+                        onMouseEnter={setHoveredProject}
+                        onMouseLeave={() => setHoveredProject(null)}
+                      />
+                    ) : viewMode === "showcase" ? (
+                      <ProjectShowcaseItem
+                        project={project}
+                        index={index}
+                        onMouseEnter={setHoveredProject}
+                        onMouseLeave={() => setHoveredProject(null)}
+                      />
+                    ) : (
+                      <ProjectCard
+                        project={project}
+                        index={index}
+                        size={viewMode === "grid" ? "medium" : getCardSize(project, index)}
+                        onMouseEnter={setHoveredProject}
+                        onMouseLeave={() => setHoveredProject(null)}
+                      />
+                    )}
+                  </motion.div>
+                ))}
+              </motion.div>
+            ) : (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="py-20 text-center"
+              >
+                <p className="text-[#141414aa] text-lg mb-4">No se encontraron proyectos</p>
+                <button onClick={clearFilters} className="text-[#141414] underline hover:no-underline">
+                  Limpiar filtros
+                </button>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </LayoutGroup>
+
+        {/* Load More - for future pagination */}
+        {filteredProjects.length >= 12 && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-center pt-8"
+          >
+            <button className="px-8 py-4 border border-[#141414] text-[#141414] text-sm font-semibold uppercase tracking-wider hover:bg-[#141414] hover:text-[#f1ede1] transition-all duration-300 rounded-sm">
+              Cargar más proyectos
+            </button>
+          </motion.div>
+        )}
+      </div>
 
       {/* Floating image preview */}
       <FloatingPreview project={hoveredProject} />
+    </div>
+  );
+}
+
+function MobileProjectsCarousel({ projects }: { projects: Project[] }) {
+  const [[current, direction], setPage] = useState([0, 0]);
+
+  const paginate = (newDir: number) => {
+    const next = current + newDir;
+    if (next < 0 || next >= projects.length) return;
+    setPage([next, newDir]);
+  };
+
+  const handleDragEnd = (_: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
+    if (info.offset.x < -50) paginate(1);
+    else if (info.offset.x > 50) paginate(-1);
+  };
+
+  const slideVariants = {
+    enter: (dir: number) => ({ x: dir > 0 ? "100%" : "-100%", opacity: 0 }),
+    center: { x: 0, opacity: 1 },
+    exit: (dir: number) => ({ x: dir > 0 ? "-100%" : "100%", opacity: 0 }),
+  };
+
+  const project = projects[current];
+
+  return (
+    <div>
+      {/* Slide container */}
+      <div className="relative overflow-hidden">
+        <AnimatePresence initial={false} custom={direction} mode="popLayout">
+          <motion.div
+            key={current}
+            custom={direction}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{ type: "tween", duration: 0.28, ease: "easeInOut" }}
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.12}
+            onDragEnd={handleDragEnd}
+            className="w-full touch-pan-y"
+          >
+            <TransitionLink
+              to="/proyectos/$slug"
+              params={{ slug: project.slug }}
+              className="block"
+            >
+              {/* 16/9 image — igual que la home */}
+              <div className="aspect-[16/9] relative overflow-hidden rounded-sm">
+                {project.image ? (
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-[#1a1a1a] to-[#0f0f0f]" />
+                )}
+              </div>
+              {/* Texto debajo — igual que la home */}
+              <div className="flex flex-col gap-1 mt-3">
+                <span className="text-[10px] font-semibold tracking-widest uppercase text-[#141414aa] font-geist">
+                  {project.category}
+                  {!project.client.toLowerCase().startsWith("proyecto propio") && ` · ${project.client}`}
+                </span>
+                <h3
+                  className="font-bold text-[#141414] leading-[1.05]"
+                  style={{ fontSize: "clamp(18px, 5vw, 28px)" }}
+                >
+                  {project.title}
+                </h3>
+              </div>
+            </TransitionLink>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* Navigation */}
+      <div className="flex items-center justify-between mt-5">
+        <button
+          onClick={() => paginate(-1)}
+          disabled={current === 0}
+          className="w-9 h-9 flex items-center justify-center border border-[#14141420] rounded-sm text-sm text-[#141414] disabled:opacity-25 transition-colors"
+          aria-label="Proyecto anterior"
+        >
+          ←
+        </button>
+
+        {/* Dots — span inside button para evitar que el botón se expanda */}
+        <div className="flex items-center gap-2">
+          {projects.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setPage([i, i > current ? 1 : -1])}
+              aria-label={`Proyecto ${i + 1}`}
+              className="flex items-center justify-center p-1.5"
+            >
+              <span
+                style={{
+                  display: "block",
+                  width: i === current ? "16px" : "6px",
+                  height: "3px",
+                  borderRadius: i === current ? "2px" : "50%",
+                  backgroundColor: i === current ? "#141414" : "#14141440",
+                  transition: "all 0.3s",
+                  flexShrink: 0,
+                }}
+              />
+            </button>
+          ))}
+        </div>
+
+        <button
+          onClick={() => paginate(1)}
+          disabled={current === projects.length - 1}
+          className="w-9 h-9 flex items-center justify-center border border-[#14141420] rounded-sm text-sm text-[#141414] disabled:opacity-25 transition-colors"
+          aria-label="Proyecto siguiente"
+        >
+          →
+        </button>
+      </div>
+
+      <p className="text-center mt-2 text-[10px] text-[#141414aa] font-geist tracking-widest">
+        {String(current + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}
+      </p>
     </div>
   );
 }

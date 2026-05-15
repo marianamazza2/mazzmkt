@@ -46,12 +46,12 @@ export function PageCTA() {
         />
       </div>
       <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center">
+        <div className="text-left md:text-center">
           <h2
             className="font-bold text-[#ffffff]"
             style={{
-              fontSize: "clamp(22px, 6vw, 80px)",
-              lineHeight: "1.1",
+              fontSize: "var(--font-cta)",
+              lineHeight: "var(--lh-cta)",
             }}
           >
             <div className="overflow-hidden">
@@ -70,7 +70,7 @@ export function PageCTA() {
           >
             <TransitionLink
               to="/contacto"
-              className="inline-flex items-center gap-3 bg-[#ffffff] text-[#141414] px-10 py-5 text-base font-semibold uppercase tracking-wide hover:bg-[#ffffff] transition-colors font-geist rounded-sm"
+              className="inline-flex items-center justify-center gap-3 bg-[#ffffff] text-[#141414] px-10 py-5 text-base font-semibold uppercase tracking-wide hover:bg-[#ffffff] transition-colors font-geist rounded-sm w-full max-w-xs md:w-auto"
             >
               COMENZAR PROYECTO
               <motion.span

@@ -54,8 +54,8 @@ function ProyectosPage() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="font-bold text-[#ffffff]"
               style={{
-                fontSize: "clamp(22px, 8vw, 100px)",
-                lineHeight: "1.08",
+                fontSize: "var(--font-display)",
+                lineHeight: "var(--lh-display)",
                 fontWeight: 700,
               }}
             >
@@ -67,8 +67,8 @@ function ProyectosPage() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="font-bold"
               style={{
-                fontSize: "clamp(22px, 8vw, 100px)",
-                lineHeight: "1.08",
+                fontSize: "var(--font-display)",
+                lineHeight: "var(--lh-display)",
                 fontWeight: 700,
                 color: "#ffffff",
               }}

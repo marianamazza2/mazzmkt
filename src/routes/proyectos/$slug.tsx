@@ -57,15 +57,15 @@ function ProjectPage() {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 style={{ transformOrigin: "left" }}
               />
-              <TransitionLink to="/proyectos" className="opacity-50 hover:opacity-80 transition-opacity">PROYECTOS</TransitionLink>
+              <TransitionLink to="/proyectos" className="inline-flex items-center min-h-[44px] opacity-50 hover:opacity-80 transition-opacity">PROYECTOS</TransitionLink>
               <span className="opacity-30">/</span>
               <span className="uppercase">{project.category}</span>
             </motion.p>
             <h1
               className="font-bold text-[#ffffff] mb-6"
               style={{
-                fontSize: "clamp(22px, 6vw, 80px)",
-                lineHeight: "1.1",
+                fontSize: "var(--font-cta)",
+                lineHeight: "var(--lh-cta)",
                 fontWeight: 700,
               }}
             >
@@ -238,7 +238,7 @@ function ProjectPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="border border-[#f1ede120] p-8 text-center"
+                className="border border-[#f1ede120] p-8 text-left md:text-center"
               >
                 <p
                   className="font-bold text-[#ffffff] mb-2"
@@ -256,8 +256,8 @@ function ProjectPage() {
       </section>}
 
       {/* CTA */}
-      <section className="bg-light py-24 border-t border-[#14141415]">
-        <div className="container mx-auto px-6 text-center">
+      <section className="bg-light py-14 md:py-24 border-t border-[#14141415]">
+        <div className="container mx-auto px-6 text-left md:text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}

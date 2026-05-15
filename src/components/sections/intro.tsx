@@ -34,10 +34,10 @@ export function Intro() {
       <div className="container mx-auto px-6">
         <div className="max-w-6xl">
           <h2
-            className="font-bold text-[#141414] mb-10"
+            className="font-bold text-[#141414] mb-6 md:mb-10"
             style={{
-              fontSize: "clamp(22px, 5vw, 48px)",
-              lineHeight: "1.15",
+              fontSize: "var(--font-h2)",
+              lineHeight: "var(--lh-h2)",
               fontWeight: 700,
             }}
           >
@@ -59,7 +59,7 @@ export function Intro() {
           >
             <TransitionLink
               to="/contacto"
-              className="group inline-flex items-center gap-3 text-[#141414] text-base font-semibold uppercase tracking-wide hover:opacity-70 transition-opacity"
+              className="group inline-flex items-center gap-3 min-h-[44px] text-[#141414] text-base font-semibold uppercase tracking-wide hover:opacity-70 transition-opacity"
             >
               HAGAMOS CRECER TUS IDEAS
               <motion.span

@@ -53,8 +53,8 @@ function ServiciosPage() {
             <h1
               className="font-bold text-[#ffffff]"
               style={{
-                fontSize: "clamp(22px, 8vw, 100px)",
-                lineHeight: "1.08",
+                fontSize: "var(--font-display)",
+                lineHeight: "var(--lh-display)",
                 fontWeight: 700,
               }}
             >

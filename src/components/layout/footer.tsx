@@ -11,22 +11,22 @@ export function Footer() {
           </p>
 
           {/* Legal Links */}
-          <div className="flex items-center gap-6 order-1 md:order-2">
+          <div className="flex items-center gap-4 order-1 md:order-2 flex-wrap">
             <TransitionLink
               to="/aviso-legal"
-              className="text-xs text-[#ffffffaa] hover:text-[#ffffff] transition-colors"
+              className="text-xs text-[#ffffffaa] hover:text-[#ffffff] transition-colors min-h-[44px] inline-flex items-center"
             >
               AVISO LEGAL
             </TransitionLink>
             <TransitionLink
               to="/cookies"
-              className="text-xs text-[#ffffffaa] hover:text-[#ffffff] transition-colors"
+              className="text-xs text-[#ffffffaa] hover:text-[#ffffff] transition-colors min-h-[44px] inline-flex items-center"
             >
               POLITICA DE COOKIES
             </TransitionLink>
             <TransitionLink
               to="/privacidad"
-              className="text-xs text-[#ffffffaa] hover:text-[#ffffff] transition-colors"
+              className="text-xs text-[#ffffffaa] hover:text-[#ffffff] transition-colors min-h-[44px] inline-flex items-center"
             >
               POLITICA DE PRIVACIDAD
             </TransitionLink>

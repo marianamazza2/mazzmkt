@@ -71,8 +71,8 @@ function ContactoPage() {
             <h1
               className="font-bold text-[#ffffff]"
               style={{
-                fontSize: "clamp(22px, 8vw, 100px)",
-                lineHeight: "1.08",
+                fontSize: "var(--font-display)",
+                lineHeight: "var(--lh-display)",
                 fontWeight: 700,
               }}
             >
@@ -176,7 +176,7 @@ function ContactoPage() {
                     </p>
                     <a
                       href="mailto:mazzmkt360@gmail.com"
-                      className="text-lg text-[#141414] hover:opacity-70 transition-opacity"
+                      className="inline-flex items-center min-h-[44px] text-lg text-[#141414] hover:opacity-70 transition-opacity"
                     >
                       mazzmkt360@gmail.com
                     </a>
@@ -191,7 +191,7 @@ function ContactoPage() {
                     </p>
                     <a
                       href="tel:+34123456789"
-                      className="text-lg text-[#141414] hover:opacity-70 transition-opacity"
+                      className="inline-flex items-center min-h-[44px] text-lg text-[#141414] hover:opacity-70 transition-opacity"
                     >
                       +34 123 456 789
                     </a>

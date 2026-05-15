@@ -120,7 +120,7 @@ function ServiceCard({
           }}
         />
 
-        <div className={`relative z-10 ${isMain ? "p-8 md:p-10" : "p-8"}`}>
+        <div className={`relative z-10 ${isMain ? "p-5 md:p-10" : "p-5 md:p-8"}`}>
           {/* Number index */}
           <div className="flex items-start justify-between mb-6">
             <Icon
@@ -220,7 +220,7 @@ function ServiceCardDark({
           }}
         />
 
-        <div className="relative z-10 p-8 md:p-10">
+        <div className="relative z-10 p-5 md:p-10">
           {/* Number index */}
           <div className="flex items-start justify-between mb-6">
             <Icon
@@ -274,7 +274,7 @@ export function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mb-20"
+            className="mb-10 md:mb-20"
           >
             <p className="text-base font-medium text-[#ffffffaa] mb-6 tracking-widest flex items-center gap-3 font-geist">
               SERVICIOS DE MARKETING DIGITAL
@@ -282,8 +282,8 @@ export function Services() {
             <h2
               className="font-bold text-[#ffffff]"
               style={{
-                fontSize: "clamp(22px, 7vw, 98px)",
-                lineHeight: "1.08",
+                fontSize: "var(--font-section)",
+                lineHeight: "var(--lh-section)",
                 fontWeight: 700,
               }}
             >
@@ -299,7 +299,7 @@ export function Services() {
           </motion.div>
 
           {/* Main Services */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
             {mainServices.map((service, index) => (
               <ServiceCardDark key={service.title} service={service} index={index} />
             ))}
@@ -316,7 +316,7 @@ export function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-10 md:mb-16"
         >
           <p className="text-base font-medium text-[#141414aa] mb-6 tracking-widest flex items-center gap-3 font-geist">
             INTELIGENCIA ARTIFICIAL
@@ -324,8 +324,8 @@ export function Services() {
           <h2
             className="font-bold text-[#141414]"
             style={{
-              fontSize: "clamp(22px, 7vw, 98px)",
-              lineHeight: "1.08",
+              fontSize: "var(--font-section)",
+              lineHeight: "var(--lh-section)",
               fontWeight: 700,
             }}
           >
@@ -336,7 +336,7 @@ export function Services() {
         </motion.div>
 
         {/* AI Services Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-10 md:mb-16">
           {aiServices.map((service, index) => (
             <ServiceCard key={service.title} service={service} index={index + 3} variant="ai" />
           ))}
@@ -351,7 +351,7 @@ export function Services() {
           >
             <TransitionLink
               to="/contacto"
-              className="group inline-flex items-center gap-3 text-[#141414] text-base font-semibold uppercase tracking-wide hover:opacity-70 transition-opacity font-geist"
+              className="group inline-flex items-center gap-3 min-h-[44px] text-[#141414] text-base font-semibold uppercase tracking-wide hover:opacity-70 transition-opacity font-geist"
             >
               QUIERO MI NEGOCIO CON IA
               <motion.span

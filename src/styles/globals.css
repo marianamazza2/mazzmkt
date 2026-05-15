@@ -75,6 +75,52 @@
 
 }
 
+/* Typography scale — fluid, responsive */
+:root {
+  --font-display: clamp(22px, 8vw, 100px);
+  --lh-display: 1.08;
+  --font-section: clamp(22px, 7vw, 98px);
+  --lh-section: 1.08;
+  --font-cta: clamp(22px, 6vw, 80px);
+  --lh-cta: 1.1;
+  --font-h2: clamp(22px, 5vw, 48px);
+  --lh-h2: 1.15;
+  --font-stat: clamp(18px, 5vw, 56px);
+}
+
+@media (max-width: 768px) {
+  :root {
+    --font-display: clamp(28px, 8vw, 36px);
+    --lh-display: 1.15;
+    --font-section: clamp(22px, 6vw, 32px);
+    --lh-section: 1.15;
+    --font-cta: clamp(22px, 6vw, 32px);
+    --lh-cta: 1.15;
+    --font-h2: clamp(20px, 5vw, 26px);
+    --lh-h2: 1.25;
+    --font-stat: clamp(18px, 5vw, 32px);
+
+    /* Spacing tokens — ~50% of desktop values */
+    --space-section: 56px;
+    --space-block: 32px;
+    --space-element: 16px;
+    --space-inner: 8px;
+  }
+
+  /* Touch targets — minimum 44×44px (WCAG 2.5.5) */
+  button,
+  [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  footer a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
 @layer base {
   * {
     border-color: var(--color-border);

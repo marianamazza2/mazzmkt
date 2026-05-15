@@ -58,7 +58,7 @@ function ServicePage() {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 style={{ transformOrigin: "left" }}
               />
-              <TransitionLink to="/servicios" className="opacity-50 hover:opacity-80 transition-opacity">SERVICIOS</TransitionLink>
+              <TransitionLink to="/servicios" className="inline-flex items-center min-h-[44px] opacity-50 hover:opacity-80 transition-opacity">SERVICIOS</TransitionLink>
               <span className="opacity-30">/</span>
               <span className="uppercase">{service.title.toUpperCase()}</span>
             </motion.p>
@@ -66,8 +66,8 @@ function ServicePage() {
             <h1
               className="font-bold text-[#ffffff] mb-6"
               style={{
-                fontSize: "clamp(22px, 6vw, 80px)",
-                lineHeight: "1.1",
+                fontSize: "var(--font-cta)",
+                lineHeight: "var(--lh-cta)",
                 fontWeight: 700,
               }}
             >
@@ -124,8 +124,8 @@ function ServicePage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-dark py-24">
-        <div className="container mx-auto px-6 text-center">
+      <section className="bg-dark py-14 md:py-24">
+        <div className="container mx-auto px-6 text-left md:text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -141,7 +141,7 @@ function ServicePage() {
             >
               ¿Listo para comenzar?
             </h2>
-            <p className="text-xl text-[#f1ede1aa] mb-12 max-w-2xl mx-auto">
+            <p className="text-xl text-[#f1ede1aa] mb-12 max-w-2xl mx-0 md:mx-auto">
               Hablemos sobre como podemos ayudarte con {service.title.toLowerCase()}.
             </p>
             <TransitionLink

@@ -4,7 +4,7 @@ import { BlinkingCursor } from "@/components/ui/blinking-cursor";
 
 export function Hero() {
   return (
-    <section className="bg-dark pt-24 pb-12 md:pt-32 md:pb-20 relative overflow-hidden">
+    <section className="bg-dark pt-[100px] pb-10 md:pt-32 md:pb-20 relative overflow-hidden max-md:flex max-md:flex-col max-md:justify-center max-md:max-h-[85vh]">
       <div
         className="hidden md:block absolute -inset-x-[2%] inset-y-0 bg-no-repeat"
         style={{
@@ -31,10 +31,10 @@ export function Hero() {
           </motion.p>
 
           <div
-            className="font-bold text-[#ffffff] mb-8"
+            className="font-bold text-[#ffffff] mb-5 md:mb-8"
             style={{
-              fontSize: "clamp(22px, 8vw, 100px)",
-              lineHeight: "1.08",
+              fontSize: "var(--font-display)",
+              lineHeight: "var(--lh-display)",
               fontWeight: 700,
             }}
           >
@@ -94,7 +94,7 @@ export function Hero() {
           >
             <TransitionLink
               to="/proyectos"
-              className="group inline-flex items-center gap-3 text-[#ffffff] text-base font-semibold uppercase tracking-wide font-geist"
+              className="group inline-flex items-center gap-3 min-h-[44px] text-[#ffffff] text-base font-semibold uppercase tracking-wide font-geist max-md:w-full max-md:max-w-[300px] max-md:py-4"
             >
               VER PROYECTOS
               <motion.span

@@ -228,8 +228,8 @@ function FAQsPage() {
             <h1
               className="font-bold text-[#ffffff]"
               style={{
-                fontSize: "clamp(22px, 8vw, 100px)",
-                lineHeight: "1.08",
+                fontSize: "var(--font-display)",
+                lineHeight: "var(--lh-display)",
                 fontWeight: 700,
               }}
             >
@@ -309,15 +309,6 @@ function FAQsPage() {
                       onClick={() => toggleFaq(faq.id)}
                       className="w-full p-6 md:p-8 flex items-start gap-4 md:gap-6 text-left"
                     >
-                      {/* Number */}
-                      <span
-                        className={`text-4xl md:text-5xl font-bold transition-colors duration-300 ${
-                          isOpen ? "text-[#ffffff20]" : "text-[#14141415]"
-                        }`}
-                      >
-                        {String(faq.id).padStart(2, "0")}
-                      </span>
-
                       {/* Content */}
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-3 mb-2">
@@ -370,7 +361,7 @@ function FAQsPage() {
                           transition={{ duration: 0.3, ease: "easeInOut" }}
                           className="overflow-hidden"
                         >
-                          <div className="px-6 md:px-8 pb-8 md:pb-10 pl-[72px] md:pl-[104px]">
+                          <div className="px-6 md:px-8 pb-8 md:pb-10">
                             <p className="text-[#ffffffaa] leading-relaxed mb-6" style={{ fontSize: "18px" }}>
                               {faq.answer}
                             </p>
@@ -434,7 +425,7 @@ function FAQsPage() {
               >
                 <p
                   className="font-bold text-[#ffffff] mb-2"
-                  style={{ fontSize: "clamp(18px, 5vw, 56px)" }}
+                  style={{ fontSize: "var(--font-stat)" }}
                 >
                   {stat.number}
                 </p>
