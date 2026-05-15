@@ -55,7 +55,7 @@ export function Projects() {
   const latestProjects = allProjects.slice(0, 3);
 
   return (
-    <section className="bg-dark py-24 md:py-32 relative overflow-hidden">
+    <section className="bg-dark py-14 md:py-32 relative overflow-hidden">
       <div className="container mx-auto px-6 relative">
         {/* Header */}
         <motion.div
@@ -63,16 +63,16 @@ export function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-10 md:mb-16"
         >
-          <p className="text-base font-medium text-[#ffffffaa] mb-6 tracking-widest flex items-center gap-3 font-geist">
+          <p className="text-sm font-medium text-[#ffffffaa] mb-6 tracking-widest flex items-center gap-3 font-geist">
             NUESTRO TRABAJO
           </p>
           <h2
             className="font-bold text-[#ffffff]"
             style={{
-              fontSize: "clamp(22px, 7vw, 98px)",
-              lineHeight: "1.08",
+              fontSize: "20px",
+              lineHeight: "1.1",
               fontWeight: 700,
             }}
           >

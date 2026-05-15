@@ -39,7 +39,7 @@ function ProyectosPage() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-base font-medium text-[#f1ede1cc] mb-8 tracking-widest flex items-center gap-3"
+              className="text-sm font-medium text-[#f1ede1cc] mb-8 tracking-widest flex items-center gap-3"
               style={{ fontFamily: "var(--font-geist)" }}
             >
               <span className="opacity-50">MAZZMKT</span>

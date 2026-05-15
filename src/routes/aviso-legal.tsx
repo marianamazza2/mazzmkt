@@ -15,7 +15,7 @@ function AvisoLegalPage() {
       />
 
       {/* Hero */}
-      <section className="bg-dark pt-32 pb-20">
+      <section className="bg-dark pt-24 pb-8 md:pt-32 md:pb-20">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -26,7 +26,7 @@ function AvisoLegalPage() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-base font-medium text-[#f1ede1cc] mb-6 tracking-widest flex items-center gap-3 font-geist"
+              className="text-sm font-medium text-[#f1ede1cc] mb-6 tracking-widest flex items-center gap-3 font-geist"
             >
               <motion.span
                 className="inline-block w-8 h-[1px] bg-[#f1ede1]"
@@ -53,7 +53,7 @@ function AvisoLegalPage() {
         </div>
       </section>
 
-      <section className="bg-light py-24">
+      <section className="bg-light py-14 md:py-24">
         <div className="container mx-auto px-6 max-w-3xl">
           <div className="prose prose-lg">
             <p className="text-[#141414aa]">

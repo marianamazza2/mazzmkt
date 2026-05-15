@@ -44,7 +44,7 @@ function ContactoPage() {
       />
 
       {/* Hero */}
-      <section className="bg-dark pt-32 pb-20 relative overflow-hidden min-h-[600px]">
+      <section className="bg-dark pt-24 pb-8 md:pt-32 md:pb-20 relative overflow-hidden md:min-h-[600px]">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
@@ -62,7 +62,7 @@ function ContactoPage() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-base font-medium text-[#ffffffcc] mb-6 tracking-widest flex items-center gap-3 font-geist"
+              className="text-sm font-medium text-[#ffffffcc] mb-6 tracking-widest flex items-center gap-3 font-geist"
             >
               <span className="opacity-50">MAZZMKT</span>
               <span className="opacity-30">/</span>
@@ -83,7 +83,7 @@ function ContactoPage() {
       </section>
 
       {/* Contact Form & Info */}
-      <section className="bg-light py-24">
+      <section className="bg-light py-14 md:py-24">
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16">
             {/* Form */}

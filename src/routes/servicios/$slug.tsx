@@ -38,7 +38,7 @@ function ServicePage() {
       />
 
       {/* Hero */}
-      <section className="bg-dark pt-32 pb-20">
+      <section className="bg-dark pt-24 pb-8 md:pt-32 md:pb-20">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -49,7 +49,7 @@ function ServicePage() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-base font-medium text-[#f1ede1cc] mb-8 tracking-widest flex items-center gap-3 font-geist"
+              className="text-sm font-medium text-[#f1ede1cc] mb-8 tracking-widest flex items-center gap-3 font-geist"
             >
               <motion.span
                 className="inline-block w-8 h-[1px] bg-[#f1ede1]"
@@ -81,7 +81,7 @@ function ServicePage() {
       </section>
 
       {/* Description */}
-      <section className="bg-light py-24">
+      <section className="bg-light py-14 md:py-24">
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16">
             <motion.div
@@ -90,7 +90,7 @@ function ServicePage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-base font-medium text-[#141414aa] mb-6 uppercase tracking-widest font-geist">
+              <h2 className="text-sm font-medium text-[#141414aa] mb-6 uppercase tracking-widest font-geist">
                 Descripcion
               </h2>
               <p className="text-2xl text-[#141414] leading-relaxed">
@@ -104,7 +104,7 @@ function ServicePage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <h2 className="text-base font-medium text-[#141414aa] mb-6 uppercase tracking-widest font-geist">
+              <h2 className="text-sm font-medium text-[#141414aa] mb-6 uppercase tracking-widest font-geist">
                 Que incluye
               </h2>
               <ul className="space-y-4">

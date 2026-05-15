@@ -124,7 +124,7 @@ function SobreMiPage() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-base font-medium text-[#ffffffcc] mb-6 tracking-widest flex items-center gap-3 font-geist"
+              className="text-sm font-medium text-[#ffffffcc] mb-6 tracking-widest flex items-center gap-3 font-geist"
             >           
               <span>SOBRE NOSOTROS</span>
             </motion.p>
@@ -181,9 +181,9 @@ function SobreMiPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mb-16"
+            className="mb-10 md:mb-16"
           >
-            <p className="text-base font-medium text-[#ffffffaa] mb-6 tracking-widest flex items-center gap-3 font-geist">
+            <p className="text-sm font-medium text-[#ffffffaa] mb-6 tracking-widest flex items-center gap-3 font-geist">
               <span className="inline-block w-8 h-[1px] bg-[#ffffff]" />
               ACERCA DE MAZZMKT!
             </p>
@@ -261,9 +261,9 @@ function SobreMiPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mb-16"
+            className="mb-10 md:mb-16"
           >
-            <p className="text-base font-medium text-[#141414aa] mb-6 tracking-widest flex items-center gap-3">
+            <p className="text-sm font-medium text-[#141414aa] mb-6 tracking-widest flex items-center gap-3">
               <span className="inline-block w-8 h-[1px] bg-[#141414]" />
               MANIFIESTO
             </p>
@@ -324,7 +324,7 @@ function SobreMiPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <p className="text-base font-medium text-[#ffffffaa] mb-6 tracking-widest flex items-center gap-3 font-geist">
+              <p className="text-sm font-medium text-[#ffffffaa] mb-6 tracking-widest flex items-center gap-3 font-geist">
                 <span className="inline-block w-8 h-[1px] bg-[#ffffff]" />
                 NOSOTRXS
               </p>
@@ -406,9 +406,9 @@ function SobreMiPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mb-16"
+            className="mb-10 md:mb-16"
           >
-            <p className="text-base font-medium text-[#141414aa] mb-6 tracking-widest flex items-center gap-3">
+            <p className="text-sm font-medium text-[#141414aa] mb-6 tracking-widest flex items-center gap-3">
               <span className="inline-block w-8 h-[1px] bg-[#141414]" />
               LO QUE NOS MUEVE
             </p>
@@ -464,7 +464,7 @@ function SobreMiPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <p className="text-base font-medium text-[#ffffffaa] mb-6 tracking-widest">
+              <p className="text-sm font-medium text-[#ffffffaa] mb-6 tracking-widest">
                 CREEMOS EN
               </p>
               <h2
@@ -514,9 +514,9 @@ function SobreMiPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mb-16"
+            className="mb-10 md:mb-16"
           >
-            <p className="text-base font-medium text-[#141414aa] mb-6 tracking-widest flex items-center gap-3">
+            <p className="text-sm font-medium text-[#141414aa] mb-6 tracking-widest flex items-center gap-3">
               <span className="inline-block w-8 h-[1px] bg-[#141414]" />
               COMO TRABAJAMOS
             </p>

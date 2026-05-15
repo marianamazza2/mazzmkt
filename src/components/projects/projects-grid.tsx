@@ -347,7 +347,7 @@ function MobileProjectsCarousel({ projects }: { projects: Project[] }) {
   const project = projects[current];
 
   return (
-    <div>
+    <div className="w-full overflow-hidden">
       {/* Slide container */}
       <div className="relative overflow-hidden">
         <AnimatePresence initial={false} custom={direction} mode="popLayout">
@@ -361,7 +361,7 @@ function MobileProjectsCarousel({ projects }: { projects: Project[] }) {
             transition={{ type: "tween", duration: 0.28, ease: "easeInOut" }}
             drag="x"
             dragConstraints={{ left: 0, right: 0 }}
-            dragElastic={0.12}
+            dragElastic={0}
             onDragEnd={handleDragEnd}
             className="w-full touch-pan-y"
           >
@@ -400,54 +400,29 @@ function MobileProjectsCarousel({ projects }: { projects: Project[] }) {
         </AnimatePresence>
       </div>
 
-      {/* Navigation */}
-      <div className="flex items-center justify-between mt-5">
-        <button
-          onClick={() => paginate(-1)}
-          disabled={current === 0}
-          className="w-9 h-9 flex items-center justify-center border border-[#14141420] rounded-sm text-sm text-[#141414] disabled:opacity-25 transition-colors"
-          aria-label="Proyecto anterior"
-        >
-          ←
-        </button>
-
-        {/* Dots — span inside button para evitar que el botón se expanda */}
-        <div className="flex items-center gap-2">
-          {projects.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setPage([i, i > current ? 1 : -1])}
-              aria-label={`Proyecto ${i + 1}`}
-              className="flex items-center justify-center p-1.5"
-            >
-              <span
-                style={{
-                  display: "block",
-                  width: i === current ? "16px" : "6px",
-                  height: "3px",
-                  borderRadius: i === current ? "2px" : "50%",
-                  backgroundColor: i === current ? "#141414" : "#14141440",
-                  transition: "all 0.3s",
-                  flexShrink: 0,
-                }}
-              />
-            </button>
-          ))}
-        </div>
-
-        <button
-          onClick={() => paginate(1)}
-          disabled={current === projects.length - 1}
-          className="w-9 h-9 flex items-center justify-center border border-[#14141420] rounded-sm text-sm text-[#141414] disabled:opacity-25 transition-colors"
-          aria-label="Proyecto siguiente"
-        >
-          →
-        </button>
+      {/* Dots */}
+      <div className="flex items-center justify-center gap-1.5 mt-3">
+        {projects.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setPage([i, i > current ? 1 : -1])}
+            aria-label={`Proyecto ${i + 1}`}
+            className="flex items-center justify-center p-1"
+          >
+            <span
+              style={{
+                display: "block",
+                width: i === current ? "14px" : "5px",
+                height: "5px",
+                borderRadius: i === current ? "3px" : "50%",
+                backgroundColor: i === current ? "#141414" : "#14141440",
+                transition: "all 0.3s",
+                flexShrink: 0,
+              }}
+            />
+          </button>
+        ))}
       </div>
-
-      <p className="text-center mt-2 text-[10px] text-[#141414aa] font-geist tracking-widest">
-        {String(current + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}
-      </p>
     </div>
   );
 }

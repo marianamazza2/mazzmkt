@@ -37,7 +37,7 @@ function ProjectPage() {
       />
 
       {/* Hero */}
-      <section className="bg-dark pt-32 pb-20">
+      <section className="bg-dark pt-24 pb-8 md:pt-32 md:pb-20">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -48,7 +48,7 @@ function ProjectPage() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-base font-medium text-[#f1ede1cc] mb-8 tracking-widest flex items-center gap-3 font-geist"
+              className="text-sm font-medium text-[#f1ede1cc] mb-8 tracking-widest flex items-center gap-3 font-geist"
             >
               <motion.span
                 className="inline-block w-8 h-[1px] bg-[#f1ede1]"
@@ -76,7 +76,7 @@ function ProjectPage() {
       </section>
 
       {/* Project Gallery */}
-      <section className="bg-dark pb-20">
+      <section className="bg-dark pb-10 md:pb-20">
         <div className="container mx-auto px-6">
           {project.images && project.images.length > 0 ? (
             <div className="grid grid-cols-2 gap-4">
@@ -117,7 +117,7 @@ function ProjectPage() {
       </section>
 
       {/* Project Details */}
-      <section className="bg-light py-24">
+      <section className="bg-light py-14 md:py-24">
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-3 gap-16">
             {/* Left: Info + Work */}
@@ -129,7 +129,7 @@ function ProjectPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
               >
-                <h2 className="text-base font-medium text-[#141414aa] mb-4 uppercase tracking-widest font-geist">
+                <h2 className="text-sm font-medium text-[#141414aa] mb-4 uppercase tracking-widest font-geist">
                   Info del Proyecto
                 </h2>
                 <p className="text-xl text-[#141414] leading-relaxed">
@@ -145,7 +145,7 @@ function ProjectPage() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.1 }}
                 >
-                  <h2 className="text-base font-medium text-[#141414aa] mb-4 uppercase tracking-widest font-geist">
+                  <h2 className="text-sm font-medium text-[#141414aa] mb-4 uppercase tracking-widest font-geist">
                     Qué hicimos
                   </h2>
                   <ul className="space-y-4">
@@ -167,7 +167,7 @@ function ProjectPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <h2 className="text-base font-medium text-[#141414aa] mb-4 uppercase tracking-widest">
+              <h2 className="text-sm font-medium text-[#141414aa] mb-4 uppercase tracking-widest">
                 Servicios
               </h2>
               <ul className="space-y-2 mb-8">
@@ -207,16 +207,16 @@ function ProjectPage() {
       </section>
 
       {/* Results */}
-      {project.results.length > 0 && <section className="bg-dark py-24">
+      {project.results.length > 0 && <section className="bg-dark py-14 md:py-24">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mb-16"
+            className="mb-10 md:mb-16"
           >
-            <h2 className="text-base font-medium text-[#f1ede1aa] mb-6 tracking-widest font-geist">
+            <h2 className="text-sm font-medium text-[#f1ede1aa] mb-6 tracking-widest font-geist">
               RESULTADOS
             </h2>
             <p
@@ -246,7 +246,7 @@ function ProjectPage() {
                 >
                   {result.value}
                 </p>
-                <p className="text-base font-medium text-[#f1ede1aa] uppercase tracking-widest font-geist">
+                <p className="text-sm font-medium text-[#f1ede1aa] uppercase tracking-widest font-geist">
                   {result.metric}
                 </p>
               </motion.div>

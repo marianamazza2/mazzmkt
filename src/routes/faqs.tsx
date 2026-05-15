@@ -201,7 +201,7 @@ function FAQsPage() {
       />
 
       {/* Hero */}
-      <section className="bg-dark pt-32 pb-20 relative overflow-hidden min-h-[600px]">
+      <section className="bg-dark pt-24 pb-8 md:pt-32 md:pb-20 relative overflow-hidden md:min-h-[600px]">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
@@ -219,7 +219,7 @@ function FAQsPage() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-base font-medium text-[#ffffffcc] mb-6 tracking-widest flex items-center gap-3 font-geist"
+              className="text-sm font-medium text-[#ffffffcc] mb-6 tracking-widest flex items-center gap-3 font-geist"
             >
               <span className="opacity-50">MAZZMKT</span>
               <span className="opacity-30">/</span>
@@ -278,7 +278,7 @@ function FAQsPage() {
       </section>
 
       {/* FAQs Section */}
-      <section className="bg-light py-24 md:py-32">
+      <section className="bg-light py-14 md:py-32">
         <div className="container mx-auto px-6">
           <AnimatePresence mode="wait">
             <motion.div
@@ -394,16 +394,16 @@ function FAQsPage() {
       </section>
 
       {/* Quick Stats */}
-      <section className="bg-dark py-24 md:py-32">
+      <section className="bg-dark py-14 md:py-32">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mb-16"
+            className="mb-10 md:mb-16"
           >
-            <p className="text-base font-medium text-[#ffffffaa] mb-6 tracking-widest flex items-center gap-3">
+            <p className="text-sm font-medium text-[#ffffffaa] mb-6 tracking-widest flex items-center gap-3">
               <span className="inline-block w-8 h-[1px] bg-[#ffffff]" />
               EN NUMEROS
             </p>

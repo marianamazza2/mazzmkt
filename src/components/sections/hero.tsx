@@ -4,7 +4,7 @@ import { BlinkingCursor } from "@/components/ui/blinking-cursor";
 
 export function Hero() {
   return (
-    <section className="bg-dark pt-[100px] pb-10 md:pt-32 md:pb-20 relative overflow-hidden max-md:flex max-md:flex-col max-md:justify-center max-md:max-h-[85vh]">
+    <section className="bg-dark pt-[100px] pb-5 md:pt-32 md:pb-20 relative overflow-hidden">
       <div
         className="hidden md:block absolute -inset-x-[2%] inset-y-0 bg-no-repeat"
         style={{

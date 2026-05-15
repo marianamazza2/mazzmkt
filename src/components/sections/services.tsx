@@ -276,14 +276,14 @@ export function Services() {
             transition={{ duration: 0.6 }}
             className="mb-10 md:mb-20"
           >
-            <p className="text-base font-medium text-[#ffffffaa] mb-6 tracking-widest flex items-center gap-3 font-geist">
+            <p className="text-sm font-medium text-[#ffffffaa] mb-6 tracking-widest flex items-center gap-3 font-geist">
               SERVICIOS DE MARKETING DIGITAL
             </p>
             <h2
               className="font-bold text-[#ffffff]"
               style={{
-                fontSize: "var(--font-section)",
-                lineHeight: "var(--lh-section)",
+                fontSize: "20px",
+                lineHeight: "1.1",
                 fontWeight: 700,
               }}
             >
@@ -299,9 +299,11 @@ export function Services() {
           </motion.div>
 
           {/* Main Services */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
+          <div className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar gap-4 pb-4 md:grid md:grid-cols-2 md:overflow-x-visible md:snap-none md:pb-0 md:gap-8">
             {mainServices.map((service, index) => (
-              <ServiceCardDark key={service.title} service={service} index={index} />
+              <div key={service.title} className="snap-center flex-shrink-0 w-[85vw] md:w-auto">
+                <ServiceCardDark service={service} index={index} />
+              </div>
             ))}
           </div>
         </div>
@@ -318,14 +320,14 @@ export function Services() {
           transition={{ duration: 0.6 }}
           className="mb-10 md:mb-16"
         >
-          <p className="text-base font-medium text-[#141414aa] mb-6 tracking-widest flex items-center gap-3 font-geist">
+          <p className="text-sm font-medium text-[#141414aa] mb-6 tracking-widest flex items-center gap-3 font-geist">
             INTELIGENCIA ARTIFICIAL
           </p>
           <h2
             className="font-bold text-[#141414]"
             style={{
-              fontSize: "var(--font-section)",
-              lineHeight: "var(--lh-section)",
+              fontSize: "20px",
+              lineHeight: "1.1",
               fontWeight: 700,
             }}
           >
@@ -336,9 +338,11 @@ export function Services() {
         </motion.div>
 
         {/* AI Services Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-10 md:mb-16">
+        <div className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar gap-4 pb-4 mb-10 md:grid md:grid-cols-2 lg:grid-cols-3 md:overflow-x-visible md:snap-none md:pb-0 md:gap-6 md:mb-16">
           {aiServices.map((service, index) => (
-            <ServiceCard key={service.title} service={service} index={index + 3} variant="ai" />
+            <div key={service.title} className="snap-center flex-shrink-0 w-[85vw] md:w-auto">
+              <ServiceCard service={service} index={index + 3} variant="ai" />
+            </div>
           ))}
         </div>
 
