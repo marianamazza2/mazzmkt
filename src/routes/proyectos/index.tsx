@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { SEOHead } from "@/components/seo/SEOHead";
 import { ProjectsGrid } from "@/components/projects/projects-grid";
 import { PageCTA } from "@/components/sections/page-cta";
+import { TransitionLink } from "@/components/transition/transition-link";
 import { projects } from "@/data/projects";
 
 export const Route = createFileRoute("/proyectos/")({
@@ -19,17 +20,20 @@ function ProyectosPage() {
 
       {/* Hero Section */}
       <section
-        className="pt-24 max-md:pb-6 pb-12 md:pt-32 md:pb-20 overflow-hidden relative"
+        className="pt-24 max-md:pb-6 pb-12 md:pt-32 md:pb-16 overflow-hidden relative"
         style={{
           backgroundColor: "#141414",
           color: "#f1ede1",
         }}
       >
         <div
-          className="hidden md:block absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="hidden md:block absolute -inset-x-[2%] inset-y-0 bg-no-repeat"
           style={{
-            backgroundImage: `url('/images/hero-pattern.png')`,
-            opacity: 0.20,
+            backgroundImage: `url('/images/hero-home.png')`,
+            backgroundPosition: "center center",
+            backgroundSize: "100% auto",
+            opacity: 0.25,
+            animation: "tv-static 0.45s steps(1) infinite",
           }}
         />
         <div className="container mx-auto px-6 max-md:px-5 relative">
@@ -39,7 +43,7 @@ function ProyectosPage() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="font-medium flex items-center gap-3 mb-8 max-md:mb-1.5"
+              className="font-medium flex items-center gap-3 mb-8 max-md:mb-1.5 md:mb-5 md:text-[15px] md:uppercase md:text-[#ffffffe0] md:font-geist"
               style={{ fontFamily: "var(--font-geist)" }}
             >
               {/* Mobile breadcrumb */}
@@ -50,7 +54,7 @@ function ProyectosPage() {
                 MAZZMKT / PROYECTOS
               </span>
               {/* Desktop breadcrumb */}
-              <span className="hidden md:contents text-sm text-[#f1ede1cc] tracking-widest">
+              <span className="hidden md:contents" style={{ letterSpacing: "0.14em" }}>
                 <span className="opacity-50">MAZZMKT</span>
                 <span className="opacity-30">/</span>
                 <span>PROYECTOS</span>
@@ -67,7 +71,7 @@ function ProyectosPage() {
                 fontSize: "var(--font-display)",
                 lineHeight: "var(--lh-display)",
                 fontWeight: 700,
-                letterSpacing: "-0.3px",
+                letterSpacing: "-0.035em",
               }}
             >
               NUESTRO
@@ -82,7 +86,7 @@ function ProyectosPage() {
                 lineHeight: "var(--lh-display)",
                 fontWeight: 700,
                 color: "#ffffff",
-                letterSpacing: "-0.3px",
+                letterSpacing: "-0.035em",
               }}
             >
               TRABAJO
@@ -109,6 +113,35 @@ function ProyectosPage() {
                 Diseño, tecnología de vanguardia y resultados.
               </span>
             </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.45 }}
+              className="hidden md:flex items-center gap-3 mt-9"
+            >
+              <a
+                href="#proyectos"
+                className="inline-flex items-center justify-center rounded-sm bg-[#f1ede1] px-8 py-[15px] text-sm font-semibold uppercase text-[#141414] transition-opacity hover:opacity-85 font-geist"
+                style={{ letterSpacing: "0.09em" }}
+              >
+                VER PROYECTOS
+                <motion.span
+                  className="inline-block"
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  →
+                </motion.span>
+              </a>
+              <TransitionLink
+                to="/contacto"
+                className="inline-flex items-center justify-center rounded-sm border border-[#f1ede14d] px-8 py-[15px] text-sm font-semibold uppercase text-[#f1ede1] transition-colors hover:border-[#f1ede1] font-geist"
+                style={{ letterSpacing: "0.09em" }}
+              >
+                CONTACTAR
+              </TransitionLink>
+            </motion.div>
 
             {/* Stats row */}
             <motion.div
@@ -173,8 +206,8 @@ function ProyectosPage() {
       </section>
 
       {/* Projects Section */}
-      <section className="bg-light py-14 md:py-24">
-        <div className="container mx-auto px-6">
+      <section id="proyectos" className="bg-dark max-md:bg-light py-7 md:py-20">
+        <div className="container mx-auto px-5 md:px-6">
           <ProjectsGrid projects={projects} />
         </div>
       </section>

@@ -1,5 +1,5 @@
-import { useState, useMemo, useCallback, useEffect, useRef } from "react";
-import { motion, AnimatePresence, LayoutGroup, useMotionValue, useSpring, useTransform, useInView } from "framer-motion";
+import { useState, useMemo, useCallback, useEffect } from "react";
+import { motion, AnimatePresence, LayoutGroup, useMotionValue, useSpring } from "framer-motion";
 import type { PanInfo } from "framer-motion";
 import { Search, Grid3X3, List, X, SlidersHorizontal } from "lucide-react";
 import { ProjectCard } from "./project-card";
@@ -67,24 +67,24 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
   const hasActiveFilters = searchQuery !== "" || activeCategory !== null;
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 md:space-y-9">
       {/* Search and Filters Bar */}
       <div className="flex flex-col gap-3 md:gap-4 md:flex-row md:items-center md:justify-between">
         {/* Search Input + mobile filter button */}
         <div className="flex items-center gap-2">
           <div className="relative flex-1 md:max-w-md">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-[#141414aa]" />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-[#141414aa] md:text-[#f1ede1aa]" />
             <input
               type="text"
               placeholder="Buscar..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-10 py-3 bg-transparent border border-[#14141420] text-[#141414] placeholder:text-[#141414aa] focus:border-[#141414] focus:outline-none transition-colors text-sm rounded-sm"
+              className="w-full pl-12 pr-10 py-3 bg-transparent border border-[#14141420] text-[#141414] placeholder:text-[#141414aa] focus:border-[#141414] focus:outline-none transition-colors text-sm rounded-sm md:border-[#f1ede14d] md:text-[#f1ede1] md:placeholder:text-[#f1ede1aa] md:focus:border-[#f1ede1] md:font-geist"
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery("")}
-                className="absolute right-2 top-1/2 -translate-y-1/2 p-2 text-[#141414aa] hover:text-[#141414] transition-colors"
+                className="absolute right-2 top-1/2 -translate-y-1/2 p-2 text-[#141414aa] hover:text-[#141414] transition-colors md:text-[#f1ede1aa] md:hover:text-[#f1ede1]"
               >
                 <X className="h-4 w-4" />
               </button>
@@ -99,13 +99,13 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
         </div>
 
         {/* View Mode Toggle — hidden on mobile */}
-        <div className="hidden md:flex items-center gap-2 border border-[#14141420] p-1 rounded-sm">
+        <div className="hidden md:flex items-center gap-2 border border-[#f1ede14d] p-1 rounded-sm">
           <button
             onClick={() => setViewMode("showcase")}
             className={`p-2 transition-colors ${
               viewMode === "showcase"
-                ? "bg-[#141414] text-[#f1ede1]"
-                : "text-[#141414aa] hover:text-[#141414]"
+                ? "bg-[#f1ede1] text-[#141414]"
+                : "text-[#f1ede1aa] hover:text-[#f1ede1]"
             }`}
             title="Vista Showcase"
           >
@@ -118,8 +118,8 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
             onClick={() => setViewMode("bento")}
             className={`p-2 transition-colors ${
               viewMode === "bento"
-                ? "bg-[#141414] text-[#f1ede1]"
-                : "text-[#141414aa] hover:text-[#141414]"
+                ? "bg-[#f1ede1] text-[#141414]"
+                : "text-[#f1ede1aa] hover:text-[#f1ede1]"
             }`}
             title="Vista Bento"
           >
@@ -134,8 +134,8 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
             onClick={() => setViewMode("grid")}
             className={`p-2 transition-colors ${
               viewMode === "grid"
-                ? "bg-[#141414] text-[#f1ede1]"
-                : "text-[#141414aa] hover:text-[#141414]"
+                ? "bg-[#f1ede1] text-[#141414]"
+                : "text-[#f1ede1aa] hover:text-[#f1ede1]"
             }`}
             title="Vista Grid"
           >
@@ -145,8 +145,8 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
             onClick={() => setViewMode("list")}
             className={`p-2 transition-colors ${
               viewMode === "list"
-                ? "bg-[#141414] text-[#f1ede1]"
-                : "text-[#141414aa] hover:text-[#141414]"
+                ? "bg-[#f1ede1] text-[#141414]"
+                : "text-[#f1ede1aa] hover:text-[#f1ede1]"
             }`}
             title="Vista Lista"
           >
@@ -159,11 +159,12 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
       <div className="flex gap-2 overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:flex-wrap md:overflow-x-visible">
         <motion.button
           onClick={() => setActiveCategory(null)}
-          className={`snap-start shrink-0 whitespace-nowrap px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-all duration-300 cursor-pointer font-geist rounded-sm ${
+          className={`snap-start shrink-0 whitespace-nowrap px-4 py-2 text-xs font-semibold uppercase transition-all duration-300 cursor-pointer font-geist rounded-sm md:text-sm ${
             activeCategory === null
-              ? "bg-[#141414] text-[#f1ede1]"
-              : "border border-[#14141430] text-[#141414] hover:border-[#141414]"
+              ? "bg-[#141414] text-[#f1ede1] md:bg-[#f1ede1] md:text-[#141414]"
+              : "border border-[#14141430] text-[#141414] hover:border-[#141414] md:border-[#f1ede14d] md:text-[#f1ede1] md:hover:border-[#f1ede1]"
           }`}
+          style={{ letterSpacing: "0.09em" }}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >
@@ -176,11 +177,12 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
             <motion.button
               key={category}
               onClick={() => setActiveCategory(category === activeCategory ? null : category)}
-              className={`snap-start shrink-0 whitespace-nowrap px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-all duration-300 cursor-pointer font-geist rounded-sm ${
+              className={`snap-start shrink-0 whitespace-nowrap px-4 py-2 text-xs font-semibold uppercase transition-all duration-300 cursor-pointer font-geist rounded-sm md:text-sm ${
                 activeCategory === category
-                  ? "bg-[#141414] text-[#f1ede1]"
-                  : "border border-[#14141430] text-[#141414] hover:border-[#141414]"
+                  ? "bg-[#141414] text-[#f1ede1] md:bg-[#f1ede1] md:text-[#141414]"
+                  : "border border-[#14141430] text-[#141414] hover:border-[#141414] md:border-[#f1ede14d] md:text-[#f1ede1] md:hover:border-[#f1ede1]"
               }`}
+              style={{ letterSpacing: "0.09em" }}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -198,14 +200,14 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="flex items-center gap-3 text-sm text-[#141414aa]"
+            className="flex items-center gap-3 text-sm text-[#141414aa] md:text-[#f1ede1aa] md:font-geist"
           >
             <span>
               Mostrando {filteredProjects.length} de {projects.length} proyectos
             </span>
             <button
               onClick={clearFilters}
-              className="text-[#141414] underline hover:no-underline"
+              className="text-[#141414] underline hover:no-underline md:text-[#f1ede1]"
             >
               Limpiar filtros
             </button>
@@ -241,7 +243,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
                   viewMode === "list"
                     ? "flex flex-col gap-4"
                     : viewMode === "showcase"
-                    ? "flex flex-col divide-y divide-[#14141415]"
+                    ? "flex flex-col gap-5"
                     : viewMode === "grid"
                     ? "grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
                     : "grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 auto-rows-fr"
@@ -294,8 +296,8 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
                 animate={{ opacity: 1 }}
                 className="py-20 text-center"
               >
-                <p className="text-[#141414aa] text-lg mb-4">No se encontraron proyectos</p>
-                <button onClick={clearFilters} className="text-[#141414] underline hover:no-underline">
+                <p className="text-[#f1ede1aa] text-lg mb-4">No se encontraron proyectos</p>
+                <button onClick={clearFilters} className="text-[#f1ede1] underline hover:no-underline">
                   Limpiar filtros
                 </button>
               </motion.div>
@@ -311,7 +313,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
             viewport={{ once: true }}
             className="text-center pt-8"
           >
-            <button className="px-8 py-4 border border-[#141414] text-[#141414] text-sm font-semibold uppercase tracking-wider hover:bg-[#141414] hover:text-[#f1ede1] transition-all duration-300 rounded-sm">
+            <button className="px-8 py-[15px] border border-[#f1ede14d] text-[#f1ede1] text-sm font-semibold uppercase hover:border-[#f1ede1] transition-colors duration-300 rounded-sm font-geist" style={{ letterSpacing: "0.09em" }}>
               Cargar más proyectos
             </button>
           </motion.div>
@@ -440,102 +442,7 @@ function MobileProjectsCarousel({ projects }: { projects: Project[] }) {
   );
 }
 
-function ShowcaseImage({ project }: { project: Project }) {
-  const imageRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(imageRef, { once: false, margin: "-25% 0px -25% 0px" });
-  const mouseX = useMotionValue(0.5);
-  const mouseY = useMotionValue(0.5);
-  const springConfig = { damping: 25, stiffness: 150 };
-  const gradientX = useSpring(useTransform(mouseX, [0, 1], [0, 100]), springConfig);
-  const gradientY = useSpring(useTransform(mouseY, [0, 1], [0, 100]), springConfig);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!imageRef.current) return;
-    const rect = imageRef.current.getBoundingClientRect();
-    mouseX.set((e.clientX - rect.left) / rect.width);
-    mouseY.set((e.clientY - rect.top) / rect.height);
-  };
-
-  const handleMouseLeave = () => {
-    mouseX.set(0.5);
-    mouseY.set(0.5);
-  };
-
-  return (
-    <div
-      ref={imageRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      className="group/img w-full md:w-[58%] aspect-[16/10] relative shrink-0"
-    >
-      {/* Inner clipped container */}
-      <div className="absolute inset-0 overflow-hidden rounded-sm">
-        {project.image ? (
-          <img
-            src={project.image}
-            alt={project.title}
-            className="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-105"
-          />
-        ) : (
-          <div className="w-full h-full bg-gradient-to-br from-[#1a1a1a] to-[#0f0f0f]" />
-        )}
-
-        {/* Dark overlay — igual que ProjectCard */}
-        <div className="absolute inset-0 bg-[#141414]/60 group-hover/img:bg-[#141414]/50 transition-colors duration-300 pointer-events-none" />
-
-        {/* Radial gradient que sigue el cursor */}
-        <motion.div
-          className="absolute inset-0 opacity-0 group-hover/img:opacity-100 transition-opacity duration-500 pointer-events-none z-10"
-          style={{
-            background: useTransform(
-              [gradientX, gradientY],
-              ([x, y]) =>
-                `radial-gradient(circle at ${x}% ${y}%, rgba(241, 237, 225, 0.15) 0%, transparent 50%)`
-            ),
-          }}
-        />
-
-        {/* Corner accent */}
-        <div className="absolute top-0 right-0 w-16 h-16 overflow-hidden z-20 pointer-events-none">
-          <div className="absolute top-0 right-0 w-[1px] h-0 bg-[#f1ede1] group-hover/img:h-16 transition-all duration-300" />
-          <div className="absolute top-0 right-0 w-0 h-[1px] bg-[#f1ede1] group-hover/img:w-16 transition-all duration-300" />
-        </div>
-
-        {/* Hover border */}
-        <div className="absolute inset-0 border border-[#f1ede100] group-hover/img:border-[#f1ede130] transition-colors duration-300 z-20 pointer-events-none" />
-
-        {/* Clickable overlay */}
-        <TransitionLink
-          to="/proyectos/$slug"
-          params={{ slug: project.slug }}
-          className="absolute inset-0 z-30 cursor-pointer"
-          aria-label={`Ver proyecto ${project.title}`}
-        />
-      </div>
-
-      {/* Small card centrada sobre la imagen, aparece al hacer scroll */}
-      <AnimatePresence>
-        {isInView && project.image && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.88, rotate: -2 }}
-            animate={{ opacity: 1, scale: 1, rotate: 0 }}
-            exit={{ opacity: 0, scale: 0.88, rotate: 2 }}
-            transition={{ duration: 0.25, ease: "easeOut" }}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 w-[65%] h-[65%] shadow-xl border border-[#14141410] overflow-hidden pointer-events-none rounded-sm"
-          >
-            <img
-              src={project.image}
-              alt={project.title}
-              className="w-full h-full object-cover"
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-}
-
-// Showcase view item — full width, horizontal split
+// Showcase view item — same wide card treatment used on the home desktop section.
 function ProjectShowcaseItem({
   project,
   index,
@@ -547,71 +454,14 @@ function ProjectShowcaseItem({
   onMouseEnter: (project: Project) => void;
   onMouseLeave: () => void;
 }) {
-  const isEven = index % 2 === 0;
-
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.6, delay: index * 0.04 }}
+    <div
       onMouseEnter={() => onMouseEnter(project)}
       onMouseLeave={onMouseLeave}
-      className="group py-5 md:py-14 relative"
+      className="relative"
     >
-      <div className={`flex flex-col md:flex-row gap-3 md:gap-12 md:items-center ${isEven ? "" : "md:flex-row-reverse"}`}>
-        {/* Image */}
-        <ShowcaseImage project={project} />
-
-        {/* Content */}
-        <div className="flex-1 flex flex-col justify-center gap-2">
-          {/* Category + client label */}
-          <span className="text-[10px] font-semibold tracking-widest uppercase text-[#141414aa] font-geist">
-            {project.category}{!project.client.toLowerCase().startsWith("proyecto propio") && ` · ${project.client}`}
-          </span>
-
-          {/* Title */}
-          <h3
-            className="font-bold text-[#141414] leading-[1.05]"
-            style={{ fontSize: "clamp(18px, 3.5vw, 52px)" }}
-          >
-            {project.title}
-          </h3>
-
-          {/* Description */}
-          {project.description && (
-            <p className="hidden md:block text-sm text-[#141414bb] leading-relaxed line-clamp-2 max-w-md">
-              {project.description}
-            </p>
-          )}
-
-          {/* Results */}
-          {project.results && project.results.length > 0 && (
-            <div className="hidden md:flex gap-8 pt-4 border-t border-[#14141415]">
-              {project.results.slice(0, 3).map((result) => (
-                <div key={result.metric}>
-                  <p className="text-xl font-bold text-[#141414]">{result.value}</p>
-                  <p className="text-[10px] uppercase tracking-wider text-[#141414aa]">
-                    {result.metric}
-                  </p>
-                </div>
-              ))}
-            </div>
-          )}
-
-          {/* CTA */}
-          <TransitionLink
-            to="/proyectos/$slug"
-            params={{ slug: project.slug }}
-            className="hidden md:inline-flex items-center gap-2 text-sm font-semibold text-[#141414] hover:gap-4 transition-all duration-300 mt-2 w-fit"
-          >
-            VER PROYECTO
-            <span className="text-lg">→</span>
-          </TransitionLink>
-        </div>
-      </div>
-
-    </motion.div>
+      <ProjectCard project={project} index={index} size="wide" />
+    </div>
   );
 }
 
@@ -632,25 +482,25 @@ function ProjectListItem({
   return (
     <motion.a
       href={`/proyectos/${project.slug}`}
-      className="group flex items-center gap-6 p-6 border border-[#14141420] hover:border-[#141414] hover:bg-[#141414] transition-all duration-300 rounded-sm"
+      className="group flex items-center gap-6 p-6 border border-[#f1ede14d] hover:border-[#f1ede1] transition-all duration-300 rounded-sm"
       whileHover={{ x: 8 }}
       onMouseEnter={() => onMouseEnter(project)}
       onMouseLeave={onMouseLeave}
     >
       {/* Number */}
-      <span className="text-4xl font-bold text-[#14141420] group-hover:text-[#f1ede130] transition-colors w-16 shrink-0">
+      <span className="text-4xl font-bold text-[#f1ede130] group-hover:text-[#f1ede1] transition-colors w-16 shrink-0">
         {String(total - index).padStart(2, "0")}
       </span>
 
       {/* Content */}
       <div className="flex-1 min-w-0">
-        <span className="text-[10px] font-semibold tracking-widest uppercase text-[#141414aa] group-hover:text-[#f1ede1aa] transition-colors font-geist">
+        <span className="text-[10px] font-semibold tracking-widest uppercase text-[#f1ede1aa] group-hover:text-[#f1ede1] transition-colors font-geist">
           {project.category}
         </span>
-        <h3 className="text-xl font-bold text-[#141414] group-hover:text-[#f1ede1] truncate transition-colors">
+        <h3 className="text-xl font-bold text-[#ffffff] truncate transition-colors">
           {project.title}
         </h3>
-        <p className="text-sm text-[#141414aa] group-hover:text-[#f1ede1aa] transition-colors">
+        <p className="text-sm text-[#f1ede1aa] group-hover:text-[#f1ede1] transition-colors">
           {project.client}
         </p>
       </div>
@@ -659,10 +509,10 @@ function ProjectListItem({
       <div className="hidden lg:flex items-center gap-8">
         {project.results.slice(0, 2).map((result) => (
           <div key={result.metric} className="text-right">
-            <p className="text-lg font-bold text-[#141414] group-hover:text-[#f1ede1] transition-colors">
+            <p className="text-lg font-bold text-[#ffffff] transition-colors">
               {result.value}
             </p>
-            <p className="text-[10px] uppercase tracking-wider text-[#141414aa] group-hover:text-[#f1ede1aa] transition-colors">
+            <p className="text-[10px] uppercase tracking-wider text-[#f1ede1aa] group-hover:text-[#f1ede1] transition-colors">
               {result.metric}
             </p>
           </div>
@@ -670,7 +520,7 @@ function ProjectListItem({
       </div>
 
       {/* Arrow */}
-      <span className="text-[#141414] group-hover:text-[#f1ede1] text-2xl transition-colors">
+      <span className="text-[#f1ede1] text-2xl transition-colors">
         →
       </span>
     </motion.a>
