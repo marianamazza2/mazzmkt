@@ -57,19 +57,18 @@ export function Header() {
     <>
       <header
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-          isScrolled ? "bg-[#141414]" : "bg-transparent"
+          "fixed top-0 left-0 right-0 z-50 bg-[#1a1818]",
         )}
       >
-        <nav className="container mx-auto px-6">
+        <nav className="container mx-auto pl-0 pr-6">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <TransitionLink to="/" className="flex items-center">
               <img
-                src="/images/logo-cropped.png"
+                src="/images/isotipo.png"
                 alt="MAZZMKT"
-                className="h-9 w-auto"
-                style={{ mixBlendMode: "screen", filter: "contrast(10)" }}
+                className="h-14 md:h-16 w-auto"
+                style={{ mixBlendMode: "screen", filter: "contrast(1.2)" }}
               />
             </TransitionLink>
 
@@ -115,7 +114,7 @@ export function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="md:hidden fixed inset-0 z-[999] bg-[#141414] flex flex-col px-6 pt-5 pb-8 overflow-y-auto"
+            className="md:hidden fixed inset-0 z-[999] bg-[#1a1818] flex flex-col pl-0 pr-6 pt-5 pb-8 overflow-y-auto"
           >
             {/* Header: logo + close button */}
             <div className="flex items-center justify-between mb-6 h-14">
@@ -125,10 +124,10 @@ export function Header() {
                 className="flex items-center"
               >
                 <img
-                  src="/images/logo-cropped.png"
+                  src="/images/isotipo.png"
                   alt="MAZZMKT"
                   className="h-9 w-auto"
-                  style={{ mixBlendMode: "screen", filter: "contrast(10)" }}
+                  style={{ mixBlendMode: "screen", filter: "contrast(1.2)" }}
                 />
               </TransitionLink>
               <button

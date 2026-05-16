@@ -13,12 +13,12 @@ export function Footer() {
       {/* Mobile layout */}
       <div className="md:hidden px-5 pt-5 pb-6">
         <div className="flex justify-between items-center mb-3">
-          <span
-            className="font-medium uppercase"
-            style={{ fontSize: "13px", letterSpacing: "3px", color: "#f1ede1" }}
-          >
-            MAZZMKT
-          </span>
+          <img
+            src="/images/logo-cropped.png"
+            alt="MAZZMKT"
+            className="h-7 w-auto"
+            style={{ mixBlendMode: "screen", filter: "contrast(10)" }}
+          />
           <div className="flex gap-2">
             {socials.map(({ href, icon: Icon, label }) => (
               <a
@@ -78,9 +78,17 @@ export function Footer() {
       {/* Desktop layout */}
       <div className="hidden md:block py-8 container mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-xs text-[#ffffffaa] order-2 md:order-1">
-            &copy; {new Date().getFullYear()} MAZZMKT. TODOS LOS DERECHOS RESERVADOS.
-          </p>
+          <div className="flex items-center gap-4 order-2 md:order-1">
+            <img
+              src="/images/logo-cropped.png"
+              alt="MAZZMKT"
+              className="h-7 w-auto"
+              style={{ mixBlendMode: "screen", filter: "contrast(10)" }}
+            />
+            <p className="text-xs text-[#ffffffaa]">
+              &copy; {new Date().getFullYear()} MAZZMKT. TODOS LOS DERECHOS RESERVADOS.
+            </p>
+          </div>
           <div className="flex items-center gap-4 order-1 md:order-2 flex-wrap">
             <TransitionLink
               to="/aviso-legal"
