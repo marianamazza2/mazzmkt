@@ -125,7 +125,7 @@ export function ProjectCard({ project, index, size = "medium", onMouseEnter, onM
             <h3
               className="font-bold text-[#ffffff] mb-2"
               style={{
-                fontSize: size === "large" ? "clamp(24px, 3vw, 40px)" : "clamp(18px, 2vw, 28px)",
+                fontSize: "clamp(18px, 2vw, 24px)",
                 lineHeight: 1.1,
               }}
             >

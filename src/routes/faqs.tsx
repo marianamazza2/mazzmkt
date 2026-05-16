@@ -393,7 +393,7 @@ function FAQsPage() {
                           </span>
                         </div>
                         <h3
-                          className={`text-sm md:text-[22px] lg:text-[26px] font-bold leading-tight transition-colors duration-300 ${
+                          className={`text-sm md:text-[22px] lg:text-[24px] font-bold leading-tight transition-colors duration-300 ${
                             isOpen ? "text-[#ffffff]" : "text-[#141414]"
                           }`}
                           style={{ letterSpacing: "-0.025em" }}

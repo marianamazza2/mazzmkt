@@ -147,7 +147,7 @@ function ServiceCard({
 
           <h3
             className="font-bold text-[#141414] group-hover:text-[#ffffff] mb-3 transition-colors"
-            style={{ fontSize: "clamp(25px, 2vw, 30px)", lineHeight: 1.12, fontWeight: 600, letterSpacing: "-0.025em" }}
+            style={{ fontSize: "24px", lineHeight: 1.12, fontWeight: 600, letterSpacing: "-0.025em" }}
           >
             {service.title}
           </h3>
@@ -235,7 +235,7 @@ function ServiceCardDark({
 
           <h3
             className="font-bold text-[#f1ede1] group-hover:text-[#141414] mb-3 transition-colors"
-            style={{ fontSize: "clamp(25px, 2vw, 30px)", lineHeight: 1.12, fontWeight: 600, letterSpacing: "-0.025em" }}
+            style={{ fontSize: "24px", lineHeight: 1.12, fontWeight: 600, letterSpacing: "-0.025em" }}
           >
             {service.title}
           </h3>

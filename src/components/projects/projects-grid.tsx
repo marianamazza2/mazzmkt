@@ -392,7 +392,7 @@ function MobileProjectsCarousel({ projects }: { projects: Project[] }) {
                 </span>
                 <h3
                   className="font-bold text-[#141414] leading-[1.05]"
-                  style={{ fontSize: "clamp(18px, 5vw, 28px)" }}
+                  style={{ fontSize: "clamp(18px, 5vw, 24px)" }}
                 >
                   {project.title}
                 </h3>
