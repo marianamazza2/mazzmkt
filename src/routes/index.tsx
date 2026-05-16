@@ -6,7 +6,6 @@ import { Intro } from "@/components/sections/intro";
 import { Services } from "@/components/sections/services";
 import { Projects } from "@/components/sections/projects";
 import { Stats } from "@/components/sections/stats";
-import { PageCTA } from "@/components/sections/page-cta";
 
 export const Route = createFileRoute("/")({
   component: HomePage,
@@ -25,7 +24,6 @@ function HomePage() {
       <Services />
       <Projects />
       <Stats />
-      <PageCTA />
     </>
   );
 }

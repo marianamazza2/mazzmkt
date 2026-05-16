@@ -255,40 +255,6 @@ function ProjectPage() {
         </div>
       </section>}
 
-      {/* CTA */}
-      <section className="bg-light py-14 md:py-24 border-t border-[#14141415]">
-        <div className="container mx-auto px-6 text-left md:text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2
-              className="font-bold text-[#141414] mb-8"
-              style={{
-                fontSize: "clamp(28px, 4vw, 48px)",
-                lineHeight: "1.2",
-              }}
-            >
-              ¿Quieres resultados similares?
-            </h2>
-            <TransitionLink
-              to="/contacto"
-              className="inline-flex items-center gap-3 bg-[#141414] text-[#f1ede1] px-10 py-5 text-base font-semibold uppercase tracking-wide hover:bg-[#2a2a2a] transition-colors"
-            >
-              HABLEMOS
-              <motion.span
-                className="inline-block"
-                animate={{ x: [0, 5, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-              >
-                →
-              </motion.span>
-            </TransitionLink>
-          </motion.div>
-        </div>
-      </section>
     </>
   );
 }

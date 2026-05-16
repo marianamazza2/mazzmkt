@@ -75,13 +75,14 @@ export function Projects() {
           className="mb-4 md:mb-9"
         >
           <p
-            className="text-[10px] uppercase mb-1 md:text-[15px] md:mb-5 md:font-medium md:font-geist"
+            className="text-[10px] uppercase mb-2 md:text-[15px] md:mb-5 md:font-medium md:font-geist"
             style={{ letterSpacing: "0.13em", color: "#B4B2A9" }}
           >
             NUESTRO TRABAJO
           </p>
           <h2
-            className="text-[20px] font-medium leading-[1.1] text-[#141414] md:text-[clamp(52px,5vw,64px)] md:font-bold md:leading-[0.95] md:tracking-[-0.03em] md:text-[#ffffff]"
+            className="block text-[24px] font-semibold leading-none text-[#141414] md:text-[clamp(52px,5vw,64px)] md:font-bold md:leading-[0.95] md:tracking-[-0.03em] md:text-[#ffffff]"
+            style={{ letterSpacing: "0" }}
           >
             PROYECTOS{" "}
             <span className="hidden md:inline" style={{ color: "#ffffff" }}>&raquo;</span>
@@ -106,15 +107,15 @@ export function Projects() {
           {/* Mobile: botón con borde */}
           <TransitionLink
             to="/proyectos"
-            className="md:hidden inline-flex items-center justify-center rounded-sm text-[11px] font-medium uppercase"
+            className="md:hidden inline-flex min-h-[44px] w-full items-center justify-center rounded-sm text-[11px] font-medium uppercase"
             style={{
               padding: "11px 24px",
-              letterSpacing: "1.5px",
+              letterSpacing: "1px",
               border: "0.5px solid rgba(44,44,42,0.15)",
               color: "#141414",
             }}
           >
-            VER TODOS →
+            VER TODOS LOS PROYECTOS →
           </TransitionLink>
 
           {/* Desktop: link original */}

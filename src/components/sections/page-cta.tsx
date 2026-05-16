@@ -79,7 +79,7 @@ export function PageCTA() {
               minHeight: "unset",
             }}
           >
-            COMENZAR PROYECTO →
+            COMENZAR
           </TransitionLink>
         </div>
 
@@ -112,14 +112,7 @@ export function PageCTA() {
               className="inline-flex items-center justify-center gap-3 bg-[#ffffff] text-[#141414] px-10 py-5 text-sm font-semibold uppercase hover:bg-[#ffffff] hover:opacity-85 transition-opacity font-geist rounded-sm"
               style={{ letterSpacing: "0.09em" }}
             >
-              COMENZAR PROYECTO
-              <motion.span
-                className="inline-block"
-                animate={{ x: [0, 5, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-              >
-                →
-              </motion.span>
+              COMENZAR
             </TransitionLink>
           </motion.div>
         </div>

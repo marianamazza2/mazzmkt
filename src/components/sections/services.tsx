@@ -1,6 +1,6 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { Code, Palette, MessageCircle, Bot, Zap, Sparkles, Globe, Wand2, Search, Share2, TrendingUp, Shuffle } from "lucide-react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { TransitionLink } from "@/components/transition/transition-link";
 
 const mainServices = [
@@ -61,14 +61,6 @@ const aiServices = [
     title: "SEO CON IA",
     description: "Posicionamiento organico acelerado con inteligencia artificial. Auditoria tecnica, keywords y contenido que Google quiere rankear.",
   },
-];
-
-// Datos mobile — lista compacta
-const mobileMainServices = [
-  { number: "01", title: "TU WEB LISTA EN DÍAS", subtitle: "SITIOS WEB · LANDINGS · E-COMMERCE" },
-  { number: "02", title: "REDES QUE CONVIERTEN", subtitle: "GESTIÓN · CONTENIDO · ESTRATEGIA" },
-  { number: "03", title: "BRANDING DIGITAL", subtitle: "IDENTIDAD · MARCA · POSICIONAMIENTO" },
-  { number: "04", title: "WEBS CON IA", subtitle: "AUTOMATIZACIÓN · CHATBOTS · FLUJOS" },
 ];
 
 // Grid 2×2 para sección IA en mobile
@@ -260,6 +252,8 @@ function ServiceCardDark({
 }
 
 export function Services() {
+  const [openMobileService, setOpenMobileService] = useState(0);
+
   return (
     <>
       {/* Main Services — Dark Section */}
@@ -286,37 +280,71 @@ export function Services() {
 
           {/* Mobile: lista compacta de servicios */}
           <div className="md:hidden flex flex-col gap-[2px]">
-            {mobileMainServices.map((service) => (
-              <div
-                key={service.number}
-                className="flex items-center justify-between px-4 py-[14px] rounded-sm"
-                style={{ background: "rgba(241, 239, 232, 0.04)" }}
-              >
-                <div className="flex items-center gap-[10px]">
-                  <span
-                    className="text-[11px] font-medium"
-                    style={{ color: "#B4B2A9", minWidth: "18px" }}
+            {mainServices.map((service, index) => {
+              const isOpen = openMobileService === index;
+
+              return (
+                <div
+                  key={service.title}
+                  className="overflow-hidden rounded-sm"
+                  style={{ background: "rgba(241, 239, 232, 0.04)" }}
+                >
+                  <button
+                    type="button"
+                    aria-expanded={isOpen}
+                    aria-controls={`mobile-service-${index}`}
+                    onClick={() => setOpenMobileService((current) => current === index ? -1 : index)}
+                    className="flex w-full items-center justify-between px-4 py-[14px] text-left"
                   >
-                    {service.number}
-                  </span>
-                  <div>
-                    <p
-                      className="text-[13px] font-medium uppercase"
-                      style={{ letterSpacing: "0.5px", color: "#f1ede1" }}
+                    <div className="flex items-center gap-[10px]">
+                      <span
+                        className="text-[11px] font-medium"
+                        style={{ color: "#B4B2A9", minWidth: "18px" }}
+                      >
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <div>
+                        <p
+                          className="text-[13px] font-medium uppercase"
+                          style={{ letterSpacing: "0.5px", color: "#f1ede1" }}
+                        >
+                          {service.title}
+                        </p>
+                        <p
+                          className="mt-[1px] text-[11px]"
+                          style={{ color: "#888780" }}
+                        >
+                          {service.subtitle}
+                        </p>
+                      </div>
+                    </div>
+                    <motion.span
+                      animate={{ rotate: isOpen ? 90 : 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="text-[14px]"
+                      style={{ color: "#B4B2A9" }}
                     >
-                      {service.title}
-                    </p>
+                      ›
+                    </motion.span>
+                  </button>
+
+                  <motion.div
+                    id={`mobile-service-${index}`}
+                    initial={false}
+                    animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
+                    transition={{ duration: 0.25, ease: "easeOut" }}
+                    className="overflow-hidden"
+                  >
                     <p
-                      className="text-[11px] mt-[1px]"
-                      style={{ color: "#888780" }}
+                      className="px-4 pb-4 pl-[52px] text-[13px] leading-[1.6]"
+                      style={{ color: "#d8d4c8" }}
                     >
-                      {service.subtitle}
+                      {service.description}
                     </p>
-                  </div>
+                  </motion.div>
                 </div>
-                <span className="text-[14px]" style={{ color: "#B4B2A9" }}>›</span>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           {/* Desktop: carrusel horizontal de cards */}

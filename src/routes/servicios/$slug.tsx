@@ -123,43 +123,6 @@ function ServicePage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="bg-dark py-14 md:py-24">
-        <div className="container mx-auto px-6 text-left md:text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2
-              className="font-bold text-[#ffffff] mb-8"
-              style={{
-                fontSize: "clamp(28px, 4vw, 56px)",
-                lineHeight: "1.2",
-              }}
-            >
-              ¿Listo para comenzar?
-            </h2>
-            <p className="text-xl text-[#f1ede1aa] mb-12 max-w-2xl mx-0 md:mx-auto">
-              Hablemos sobre como podemos ayudarte con {service.title.toLowerCase()}.
-            </p>
-            <TransitionLink
-              to="/contacto"
-              className="inline-flex items-center gap-3 bg-[#f1ede1] text-[#141414] px-10 py-5 text-base font-semibold uppercase tracking-wide hover:bg-[#e5e1d5] transition-colors"
-            >
-              CONTACTAR
-              <motion.span
-                className="inline-block"
-                animate={{ x: [0, 5, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-              >
-                →
-              </motion.span>
-            </TransitionLink>
-          </motion.div>
-        </div>
-      </section>
     </>
   );
 }

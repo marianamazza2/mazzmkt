@@ -2,7 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { TransitionLink } from "@/components/transition/transition-link";
 import { motion } from "framer-motion";
 import { SEOHead } from "@/components/seo/SEOHead";
-import { PageCTA } from "@/components/sections/page-cta";
 import { services } from "@/data/services";
 import { Bot, Code, TrendingUp, Palette } from "lucide-react";
 
@@ -117,7 +116,6 @@ function ServiciosPage() {
         </div>
       </section>
 
-      <PageCTA />
     </>
   );
 }

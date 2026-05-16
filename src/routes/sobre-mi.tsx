@@ -2,7 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 
 import { SEOHead } from "@/components/seo/SEOHead";
-import { PageCTA } from "@/components/sections/page-cta";
 import { TransitionLink } from "@/components/transition/transition-link";
 import { CheckCircle2 } from "lucide-react";
 
@@ -285,7 +284,6 @@ function SobreMiPage() {
         </div>
       </section>
 
-      <PageCTA />
     </>
   );
 }

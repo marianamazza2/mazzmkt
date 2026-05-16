@@ -5,6 +5,7 @@ import { TransitionProvider } from "@/components/transition/transition-context";
 import { PageTransition } from "@/components/transition/page-transition";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { PageCTA } from "@/components/sections/page-cta";
 import { WhatsAppButton } from "@/components/ui/whatsapp-button";
 
 export const Route = createRootRoute({
@@ -16,6 +17,7 @@ export const Route = createRootRoute({
           <main>
             <Outlet />
           </main>
+          <PageCTA />
           <Footer />
           <WhatsAppButton />
           <PageTransition />

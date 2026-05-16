@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import { SEOHead } from "@/components/seo/SEOHead";
-import { PageCTA } from "@/components/sections/page-cta";
 import { TransitionLink } from "@/components/transition/transition-link";
 import { useState } from "react";
 import {
@@ -202,7 +201,7 @@ function FAQsPage() {
       />
 
       {/* Hero */}
-      <section className="bg-dark pt-5 pb-[18px] md:pt-32 md:pb-16 relative overflow-hidden">
+      <section className="bg-dark pt-28 pb-[18px] md:pt-32 md:pb-16 relative overflow-hidden">
         <div
           className="hidden md:block absolute -inset-x-[2%] inset-y-0 bg-no-repeat"
           style={{
@@ -506,29 +505,6 @@ function FAQsPage() {
         </div>
       </section>
 
-      {/* CTA mobile — contextual FAQs */}
-      <section className="md:hidden bg-[#141414] py-7 px-5 text-center">
-        <h2
-          className="font-bold text-[#F1EFE8] mb-1.5"
-          style={{ fontSize: "18px", lineHeight: 1.2, letterSpacing: "0.3px" }}
-        >
-          ¿MÁS DUDAS?
-        </h2>
-        <p className="text-[#5F5E5A] text-xs mb-4">
-          Escribinos y te respondemos en 24h
-        </p>
-        <a
-          href="/contacto"
-          className="inline-flex items-center gap-1.5 bg-[#F1EFE8] text-[#141414] font-medium uppercase rounded-[3px]"
-          style={{ padding: "12px 28px", fontSize: "11px", letterSpacing: "1.5px" }}
-        >
-          CONTACTAR →
-        </a>
-      </section>
-
-      <div className="hidden md:block">
-        <PageCTA />
-      </div>
     </>
   );
 }

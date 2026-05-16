@@ -2,7 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { SEOHead } from "@/components/seo/SEOHead";
 import { ProjectsGrid } from "@/components/projects/projects-grid";
-import { PageCTA } from "@/components/sections/page-cta";
 import { TransitionLink } from "@/components/transition/transition-link";
 import { projects } from "@/data/projects";
 
@@ -212,7 +211,6 @@ function ProyectosPage() {
         </div>
       </section>
 
-      <PageCTA />
     </>
   );
 }
