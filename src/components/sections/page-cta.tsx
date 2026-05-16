@@ -34,7 +34,7 @@ function AnimatedText({
 
 export function PageCTA() {
   return (
-    <section className="bg-dark py-7 md:py-24 relative overflow-hidden">
+    <section className="bg-dark py-7 md:py-20 relative overflow-hidden">
       <div className="hidden md:block absolute inset-0 overflow-hidden" style={{ transform: "scaleX(-1)" }}>
         <div
           className="absolute -inset-x-[6%] inset-y-0 bg-cover bg-center"
@@ -90,6 +90,7 @@ export function PageCTA() {
             style={{
               fontSize: "var(--font-cta)",
               lineHeight: "var(--lh-cta)",
+              letterSpacing: "-0.035em",
             }}
           >
             <div className="overflow-hidden">
@@ -108,7 +109,8 @@ export function PageCTA() {
           >
             <TransitionLink
               to="/contacto"
-              className="inline-flex items-center justify-center gap-3 bg-[#ffffff] text-[#141414] px-10 py-5 text-base font-semibold uppercase tracking-wide hover:bg-[#ffffff] transition-colors font-geist rounded-sm"
+              className="inline-flex items-center justify-center gap-3 bg-[#ffffff] text-[#141414] px-10 py-5 text-sm font-semibold uppercase hover:bg-[#ffffff] hover:opacity-85 transition-opacity font-geist rounded-sm"
+              style={{ letterSpacing: "0.09em" }}
             >
               COMENZAR PROYECTO
               <motion.span

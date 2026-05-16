@@ -4,7 +4,7 @@ import { BlinkingCursor } from "@/components/ui/blinking-cursor";
 
 export function Hero() {
   return (
-    <section className="bg-dark pt-[100px] pb-7 md:pt-32 md:pb-20 relative overflow-hidden">
+    <section className="bg-dark pt-[100px] pb-7 md:pt-32 md:pb-16 relative overflow-hidden">
       <div
         className="hidden md:block absolute -inset-x-[2%] inset-y-0 bg-no-repeat"
         style={{
@@ -37,17 +37,19 @@ export function Hero() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="hidden md:block text-sm font-medium text-[#ffffffcc] mb-5 tracking-widest font-geist"
+            className="hidden md:block text-[15px] font-medium text-[#ffffffe0] mb-5 uppercase font-geist"
+            style={{ letterSpacing: "0.14em" }}
           >
             SOMOS MAZZMKT ESTRATEGIA & CREATIVIDAD
           </motion.p>
 
           <div
-            className="font-bold text-[#ffffff] mb-5 md:mb-8"
+            className="font-bold text-[#ffffff] mb-5 md:mb-9"
             style={{
               fontSize: "var(--font-display)",
               lineHeight: "var(--lh-display)",
               fontWeight: 700,
+              letterSpacing: "-0.035em",
             }}
           >
             <motion.h1
@@ -143,11 +145,12 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="hidden md:flex items-center gap-6"
+            className="hidden md:flex items-center gap-3"
           >
             <TransitionLink
               to="/proyectos"
-              className="group inline-flex items-center gap-3 min-h-[44px] text-[#ffffff] text-base font-semibold uppercase tracking-wide font-geist"
+              className="inline-flex items-center justify-center rounded-sm bg-[#f1ede1] px-8 py-[15px] text-sm font-semibold uppercase text-[#141414] transition-opacity hover:opacity-85 font-geist"
+              style={{ letterSpacing: "0.09em" }}
             >
               VER PROYECTOS
               <motion.span
@@ -158,13 +161,13 @@ export function Hero() {
                 →
               </motion.span>
             </TransitionLink>
-            <motion.div
-              className="h-[1px] bg-[#ffffff30] flex-1 max-w-[200px]"
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ duration: 1, delay: 0.8 }}
-              style={{ transformOrigin: "left" }}
-            />
+            <TransitionLink
+              to="/contacto"
+              className="inline-flex items-center justify-center rounded-sm border border-[#f1ede14d] px-8 py-[15px] text-sm font-semibold uppercase text-[#f1ede1] transition-colors hover:border-[#f1ede1] font-geist"
+              style={{ letterSpacing: "0.09em" }}
+            >
+              CONTACTAR
+            </TransitionLink>
           </motion.div>
         </motion.div>
       </div>

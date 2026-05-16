@@ -64,7 +64,7 @@ export function Projects() {
   const latestProjects = allProjects.slice(0, 3);
 
   return (
-    <section className="bg-dark max-md:bg-light py-7 md:py-32 relative overflow-hidden">
+    <section className="bg-dark max-md:bg-light py-7 md:py-20 relative overflow-hidden">
       <div className="container mx-auto px-5 md:px-6 relative">
         {/* Header */}
         <motion.div
@@ -72,17 +72,16 @@ export function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-4 md:mb-16"
+          className="mb-4 md:mb-9"
         >
           <p
-            className="text-[10px] uppercase mb-1 md:text-sm md:mb-6 md:tracking-widest md:font-geist"
-            style={{ letterSpacing: "1.5px", color: "#B4B2A9" }}
+            className="text-[10px] uppercase mb-1 md:text-[15px] md:mb-5 md:font-medium md:font-geist"
+            style={{ letterSpacing: "0.13em", color: "#B4B2A9" }}
           >
             NUESTRO TRABAJO
           </p>
           <h2
-            className="font-medium md:font-bold md:text-[#ffffff]"
-            style={{ fontSize: "20px", lineHeight: "1.1", fontWeight: 500, color: "#141414" }}
+            className="text-[20px] font-medium leading-[1.1] text-[#141414] md:text-[clamp(52px,5vw,64px)] md:font-bold md:leading-[0.95] md:tracking-[-0.03em] md:text-[#ffffff]"
           >
             PROYECTOS{" "}
             <span className="hidden md:inline" style={{ color: "#ffffff" }}>&raquo;</span>
@@ -90,7 +89,7 @@ export function Projects() {
         </motion.div>
 
         {/* Projects list */}
-        <div className="flex flex-col gap-3 md:gap-6 mb-5 md:mb-12">
+        <div className="flex flex-col gap-3 md:gap-5 mb-5 md:mb-8">
           {latestProjects.map((project, index) => (
             <HomeProjectCard key={project.id} project={project} index={index} />
           ))}
@@ -121,7 +120,8 @@ export function Projects() {
           {/* Desktop: link original */}
           <TransitionLink
             to="/proyectos"
-            className="hidden md:inline-flex items-center gap-3 min-h-[44px] text-[#ffffff] text-base font-semibold uppercase tracking-wide hover:opacity-70 transition-opacity font-geist"
+            className="hidden md:inline-flex items-center justify-center gap-3 rounded-sm border border-[#f1ede14d] px-8 py-[15px] text-sm font-semibold uppercase text-[#f1ede1] transition-colors hover:border-[#f1ede1] font-geist"
+            style={{ letterSpacing: "0.09em" }}
           >
             VER TODOS LOS PROYECTOS
             <motion.span

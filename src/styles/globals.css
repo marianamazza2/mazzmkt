@@ -77,12 +77,12 @@
 
 /* Typography scale — fluid, responsive */
 :root {
-  --font-display: clamp(22px, 8vw, 100px);
-  --lh-display: 1.08;
+  --font-display: 100px;
+  --lh-display: 0.93;
   --font-section: clamp(22px, 7vw, 98px);
   --lh-section: 1.08;
-  --font-cta: clamp(22px, 6vw, 80px);
-  --lh-cta: 1.1;
+  --font-cta: clamp(64px, 6vw, 80px);
+  --lh-cta: 0.98;
   --font-h2: clamp(22px, 5vw, 48px);
   --lh-h2: 1.15;
   --font-stat: clamp(18px, 5vw, 56px);

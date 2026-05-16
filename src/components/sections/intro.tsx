@@ -66,14 +66,21 @@ export function Intro() {
       </div>
 
       {/* Desktop layout */}
-      <div className="hidden md:block py-24 container mx-auto px-6">
+      <div className="hidden md:block py-16 container mx-auto px-6">
         <div className="max-w-6xl">
+          <p
+            className="mb-5 text-[15px] font-medium uppercase text-[#5f5e5a] font-geist"
+            style={{ letterSpacing: "0.13em" }}
+          >
+            QUIÉNES SOMOS
+          </p>
           <h2
-            className="font-bold text-[#141414] mb-10"
+            className="font-bold text-[#141414] mb-6"
             style={{
-              fontSize: "var(--font-h2)",
-              lineHeight: "var(--lh-h2)",
+              fontSize: "clamp(52px, 5vw, 64px)",
+              lineHeight: 0.98,
               fontWeight: 700,
+              letterSpacing: "-0.03em",
             }}
           >
             <AnimatedWords text="DESARROLLAMOS MARCAS," />
@@ -84,6 +91,13 @@ export function Intro() {
               <AnimatedWords text="Y CONECTAMOS CON INTELIGENCIA." />
             </span>
           </h2>
+          <p
+            className="mb-8 max-w-3xl text-[#5F5E5A]"
+            style={{ fontSize: "21px", lineHeight: 1.55 }}
+          >
+            Conectamos con inteligencia. Cada proyecto empieza entendiendo quién sos,
+            qué necesitás y a quién le hablás.
+          </p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -94,7 +108,8 @@ export function Intro() {
           >
             <TransitionLink
               to="/contacto"
-              className="group inline-flex items-center gap-3 min-h-[44px] text-[#141414] text-base font-semibold uppercase tracking-wide hover:opacity-70 transition-opacity"
+              className="group inline-flex items-center justify-center gap-3 rounded-sm bg-[#141414] px-8 py-[15px] text-sm font-semibold uppercase text-[#f1ede1] transition-opacity hover:opacity-85 font-geist"
+              style={{ letterSpacing: "0.09em" }}
             >
               HAGAMOS CRECER TUS IDEAS
               <motion.span

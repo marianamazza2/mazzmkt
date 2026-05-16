@@ -134,8 +134,8 @@ function ServiceCard({
           }}
         />
 
-        <div className={`relative z-10 ${isMain ? "p-5 md:p-10" : "p-5 md:p-8"}`}>
-          <div className="flex items-start justify-between mb-6">
+        <div className={`relative z-10 ${isMain ? "p-5 md:p-8" : "p-5 md:p-7"}`}>
+          <div className="flex items-start justify-between mb-6 md:mb-7">
             <Icon
               className={`${isMain ? "h-10 w-10" : "h-8 w-8"} text-[#141414] group-hover:text-[#ffffff] transition-colors`}
               strokeWidth={1.5}
@@ -147,18 +147,19 @@ function ServiceCard({
 
           <h3
             className="font-bold text-[#141414] group-hover:text-[#ffffff] mb-3 transition-colors"
-            style={{ fontSize: "20px", lineHeight: "1.1", fontWeight: 700 }}
+            style={{ fontSize: "clamp(25px, 2vw, 30px)", lineHeight: 1.12, fontWeight: 600, letterSpacing: "-0.025em" }}
           >
             {service.title}
           </h3>
 
           {"subtitle" in service && (
-            <p className="text-xs font-medium text-[#141414aa] group-hover:text-[#f1ede1aa] mb-4 tracking-wide transition-colors">
+            <p className="text-[13px] font-medium text-[#141414b8] group-hover:text-[#f1ede1cc] mb-4 uppercase transition-colors"
+              style={{ letterSpacing: "0.08em" }}>
               {(service as (typeof mainServices)[0]).subtitle}
             </p>
           )}
 
-          <p className={`${isMain ? "text-base" : "text-sm"} text-[#141414cc] group-hover:text-[#f1ede1cc] leading-relaxed transition-colors`}>
+          <p className={`${isMain ? "text-[17px]" : "text-base"} text-[#141414cc] group-hover:text-[#f1ede1cc] leading-[1.55] transition-colors`}>
             {service.description}
           </p>
         </div>
@@ -224,8 +225,8 @@ function ServiceCardDark({
           }}
         />
 
-        <div className="relative z-10 p-5 md:p-10">
-          <div className="flex items-start justify-between mb-6">
+        <div className="relative z-10 p-5 md:p-8">
+          <div className="flex items-start justify-between mb-6 md:mb-7">
             <Icon className="h-10 w-10 text-[#f1ede1] group-hover:text-[#141414] transition-colors" strokeWidth={1.5} />
             <span className="text-4xl md:text-5xl font-bold text-[#ffffff15] group-hover:text-[#14141420] transition-colors duration-300">
               {String(index + 1).padStart(2, "0")}
@@ -234,16 +235,17 @@ function ServiceCardDark({
 
           <h3
             className="font-bold text-[#f1ede1] group-hover:text-[#141414] mb-3 transition-colors"
-            style={{ fontSize: "20px", lineHeight: "1.1", fontWeight: 700 }}
+            style={{ fontSize: "clamp(25px, 2vw, 30px)", lineHeight: 1.12, fontWeight: 600, letterSpacing: "-0.025em" }}
           >
             {service.title}
           </h3>
 
-          <p className="text-xs font-medium text-[#f1ede1aa] group-hover:text-[#141414aa] mb-4 tracking-wide transition-colors">
+          <p className="text-[13px] font-medium uppercase text-[#f1ede1c2] group-hover:text-[#141414b8] mb-4 transition-colors"
+            style={{ letterSpacing: "0.08em" }}>
             {service.subtitle}
           </p>
 
-          <p className="text-base text-[#f1ede1cc] group-hover:text-[#141414cc] leading-relaxed transition-colors">
+          <p className="text-[17px] text-[#f1ede1cc] group-hover:text-[#141414cc] leading-[1.55] transition-colors">
             {service.description}
           </p>
         </div>
@@ -261,22 +263,21 @@ export function Services() {
   return (
     <>
       {/* Main Services — Dark Section */}
-      <section className="bg-dark py-7 md:py-24">
+      <section className="bg-dark py-7 md:py-18">
         <div className="container mx-auto px-5 md:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mb-4 md:mb-20"
+            className="mb-4 md:mb-10"
           >
-            <p className="text-[10px] font-medium uppercase mb-2 md:text-sm md:mb-6 md:tracking-widest md:flex md:items-center md:gap-3 md:font-geist"
-              style={{ letterSpacing: "2.5px", color: "#888780" }}>
+            <p className="text-[10px] font-medium uppercase mb-2 md:text-[15px] md:mb-5 md:flex md:items-center md:gap-3 md:font-geist"
+              style={{ letterSpacing: "0.13em", color: "#a3a199" }}>
               SERVICIOS DE MARKETING DIGITAL
             </p>
             <h2
-              className="font-medium md:font-bold text-[#ffffff] md:mb-0 mb-4"
-              style={{ fontSize: "20px", lineHeight: "1.1", fontWeight: 500 }}
+              className="mb-4 text-[20px] font-medium leading-[1.1] text-[#ffffff] md:mb-0 md:text-[clamp(52px,5vw,64px)] md:font-bold md:leading-[0.95] md:tracking-[-0.03em]"
             >
               LO QUE HACEMOS{" "}
               <span className="hidden md:inline" style={{ color: "#ffffff" }}>&raquo;</span>
@@ -319,7 +320,7 @@ export function Services() {
           </div>
 
           {/* Desktop: carrusel horizontal de cards */}
-          <div className="hidden md:grid md:grid-cols-2 md:gap-8">
+          <div className="hidden md:grid md:grid-cols-2 md:gap-6">
             {mainServices.map((service, index) => (
               <ServiceCardDark key={service.title} service={service} index={index} />
             ))}
@@ -328,24 +329,23 @@ export function Services() {
       </section>
 
       {/* AI Services — Light Section */}
-      <section className="bg-light py-7 md:py-24">
+      <section className="bg-light py-7 md:py-16">
         <div className="container mx-auto px-5 md:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mb-5 md:mb-16"
+            className="mb-5 md:mb-10"
           >
             <p
-              className="text-[10px] uppercase mb-2 md:text-sm md:mb-6 md:tracking-widest md:font-geist"
-              style={{ letterSpacing: "2.5px", color: "#888780" }}
+              className="text-[10px] uppercase mb-2 md:text-[15px] md:mb-5 md:font-medium md:font-geist"
+              style={{ letterSpacing: "0.13em", color: "#77766f" }}
             >
               INTELIGENCIA ARTIFICIAL
             </p>
             <h2
-              className="font-medium md:font-bold text-[#141414]"
-              style={{ fontSize: "20px", lineHeight: "1.1", fontWeight: 500 }}
+              className="text-[20px] font-medium leading-[1.1] text-[#141414] md:text-[clamp(52px,5vw,64px)] md:font-bold md:leading-[0.95] md:tracking-[-0.03em]"
             >
               TU NEGOCIO EN{" "}
               <span className="hidden md:inline text-[#141414aa]">MODO IA</span>
@@ -396,7 +396,7 @@ export function Services() {
           </div>
 
           {/* Desktop: carrusel horizontal de cards */}
-          <div className="hidden md:flex overflow-x-auto snap-x snap-mandatory hide-scrollbar gap-4 pb-4 mb-10 md:grid md:grid-cols-2 lg:grid-cols-3 md:overflow-x-visible md:snap-none md:pb-0 md:gap-6 md:mb-16">
+          <div className="hidden md:flex overflow-x-auto snap-x snap-mandatory hide-scrollbar gap-4 pb-4 mb-10 md:grid md:grid-cols-2 lg:grid-cols-3 md:overflow-x-visible md:snap-none md:pb-0 md:gap-5 md:mb-10">
             {aiServices.map((service, index) => (
               <div key={service.title} className="snap-center flex-shrink-0 w-[85vw] md:w-auto">
                 <ServiceCard service={service} index={index + 3} variant="ai" />
@@ -412,8 +412,8 @@ export function Services() {
           >
             <TransitionLink
               to="/contacto"
-              className="inline-flex items-center gap-[6px] text-[11px] font-medium uppercase md:gap-3 md:min-h-[44px] md:text-base md:font-semibold md:tracking-wide md:hover:opacity-70 md:transition-opacity md:font-geist"
-              style={{ letterSpacing: "1.5px", color: "#B4B2A9" }}
+              className="inline-flex items-center gap-[6px] text-[11px] font-medium uppercase md:gap-3 md:rounded-sm md:border md:border-[#1414144d] md:px-8 md:py-[15px] md:text-sm md:font-semibold md:text-[#141414] md:transition-colors md:hover:border-[#141414] md:font-geist"
+              style={{ letterSpacing: "0.09em", color: "#141414" }}
             >
               QUIERO MI NEGOCIO CON IA
               <motion.span
