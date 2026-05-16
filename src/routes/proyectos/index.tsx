@@ -19,7 +19,7 @@ function ProyectosPage() {
 
       {/* Hero Section */}
       <section
-        className="pt-24 max-md:pb-6 pb-12 md:pt-32 md:pb-16 overflow-hidden relative"
+        className="pt-24 pb-5 md:pt-32 md:pb-16 overflow-hidden relative"
         style={{
           backgroundColor: "#141414",
           color: "#f1ede1",
@@ -48,7 +48,7 @@ function ProyectosPage() {
               {/* Mobile breadcrumb */}
               <span
                 className="md:hidden"
-                style={{ fontSize: "10px", letterSpacing: "1.5px", color: "#5F5E5A", textTransform: "uppercase" }}
+                style={{ fontSize: "11px", letterSpacing: "1.5px", color: "#5F5E5A", textTransform: "uppercase" }}
               >
                 MAZZMKT / PROYECTOS
               </span>
@@ -205,7 +205,7 @@ function ProyectosPage() {
       </section>
 
       {/* Projects Section */}
-      <section id="proyectos" className="bg-dark max-md:bg-light py-7 md:py-20">
+      <section id="proyectos" className="bg-dark pt-4 pb-7 md:py-20">
         <div className="container mx-auto px-5 md:px-6">
           <ProjectsGrid projects={projects} />
         </div>

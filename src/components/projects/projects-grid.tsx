@@ -1,7 +1,7 @@
 import { useState, useMemo, useCallback, useEffect } from "react";
 import { motion, AnimatePresence, LayoutGroup, useMotionValue, useSpring } from "framer-motion";
 import type { PanInfo } from "framer-motion";
-import { Search, Grid3X3, List, X, SlidersHorizontal } from "lucide-react";
+import { Check, ChevronDown, Search, Grid3X3, List, X } from "lucide-react";
 import { ProjectCard } from "./project-card";
 import { TransitionLink } from "@/components/transition/transition-link";
 import type { Project } from "@/types";
@@ -17,6 +17,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<ViewMode>("showcase");
   const [hoveredProject, setHoveredProject] = useState<Project | null>(null);
+  const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
 
   // Extract unique categories
   const categories = useMemo(() => {
@@ -55,6 +56,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
   const clearFilters = () => {
     setSearchQuery("");
     setActiveCategory(null);
+    setIsMobileFilterOpen(false);
   };
 
   const mobileLabel: Record<string, string> = {
@@ -65,13 +67,26 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
   };
 
   const hasActiveFilters = searchQuery !== "" || activeCategory !== null;
+  const mobileFilterOptions = useMemo(
+    () => [
+      { value: null, label: "Todos", count: projects.length },
+      ...categories.map((category) => ({
+        value: category,
+        label: mobileLabel[category] ?? category,
+        count: projects.filter((p) => p.category === category).length,
+      })),
+    ],
+    [categories, projects]
+  );
+  const activeMobileOption =
+    mobileFilterOptions.find((option) => option.value === activeCategory) ?? mobileFilterOptions[0];
 
   return (
-    <div className="space-y-8 md:space-y-9">
+    <div className="space-y-5 md:space-y-9">
       {/* Search and Filters Bar */}
       <div className="flex flex-col gap-3 md:gap-4 md:flex-row md:items-center md:justify-between">
-        {/* Search Input + mobile filter button */}
-        <div className="flex items-center gap-2">
+        {/* Search Input */}
+        <div className="hidden md:flex items-center gap-2">
           <div className="relative flex-1 md:max-w-md">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-[#141414aa] md:text-[#f1ede1aa]" />
             <input
@@ -90,12 +105,6 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
               </button>
             )}
           </div>
-          <button
-            className="md:hidden w-11 h-11 shrink-0 border border-[#14141420] rounded-sm flex items-center justify-center text-[#141414aa] hover:text-[#141414] hover:border-[#141414] transition-colors"
-            aria-label="Opciones de filtro"
-          >
-            <SlidersHorizontal className="h-4 w-4" />
-          </button>
         </div>
 
         {/* View Mode Toggle — hidden on mobile */}
@@ -155,8 +164,71 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
         </div>
       </div>
 
-      {/* Category Filters */}
-      <div className="flex gap-2 overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:flex-wrap md:overflow-x-visible">
+      {/* Mobile Category Filter */}
+      <div className="relative md:hidden">
+        <button
+          type="button"
+          onClick={() => setIsMobileFilterOpen((open) => !open)}
+          aria-expanded={isMobileFilterOpen}
+          className="flex w-full items-center justify-between rounded-sm border border-[#f1ede11a] bg-[#f1ede10a] px-3 py-2.5 text-left text-[#f1ede1] shadow-[0_12px_30px_rgba(0,0,0,0.18)] backdrop-blur-sm transition-colors hover:border-[#f1ede133]"
+        >
+          <span className="flex min-w-0 items-center gap-2">
+            <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#f1ede1]" />
+            <span className="truncate font-geist text-[12px] font-semibold uppercase tracking-[0.08em]">
+              {activeMobileOption.label}
+            </span>
+          </span>
+          <span className="flex items-center gap-2 text-[#f1ede199]">
+            <span className="font-geist text-[11px]">{activeMobileOption.count}</span>
+            <ChevronDown
+              className={`h-4 w-4 transition-transform ${isMobileFilterOpen ? "rotate-180" : ""}`}
+            />
+          </span>
+        </button>
+
+        <AnimatePresence>
+          {isMobileFilterOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -6, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -6, scale: 0.98 }}
+              transition={{ duration: 0.18, ease: "easeOut" }}
+              className="absolute left-0 right-0 top-[calc(100%+6px)] z-30 overflow-hidden rounded-sm border border-[#f1ede11f] bg-[#1b1b1b] p-1 shadow-[0_18px_40px_rgba(0,0,0,0.35)]"
+            >
+              {mobileFilterOptions.map((option) => {
+                const isActive = option.value === activeCategory;
+
+                return (
+                  <button
+                    key={option.value ?? "todos"}
+                    type="button"
+                    onClick={() => {
+                      setActiveCategory(option.value);
+                      setIsMobileFilterOpen(false);
+                    }}
+                    className={`flex w-full items-center justify-between rounded-[2px] px-3 py-2.5 text-left transition-colors ${
+                      isActive
+                        ? "bg-[#f1ede1] text-[#141414]"
+                        : "text-[#f1ede1cc] hover:bg-[#f1ede10d] hover:text-[#ffffff]"
+                    }`}
+                  >
+                    <span className="font-geist text-[12px] font-semibold uppercase tracking-[0.08em]">
+                      {option.label}
+                    </span>
+                    <span className="flex items-center gap-2">
+                      <span className="font-geist text-[11px] opacity-70">{option.count}</span>
+                      {isActive && <Check className="h-3.5 w-3.5" />}
+                    </span>
+                  </button>
+                );
+              })}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+
+      {/* Desktop Category Filters */}
+      <div className="hidden md:flex gap-2 flex-wrap overflow-x-visible">
         <motion.button
           onClick={() => setActiveCategory(null)}
           className={`snap-start shrink-0 whitespace-nowrap px-4 py-2 text-xs font-semibold uppercase transition-all duration-300 cursor-pointer font-geist rounded-sm md:text-sm ${
@@ -168,8 +240,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >
-          <span className="md:hidden">Todos</span>
-          <span className="hidden md:inline">Todos ({projects.length})</span>
+          <span>Todos ({projects.length})</span>
         </motion.button>
         {categories.map((category) => {
           const count = projects.filter((p) => p.category === category).length;
@@ -186,8 +257,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              <span className="md:hidden">{mobileLabel[category] ?? category}</span>
-              <span className="hidden md:inline">{category} ({count})</span>
+              <span>{category} ({count})</span>
             </motion.button>
           );
         })}
@@ -200,14 +270,14 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="flex items-center gap-3 text-sm text-[#141414aa] md:text-[#f1ede1aa] md:font-geist"
+            className="flex items-center gap-3 text-sm text-[#f1ede1aa] md:font-geist"
           >
             <span>
               Mostrando {filteredProjects.length} de {projects.length} proyectos
             </span>
             <button
               onClick={clearFilters}
-              className="text-[#141414] underline hover:no-underline md:text-[#f1ede1]"
+              className="text-[#f1ede1] underline hover:no-underline"
             >
               Limpiar filtros
             </button>
@@ -219,8 +289,8 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
       <div className="md:hidden">
         {filteredProjects.length === 0 ? (
           <div className="py-20 text-center">
-            <p className="text-[#141414aa] text-lg mb-4">No se encontraron proyectos</p>
-            <button onClick={clearFilters} className="text-[#141414] underline hover:no-underline">
+            <p className="text-[#f1ede1aa] text-lg mb-4">No se encontraron proyectos</p>
+            <button onClick={clearFilters} className="text-[#f1ede1] underline hover:no-underline">
               Limpiar filtros
             </button>
           </div>
@@ -347,6 +417,13 @@ function MobileProjectsCarousel({ projects }: { projects: Project[] }) {
   };
 
   const project = projects[current];
+  const visibleDots = (() => {
+    const count = Math.min(3, projects.length);
+    if (count < 3) return Array.from({ length: count }, (_, i) => i);
+
+    const start = Math.min(Math.max(current - 1, 0), projects.length - count);
+    return Array.from({ length: count }, (_, i) => start + i);
+  })();
 
   return (
     <div className="w-full overflow-hidden">
@@ -386,12 +463,12 @@ function MobileProjectsCarousel({ projects }: { projects: Project[] }) {
               </div>
               {/* Texto debajo — igual que la home */}
               <div className="flex flex-col gap-1 mt-3">
-                <span className="text-[10px] font-semibold tracking-widest uppercase text-[#141414aa] font-geist">
+                <span className="text-[10px] font-semibold tracking-widest uppercase text-[#f1ede1aa] font-geist">
                   {project.category}
                   {!project.client.toLowerCase().startsWith("proyecto propio") && ` · ${project.client}`}
                 </span>
                 <h3
-                  className="font-bold text-[#141414] leading-[1.05]"
+                  className="font-bold text-[#ffffff] leading-[1.05]"
                   style={{ fontSize: "clamp(18px, 5vw, 24px)" }}
                 >
                   {project.title}
@@ -403,40 +480,29 @@ function MobileProjectsCarousel({ projects }: { projects: Project[] }) {
       </div>
 
       {/* Dots */}
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px", padding: "8px 0" }}>
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "4px" }}>
-          {projects.map((_, i) => (
+      <div className="flex w-full items-center justify-center pt-4">
+        <div className="mx-auto flex items-center justify-center gap-0.5">
+          {visibleDots.map((projectIndex) => (
             <button
-              key={i}
-              onClick={() => setPage([i, i > current ? 1 : -1])}
-              aria-label={`Proyecto ${i + 1}`}
-              style={{ minHeight: "unset", minWidth: "unset", padding: "6px 4px", display: "flex", alignItems: "center", justifyContent: "center" }}
+              key={projectIndex}
+              type="button"
+              onClick={() => setPage([projectIndex, projectIndex > current ? 1 : -1])}
+              aria-label={`Proyecto ${projectIndex + 1}`}
+              className="flex min-h-0 min-w-0 items-center justify-center px-1 py-1"
             >
               <span
+                className="block transition-all duration-300 ease-out"
                 style={{
-                  display: "block",
-                  width: i === current ? "18px" : "3px",
-                  height: "3px",
-                  borderRadius: "1.5px",
-                  backgroundColor: i === current ? "#141414" : "#D3D1C7",
-                  transition: "all 0.3s ease",
+                  width: projectIndex === current ? "18px" : "4px",
+                  height: "4px",
+                  borderRadius: "999px",
+                  backgroundColor: projectIndex === current ? "#F1EDE1" : "rgba(241,237,225,0.32)",
                   flexShrink: 0,
                 }}
               />
             </button>
           ))}
         </div>
-        <span
-          style={{
-            fontSize: "10px",
-            letterSpacing: "1px",
-            color: "#B4B2A9",
-            textTransform: "uppercase",
-            fontFamily: "'DM Sans', sans-serif",
-          }}
-        >
-          {String(current + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}
-        </span>
       </div>
     </div>
   );

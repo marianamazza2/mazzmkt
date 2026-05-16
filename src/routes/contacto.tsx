@@ -72,7 +72,7 @@ function ContactoPage() {
             >
               <span
                 className="md:hidden"
-                style={{ fontSize: "10px", letterSpacing: "1.5px", color: "#5F5E5A", textTransform: "uppercase" }}
+                style={{ fontSize: "11px", letterSpacing: "1.5px", color: "#5F5E5A", textTransform: "uppercase" }}
               >
                 MAZZMKT / CONTACTO
               </span>

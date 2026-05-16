@@ -4,6 +4,8 @@ import { SEOHead } from "@/components/seo/SEOHead";
 import { TransitionLink } from "@/components/transition/transition-link";
 import { useState } from "react";
 import {
+  Check,
+  ChevronDown,
   Plus,
   Minus,
   Code,
@@ -183,11 +185,19 @@ const categories = [
 function FAQsPage() {
   const [openId, setOpenId] = useState<number | null>(1);
   const [activeCategory, setActiveCategory] = useState("TODOS");
+  const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
 
   const filteredFaqs =
     activeCategory === "TODOS"
       ? faqs
       : faqs.filter((faq) => faq.category === activeCategory);
+
+  const categoryCounts = categories.map((category) => ({
+    value: category,
+    count: category === "TODOS" ? faqs.length : faqs.filter((faq) => faq.category === category).length,
+  }));
+  const activeCategoryCount =
+    categoryCounts.find((category) => category.value === activeCategory)?.count ?? faqs.length;
 
   const toggleFaq = (id: number) => {
     setOpenId(openId === id ? null : id);
@@ -223,7 +233,7 @@ function FAQsPage() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-[10px] md:text-[15px] font-medium text-[#888780] md:text-[#ffffffe0] mb-1.5 md:mb-5 tracking-[1.5px] md:tracking-[0.14em] uppercase flex items-center gap-3 font-geist"
+              className="text-[11px] md:text-[15px] font-medium text-[#888780] md:text-[#ffffffe0] mb-1.5 md:mb-5 tracking-[1.5px] md:tracking-[0.14em] uppercase flex items-center gap-3 font-geist"
             >
               <span className="opacity-50">MAZZMKT</span>
               <span className="opacity-30">/</span>
@@ -281,36 +291,6 @@ function FAQsPage() {
                 CONTACTAR
               </TransitionLink>
             </motion.div>
-
-            {/* Dropdown filtro — solo mobile */}
-            <div className="md:hidden mt-3">
-              <select
-                value={activeCategory}
-                onChange={(e) => setActiveCategory(e.target.value)}
-                className="w-full appearance-none cursor-pointer focus:outline-none"
-                style={{
-                  padding: "9px 36px 9px 12px",
-                  border: "0.5px solid rgba(255,255,255,0.1)",
-                  borderRadius: "3px",
-                  background: "transparent",
-                  color: "#F1EFE8",
-                  fontFamily: "'DM Sans', sans-serif",
-                  fontSize: "12px",
-                  fontWeight: 500,
-                  textTransform: "uppercase",
-                  letterSpacing: "0.5px",
-                  backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%235F5E5A' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 5l3 3 3-3'/%3E%3C/svg%3E")`,
-                  backgroundRepeat: "no-repeat",
-                  backgroundPosition: "right 12px center",
-                }}
-              >
-                {categories.map((cat) => (
-                  <option key={cat} value={cat} style={{ background: "#141414", color: "#F1EFE8" }}>
-                    {cat}
-                  </option>
-                ))}
-              </select>
-            </div>
           </motion.div>
         </div>
       </section>
@@ -343,8 +323,71 @@ function FAQsPage() {
       </section>
 
       {/* FAQs Section */}
-      <section id="faqs" className="bg-light py-14 md:py-20">
+      <section id="faqs" className="bg-light py-8 md:py-20">
         <div className="container mx-auto px-5 md:px-6">
+          {/* Dropdown filtro — solo mobile */}
+          <div className="relative md:hidden mb-5">
+            <button
+              type="button"
+              onClick={() => setIsMobileFilterOpen((open) => !open)}
+              aria-expanded={isMobileFilterOpen}
+              className="flex w-full items-center justify-between rounded-sm border border-[#f1ede11a] bg-[#141414] px-3 py-2.5 text-left text-[#f1ede1] shadow-[0_12px_30px_rgba(0,0,0,0.18)] backdrop-blur-sm transition-colors hover:border-[#f1ede133]"
+            >
+              <span className="flex min-w-0 items-center gap-2">
+                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#f1ede1]" />
+                <span className="truncate font-geist text-[12px] font-semibold uppercase tracking-[0.08em]">
+                  {activeCategory}
+                </span>
+              </span>
+              <span className="flex items-center gap-2 text-[#f1ede199]">
+                <span className="font-geist text-[11px]">{activeCategoryCount}</span>
+                <ChevronDown
+                  className={`h-4 w-4 transition-transform ${isMobileFilterOpen ? "rotate-180" : ""}`}
+                />
+              </span>
+            </button>
+
+            <AnimatePresence>
+              {isMobileFilterOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: -6, scale: 0.98 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -6, scale: 0.98 }}
+                  transition={{ duration: 0.18, ease: "easeOut" }}
+                  className="absolute left-0 right-0 top-[calc(100%+6px)] z-30 overflow-hidden rounded-sm border border-[#f1ede11f] bg-[#1b1b1b] p-1 shadow-[0_18px_40px_rgba(0,0,0,0.35)]"
+                >
+                  {categoryCounts.map((category) => {
+                    const isActive = category.value === activeCategory;
+
+                    return (
+                      <button
+                        key={category.value}
+                        type="button"
+                        onClick={() => {
+                          setActiveCategory(category.value);
+                          setIsMobileFilterOpen(false);
+                        }}
+                        className={`flex w-full items-center justify-between rounded-[2px] px-3 py-2.5 text-left transition-colors ${
+                          isActive
+                            ? "bg-[#f1ede1] text-[#141414]"
+                            : "text-[#f1ede1cc] hover:bg-[#f1ede10d] hover:text-[#ffffff]"
+                        }`}
+                      >
+                        <span className="font-geist text-[12px] font-semibold uppercase tracking-[0.08em]">
+                          {category.value}
+                        </span>
+                        <span className="flex items-center gap-2">
+                          <span className="font-geist text-[11px] opacity-70">{category.count}</span>
+                          {isActive && <Check className="h-3.5 w-3.5" />}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
           <AnimatePresence mode="wait">
             <motion.div
               key={activeCategory}
