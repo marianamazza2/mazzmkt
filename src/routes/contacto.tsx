@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { SEOHead } from "@/components/seo/SEOHead";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, MessageCircle, Phone, MapPin } from "lucide-react";
 import { useState } from "react";
 
 export const Route = createFileRoute("/contacto")({
@@ -9,6 +9,10 @@ export const Route = createFileRoute("/contacto")({
 });
 
 function ContactoPage() {
+  const whatsappUrl = `https://wa.me/5491112345678?text=${encodeURIComponent(
+    "Hola! Quiero hablar sobre un proyecto."
+  )}`;
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -43,12 +47,15 @@ function ContactoPage() {
       />
 
       {/* Hero */}
-      <section className="bg-dark pt-24 pb-6 md:pt-32 md:pb-20 relative overflow-hidden md:min-h-[600px]">
+      <section className="bg-dark pt-24 pb-6 md:pt-32 md:pb-16 relative overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="hidden md:block absolute -inset-x-[2%] inset-y-0 bg-no-repeat"
           style={{
-            backgroundImage: `url('/images/hero-pattern.png')`,
-            opacity: 0.20,
+            backgroundImage: `url('/images/hero-home.png')`,
+            backgroundPosition: "center center",
+            backgroundSize: "100% auto",
+            opacity: 0.25,
+            animation: "tv-static 0.45s steps(1) infinite",
           }}
         />
         <div className="container mx-auto px-5 md:px-6 relative">
@@ -61,34 +68,99 @@ function ContactoPage() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-[10px] md:text-sm font-medium text-[#ffffffcc] mb-1.5 md:mb-6 tracking-[1.5px] md:tracking-widest flex items-center gap-3 font-geist"
+              className="font-medium flex items-center gap-3 mb-1.5 md:mb-5 md:text-[15px] md:uppercase md:text-[#ffffffe0] font-geist"
             >
-              <span className="opacity-50">MAZZMKT</span>
-              <span className="opacity-30">/</span>
-              <span>CONTACTO</span>
+              <span
+                className="md:hidden"
+                style={{ fontSize: "10px", letterSpacing: "1.5px", color: "#5F5E5A", textTransform: "uppercase" }}
+              >
+                MAZZMKT / CONTACTO
+              </span>
+              <span className="hidden md:contents" style={{ letterSpacing: "0.14em" }}>
+                <span className="opacity-50">MAZZMKT</span>
+                <span className="opacity-30">/</span>
+                <span>CONTACTO</span>
+              </span>
             </motion.p>
-            <h1
-              className="font-bold text-[#ffffff] text-[24px] md:text-[length:var(--font-display)]"
+            <div
+              className="font-bold text-[#ffffff] md:mb-8"
               style={{
+                fontSize: "var(--font-display)",
                 lineHeight: "var(--lh-display)",
                 fontWeight: 700,
+                letterSpacing: "-0.035em",
               }}
             >
-              HABLEMOS{" "}
-              <span className="text-[#ffffff50] hidden md:inline">&raquo;</span>
-            </h1>
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="font-bold text-[#ffffff]"
+                style={{ fontSize: "inherit", lineHeight: "inherit", fontWeight: "inherit" }}
+              >
+                HABLEMOS
+              </motion.h1>
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="hidden md:block font-bold text-[#ffffff]"
+                style={{ fontSize: "inherit", lineHeight: "inherit", fontWeight: "inherit" }}
+              >
+                DE TU PROYECTO
+              </motion.h1>
+            </div>
             {/* Subtítulo visible solo en mobile */}
             <p className="md:hidden text-[12px] text-[#888780] leading-[1.6] mt-2">
               ¿Tienes un proyecto en mente? Nos encantaría escucharte.
             </p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="hidden md:block max-w-xl text-[18px] text-[#f1ede1aa] mb-9"
+            >
+              Cuéntanos dónde está tu marca, qué necesitas mover y qué resultado querés conseguir.
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.45 }}
+              className="hidden md:flex items-center gap-3"
+            >
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-3 rounded-sm bg-[#f1ede1] px-8 py-[15px] text-sm font-semibold uppercase text-[#141414] transition-opacity hover:opacity-85 font-geist"
+                style={{ letterSpacing: "0.09em" }}
+              >
+                <MessageCircle className="h-4 w-4" strokeWidth={1.8} />
+                WHATSAPP
+                <motion.span
+                  className="inline-block"
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  →
+                </motion.span>
+              </a>
+              <a
+                href="mailto:mazzmkt360@gmail.com"
+                className="inline-flex items-center justify-center rounded-sm border border-[#f1ede14d] px-8 py-[15px] text-sm font-semibold uppercase text-[#f1ede1] transition-colors hover:border-[#f1ede1] font-geist"
+                style={{ letterSpacing: "0.09em" }}
+              >
+                ESCRIBIR MAIL
+              </a>
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
       {/* Contact Form & Info */}
-      <section className="bg-light py-5 md:py-24">
+      <section id="contacto-form" className="bg-light py-5 md:py-20">
         <div className="container mx-auto px-5 md:px-6">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16">
+          <div className="grid lg:grid-cols-[1.08fr_0.92fr] gap-8 lg:gap-20 items-start">
             {/* Form */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -97,14 +169,14 @@ function ContactoPage() {
               transition={{ duration: 0.6 }}
             >
               {submitted ? (
-                <div className="border border-[#14141420] p-12 text-center rounded-[3px]">
-                  <h3 className="text-2xl font-bold text-[#141414] mb-4">¡GRACIAS!</h3>
-                  <p className="text-[#141414aa]">Te responderemos lo antes posible.</p>
+                <div className="border border-[#14141420] p-8 md:p-12 text-center rounded-sm">
+                  <h3 className="text-2xl md:text-[36px] font-bold text-[#141414] mb-4">¡GRACIAS!</h3>
+                  <p className="text-[13px] md:text-lg text-[#141414aa]">Te responderemos lo antes posible.</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-3 md:space-y-6">
                   <div>
-                    <label className="block text-[11px] md:text-sm font-medium text-[#888780] md:text-[#141414] mb-1 md:mb-2 uppercase tracking-[1px] md:tracking-wide">
+                    <label className="block text-[11px] md:text-[15px] font-medium text-[#888780] md:text-[#141414] mb-1 md:mb-3 uppercase tracking-[1px] md:tracking-[0.13em] font-geist">
                       Nombre
                     </label>
                     <input
@@ -112,12 +184,12 @@ function ContactoPage() {
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full border border-[rgba(44,44,42,0.12)] md:border-[#14141420] bg-white md:bg-transparent px-3 py-2.5 md:p-4 text-[13px] md:text-base text-[#141414] focus:border-[#141414] focus:outline-none transition-colors rounded-[3px] placeholder:text-[#B4B2A9] placeholder:text-[13px] md:placeholder:text-base"
+                      className="w-full border border-[rgba(44,44,42,0.12)] md:border-[#14141420] bg-white md:bg-transparent px-3 py-2.5 md:px-5 md:py-4 text-[13px] md:text-lg text-[#141414] focus:border-[#141414] focus:outline-none transition-colors rounded-sm placeholder:text-[#B4B2A9] placeholder:text-[13px] md:placeholder:text-base"
                       placeholder="Tu nombre"
                     />
                   </div>
                   <div>
-                    <label className="block text-[11px] md:text-sm font-medium text-[#888780] md:text-[#141414] mb-1 md:mb-2 uppercase tracking-[1px] md:tracking-wide">
+                    <label className="block text-[11px] md:text-[15px] font-medium text-[#888780] md:text-[#141414] mb-1 md:mb-3 uppercase tracking-[1px] md:tracking-[0.13em] font-geist">
                       Email
                     </label>
                     <input
@@ -125,12 +197,12 @@ function ContactoPage() {
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full border border-[rgba(44,44,42,0.12)] md:border-[#14141420] bg-white md:bg-transparent px-3 py-2.5 md:p-4 text-[13px] md:text-base text-[#141414] focus:border-[#141414] focus:outline-none transition-colors rounded-[3px] placeholder:text-[#B4B2A9] placeholder:text-[13px] md:placeholder:text-base"
+                      className="w-full border border-[rgba(44,44,42,0.12)] md:border-[#14141420] bg-white md:bg-transparent px-3 py-2.5 md:px-5 md:py-4 text-[13px] md:text-lg text-[#141414] focus:border-[#141414] focus:outline-none transition-colors rounded-sm placeholder:text-[#B4B2A9] placeholder:text-[13px] md:placeholder:text-base"
                       placeholder="tu@email.com"
                     />
                   </div>
                   <div>
-                    <label className="block text-[11px] md:text-sm font-medium text-[#888780] md:text-[#141414] mb-1 md:mb-2 uppercase tracking-[1px] md:tracking-wide">
+                    <label className="block text-[11px] md:text-[15px] font-medium text-[#888780] md:text-[#141414] mb-1 md:mb-3 uppercase tracking-[1px] md:tracking-[0.13em] font-geist">
                       Mensaje
                     </label>
                     <textarea
@@ -138,14 +210,14 @@ function ContactoPage() {
                       rows={4}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full border border-[rgba(44,44,42,0.12)] md:border-[#14141420] bg-white md:bg-transparent px-3 py-2.5 md:p-4 text-[13px] md:text-base text-[#141414] focus:border-[#141414] focus:outline-none transition-colors resize-y md:resize-none rounded-[3px] min-h-[100px] md:min-h-[180px] placeholder:text-[#B4B2A9] placeholder:text-[13px] md:placeholder:text-base"
+                      className="w-full border border-[rgba(44,44,42,0.12)] md:border-[#14141420] bg-white md:bg-transparent px-3 py-2.5 md:px-5 md:py-4 text-[13px] md:text-lg text-[#141414] focus:border-[#141414] focus:outline-none transition-colors resize-y md:resize-none rounded-sm min-h-[100px] md:min-h-[180px] placeholder:text-[#B4B2A9] placeholder:text-[13px] md:placeholder:text-base"
                       placeholder="Cuentanos sobre tu proyecto..."
                     />
                   </div>
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-[#2C2C2A] text-[#F1EFE8] py-3 md:py-4 font-medium md:font-semibold text-[12px] md:text-sm uppercase tracking-[1.5px] md:tracking-wide hover:bg-[#3a3a38] transition-colors disabled:opacity-50 rounded-[3px] mt-1"
+                    className="w-full bg-[#2C2C2A] text-[#F1EFE8] py-3 md:py-5 font-medium md:font-semibold text-[12px] md:text-sm uppercase tracking-[1.5px] md:tracking-[0.09em] hover:bg-[#3a3a38] transition-colors disabled:opacity-50 rounded-sm mt-1 font-geist"
                   >
                     {isSubmitting ? "ENVIANDO..." : "ENVIAR MENSAJE"}
                   </button>
@@ -165,20 +237,26 @@ function ContactoPage() {
               className="space-y-4 md:space-y-8"
             >
               <div>
-                <h3 className="text-[10px] md:text-2xl font-bold text-[#141414] mb-3 md:mb-6 uppercase tracking-[2.5px] md:tracking-normal">
+                <p
+                  className="hidden md:block text-[15px] uppercase mb-5 font-medium font-geist"
+                  style={{ letterSpacing: "0.13em", color: "#B4B2A9" }}
+                >
+                  CONTACTO DIRECTO
+                </p>
+                <h3 className="text-[10px] md:text-[clamp(42px,4vw,56px)] font-bold md:leading-[0.98] text-[#141414] mb-3 md:mb-8 uppercase tracking-[2.5px] md:tracking-[-0.03em]">
                   Informacion de Contacto
                 </h3>
                 {/* Subtítulo oculto en mobile (aparece en el hero) */}
-                <p className="hidden md:block text-lg text-[#141414aa] mb-8">
-                  ¿Tienes un proyecto en mente? Nos encantaria escucharte.
+                <p className="hidden md:block text-lg text-[#5F5E5A] leading-[1.7] mb-10 max-w-md">
+                  Si preferís ir directo, escribinos por mail o agendamos una llamada para entender el proyecto.
                 </p>
               </div>
 
-              <div className="flex flex-col gap-0.5 md:gap-6">
-                <div className="flex items-center md:items-start gap-2.5 md:gap-4 px-3.5 py-3 md:px-0 md:py-0 bg-[rgba(44,44,42,0.03)] md:bg-transparent rounded-[3px] md:rounded-none">
+              <div className="flex flex-col gap-0.5 md:gap-7">
+                <div className="flex items-center md:items-start gap-2.5 md:gap-5 px-3.5 py-3 md:px-0 md:py-0 bg-[rgba(44,44,42,0.03)] md:bg-transparent rounded-[3px] md:rounded-none">
                   <Mail className="h-4 w-4 md:h-6 md:w-6 text-[#888780] md:text-[#141414] mt-0 md:mt-1 flex-shrink-0" strokeWidth={1.5} />
                   <div>
-                    <p className="text-[10px] md:text-sm font-medium text-[#B4B2A9] md:text-[#141414aa] uppercase tracking-[1px] md:tracking-wide mb-0.5 md:mb-1">
+                    <p className="text-[10px] md:text-sm font-medium text-[#B4B2A9] md:text-[#141414aa] uppercase tracking-[1px] md:tracking-[0.13em] mb-0.5 md:mb-1 font-geist">
                       Email
                     </p>
                     <a
@@ -190,10 +268,10 @@ function ContactoPage() {
                   </div>
                 </div>
 
-                <div className="flex items-center md:items-start gap-2.5 md:gap-4 px-3.5 py-3 md:px-0 md:py-0 bg-[rgba(44,44,42,0.03)] md:bg-transparent rounded-[3px] md:rounded-none">
+                <div className="flex items-center md:items-start gap-2.5 md:gap-5 px-3.5 py-3 md:px-0 md:py-0 bg-[rgba(44,44,42,0.03)] md:bg-transparent rounded-[3px] md:rounded-none">
                   <Phone className="h-4 w-4 md:h-6 md:w-6 text-[#888780] md:text-[#141414] mt-0 md:mt-1 flex-shrink-0" strokeWidth={1.5} />
                   <div>
-                    <p className="text-[10px] md:text-sm font-medium text-[#B4B2A9] md:text-[#141414aa] uppercase tracking-[1px] md:tracking-wide mb-0.5 md:mb-1">
+                    <p className="text-[10px] md:text-sm font-medium text-[#B4B2A9] md:text-[#141414aa] uppercase tracking-[1px] md:tracking-[0.13em] mb-0.5 md:mb-1 font-geist">
                       Telefono
                     </p>
                     <a
@@ -205,10 +283,10 @@ function ContactoPage() {
                   </div>
                 </div>
 
-                <div className="flex items-center md:items-start gap-2.5 md:gap-4 px-3.5 py-3 md:px-0 md:py-0 bg-[rgba(44,44,42,0.03)] md:bg-transparent rounded-[3px] md:rounded-none">
+                <div className="flex items-center md:items-start gap-2.5 md:gap-5 px-3.5 py-3 md:px-0 md:py-0 bg-[rgba(44,44,42,0.03)] md:bg-transparent rounded-[3px] md:rounded-none">
                   <MapPin className="h-4 w-4 md:h-6 md:w-6 text-[#888780] md:text-[#141414] mt-0 md:mt-1 flex-shrink-0" strokeWidth={1.5} />
                   <div>
-                    <p className="text-[10px] md:text-sm font-medium text-[#B4B2A9] md:text-[#141414aa] uppercase tracking-[1px] md:tracking-wide mb-0.5 md:mb-1">
+                    <p className="text-[10px] md:text-sm font-medium text-[#B4B2A9] md:text-[#141414aa] uppercase tracking-[1px] md:tracking-[0.13em] mb-0.5 md:mb-1 font-geist">
                       Ubicacion
                     </p>
                     <p className="text-[13px] md:text-lg font-medium md:font-normal text-[#141414] uppercase md:normal-case leading-[44px] md:leading-normal">
@@ -219,7 +297,7 @@ function ContactoPage() {
               </div>
 
               <div className="pt-3.5 md:pt-8 border-t border-[#14141420]">
-                <p className="text-[10px] md:text-sm font-medium text-[#141414aa] uppercase tracking-[1px] md:tracking-wide mb-3.5 md:mb-4">
+                <p className="text-[10px] md:text-sm font-medium text-[#141414aa] uppercase tracking-[1px] md:tracking-[0.13em] mb-3.5 md:mb-4 font-geist">
                   Siguenos
                 </p>
                 <div className="flex gap-2 md:gap-4">

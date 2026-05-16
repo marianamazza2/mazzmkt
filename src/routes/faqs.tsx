@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import { SEOHead } from "@/components/seo/SEOHead";
 import { PageCTA } from "@/components/sections/page-cta";
+import { TransitionLink } from "@/components/transition/transition-link";
 import { useState } from "react";
 import {
   Plus,
@@ -201,25 +202,29 @@ function FAQsPage() {
       />
 
       {/* Hero */}
-      <section className="bg-dark pt-5 pb-[18px] md:pt-32 md:pb-20 relative overflow-hidden md:min-h-[600px]">
+      <section className="bg-dark pt-5 pb-[18px] md:pt-32 md:pb-16 relative overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="hidden md:block absolute -inset-x-[2%] inset-y-0 bg-no-repeat"
           style={{
-            backgroundImage: `url('/images/hero-pattern.png')`,
-            opacity: 0.20,
+            backgroundImage: `url('/images/hero-home.png')`,
+            backgroundPosition: "center center",
+            backgroundSize: "100% auto",
+            opacity: 0.25,
+            animation: "tv-static 0.45s steps(1) infinite",
           }}
         />
-        <div className="container mx-auto px-6 relative">
+        <div className="container mx-auto px-5 md:px-6 relative">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
+            className="max-w-5xl"
           >
             <motion.p
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-[10px] md:text-sm font-medium text-[#888780] md:text-[#ffffffcc] mb-1.5 md:mb-6 tracking-[1.5px] md:tracking-widest flex items-center gap-3 font-geist"
+              className="text-[10px] md:text-[15px] font-medium text-[#888780] md:text-[#ffffffe0] mb-1.5 md:mb-5 tracking-[1.5px] md:tracking-[0.14em] uppercase flex items-center gap-3 font-geist"
             >
               <span className="opacity-50">MAZZMKT</span>
               <span className="opacity-30">/</span>
@@ -231,6 +236,7 @@ function FAQsPage() {
                 fontSize: "var(--font-display)",
                 lineHeight: "var(--lh-display)",
                 fontWeight: 700,
+                letterSpacing: "-0.035em",
               }}
             >
               PREGUNTAS
@@ -241,12 +247,41 @@ function FAQsPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="faqs-hero-subtitle text-[#ffffffcc] leading-relaxed mt-8 max-w-2xl"
+              className="faqs-hero-subtitle text-[#f1ede1aa] leading-relaxed mt-8 max-w-xl"
               style={{ fontSize: "18px" }}
             >
               Lo que necesitas saber antes de trabajar juntos. Sin letra chica,
               sin vueltas.
             </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.45 }}
+              className="hidden md:flex items-center gap-3 mt-9"
+            >
+              <a
+                href="#faqs"
+                className="inline-flex items-center justify-center rounded-sm bg-[#f1ede1] px-8 py-[15px] text-sm font-semibold uppercase text-[#141414] transition-opacity hover:opacity-85 font-geist"
+                style={{ letterSpacing: "0.09em" }}
+              >
+                VER PREGUNTAS
+                <motion.span
+                  className="inline-block"
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  →
+                </motion.span>
+              </a>
+              <TransitionLink
+                to="/contacto"
+                className="inline-flex items-center justify-center rounded-sm border border-[#f1ede14d] px-8 py-[15px] text-sm font-semibold uppercase text-[#f1ede1] transition-colors hover:border-[#f1ede1] font-geist"
+                style={{ letterSpacing: "0.09em" }}
+              >
+                CONTACTAR
+              </TransitionLink>
+            </motion.div>
 
             {/* Dropdown filtro — solo mobile */}
             <div className="md:hidden mt-3">
@@ -282,7 +317,7 @@ function FAQsPage() {
       </section>
 
       {/* Category Filter — oculto en mobile, visible en desktop */}
-      <section className="hidden md:block bg-light py-8 border-b border-[#14141410]">
+      <section className="hidden md:block bg-light py-7 border-b border-[#14141410]">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -294,11 +329,12 @@ function FAQsPage() {
               <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
-                className={`px-5 py-2.5 text-xs font-semibold tracking-wide transition-all duration-300 ${
+                className={`rounded-sm px-6 py-3 text-sm font-semibold uppercase transition-all duration-300 font-geist ${
                   activeCategory === category
                     ? "bg-[#141414] text-[#ffffff]"
                     : "bg-transparent text-[#141414aa] border border-[#14141420] hover:border-[#141414] hover:text-[#141414]"
                 }`}
+                style={{ letterSpacing: "0.09em" }}
               >
                 {category}
               </button>
@@ -308,8 +344,8 @@ function FAQsPage() {
       </section>
 
       {/* FAQs Section */}
-      <section className="bg-light py-14 md:py-32">
-        <div className="container mx-auto px-6">
+      <section id="faqs" className="bg-light py-14 md:py-20">
+        <div className="container mx-auto px-5 md:px-6">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeCategory}
@@ -317,7 +353,7 @@ function FAQsPage() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
-              className="space-y-0.5 md:space-y-4"
+              className="space-y-0.5 md:space-y-5"
             >
               {filteredFaqs.map((faq, index) => {
                 const isOpen = openId === faq.id;
@@ -329,7 +365,7 @@ function FAQsPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, delay: index * 0.05 }}
-                    className={`border transition-all duration-500 ${
+                    className={`rounded-sm border transition-all duration-500 ${
                       isOpen
                         ? "border-[#141414] bg-[#141414]"
                         : "border-[#14141420] bg-transparent hover:border-[#14141460]"
@@ -337,13 +373,13 @@ function FAQsPage() {
                   >
                     <button
                       onClick={() => toggleFaq(faq.id)}
-                      className="w-full py-3.5 px-4 md:p-6 lg:p-8 flex items-start gap-3 md:gap-4 lg:gap-6 text-left"
+                      className="w-full py-3.5 px-4 md:p-7 lg:p-8 flex items-start gap-3 md:gap-5 lg:gap-6 text-left"
                     >
                       {/* Content */}
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 md:gap-3 mb-1.5 md:mb-2">
                           <IconComponent
-                            className={`w-3 h-3 md:w-4 md:h-4 transition-colors duration-300 ${
+                            className={`w-3 h-3 md:w-5 md:h-5 transition-colors duration-300 ${
                               isOpen ? "text-[#ffffffaa]" : "text-[#141414aa]"
                             }`}
                             strokeWidth={1.5}
@@ -357,9 +393,10 @@ function FAQsPage() {
                           </span>
                         </div>
                         <h3
-                          className={`text-sm md:text-lg lg:text-xl font-bold transition-colors duration-300 ${
+                          className={`text-sm md:text-[22px] lg:text-[26px] font-bold leading-tight transition-colors duration-300 ${
                             isOpen ? "text-[#ffffff]" : "text-[#141414]"
                           }`}
+                          style={{ letterSpacing: "-0.025em" }}
                         >
                           {faq.question}
                         </h3>
@@ -391,8 +428,8 @@ function FAQsPage() {
                           transition={{ duration: 0.3, ease: "easeInOut" }}
                           className="overflow-hidden"
                         >
-                          <div className="px-4 md:px-6 lg:px-8 pb-4 md:pb-8 lg:pb-10">
-                            <p className="faqs-answer-text text-[#ffffffaa] leading-relaxed mb-3 md:mb-6">
+                          <div className="px-4 md:px-7 lg:px-8 pb-4 md:pb-8 lg:pb-10">
+                            <p className="faqs-answer-text max-w-4xl text-[#ffffffaa] md:text-[17px] leading-relaxed mb-3 md:mb-6">
                               {faq.answer}
                             </p>
                             {faq.highlight && (
@@ -406,7 +443,7 @@ function FAQsPage() {
                                   className="w-3 h-3 md:w-4 md:h-4 text-[#ffffff] flex-shrink-0"
                                   strokeWidth={1.5}
                                 />
-                                <span className="text-[#ffffff] text-[11px] md:text-sm font-medium">
+                                <span className="text-[#ffffff] text-[11px] md:text-[15px] font-medium">
                                   {faq.highlight}
                                 </span>
                               </motion.div>
@@ -424,16 +461,16 @@ function FAQsPage() {
       </section>
 
       {/* Quick Stats */}
-      <section className="bg-dark py-14 md:py-32">
-        <div className="container mx-auto px-6">
+      <section className="bg-dark py-14 md:py-20">
+        <div className="container mx-auto px-5 md:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mb-10 md:mb-16"
+            className="mb-10 md:mb-12"
           >
-            <p className="text-sm font-medium text-[#ffffffaa] mb-6 tracking-widest flex items-center gap-3">
+            <p className="text-[10px] md:text-[15px] font-medium text-[#ffffffaa] mb-6 md:mb-5 uppercase tracking-[0.13em] flex items-center gap-3 font-geist">
               <span className="inline-block w-8 h-[1px] bg-[#ffffff]" />
               EN NUMEROS
             </p>
@@ -459,7 +496,7 @@ function FAQsPage() {
                 >
                   {stat.number}
                 </p>
-                <p className="text-xs font-semibold text-[#ffffff] tracking-wide">
+                <p className="text-xs font-semibold text-[#ffffff] uppercase font-geist" style={{ letterSpacing: "0.09em" }}>
                   {stat.label}
                 </p>
                 <p className="text-xs text-[#ffffffaa]">{stat.sublabel}</p>
