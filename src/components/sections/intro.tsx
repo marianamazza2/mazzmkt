@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { TransitionLink } from "@/components/transition/transition-link";
 
-// Word-by-word reveal animation
 function AnimatedWords({ text, className, style }: { text: string; className?: string; style?: React.CSSProperties }) {
   const words = text.split(" ");
 
@@ -30,11 +29,47 @@ function AnimatedWords({ text, className, style }: { text: string; className?: s
 
 export function Intro() {
   return (
-    <section className="bg-light py-14 md:py-24 relative">
-      <div className="container mx-auto px-6">
+    <section className="bg-light relative">
+      {/* Mobile layout */}
+      <div className="md:hidden px-5 pt-8 pb-7">
+        <p
+          className="text-[10px] uppercase mb-2"
+          style={{ letterSpacing: "2.5px", color: "#888780" }}
+        >
+          QUIÉNES SOMOS
+        </p>
+        <h2
+          className="uppercase mb-3"
+          style={{
+            fontSize: "20px",
+            lineHeight: "1.2",
+            letterSpacing: "0.3px",
+            fontWeight: 500,
+            color: "#141414",
+          }}
+        >
+          DESARROLLAMOS MARCAS, ELEVAMOS SU PRESENCIA DIGITAL
+        </h2>
+        <p
+          className="text-[13px] leading-[1.7] mb-5"
+          style={{ color: "#5F5E5A" }}
+        >
+          Conectamos con inteligencia. Cada proyecto empieza entendiendo quién sos, qué necesitás y a quién le hablás.
+        </p>
+        <TransitionLink
+          to="/contacto"
+          className="inline-flex items-center gap-[6px] text-[11px] font-medium uppercase"
+          style={{ letterSpacing: "1.5px", color: "#141414" }}
+        >
+          HAGAMOS CRECER TUS IDEAS →
+        </TransitionLink>
+      </div>
+
+      {/* Desktop layout */}
+      <div className="hidden md:block py-24 container mx-auto px-6">
         <div className="max-w-6xl">
           <h2
-            className="font-bold text-[#141414] mb-6 md:mb-10"
+            className="font-bold text-[#141414] mb-10"
             style={{
               fontSize: "var(--font-h2)",
               lineHeight: "var(--lh-h2)",

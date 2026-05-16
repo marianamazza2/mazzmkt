@@ -1,5 +1,5 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { Code, Palette, MessageCircle, Bot, Zap, Sparkles, Globe, Wand2, Search, Share2 } from "lucide-react";
+import { Code, Palette, MessageCircle, Bot, Zap, Sparkles, Globe, Wand2, Search, Share2, TrendingUp, Shuffle } from "lucide-react";
 import { useRef } from "react";
 import { TransitionLink } from "@/components/transition/transition-link";
 
@@ -63,7 +63,22 @@ const aiServices = [
   },
 ];
 
-// Service card with cursor-following glow effect
+// Datos mobile — lista compacta
+const mobileMainServices = [
+  { number: "01", title: "TU WEB LISTA EN DÍAS", subtitle: "SITIOS WEB · LANDINGS · E-COMMERCE" },
+  { number: "02", title: "REDES QUE CONVIERTEN", subtitle: "GESTIÓN · CONTENIDO · ESTRATEGIA" },
+  { number: "03", title: "BRANDING DIGITAL", subtitle: "IDENTIDAD · MARCA · POSICIONAMIENTO" },
+  { number: "04", title: "WEBS CON IA", subtitle: "AUTOMATIZACIÓN · CHATBOTS · FLUJOS" },
+];
+
+// Grid 2×2 para sección IA en mobile
+const mobileAiCards = [
+  { icon: Globe, title: "WEBS CON IA", desc: "Desarrollo acelerado" },
+  { icon: Bot, title: "CHATBOTS", desc: "Atención 24/7" },
+  { icon: TrendingUp, title: "ANALYTICS", desc: "Datos inteligentes" },
+  { icon: Shuffle, title: "FLUJOS", desc: "Procesos automáticos" },
+];
+
 function ServiceCard({
   service,
   index,
@@ -108,7 +123,6 @@ function ServiceCard({
       className="group relative"
     >
       <div className="relative border border-[#14141420] h-full hover:border-[#141414] hover:bg-[#141414] transition-all duration-300 overflow-hidden rounded-sm">
-        {/* Cursor-following glow */}
         <motion.div
           className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0"
           style={{
@@ -121,7 +135,6 @@ function ServiceCard({
         />
 
         <div className={`relative z-10 ${isMain ? "p-5 md:p-10" : "p-5 md:p-8"}`}>
-          {/* Number index */}
           <div className="flex items-start justify-between mb-6">
             <Icon
               className={`${isMain ? "h-10 w-10" : "h-8 w-8"} text-[#141414] group-hover:text-[#ffffff] transition-colors`}
@@ -134,11 +147,7 @@ function ServiceCard({
 
           <h3
             className="font-bold text-[#141414] group-hover:text-[#ffffff] mb-3 transition-colors"
-            style={{
-              fontSize: "20px",
-              lineHeight: "1.1",
-              fontWeight: 700,
-            }}
+            style={{ fontSize: "20px", lineHeight: "1.1", fontWeight: 700 }}
           >
             {service.title}
           </h3>
@@ -149,14 +158,11 @@ function ServiceCard({
             </p>
           )}
 
-          <p
-            className={`${isMain ? "text-base" : "text-sm"} text-[#141414cc] group-hover:text-[#f1ede1cc] leading-relaxed transition-colors`}
-          >
+          <p className={`${isMain ? "text-base" : "text-sm"} text-[#141414cc] group-hover:text-[#f1ede1cc] leading-relaxed transition-colors`}>
             {service.description}
           </p>
         </div>
 
-        {/* Corner accent on hover */}
         <div className="absolute top-0 right-0 w-12 h-12 overflow-hidden pointer-events-none">
           <div className="absolute top-0 right-0 w-[1px] h-0 bg-[#f1ede1] group-hover:h-12 transition-all duration-300" />
           <div className="absolute top-0 right-0 w-0 h-[1px] bg-[#f1ede1] group-hover:w-12 transition-all duration-300" />
@@ -166,7 +172,6 @@ function ServiceCard({
   );
 }
 
-// Service card for dark background
 function ServiceCardDark({
   service,
   index,
@@ -208,7 +213,6 @@ function ServiceCardDark({
       className="group relative"
     >
       <div className="relative border border-[#ffffff20] h-full hover:border-[#f1ede1] hover:bg-[#f1ede1] transition-all duration-300 overflow-hidden rounded-sm">
-        {/* Cursor-following glow */}
         <motion.div
           className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0"
           style={{
@@ -221,12 +225,8 @@ function ServiceCardDark({
         />
 
         <div className="relative z-10 p-5 md:p-10">
-          {/* Number index */}
           <div className="flex items-start justify-between mb-6">
-            <Icon
-              className="h-10 w-10 text-[#f1ede1] group-hover:text-[#141414] transition-colors"
-              strokeWidth={1.5}
-            />
+            <Icon className="h-10 w-10 text-[#f1ede1] group-hover:text-[#141414] transition-colors" strokeWidth={1.5} />
             <span className="text-4xl md:text-5xl font-bold text-[#ffffff15] group-hover:text-[#14141420] transition-colors duration-300">
               {String(index + 1).padStart(2, "0")}
             </span>
@@ -234,11 +234,7 @@ function ServiceCardDark({
 
           <h3
             className="font-bold text-[#f1ede1] group-hover:text-[#141414] mb-3 transition-colors"
-            style={{
-              fontSize: "20px",
-              lineHeight: "1.1",
-              fontWeight: 700,
-            }}
+            style={{ fontSize: "20px", lineHeight: "1.1", fontWeight: 700 }}
           >
             {service.title}
           </h3>
@@ -252,7 +248,6 @@ function ServiceCardDark({
           </p>
         </div>
 
-        {/* Corner accent on hover */}
         <div className="absolute top-0 right-0 w-12 h-12 overflow-hidden pointer-events-none">
           <div className="absolute top-0 right-0 w-[1px] h-0 bg-[#141414] group-hover:h-12 transition-all duration-300" />
           <div className="absolute top-0 right-0 w-0 h-[1px] bg-[#141414] group-hover:w-12 transition-all duration-300" />
@@ -265,88 +260,150 @@ function ServiceCardDark({
 export function Services() {
   return (
     <>
-      {/* Main Services - Dark Section */}
-      <section className="bg-dark py-14 md:py-24">
-        <div className="container mx-auto px-6">
-          {/* Header */}
+      {/* Main Services — Dark Section */}
+      <section className="bg-dark py-7 md:py-24">
+        <div className="container mx-auto px-5 md:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mb-10 md:mb-20"
+            className="mb-4 md:mb-20"
           >
-            <p className="text-sm font-medium text-[#ffffffaa] mb-6 tracking-widest flex items-center gap-3 font-geist">
+            <p className="text-[10px] font-medium uppercase mb-2 md:text-sm md:mb-6 md:tracking-widest md:flex md:items-center md:gap-3 md:font-geist"
+              style={{ letterSpacing: "2.5px", color: "#888780" }}>
               SERVICIOS DE MARKETING DIGITAL
             </p>
             <h2
-              className="font-bold text-[#ffffff]"
-              style={{
-                fontSize: "20px",
-                lineHeight: "1.1",
-                fontWeight: 700,
-              }}
+              className="font-medium md:font-bold text-[#ffffff] md:mb-0 mb-4"
+              style={{ fontSize: "20px", lineHeight: "1.1", fontWeight: 500 }}
             >
               LO QUE HACEMOS{" "}
-              <span
-                style={{
-                  color: "#ffffff",
-                } as React.CSSProperties}
-              >
-                &raquo;
-              </span>
+              <span className="hidden md:inline" style={{ color: "#ffffff" }}>&raquo;</span>
             </h2>
           </motion.div>
 
-          {/* Main Services */}
-          <div className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar gap-4 pb-4 md:grid md:grid-cols-2 md:overflow-x-visible md:snap-none md:pb-0 md:gap-8">
-            {mainServices.map((service, index) => (
-              <div key={service.title} className="snap-center flex-shrink-0 w-[85vw] md:w-auto">
-                <ServiceCardDark service={service} index={index} />
+          {/* Mobile: lista compacta de servicios */}
+          <div className="md:hidden flex flex-col gap-[2px]">
+            {mobileMainServices.map((service) => (
+              <div
+                key={service.number}
+                className="flex items-center justify-between px-4 py-[14px] rounded-sm"
+                style={{ background: "rgba(241, 239, 232, 0.04)" }}
+              >
+                <div className="flex items-center gap-[10px]">
+                  <span
+                    className="text-[11px] font-medium"
+                    style={{ color: "#B4B2A9", minWidth: "18px" }}
+                  >
+                    {service.number}
+                  </span>
+                  <div>
+                    <p
+                      className="text-[13px] font-medium uppercase"
+                      style={{ letterSpacing: "0.5px", color: "#f1ede1" }}
+                    >
+                      {service.title}
+                    </p>
+                    <p
+                      className="text-[11px] mt-[1px]"
+                      style={{ color: "#888780" }}
+                    >
+                      {service.subtitle}
+                    </p>
+                  </div>
+                </div>
+                <span className="text-[14px]" style={{ color: "#B4B2A9" }}>›</span>
               </div>
+            ))}
+          </div>
+
+          {/* Desktop: carrusel horizontal de cards */}
+          <div className="hidden md:grid md:grid-cols-2 md:gap-8">
+            {mainServices.map((service, index) => (
+              <ServiceCardDark key={service.title} service={service} index={index} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* AI Services - Light Section */}
-      <section className="bg-light py-14 md:py-24">
-        <div className="container mx-auto px-6">
-          {/* AI Services Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-10 md:mb-16"
-        >
-          <p className="text-sm font-medium text-[#141414aa] mb-6 tracking-widest flex items-center gap-3 font-geist">
-            INTELIGENCIA ARTIFICIAL
-          </p>
-          <h2
-            className="font-bold text-[#141414]"
-            style={{
-              fontSize: "20px",
-              lineHeight: "1.1",
-              fontWeight: 700,
-            }}
+      {/* AI Services — Light Section */}
+      <section className="bg-light py-7 md:py-24">
+        <div className="container mx-auto px-5 md:px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="mb-5 md:mb-16"
           >
-            TU NEGOCIO EN{" "}
-            <span className="text-[#141414aa]">MODO IA</span>{" "}
-            <span className="text-[#141414aa]">&raquo;</span>
-          </h2>
-        </motion.div>
+            <p
+              className="text-[10px] uppercase mb-2 md:text-sm md:mb-6 md:tracking-widest md:font-geist"
+              style={{ letterSpacing: "2.5px", color: "#888780" }}
+            >
+              INTELIGENCIA ARTIFICIAL
+            </p>
+            <h2
+              className="font-medium md:font-bold text-[#141414]"
+              style={{ fontSize: "20px", lineHeight: "1.1", fontWeight: 500 }}
+            >
+              TU NEGOCIO EN{" "}
+              <span className="hidden md:inline text-[#141414aa]">MODO IA</span>
+              <span className="md:hidden">MODO IA</span>
+              <span className="hidden md:inline text-[#141414aa]"> &raquo;</span>
+            </h2>
 
-        {/* AI Services Grid */}
-        <div className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar gap-4 pb-4 mb-10 md:grid md:grid-cols-2 lg:grid-cols-3 md:overflow-x-visible md:snap-none md:pb-0 md:gap-6 md:mb-16">
-          {aiServices.map((service, index) => (
-            <div key={service.title} className="snap-center flex-shrink-0 w-[85vw] md:w-auto">
-              <ServiceCard service={service} index={index + 3} variant="ai" />
-            </div>
-          ))}
-        </div>
+            {/* Mobile: párrafo introductorio */}
+            <p
+              className="md:hidden text-[13px] leading-[1.7] mt-3"
+              style={{ color: "#888780" }}
+            >
+              Automatizamos procesos, creamos asistentes inteligentes y aceleramos tu negocio con IA.
+            </p>
+          </motion.div>
 
-          {/* CTA */}
+          {/* Mobile: grid 2×2 */}
+          <div className="md:hidden grid grid-cols-2 gap-[2px] mb-5">
+            {mobileAiCards.map((card) => {
+              const Icon = card.icon;
+              return (
+                <div
+                  key={card.title}
+                  className="px-[14px] py-4 rounded-sm"
+                  style={{ background: "rgba(44, 44, 42, 0.04)" }}
+                >
+                  <Icon
+                    className="mb-[6px]"
+                    size={18}
+                    strokeWidth={1.5}
+                    style={{ color: "#5F5E5A" }}
+                  />
+                  <p
+                    className="text-[12px] font-medium uppercase"
+                    style={{ letterSpacing: "0.5px", color: "#141414" }}
+                  >
+                    {card.title}
+                  </p>
+                  <p
+                    className="text-[11px] mt-[2px] leading-[1.4]"
+                    style={{ color: "#5F5E5A" }}
+                  >
+                    {card.desc}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Desktop: carrusel horizontal de cards */}
+          <div className="hidden md:flex overflow-x-auto snap-x snap-mandatory hide-scrollbar gap-4 pb-4 mb-10 md:grid md:grid-cols-2 lg:grid-cols-3 md:overflow-x-visible md:snap-none md:pb-0 md:gap-6 md:mb-16">
+            {aiServices.map((service, index) => (
+              <div key={service.title} className="snap-center flex-shrink-0 w-[85vw] md:w-auto">
+                <ServiceCard service={service} index={index + 3} variant="ai" />
+              </div>
+            ))}
+          </div>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -355,7 +412,8 @@ export function Services() {
           >
             <TransitionLink
               to="/contacto"
-              className="group inline-flex items-center gap-3 min-h-[44px] text-[#141414] text-base font-semibold uppercase tracking-wide hover:opacity-70 transition-opacity font-geist"
+              className="inline-flex items-center gap-[6px] text-[11px] font-medium uppercase md:gap-3 md:min-h-[44px] md:text-base md:font-semibold md:tracking-wide md:hover:opacity-70 md:transition-opacity md:font-geist"
+              style={{ letterSpacing: "1.5px", color: "#B4B2A9" }}
             >
               QUIERO MI NEGOCIO CON IA
               <motion.span

@@ -201,7 +201,7 @@ function FAQsPage() {
       />
 
       {/* Hero */}
-      <section className="bg-dark pt-24 pb-8 md:pt-32 md:pb-20 relative overflow-hidden md:min-h-[600px]">
+      <section className="bg-dark pt-5 pb-[18px] md:pt-32 md:pb-20 relative overflow-hidden md:min-h-[600px]">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
@@ -219,14 +219,14 @@ function FAQsPage() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-sm font-medium text-[#ffffffcc] mb-6 tracking-widest flex items-center gap-3 font-geist"
+              className="text-[10px] md:text-sm font-medium text-[#888780] md:text-[#ffffffcc] mb-1.5 md:mb-6 tracking-[1.5px] md:tracking-widest flex items-center gap-3 font-geist"
             >
               <span className="opacity-50">MAZZMKT</span>
               <span className="opacity-30">/</span>
               <span>FAQS</span>
             </motion.p>
             <h1
-              className="font-bold text-[#ffffff]"
+              className="faqs-hero-title font-bold text-[#ffffff]"
               style={{
                 fontSize: "var(--font-display)",
                 lineHeight: "var(--lh-display)",
@@ -235,24 +235,54 @@ function FAQsPage() {
             >
               PREGUNTAS
               <br />
-              <span className="text-[#ffffff]">FRECUENTES &raquo;</span>
+              <span className="text-[#ffffff]">FRECUENTES <span className="hidden md:inline">&raquo;</span></span>
             </h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-[#ffffffcc] leading-relaxed mt-8 max-w-2xl"
+              className="faqs-hero-subtitle text-[#ffffffcc] leading-relaxed mt-8 max-w-2xl"
               style={{ fontSize: "18px" }}
             >
               Lo que necesitas saber antes de trabajar juntos. Sin letra chica,
               sin vueltas.
             </motion.p>
+
+            {/* Dropdown filtro — solo mobile */}
+            <div className="md:hidden mt-3">
+              <select
+                value={activeCategory}
+                onChange={(e) => setActiveCategory(e.target.value)}
+                className="w-full appearance-none cursor-pointer focus:outline-none"
+                style={{
+                  padding: "9px 36px 9px 12px",
+                  border: "0.5px solid rgba(255,255,255,0.1)",
+                  borderRadius: "3px",
+                  background: "transparent",
+                  color: "#F1EFE8",
+                  fontFamily: "'DM Sans', sans-serif",
+                  fontSize: "12px",
+                  fontWeight: 500,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.5px",
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%235F5E5A' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 5l3 3 3-3'/%3E%3C/svg%3E")`,
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "right 12px center",
+                }}
+              >
+                {categories.map((cat) => (
+                  <option key={cat} value={cat} style={{ background: "#141414", color: "#F1EFE8" }}>
+                    {cat}
+                  </option>
+                ))}
+              </select>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Category Filter */}
-      <section className="bg-light py-8 border-b border-[#14141410]">
+      {/* Category Filter — oculto en mobile, visible en desktop */}
+      <section className="hidden md:block bg-light py-8 border-b border-[#14141410]">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -287,7 +317,7 @@ function FAQsPage() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
-              className="space-y-4"
+              className="space-y-0.5 md:space-y-4"
             >
               {filteredFaqs.map((faq, index) => {
                 const isOpen = openId === faq.id;
@@ -307,19 +337,19 @@ function FAQsPage() {
                   >
                     <button
                       onClick={() => toggleFaq(faq.id)}
-                      className="w-full p-6 md:p-8 flex items-start gap-4 md:gap-6 text-left"
+                      className="w-full py-3.5 px-4 md:p-6 lg:p-8 flex items-start gap-3 md:gap-4 lg:gap-6 text-left"
                     >
                       {/* Content */}
                       <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-3 mb-2">
+                        <div className="flex items-center gap-2 md:gap-3 mb-1.5 md:mb-2">
                           <IconComponent
-                            className={`w-4 h-4 transition-colors duration-300 ${
+                            className={`w-3 h-3 md:w-4 md:h-4 transition-colors duration-300 ${
                               isOpen ? "text-[#ffffffaa]" : "text-[#141414aa]"
                             }`}
                             strokeWidth={1.5}
                           />
                           <span
-                            className={`text-xs font-semibold tracking-widest transition-colors duration-300 font-geist ${
+                            className={`text-[10px] md:text-xs font-semibold tracking-[1.5px] md:tracking-widest transition-colors duration-300 font-geist ${
                               isOpen ? "text-[#ffffffaa]" : "text-[#141414aa]"
                             }`}
                           >
@@ -327,7 +357,7 @@ function FAQsPage() {
                           </span>
                         </div>
                         <h3
-                          className={`text-lg md:text-xl font-bold transition-colors duration-300 ${
+                          className={`text-sm md:text-lg lg:text-xl font-bold transition-colors duration-300 ${
                             isOpen ? "text-[#ffffff]" : "text-[#141414]"
                           }`}
                         >
@@ -337,16 +367,16 @@ function FAQsPage() {
 
                       {/* Toggle Icon */}
                       <div
-                        className={`w-10 h-10 flex items-center justify-center border transition-all duration-300 flex-shrink-0 ${
+                        className={`w-7 h-7 md:w-10 md:h-10 flex items-center justify-center border transition-all duration-300 flex-shrink-0 ${
                           isOpen
                             ? "border-[#ffffff30] text-[#ffffff]"
                             : "border-[#14141420] text-[#141414]"
                         }`}
                       >
                         {isOpen ? (
-                          <Minus className="w-5 h-5" strokeWidth={1.5} />
+                          <Minus className="w-4 h-4 md:w-5 md:h-5" strokeWidth={1.5} />
                         ) : (
-                          <Plus className="w-5 h-5" strokeWidth={1.5} />
+                          <Plus className="w-4 h-4 md:w-5 md:h-5" strokeWidth={1.5} />
                         )}
                       </div>
                     </button>
@@ -361,8 +391,8 @@ function FAQsPage() {
                           transition={{ duration: 0.3, ease: "easeInOut" }}
                           className="overflow-hidden"
                         >
-                          <div className="px-6 md:px-8 pb-8 md:pb-10">
-                            <p className="text-[#ffffffaa] leading-relaxed mb-6" style={{ fontSize: "18px" }}>
+                          <div className="px-4 md:px-6 lg:px-8 pb-4 md:pb-8 lg:pb-10">
+                            <p className="faqs-answer-text text-[#ffffffaa] leading-relaxed mb-3 md:mb-6">
                               {faq.answer}
                             </p>
                             {faq.highlight && (
@@ -370,13 +400,13 @@ function FAQsPage() {
                                 initial={{ opacity: 0, x: -10 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: 0.2 }}
-                                className="inline-flex items-center gap-3 px-4 py-3 bg-[#ffffff10] border-l-2 border-[#ffffff]"
+                                className="inline-flex items-center gap-2 md:gap-3 px-3 py-2.5 md:px-4 md:py-3 bg-[#ffffff10] border-l-2 border-[#ffffff]"
                               >
                                 <Zap
-                                  className="w-4 h-4 text-[#ffffff] flex-shrink-0"
+                                  className="w-3 h-3 md:w-4 md:h-4 text-[#ffffff] flex-shrink-0"
                                   strokeWidth={1.5}
                                 />
-                                <span className="text-[#ffffff] text-sm font-medium">
+                                <span className="text-[#ffffff] text-[11px] md:text-sm font-medium">
                                   {faq.highlight}
                                 </span>
                               </motion.div>
@@ -439,7 +469,29 @@ function FAQsPage() {
         </div>
       </section>
 
-      <PageCTA />
+      {/* CTA mobile — contextual FAQs */}
+      <section className="md:hidden bg-[#141414] py-7 px-5 text-center">
+        <h2
+          className="font-bold text-[#F1EFE8] mb-1.5"
+          style={{ fontSize: "18px", lineHeight: 1.2, letterSpacing: "0.3px" }}
+        >
+          ¿MÁS DUDAS?
+        </h2>
+        <p className="text-[#5F5E5A] text-xs mb-4">
+          Escribinos y te respondemos en 24h
+        </p>
+        <a
+          href="/contacto"
+          className="inline-flex items-center gap-1.5 bg-[#F1EFE8] text-[#141414] font-medium uppercase rounded-[3px]"
+          style={{ padding: "12px 28px", fontSize: "11px", letterSpacing: "1.5px" }}
+        >
+          CONTACTAR →
+        </a>
+      </section>
+
+      <div className="hidden md:block">
+        <PageCTA />
+      </div>
     </>
   );
 }

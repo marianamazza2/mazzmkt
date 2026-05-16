@@ -25,7 +25,7 @@ function AnimatedText({
           }}
           style={undefined}
         >
-          {char === " " ? "\u00A0" : char}
+          {char === " " ? " " : char}
         </motion.span>
       ))}
     </span>
@@ -34,7 +34,7 @@ function AnimatedText({
 
 export function PageCTA() {
   return (
-    <section className="bg-dark py-14 md:py-24 relative overflow-hidden">
+    <section className="bg-dark py-7 md:py-24 relative overflow-hidden">
       <div className="hidden md:block absolute inset-0 overflow-hidden" style={{ transform: "scaleX(-1)" }}>
         <div
           className="absolute -inset-x-[6%] inset-y-0 bg-cover bg-center"
@@ -45,8 +45,46 @@ export function PageCTA() {
           }}
         />
       </div>
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="text-left md:text-center">
+      <div className="container mx-auto px-5 md:px-6 relative z-10">
+        {/* Mobile: compact static CTA */}
+        <div className="md:hidden text-center">
+          <h2
+            style={{
+              fontSize: "18px",
+              fontWeight: 500,
+              textTransform: "uppercase",
+              letterSpacing: "0.3px",
+              color: "#f1ede1",
+              lineHeight: "1.2",
+              marginBottom: "6px",
+            }}
+          >
+            ¿TENÉS UN PROYECTO?
+          </h2>
+          <p style={{ fontSize: "12px", color: "#5F5E5A", marginBottom: "16px" }}>
+            Hablemos y hagamos algo increíble
+          </p>
+          <TransitionLink
+            to="/contacto"
+            className="inline-flex items-center gap-1.5 rounded-sm"
+            style={{
+              padding: "12px 28px",
+              background: "#f1ede1",
+              color: "#141414",
+              fontSize: "11px",
+              fontWeight: 500,
+              letterSpacing: "1.5px",
+              textTransform: "uppercase",
+              fontFamily: "'DM Sans', sans-serif",
+              minHeight: "unset",
+            }}
+          >
+            COMENZAR PROYECTO →
+          </TransitionLink>
+        </div>
+
+        {/* Desktop: original animated CTA */}
+        <div className="hidden md:block text-center">
           <h2
             className="font-bold text-[#ffffff]"
             style={{
@@ -70,7 +108,7 @@ export function PageCTA() {
           >
             <TransitionLink
               to="/contacto"
-              className="inline-flex items-center justify-center gap-3 bg-[#ffffff] text-[#141414] px-10 py-5 text-base font-semibold uppercase tracking-wide hover:bg-[#ffffff] transition-colors font-geist rounded-sm w-full max-w-xs md:w-auto"
+              className="inline-flex items-center justify-center gap-3 bg-[#ffffff] text-[#141414] px-10 py-5 text-base font-semibold uppercase tracking-wide hover:bg-[#ffffff] transition-colors font-geist rounded-sm"
             >
               COMENZAR PROYECTO
               <motion.span

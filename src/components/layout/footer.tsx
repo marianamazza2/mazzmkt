@@ -1,16 +1,86 @@
+import { Instagram, Linkedin, Phone } from "lucide-react";
 import { TransitionLink } from "@/components/transition/transition-link";
+
+const socials = [
+  { href: "https://instagram.com/mazzmkt", icon: Instagram, label: "Instagram" },
+  { href: "https://linkedin.com/company/mazzmkt", icon: Linkedin, label: "LinkedIn" },
+  { href: "https://wa.me/5491112345678", icon: Phone, label: "WhatsApp" },
+];
 
 export function Footer() {
   return (
-    <footer className="bg-[#141414] text-[#ffffff] py-8 border-t border-[#ffffff15]">
-      <div className="container mx-auto px-6">
+    <footer className="bg-[#141414] text-[#ffffff]" style={{ borderTop: "0.5px solid rgba(241, 239, 232, 0.06)" }}>
+      {/* Mobile layout */}
+      <div className="md:hidden px-5 pt-5 pb-6">
+        <div className="flex justify-between items-center mb-3">
+          <span
+            className="font-medium uppercase"
+            style={{ fontSize: "13px", letterSpacing: "3px", color: "#f1ede1" }}
+          >
+            MAZZMKT
+          </span>
+          <div className="flex gap-2">
+            {socials.map(({ href, icon: Icon, label }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                className="flex items-center justify-center rounded-sm"
+                style={{
+                  width: "28px",
+                  height: "28px",
+                  border: "0.5px solid rgba(241, 239, 232, 0.08)",
+                  color: "#5F5E5A",
+                }}
+              >
+                <Icon size={13} />
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div className="flex flex-wrap gap-3 mb-3">
+          <TransitionLink
+            to="/aviso-legal"
+            className="text-[11px] uppercase inline-flex items-center min-h-[44px]"
+            style={{ color: "#444441", letterSpacing: "0.5px" }}
+          >
+            AVISO LEGAL
+          </TransitionLink>
+          <TransitionLink
+            to="/cookies"
+            className="text-[11px] uppercase inline-flex items-center min-h-[44px]"
+            style={{ color: "#444441", letterSpacing: "0.5px" }}
+          >
+            COOKIES
+          </TransitionLink>
+          <TransitionLink
+            to="/privacidad"
+            className="text-[11px] uppercase inline-flex items-center min-h-[44px]"
+            style={{ color: "#444441", letterSpacing: "0.5px" }}
+          >
+            PRIVACIDAD
+          </TransitionLink>
+        </div>
+
+        <div style={{ height: "0.5px", background: "rgba(241, 239, 232, 0.06)", marginBottom: "8px" }} />
+
+        <p
+          className="text-[11px] uppercase"
+          style={{ letterSpacing: "0.5px", color: "#444441" }}
+        >
+          &copy; {new Date().getFullYear()} MAZZMKT. TODOS LOS DERECHOS RESERVADOS.
+        </p>
+      </div>
+
+      {/* Desktop layout */}
+      <div className="hidden md:block py-8 container mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          {/* Copyright */}
           <p className="text-xs text-[#ffffffaa] order-2 md:order-1">
             &copy; {new Date().getFullYear()} MAZZMKT. TODOS LOS DERECHOS RESERVADOS.
           </p>
-
-          {/* Legal Links */}
           <div className="flex items-center gap-4 order-1 md:order-2 flex-wrap">
             <TransitionLink
               to="/aviso-legal"

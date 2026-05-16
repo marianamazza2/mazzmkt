@@ -401,27 +401,40 @@ function MobileProjectsCarousel({ projects }: { projects: Project[] }) {
       </div>
 
       {/* Dots */}
-      <div className="flex items-center justify-center gap-1.5 mt-3">
-        {projects.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setPage([i, i > current ? 1 : -1])}
-            aria-label={`Proyecto ${i + 1}`}
-            className="flex items-center justify-center p-1"
-          >
-            <span
-              style={{
-                display: "block",
-                width: i === current ? "14px" : "5px",
-                height: "5px",
-                borderRadius: i === current ? "3px" : "50%",
-                backgroundColor: i === current ? "#141414" : "#14141440",
-                transition: "all 0.3s",
-                flexShrink: 0,
-              }}
-            />
-          </button>
-        ))}
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px", padding: "8px 0" }}>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "4px" }}>
+          {projects.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setPage([i, i > current ? 1 : -1])}
+              aria-label={`Proyecto ${i + 1}`}
+              style={{ minHeight: "unset", minWidth: "unset", padding: "6px 4px", display: "flex", alignItems: "center", justifyContent: "center" }}
+            >
+              <span
+                style={{
+                  display: "block",
+                  width: i === current ? "18px" : "3px",
+                  height: "3px",
+                  borderRadius: "1.5px",
+                  backgroundColor: i === current ? "#141414" : "#D3D1C7",
+                  transition: "all 0.3s ease",
+                  flexShrink: 0,
+                }}
+              />
+            </button>
+          ))}
+        </div>
+        <span
+          style={{
+            fontSize: "10px",
+            letterSpacing: "1px",
+            color: "#B4B2A9",
+            textTransform: "uppercase",
+            fontFamily: "'DM Sans', sans-serif",
+          }}
+        >
+          {String(current + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}
+        </span>
       </div>
     </div>
   );

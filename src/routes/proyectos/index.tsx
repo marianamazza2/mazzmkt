@@ -19,7 +19,7 @@ function ProyectosPage() {
 
       {/* Hero Section */}
       <section
-        className="pt-24 pb-12 md:pt-32 md:pb-20 overflow-hidden relative"
+        className="pt-24 max-md:pb-6 pb-12 md:pt-32 md:pb-20 overflow-hidden relative"
         style={{
           backgroundColor: "#141414",
           color: "#f1ede1",
@@ -32,19 +32,29 @@ function ProyectosPage() {
             opacity: 0.20,
           }}
         />
-        <div className="container mx-auto px-6 relative">
+        <div className="container mx-auto px-6 max-md:px-5 relative">
           <div className="max-w-5xl">
             {/* Breadcrumb */}
             <motion.p
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-sm font-medium text-[#f1ede1cc] mb-8 tracking-widest flex items-center gap-3"
+              className="font-medium flex items-center gap-3 mb-8 max-md:mb-1.5"
               style={{ fontFamily: "var(--font-geist)" }}
             >
-              <span className="opacity-50">MAZZMKT</span>
-              <span className="opacity-30">/</span>
-              <span>PROYECTOS</span>
+              {/* Mobile breadcrumb */}
+              <span
+                className="md:hidden"
+                style={{ fontSize: "10px", letterSpacing: "1.5px", color: "#5F5E5A", textTransform: "uppercase" }}
+              >
+                MAZZMKT / PROYECTOS
+              </span>
+              {/* Desktop breadcrumb */}
+              <span className="hidden md:contents text-sm text-[#f1ede1cc] tracking-widest">
+                <span className="opacity-50">MAZZMKT</span>
+                <span className="opacity-30">/</span>
+                <span>PROYECTOS</span>
+              </span>
             </motion.p>
 
             {/* Main Title */}
@@ -57,6 +67,7 @@ function ProyectosPage() {
                 fontSize: "var(--font-display)",
                 lineHeight: "var(--lh-display)",
                 fontWeight: 700,
+                letterSpacing: "-0.3px",
               }}
             >
               NUESTRO
@@ -71,6 +82,7 @@ function ProyectosPage() {
                 lineHeight: "var(--lh-display)",
                 fontWeight: 700,
                 color: "#ffffff",
+                letterSpacing: "-0.3px",
               }}
             >
               TRABAJO
@@ -81,11 +93,21 @@ function ProyectosPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-[#f1ede1aa] mt-8 max-w-xl"
-              style={{ fontSize: "18px" }}
+              className="max-w-xl mt-8 max-md:mt-2"
+              style={{ color: "#f1ede1aa" }}
             >
-              Cada proyecto es una historia de transformación digital.
-              Diseño, tecnología de vanguardia y resultados.
+              {/* Mobile: short text */}
+              <span
+                className="md:hidden"
+                style={{ fontSize: "12px", lineHeight: "1.6", color: "#888780" }}
+              >
+                Cada proyecto es una historia de transformación digital.
+              </span>
+              {/* Desktop: full text */}
+              <span className="hidden md:inline" style={{ fontSize: "18px" }}>
+                Cada proyecto es una historia de transformación digital.
+                Diseño, tecnología de vanguardia y resultados.
+              </span>
             </motion.p>
 
             {/* Stats row */}
@@ -93,21 +115,38 @@ function ProyectosPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="flex gap-12 mt-12"
+              className="flex items-start gap-12 mt-12 max-md:gap-4 max-md:mt-4"
             >
               <div>
-                <p className="text-3xl md:text-5xl font-bold text-[#ffffff]">
+                <p
+                  className="font-bold text-[#ffffff] text-[22px] md:text-5xl"
+                  style={{ letterSpacing: "-0.5px" }}
+                >
                   {projects.length}+
                 </p>
-                <p className="text-xs uppercase tracking-widest text-[#f1ede1aa] mt-1 font-geist">
+                <p
+                  className="uppercase text-[#f1ede1aa] mt-1 font-geist text-[10px] md:text-xs md:tracking-widest"
+                  style={{ letterSpacing: "1.5px" }}
+                >
                   Proyectos
                 </p>
               </div>
+              {/* Mobile divider */}
+              <div
+                className="md:hidden self-stretch"
+                style={{ width: "0.5px", background: "rgba(241, 239, 232, 0.08)" }}
+              />
               <div>
-                <p className="text-3xl md:text-5xl font-bold text-[#ffffff]">
+                <p
+                  className="font-bold text-[#ffffff] text-[22px] md:text-5xl"
+                  style={{ letterSpacing: "-0.5px" }}
+                >
                   98%
                 </p>
-                <p className="text-xs uppercase tracking-widest text-[#f1ede1aa] mt-1 font-geist">
+                <p
+                  className="uppercase text-[#f1ede1aa] mt-1 font-geist text-[10px] md:text-xs md:tracking-widest"
+                  style={{ letterSpacing: "1.5px" }}
+                >
                   Satisfacción
                 </p>
               </div>

@@ -12,12 +12,13 @@ function HomeProjectCard({ project, index }: { project: Project; index: number }
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.6, delay: index * 0.04 }}
     >
-      {/* Mobile: imagen arriba, texto abajo — igual que la página de proyectos */}
-      <div className="md:hidden flex flex-col gap-3">
+      {/* Mobile: imagen arriba + info abajo — fondo beige */}
+      <div className="md:hidden flex flex-col">
         <TransitionLink
           to="/proyectos/$slug"
           params={{ slug: project.slug }}
-          className="block aspect-[16/9] relative overflow-hidden rounded-sm"
+          className="block relative overflow-hidden rounded-sm"
+          style={{ height: "180px" }}
         >
           {project.image ? (
             <img
@@ -26,20 +27,28 @@ function HomeProjectCard({ project, index }: { project: Project; index: number }
               className="w-full h-full object-cover"
             />
           ) : (
-            <div className="w-full h-full bg-gradient-to-br from-[#1a1a1a] to-[#0f0f0f]" />
+            <div className="w-full h-full bg-gradient-to-br from-[#d3d1c7] to-[#b4b2a9]" />
           )}
         </TransitionLink>
-        <div className="flex flex-col gap-1">
-          <span className="text-[10px] font-semibold tracking-widest uppercase text-[#ffffffaa] font-geist">
-            {project.category}
-            {!project.client.toLowerCase().startsWith("proyecto propio") && ` · ${project.client}`}
-          </span>
-          <h3
-            className="font-bold text-[#ffffff] leading-[1.05]"
-            style={{ fontSize: "clamp(18px, 5vw, 28px)" }}
-          >
-            {project.title}
-          </h3>
+        <div
+          className="flex items-baseline justify-between py-2"
+        >
+          <div>
+            <span
+              className="text-[10px] font-semibold uppercase block"
+              style={{ letterSpacing: "1.5px", color: "#B4B2A9" }}
+            >
+              {project.category}
+              {!project.client.toLowerCase().startsWith("proyecto propio") && ` · ${project.client}`}
+            </span>
+            <h3
+              className="font-medium uppercase mt-[2px]"
+              style={{ fontSize: "14px", letterSpacing: "0.5px", color: "#141414" }}
+            >
+              {project.title}
+            </h3>
+          </div>
+          <span className="text-[15px] ml-3 shrink-0" style={{ color: "#B4B2A9" }}>›</span>
         </div>
       </div>
 
@@ -55,34 +64,33 @@ export function Projects() {
   const latestProjects = allProjects.slice(0, 3);
 
   return (
-    <section className="bg-dark py-14 md:py-32 relative overflow-hidden">
-      <div className="container mx-auto px-6 relative">
+    <section className="bg-dark max-md:bg-light py-7 md:py-32 relative overflow-hidden">
+      <div className="container mx-auto px-5 md:px-6 relative">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-10 md:mb-16"
+          className="mb-4 md:mb-16"
         >
-          <p className="text-sm font-medium text-[#ffffffaa] mb-6 tracking-widest flex items-center gap-3 font-geist">
+          <p
+            className="text-[10px] uppercase mb-1 md:text-sm md:mb-6 md:tracking-widest md:font-geist"
+            style={{ letterSpacing: "1.5px", color: "#B4B2A9" }}
+          >
             NUESTRO TRABAJO
           </p>
           <h2
-            className="font-bold text-[#ffffff]"
-            style={{
-              fontSize: "20px",
-              lineHeight: "1.1",
-              fontWeight: 700,
-            }}
+            className="font-medium md:font-bold md:text-[#ffffff]"
+            style={{ fontSize: "20px", lineHeight: "1.1", fontWeight: 500, color: "#141414" }}
           >
             PROYECTOS{" "}
-            <span style={{ color: "#ffffff" } as React.CSSProperties}>&raquo;</span>
+            <span className="hidden md:inline" style={{ color: "#ffffff" }}>&raquo;</span>
           </h2>
         </motion.div>
 
-        {/* Projects */}
-        <div className="flex flex-col gap-8 md:gap-6 mb-12">
+        {/* Projects list */}
+        <div className="flex flex-col gap-3 md:gap-6 mb-5 md:mb-12">
           {latestProjects.map((project, index) => (
             <HomeProjectCard key={project.id} project={project} index={index} />
           ))}
@@ -94,11 +102,26 @@ export function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="flex justify-start"
+          className="flex max-md:justify-center md:justify-start"
         >
+          {/* Mobile: botón con borde */}
           <TransitionLink
             to="/proyectos"
-            className="group inline-flex items-center gap-3 min-h-[44px] text-[#ffffff] text-base font-semibold uppercase tracking-wide hover:opacity-70 transition-opacity font-geist"
+            className="md:hidden inline-flex items-center justify-center rounded-sm text-[11px] font-medium uppercase"
+            style={{
+              padding: "11px 24px",
+              letterSpacing: "1.5px",
+              border: "0.5px solid rgba(44,44,42,0.15)",
+              color: "#141414",
+            }}
+          >
+            VER TODOS →
+          </TransitionLink>
+
+          {/* Desktop: link original */}
+          <TransitionLink
+            to="/proyectos"
+            className="hidden md:inline-flex items-center gap-3 min-h-[44px] text-[#ffffff] text-base font-semibold uppercase tracking-wide hover:opacity-70 transition-opacity font-geist"
           >
             VER TODOS LOS PROYECTOS
             <motion.span
