@@ -1,16 +1,16 @@
 import { motion } from "framer-motion";
 
 const words = [
-  "ESTRATEGIA",
-  "CREATIVIDAD",
-  "DEARROLLO WEB",
+  "AUTOMATIZACIÓN",
+  "WORKFLOWS",
+  "DESARROLLO WEB",
+  "PLATAFORMAS A MEDIDA",
+  "WEBAPPS",
   "INTELIGENCIA ARTIFICIAL",
   "BRANDING",
   "REDES SOCIALES",
   "DISEÑO WEB",
-  "AUTOMATIZACIÓN",
   "INNOVACIÓN",
-  "PERFORMANCE",
 ];
 
 function MarqueeRow({ reverse = false }: { reverse?: boolean }) {

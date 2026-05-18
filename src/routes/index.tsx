@@ -5,7 +5,6 @@ import { Marquee } from "@/components/sections/marquee";
 import { Intro } from "@/components/sections/intro";
 import { Services } from "@/components/sections/services";
 import { Projects } from "@/components/sections/projects";
-import { Stats } from "@/components/sections/stats";
 
 export const Route = createFileRoute("/")({
   component: HomePage,
@@ -23,7 +22,6 @@ function HomePage() {
       <Intro />
       <Services />
       <Projects />
-      <Stats />
     </>
   );
 }

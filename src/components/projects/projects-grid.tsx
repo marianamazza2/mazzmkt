@@ -14,7 +14,7 @@ type ViewMode = "showcase" | "grid" | "bento" | "list";
 
 export function ProjectsGrid({ projects }: ProjectsGridProps) {
   const [searchQuery, setSearchQuery] = useState("");
-  const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const [activeCategories, setActiveCategories] = useState<string[]>([]);
   const [viewMode, setViewMode] = useState<ViewMode>("showcase");
   const [hoveredProject, setHoveredProject] = useState<Project | null>(null);
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
@@ -35,11 +35,18 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
         project.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
         project.description.toLowerCase().includes(searchQuery.toLowerCase());
 
-      const matchesCategory = !activeCategory || project.category === activeCategory;
+      const matchesCategory =
+        activeCategories.length === 0 || activeCategories.includes(project.category);
 
       return matchesSearch && matchesCategory;
     });
-  }, [projects, searchQuery, activeCategory]);
+  }, [projects, searchQuery, activeCategories]);
+
+  const toggleCategory = useCallback((category: string) => {
+    setActiveCategories((prev) =>
+      prev.includes(category) ? prev.filter((c) => c !== category) : [...prev, category]
+    );
+  }, []);
 
   // Calculate bento sizes - featured get large, others vary
   const getCardSize = useCallback(
@@ -55,18 +62,23 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
 
   const clearFilters = () => {
     setSearchQuery("");
-    setActiveCategory(null);
+    setActiveCategories([]);
     setIsMobileFilterOpen(false);
   };
 
   const mobileLabel: Record<string, string> = {
     "WebApp": "Webapp",
-    "Diseño y Desarrollo Web": "Web",
+    "Web": "Web",
     "Branding Digital": "Branding",
-    "Gestión de Redes Sociales": "Redes",
+    "Redes Sociales": "Redes",
   };
 
-  const hasActiveFilters = searchQuery !== "" || activeCategory !== null;
+  const filterLabel: Record<string, string> = {
+    "Web": "Diseño y Desarrollo Web",
+    "Redes Sociales": "Gestión de Redes Sociales",
+  };
+
+  const hasActiveFilters = searchQuery !== "" || activeCategories.length > 0;
   const mobileFilterOptions = useMemo(
     () => [
       { value: null, label: "Todos", count: projects.length },
@@ -78,8 +90,12 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
     ],
     [categories, projects]
   );
-  const activeMobileOption =
-    mobileFilterOptions.find((option) => option.value === activeCategory) ?? mobileFilterOptions[0];
+  const mobileBtnLabel =
+    activeCategories.length === 0
+      ? "Todos"
+      : activeCategories.length === 1
+      ? (mobileLabel[activeCategories[0]] ?? activeCategories[0])
+      : `Filtros (${activeCategories.length})`;
 
   return (
     <div className="space-y-5 md:space-y-9">
@@ -175,11 +191,11 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
           <span className="flex min-w-0 items-center gap-2">
             <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#f1ede1]" />
             <span className="truncate font-geist text-[12px] font-semibold uppercase tracking-[0.08em]">
-              {activeMobileOption.label}
+              {mobileBtnLabel}
             </span>
           </span>
           <span className="flex items-center gap-2 text-[#f1ede199]">
-            <span className="font-geist text-[11px]">{activeMobileOption.count}</span>
+            <span className="font-geist text-[11px]">{filteredProjects.length}</span>
             <ChevronDown
               className={`h-4 w-4 transition-transform ${isMobileFilterOpen ? "rotate-180" : ""}`}
             />
@@ -196,15 +212,22 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
               className="absolute left-0 right-0 top-[calc(100%+6px)] z-30 overflow-hidden rounded-sm border border-[#f1ede11f] bg-[#1b1b1b] p-1 shadow-[0_18px_40px_rgba(0,0,0,0.35)]"
             >
               {mobileFilterOptions.map((option) => {
-                const isActive = option.value === activeCategory;
+                const isActive =
+                  option.value === null
+                    ? activeCategories.length === 0
+                    : activeCategories.includes(option.value);
 
                 return (
                   <button
                     key={option.value ?? "todos"}
                     type="button"
                     onClick={() => {
-                      setActiveCategory(option.value);
-                      setIsMobileFilterOpen(false);
+                      if (option.value === null) {
+                        setActiveCategories([]);
+                        setIsMobileFilterOpen(false);
+                      } else {
+                        toggleCategory(option.value);
+                      }
                     }}
                     className={`flex w-full items-center justify-between rounded-[2px] px-3 py-2.5 text-left transition-colors ${
                       isActive
@@ -230,9 +253,9 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
       {/* Desktop Category Filters */}
       <div className="hidden md:flex gap-2 flex-wrap overflow-x-visible">
         <motion.button
-          onClick={() => setActiveCategory(null)}
+          onClick={() => setActiveCategories([])}
           className={`snap-start shrink-0 whitespace-nowrap px-4 py-2 text-xs font-semibold uppercase transition-all duration-300 cursor-pointer font-geist rounded-sm md:text-sm ${
-            activeCategory === null
+            activeCategories.length === 0
               ? "bg-[#141414] text-[#f1ede1] md:bg-[#f1ede1] md:text-[#141414]"
               : "border border-[#14141430] text-[#141414] hover:border-[#141414] md:border-[#f1ede14d] md:text-[#f1ede1] md:hover:border-[#f1ede1]"
           }`}
@@ -244,12 +267,13 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
         </motion.button>
         {categories.map((category) => {
           const count = projects.filter((p) => p.category === category).length;
+          const isActive = activeCategories.includes(category);
           return (
             <motion.button
               key={category}
-              onClick={() => setActiveCategory(category === activeCategory ? null : category)}
+              onClick={() => toggleCategory(category)}
               className={`snap-start shrink-0 whitespace-nowrap px-4 py-2 text-xs font-semibold uppercase transition-all duration-300 cursor-pointer font-geist rounded-sm md:text-sm ${
-                activeCategory === category
+                isActive
                   ? "bg-[#141414] text-[#f1ede1] md:bg-[#f1ede1] md:text-[#141414]"
                   : "border border-[#14141430] text-[#141414] hover:border-[#141414] md:border-[#f1ede14d] md:text-[#f1ede1] md:hover:border-[#f1ede1]"
               }`}
@@ -257,7 +281,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              <span>{category} ({count})</span>
+              <span>{filterLabel[category] ?? category} ({count})</span>
             </motion.button>
           );
         })}
@@ -296,7 +320,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
           </div>
         ) : (
           <MobileProjectsCarousel
-            key={`${searchQuery}-${activeCategory}`}
+            key={`${searchQuery}-${activeCategories.join(",")}`}
             projects={filteredProjects}
           />
         )}

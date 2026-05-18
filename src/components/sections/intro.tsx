@@ -54,7 +54,7 @@ export function Intro() {
           className="text-[13px] leading-[1.7] mb-5"
           style={{ color: "#5F5E5A" }}
         >
-          Conectamos con inteligencia. Cada proyecto empieza entendiendo quién sos, qué necesitás y a quién le hablás.
+          Conectamos con inteligencia. Cada proyecto comienza comprendiendo quién eres, qué necesitas y a quién le hablás.
         </p>
         <TransitionLink
           to="/contacto"

@@ -12,7 +12,7 @@ export const projects: Project[] = [
     about:
       "TrainX nació de un problema concreto: los entrenadores entregan a sus alumnos un PDF estático con el plan de entrenamiento. El usuario tiene que buscar qué día le toca, recordar las series y reps de su semana, y entrenar sin ninguna guía en tiempo real. TrainX convierte ese documento en una app web progresiva que el alumno abre desde el móvil y lo acompaña durante todo el entrenamiento.",
     work: [
-      "Empezamos analizando el plan de entrenamiento en profundidad — dos modalidades (Casa y Gym) con estructuras completamente distintas — e identificando las variables que cambian semana a semana: series, reps, descansos y tiempos de isometría. Modelar bien los datos fue el punto de partida antes de escribir una línea de código.",
+      "Empezamos analizando el plan de entrenamiento en profundidad, dos modalidades (Casa y Gym) con estructuras completamente distintas, e identificando las variables que cambian semana a semana: series, reps, descansos y tiempos de isometría. Modelar bien los datos fue el punto de partida antes de escribir una línea de código.",
       "Diseñamos la arquitectura UX partiendo del flujo real de uso: selector de modalidad, selector de semana con niveles progresivos (Inicial → Intermedio → Avanzado → Pro), navegación por días y acordeones colapsables por cada bloque de entrenamiento. El objetivo era que cualquier usuario entendiera la app en 10 segundos.",
       "El sistema de timers fue el reto técnico central. Diseñamos tres niveles: un cronómetro global que mide la duración total de la sesión, un timer automático para tabatas y circuitos HIIT que guía el trabajo/descanso con beeps y vibración, y un countdown de descanso entre series para biseries y superseries.",
       "La barra flotante resolvió un problema clave de UX: el botón de acción necesitaba estar siempre visible sin importar dónde estuviera el usuario en el scroll. Una barra fija en la parte inferior controla todo el flujo del entrenamiento — estado de serie, countdown de descanso y progreso — sin interrumpir la lectura de los ejercicios.",
@@ -31,7 +31,7 @@ export const projects: Project[] = [
     id: "11",
     title: "Enraíz",
     client: "Cosmética Natural",
-    category: "Diseño y Desarrollo Web",
+    category: "Web",
     description:
       "Branding completo y desarrollo web para Enraíz, una marca de cosmética natural con identidad visual artesanal y orgánica.",
     about:
@@ -78,7 +78,7 @@ export const projects: Project[] = [
     id: "2",
     title: "La Chingona",
     client: "Restaurante mexicano",
-    category: "Diseño y Desarrollo Web",
+    category: "Web",
     description:
       "Diseño de identidad visual y desarrollo web con carrito de compras para La Chingona, una taquería de barrio con mucho carácter.",
     about:
@@ -122,7 +122,7 @@ export const projects: Project[] = [
     id: "3",
     title: "Luciana Hedrera",
     client: "Psicóloga",
-    category: "Diseño y Desarrollo Web",
+    category: "Web",
     description:
       "Diseño y desarrollo del sitio web personal de Luciana Herrera Manara, Doctora en Psicología clínica en Barcelona.",
     about:
@@ -166,7 +166,7 @@ export const projects: Project[] = [
     id: "6",
     title: "El Calambrito",
     client: "Restaurante",
-    category: "Gestión de Redes Sociales",
+    category: "Redes Sociales",
     description: "",
     image: "/images/projects/el-calambrito/cover.webp",
     images: projectImages["el-calambrito"],
@@ -179,7 +179,7 @@ export const projects: Project[] = [
     id: "13",
     title: "Gallego Prada 360",
     client: "The House of Boxing",
-    category: "Diseño y Desarrollo Web",
+    category: "Web",
     description:
       "Rediseño completo de la web de Gallego Prada 360, un gimnasio con larga trayectoria en boxeo y entrenamiento integral.",
     about:
@@ -202,7 +202,7 @@ export const projects: Project[] = [
     id: "15",
     title: "Energy On",
     client: "Energyon",
-    category: "Diseño y Desarrollo Web",
+    category: "Web",
     description:
       "Diseño y desarrollo web para Energyon, empresa de soluciones energéticas en Cádiz con más de 25.000 clientes y 10 años de experiencia.",
     about:

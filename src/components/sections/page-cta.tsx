@@ -1,6 +1,6 @@
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import { TransitionLink } from "@/components/transition/transition-link";
-import { BlinkingCursor } from "@/components/ui/blinking-cursor";
 
 function AnimatedText({
   text,
@@ -9,21 +9,22 @@ function AnimatedText({
   text: string;
   delay?: number;
 }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true });
+
   return (
-    <span className="inline-block">
+    <span ref={ref} className="inline-block">
       {text.split("").map((char, i) => (
         <motion.span
           key={i}
           className="inline-block"
           initial={{ y: 80, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
+          animate={isInView ? { y: 0, opacity: 1 } : { y: 80, opacity: 0 }}
           transition={{
             duration: 0.9,
             delay: delay + i * 0.055,
             ease: [0.16, 1, 0.3, 1],
           }}
-          style={undefined}
         >
           {char === " " ? " " : char}
         </motion.span>
@@ -66,18 +67,8 @@ export function PageCTA() {
           </p>
           <TransitionLink
             to="/contacto"
-            className="inline-flex items-center gap-1.5 rounded-sm"
-            style={{
-              padding: "12px 28px",
-              background: "#f1ede1",
-              color: "#141414",
-              fontSize: "11px",
-              fontWeight: 500,
-              letterSpacing: "1.5px",
-              textTransform: "uppercase",
-              fontFamily: "'DM Sans', sans-serif",
-              minHeight: "unset",
-            }}
+            className="inline-flex items-center justify-center rounded-sm text-[11px] font-medium uppercase"
+            style={{ padding: "11px 20px", letterSpacing: "1.5px", background: "#f1ede1", color: "#141414" }}
           >
             COMENZAR
           </TransitionLink>
@@ -97,7 +88,7 @@ export function PageCTA() {
               <AnimatedText text="HAGAMOS CRECER" delay={0} />
             </div>
             <div className="overflow-hidden mb-10">
-              <AnimatedText text="TUS IDEAS" delay={0.4} /><BlinkingCursor className="text-[#ffffff60]" />
+              <AnimatedText text="TUS IDEAS" delay={0.4} />
             </div>
           </h2>
 
@@ -109,7 +100,7 @@ export function PageCTA() {
           >
             <TransitionLink
               to="/contacto"
-              className="inline-flex items-center justify-center gap-3 bg-[#ffffff] text-[#141414] px-10 py-5 text-sm font-semibold uppercase hover:bg-[#ffffff] hover:opacity-85 transition-opacity font-geist rounded-sm"
+              className="inline-flex items-center justify-center rounded-sm bg-[#f1ede1] px-8 py-[15px] text-sm font-semibold uppercase text-[#141414] transition-opacity hover:opacity-85 font-geist"
               style={{ letterSpacing: "0.09em" }}
             >
               COMENZAR

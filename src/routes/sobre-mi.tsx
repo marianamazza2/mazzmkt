@@ -111,13 +111,13 @@ function SobreMiPage() {
               transition={{ duration: 0.6, delay: 0.5 }}
               className="md:hidden flex gap-[10px] mb-6"
             >
-              <TransitionLink
-                to="/proyectos"
+              <a
+                href="#quienes-somos"
                 className="inline-flex items-center justify-center rounded-sm text-[11px] font-medium uppercase"
                 style={{ padding: "11px 20px", letterSpacing: "1.5px", background: "#f1ede1", color: "#141414" }}
               >
-                VER PROYECTOS
-              </TransitionLink>
+                CONÓCENOS
+              </a>
               <TransitionLink
                 to="/contacto"
                 className="inline-flex items-center justify-center rounded-sm text-[11px] font-medium uppercase"
@@ -139,12 +139,12 @@ function SobreMiPage() {
               transition={{ duration: 0.6, delay: 0.5 }}
               className="hidden md:flex items-center gap-3"
             >
-              <TransitionLink
-                to="/proyectos"
+              <a
+                href="#quienes-somos"
                 className="inline-flex items-center justify-center rounded-sm bg-[#f1ede1] px-8 py-[15px] text-sm font-semibold uppercase text-[#141414] transition-opacity hover:opacity-85 font-geist"
                 style={{ letterSpacing: "0.09em" }}
               >
-                VER PROYECTOS
+                CONÓCENOS
                 <motion.span
                   className="inline-block"
                   animate={{ x: [0, 5, 0] }}
@@ -152,7 +152,7 @@ function SobreMiPage() {
                 >
                   →
                 </motion.span>
-              </TransitionLink>
+              </a>
               <TransitionLink
                 to="/contacto"
                 className="inline-flex items-center justify-center rounded-sm border border-[#f1ede14d] px-8 py-[15px] text-sm font-semibold uppercase text-[#f1ede1] transition-colors hover:border-[#f1ede1] font-geist"
@@ -232,7 +232,7 @@ function SobreMiPage() {
       </section>
 
       {/* Quiénes somos */}
-      <section className="bg-light py-7 md:py-20">
+      <section id="quienes-somos" className="bg-light py-7 md:py-20">
         <div className="container mx-auto px-5 md:px-6">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -248,10 +248,13 @@ function SobreMiPage() {
               DETRÁS DE MAZZMKT
             </p>
             <h2 className="text-[20px] font-medium leading-[1.1] text-[#141414] md:text-[clamp(52px,5vw,64px)] md:font-bold md:leading-[0.95] md:tracking-[-0.03em] mb-3 md:mb-8">
-              QUIÉNES SOMOS <span className="hidden md:inline">&raquo;</span>
+              NUESTRA HISTORIA <span className="hidden md:inline">&raquo;</span>
             </h2>
+            <p className="text-[13px] md:text-lg text-[#5F5E5A] leading-[1.7] mb-4 md:mb-6">
+              MazzMkt nació de una combinación poco usual: recursos humanos, código y diseño. Venimos de entender a las personas antes que a los píxeles, y eso lo cambió todo. Aprendimos que el marketing que realmente funciona, escucha, entiende y conecta.
+            </p>
             <p className="text-[13px] md:text-lg text-[#5F5E5A] leading-[1.7] mb-5 md:mb-8">
-              Hemos pasado de RR. HH. al diseño, del código al marketing. En MazzMkt combinamos empatía, creatividad y tecnología para transformar ideas en experiencias que funcionan.
+              Hoy somos una agencia pequeña con propósito grande. Trabajamos con marcas que quieren más que visibilidad: quieren crecer, diferenciarse y ser recordadas. Combinamos estrategia, creatividad e inteligencia artificial para construir identidades que se ven bien, se sienten bien y convierten. Sin fórmulas copiadas, sin promesas vacías.
             </p>
 
             <div className="flex flex-wrap gap-[10px] md:gap-3">

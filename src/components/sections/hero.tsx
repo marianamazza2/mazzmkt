@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { TransitionLink } from "@/components/transition/transition-link";
-import { BlinkingCursor } from "@/components/ui/blinking-cursor";
 
 export function Hero() {
   return (
@@ -96,7 +95,7 @@ export function Hero() {
                 color: "#ffffff",
               }}
             >
-              Y RESPONDEN<BlinkingCursor className="text-[#ffffff60]" />
+              Y RESPONDEN
             </motion.h1>
           </div>
 

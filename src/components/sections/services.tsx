@@ -12,7 +12,7 @@ const mainServices = [
   },
   {
     icon: Zap,
-    title: "APPS & PLATAFORMAS A MEDIDA",
+    title: "WEB APPS & PLATAFORMAS A MEDIDA",
     subtitle: "WEBAPPS | CRM | SAAS | PORTALES",
     description: "Desarrollamos la herramienta digital que tu negocio necesita. Desde un CRM propio hasta una plataforma completa, construida exactamente como la imaginas.",
   },
@@ -38,8 +38,8 @@ const aiServices = [
   },
   {
     icon: Bot,
-    title: "ASISTENTES IA",
-    description: "Un asistente que conoce tu negocio al 100%, atiende a tus clientes 24/7 y nunca deja escapar una oportunidad de venta.",
+    title: "AUTOMATIZACIÓN",
+    description: "Automatizamos tus procesos y creamos flujos para que tu negocio opere solo. Menos tareas repetitivas, mas tiempo para crecer.",
   },
   {
     icon: MessageCircle,
@@ -112,7 +112,7 @@ function ServiceCard({
       transition={{ duration: 0.6, delay: index * 0.1 }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="group relative"
+      className="group relative h-full"
     >
       <div className="relative border border-[#14141420] h-full hover:border-[#141414] hover:bg-[#141414] transition-all duration-300 overflow-hidden rounded-sm">
         <motion.div
@@ -426,7 +426,7 @@ export function Services() {
           {/* Desktop: carrusel horizontal de cards */}
           <div className="hidden md:flex overflow-x-auto snap-x snap-mandatory hide-scrollbar gap-4 pb-4 mb-10 md:grid md:grid-cols-2 lg:grid-cols-3 md:overflow-x-visible md:snap-none md:pb-0 md:gap-5 md:mb-10">
             {aiServices.map((service, index) => (
-              <div key={service.title} className="snap-center flex-shrink-0 w-[85vw] md:w-auto">
+              <div key={service.title} className="snap-center flex-shrink-0 w-[85vw] md:w-auto h-full">
                 <ServiceCard service={service} index={index + 3} variant="ai" />
               </div>
             ))}
