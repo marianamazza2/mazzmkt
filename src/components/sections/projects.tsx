@@ -43,7 +43,7 @@ function HomeProjectCard({ project, index }: { project: Project; index: number }
             </span>
             <h3
               className="font-medium uppercase mt-[2px]"
-              style={{ fontSize: "14px", letterSpacing: "0.5px", color: "#141414" }}
+              style={{ fontSize: "14px", letterSpacing: "0.5px", color: "#f1ede1" }}
             >
               {project.title}
             </h3>
@@ -64,7 +64,7 @@ export function Projects() {
   const latestProjects = allProjects.slice(0, 3);
 
   return (
-    <section className="bg-dark max-md:bg-light py-7 md:py-20 relative overflow-hidden">
+    <section className="bg-dark py-7 md:py-20 relative overflow-hidden">
       <div className="container mx-auto px-5 md:px-6 relative">
         {/* Header */}
         <motion.div
@@ -81,7 +81,7 @@ export function Projects() {
             NUESTRO TRABAJO
           </p>
           <h2
-            className="block text-[24px] font-semibold leading-none text-[#141414] md:text-[clamp(52px,5vw,64px)] md:font-bold md:leading-[0.95] md:tracking-[-0.03em] md:text-[#ffffff]"
+            className="block text-[24px] font-semibold leading-none text-[#f1ede1] md:text-[clamp(52px,5vw,64px)] md:font-bold md:leading-[0.95] md:tracking-[-0.03em] md:text-[#ffffff]"
             style={{ letterSpacing: "0" }}
           >
             PROYECTOS{" "}
@@ -107,12 +107,11 @@ export function Projects() {
           {/* Mobile: botón con borde */}
           <TransitionLink
             to="/proyectos"
-            className="md:hidden inline-flex min-h-[44px] w-full items-center justify-center rounded-sm text-[11px] font-medium uppercase"
+            className="md:hidden inline-flex min-h-[44px] w-full items-center justify-center rounded-sm text-[11px] font-medium uppercase border border-[#f1ede14d] hover:border-[#f1ede1] transition-colors font-geist"
             style={{
               padding: "11px 24px",
-              letterSpacing: "1px",
-              border: "1px solid rgba(44,44,42,0.25)",
-              color: "#141414",
+              letterSpacing: "0.09em",
+              color: "#f1ede1",
             }}
           >
             VER TODOS LOS PROYECTOS →
