@@ -26,7 +26,7 @@ function ContactoPage() {
     setIsSubmitting(true);
 
     try {
-      await fetch("https://formspree.io/f/YOUR_ID", {
+      await fetch("https://formspree.io/f/mbdblpjq", {
         method: "POST",
         body: JSON.stringify(formData),
         headers: { Accept: "application/json", "Content-Type": "application/json" },

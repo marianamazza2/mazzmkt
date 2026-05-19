@@ -14,7 +14,7 @@ type ViewMode = "showcase" | "grid" | "bento" | "list";
 
 export function ProjectsGrid({ projects }: ProjectsGridProps) {
   const [searchQuery, setSearchQuery] = useState("");
-  const [activeCategories, setActiveCategories] = useState<string[]>([]);
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<ViewMode>("showcase");
   const [hoveredProject, setHoveredProject] = useState<Project | null>(null);
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
@@ -36,16 +36,14 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
         project.description.toLowerCase().includes(searchQuery.toLowerCase());
 
       const matchesCategory =
-        activeCategories.length === 0 || activeCategories.includes(project.category);
+        activeCategory === null || project.category === activeCategory;
 
       return matchesSearch && matchesCategory;
     });
-  }, [projects, searchQuery, activeCategories]);
+  }, [projects, searchQuery, activeCategory]);
 
-  const toggleCategory = useCallback((category: string) => {
-    setActiveCategories((prev) =>
-      prev.includes(category) ? prev.filter((c) => c !== category) : [...prev, category]
-    );
+  const selectCategory = useCallback((category: string) => {
+    setActiveCategory((prev) => (prev === category ? null : category));
   }, []);
 
   // Calculate bento sizes - featured get large, others vary
@@ -62,7 +60,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
 
   const clearFilters = () => {
     setSearchQuery("");
-    setActiveCategories([]);
+    setActiveCategory(null);
     setIsMobileFilterOpen(false);
   };
 
@@ -78,7 +76,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
     "Redes Sociales": "Gestión de Redes Sociales",
   };
 
-  const hasActiveFilters = searchQuery !== "" || activeCategories.length > 0;
+  const hasActiveFilters = searchQuery !== "" || activeCategory !== null;
   const mobileFilterOptions = useMemo(
     () => [
       { value: null, label: "Todos", count: projects.length },
@@ -91,11 +89,9 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
     [categories, projects]
   );
   const mobileBtnLabel =
-    activeCategories.length === 0
+    activeCategory === null
       ? "Todos"
-      : activeCategories.length === 1
-      ? (mobileLabel[activeCategories[0]] ?? activeCategories[0])
-      : `Filtros (${activeCategories.length})`;
+      : (mobileLabel[activeCategory] ?? activeCategory);
 
   return (
     <div className="space-y-5 md:space-y-9">
@@ -214,8 +210,8 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
               {mobileFilterOptions.map((option) => {
                 const isActive =
                   option.value === null
-                    ? activeCategories.length === 0
-                    : activeCategories.includes(option.value);
+                    ? activeCategory === null
+                    : activeCategory === option.value;
 
                 return (
                   <button
@@ -223,10 +219,11 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
                     type="button"
                     onClick={() => {
                       if (option.value === null) {
-                        setActiveCategories([]);
+                        setActiveCategory(null);
                         setIsMobileFilterOpen(false);
                       } else {
-                        toggleCategory(option.value);
+                        selectCategory(option.value);
+                        setIsMobileFilterOpen(false);
                       }
                     }}
                     className={`flex w-full items-center justify-between rounded-[2px] px-3 py-2.5 text-left transition-colors ${
@@ -253,9 +250,9 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
       {/* Desktop Category Filters */}
       <div className="hidden md:flex gap-2 flex-wrap overflow-x-visible">
         <motion.button
-          onClick={() => setActiveCategories([])}
+          onClick={() => setActiveCategory(null)}
           className={`snap-start shrink-0 whitespace-nowrap px-4 py-2 text-xs font-semibold uppercase transition-all duration-300 cursor-pointer font-geist rounded-sm md:text-sm ${
-            activeCategories.length === 0
+            activeCategory === null
               ? "bg-[#141414] text-[#f1ede1] md:bg-[#f1ede1] md:text-[#141414]"
               : "border border-[#14141430] text-[#141414] hover:border-[#141414] md:border-[#f1ede14d] md:text-[#f1ede1] md:hover:border-[#f1ede1]"
           }`}
@@ -267,11 +264,11 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
         </motion.button>
         {categories.map((category) => {
           const count = projects.filter((p) => p.category === category).length;
-          const isActive = activeCategories.includes(category);
+          const isActive = activeCategory === category;
           return (
             <motion.button
               key={category}
-              onClick={() => toggleCategory(category)}
+              onClick={() => selectCategory(category)}
               className={`snap-start shrink-0 whitespace-nowrap px-4 py-2 text-xs font-semibold uppercase transition-all duration-300 cursor-pointer font-geist rounded-sm md:text-sm ${
                 isActive
                   ? "bg-[#141414] text-[#f1ede1] md:bg-[#f1ede1] md:text-[#141414]"
@@ -320,7 +317,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
           </div>
         ) : (
           <MobileProjectsCarousel
-            key={`${searchQuery}-${activeCategories.join(",")}`}
+            key={`${searchQuery}-${activeCategory ?? ""}`}
             projects={filteredProjects}
           />
         )}
@@ -486,15 +483,12 @@ function MobileProjectsCarousel({ projects }: { projects: Project[] }) {
                 )}
               </div>
               {/* Texto debajo — igual que la home */}
-              <div className="flex flex-col gap-1 mt-3">
+              <div className="flex flex-col gap-[3px] mt-3">
                 <span className="text-[10px] font-semibold tracking-widest uppercase text-[#f1ede1aa] font-geist">
                   {project.category}
                   {!project.client.toLowerCase().startsWith("proyecto propio") && ` · ${project.client}`}
                 </span>
-                <h3
-                  className="font-bold text-[#ffffff] leading-[1.05]"
-                  style={{ fontSize: "clamp(18px, 5vw, 24px)" }}
-                >
+                <h3 className="text-[14px] font-semibold text-[#ffffff] leading-[1.2]">
                   {project.title}
                 </h3>
               </div>
@@ -504,15 +498,15 @@ function MobileProjectsCarousel({ projects }: { projects: Project[] }) {
       </div>
 
       {/* Dots */}
-      <div className="flex w-full items-center justify-center pt-4">
-        <div className="mx-auto flex items-center justify-center gap-0.5">
+      <div className="flex w-full items-center justify-center pt-2">
+        <div className="mx-auto flex items-center justify-center gap-0">
           {visibleDots.map((projectIndex) => (
             <button
               key={projectIndex}
               type="button"
               onClick={() => setPage([projectIndex, projectIndex > current ? 1 : -1])}
               aria-label={`Proyecto ${projectIndex + 1}`}
-              className="flex min-h-0 min-w-0 items-center justify-center px-1 py-1"
+              className="flex min-h-0 min-w-0 items-center justify-center px-[3px] py-1"
             >
               <span
                 className="block transition-all duration-300 ease-out"

@@ -100,7 +100,7 @@ export function Projects() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0 }}
           transition={{ duration: 0.6 }}
           className="flex max-md:justify-center md:justify-start"
         >
@@ -111,7 +111,7 @@ export function Projects() {
             style={{
               padding: "11px 24px",
               letterSpacing: "1px",
-              border: "0.5px solid rgba(44,44,42,0.15)",
+              border: "1px solid rgba(44,44,42,0.25)",
               color: "#141414",
             }}
           >

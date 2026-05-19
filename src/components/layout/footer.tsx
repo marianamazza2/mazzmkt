@@ -16,7 +16,7 @@ export function Footer() {
           <img
             src="/images/logo-cropped.png"
             alt="MAZZMKT"
-            className="h-7 w-auto"
+            className="h-20 w-auto"
             style={{ mixBlendMode: "screen", filter: "contrast(10)" }}
           />
           <div className="flex gap-2">
@@ -82,10 +82,10 @@ export function Footer() {
             <img
               src="/images/logo-cropped.png"
               alt="MAZZMKT"
-              className="h-7 w-auto"
+              className="h-20 w-auto block self-center"
               style={{ mixBlendMode: "screen", filter: "contrast(10)" }}
             />
-            <p className="text-xs text-[#ffffffaa]">
+            <p className="text-xs text-[#ffffffaa] leading-none self-center">
               &copy; {new Date().getFullYear()} MAZZMKT. TODOS LOS DERECHOS RESERVADOS.
             </p>
           </div>

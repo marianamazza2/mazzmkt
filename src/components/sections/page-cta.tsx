@@ -35,7 +35,7 @@ function AnimatedText({
 
 export function PageCTA() {
   return (
-    <section className="bg-dark py-7 md:py-20 relative overflow-hidden">
+    <section className="bg-dark pt-14 pb-7 md:py-20 relative overflow-hidden">
       <div className="hidden md:block absolute inset-0 overflow-hidden" style={{ transform: "scaleX(-1)" }}>
         <div
           className="absolute -inset-x-[6%] inset-y-0 bg-cover bg-center"
@@ -60,7 +60,7 @@ export function PageCTA() {
               marginBottom: "6px",
             }}
           >
-            ¿TENÉS UN PROYECTO?
+            ¿TIENES UN PROYECTO?
           </h2>
           <p style={{ fontSize: "12px", color: "#5F5E5A", marginBottom: "16px" }}>
             Hablemos y hagamos algo increíble

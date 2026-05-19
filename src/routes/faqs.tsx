@@ -183,7 +183,7 @@ const categories = [
 ];
 
 function FAQsPage() {
-  const [openId, setOpenId] = useState<number | null>(1);
+  const [openId, setOpenId] = useState<number | null>(null);
   const [activeCategory, setActiveCategory] = useState("TODOS");
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
 
@@ -308,7 +308,7 @@ function FAQsPage() {
               <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
-                className={`rounded-sm px-6 py-3 text-sm font-semibold uppercase transition-all duration-300 font-geist ${
+                className={`rounded-sm px-4 py-2 text-sm font-semibold uppercase transition-all duration-300 font-geist ${
                   activeCategory === category
                     ? "bg-[#141414] text-[#ffffff]"
                     : "bg-transparent text-[#141414aa] border border-[#14141420] hover:border-[#141414] hover:text-[#141414]"

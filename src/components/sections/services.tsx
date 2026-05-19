@@ -1,5 +1,5 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { Code, Palette, MessageCircle, Bot, Zap, Sparkles, Globe, Wand2, Search, Share2, TrendingUp, Shuffle } from "lucide-react";
+import { Code, Palette, MessageCircle, Bot, Zap, Sparkles, Globe, Wand2, Search, Share2 } from "lucide-react";
 import { useRef, useState } from "react";
 import { TransitionLink } from "@/components/transition/transition-link";
 
@@ -63,13 +63,6 @@ const aiServices = [
   },
 ];
 
-// Grid 2×2 para sección IA en mobile
-const mobileAiCards = [
-  { icon: Globe, title: "WEBS CON IA", desc: "Desarrollo acelerado" },
-  { icon: Bot, title: "CHATBOTS", desc: "Atención 24/7" },
-  { icon: TrendingUp, title: "ANALYTICS", desc: "Datos inteligentes" },
-  { icon: Shuffle, title: "FLUJOS", desc: "Procesos automáticos" },
-];
 
 function ServiceCard({
   service,
@@ -252,7 +245,8 @@ function ServiceCardDark({
 }
 
 export function Services() {
-  const [openMobileService, setOpenMobileService] = useState(0);
+  const [openMobileService, setOpenMobileService] = useState(-1);
+  const [openMobileAi, setOpenMobileAi] = useState(-1);
 
   return (
     <>
@@ -390,34 +384,66 @@ export function Services() {
             </p>
           </motion.div>
 
-          {/* Mobile: grid 2×2 */}
-          <div className="md:hidden grid grid-cols-2 gap-[2px] mb-5">
-            {mobileAiCards.map((card) => {
-              const Icon = card.icon;
+          {/* Mobile: lista acordeón de servicios IA */}
+          <div className="md:hidden flex flex-col gap-[2px] mb-5">
+            {aiServices.map((service, index) => {
+              const isOpen = openMobileAi === index;
+              const Icon = service.icon;
+
               return (
                 <div
-                  key={card.title}
-                  className="px-[14px] py-4 rounded-sm"
+                  key={service.title}
+                  className="overflow-hidden rounded-sm"
                   style={{ background: "rgba(44, 44, 42, 0.04)" }}
                 >
-                  <Icon
-                    className="mb-[6px]"
-                    size={18}
-                    strokeWidth={1.5}
-                    style={{ color: "#5F5E5A" }}
-                  />
-                  <p
-                    className="text-[12px] font-medium uppercase"
-                    style={{ letterSpacing: "0.5px", color: "#141414" }}
+                  <button
+                    type="button"
+                    aria-expanded={isOpen}
+                    aria-controls={`mobile-ai-${index}`}
+                    onClick={() => setOpenMobileAi((current) => current === index ? -1 : index)}
+                    className="flex w-full items-center justify-between px-4 py-[14px] text-left"
                   >
-                    {card.title}
-                  </p>
-                  <p
-                    className="text-[11px] mt-[2px] leading-[1.4]"
-                    style={{ color: "#5F5E5A" }}
+                    <div className="flex items-center gap-[10px]">
+                      <span
+                        className="text-[11px] font-medium"
+                        style={{ color: "#777570", minWidth: "18px" }}
+                      >
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <div className="flex items-center gap-[8px]">
+                        <Icon size={14} strokeWidth={1.5} style={{ color: "#5F5E5A" }} />
+                        <p
+                          className="text-[13px] font-medium uppercase"
+                          style={{ letterSpacing: "0.5px", color: "#141414" }}
+                        >
+                          {service.title}
+                        </p>
+                      </div>
+                    </div>
+                    <motion.span
+                      animate={{ rotate: isOpen ? 90 : 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="text-[14px]"
+                      style={{ color: "#888780" }}
+                    >
+                      ›
+                    </motion.span>
+                  </button>
+
+                  <motion.div
+                    id={`mobile-ai-${index}`}
+                    initial={false}
+                    animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
+                    transition={{ duration: 0.25, ease: "easeOut" }}
+                    className="overflow-hidden"
                   >
-                    {card.desc}
-                  </p>
+                    <p
+                      className="px-4 pb-4 pl-[52px] text-[13px] leading-[1.6]"
+                      style={{ color: "#5F5E5A" }}
+                    >
+                      {service.description}
+                    </p>
+                  </motion.div>
                 </div>
               );
             })}
