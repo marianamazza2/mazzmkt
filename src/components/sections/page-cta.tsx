@@ -35,7 +35,7 @@ function AnimatedText({
 
 export function PageCTA() {
   return (
-    <section className="bg-dark pt-14 pb-7 md:py-20 relative overflow-hidden">
+    <section className="bg-dark pt-8 pb-7 md:py-20 relative overflow-hidden">
       <div className="hidden md:block absolute inset-0 overflow-hidden" style={{ transform: "scaleX(-1)" }}>
         <div
           className="absolute -inset-x-[6%] inset-y-0 bg-cover bg-center"
