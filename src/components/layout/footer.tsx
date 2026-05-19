@@ -76,7 +76,7 @@ export function Footer() {
       </div>
 
       {/* Desktop layout */}
-      <div className="hidden md:block py-8 container mx-auto px-6">
+      <div className="hidden md:block py-3 container mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-4 order-2 md:order-1">
             <img

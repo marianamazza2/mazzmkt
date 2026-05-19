@@ -7,6 +7,7 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { PageCTA } from "@/components/sections/page-cta";
 import { WhatsAppButton } from "@/components/ui/whatsapp-button";
+import { CookieBanner } from "@/components/ui/cookie-banner";
 
 export const Route = createRootRoute({
   component: () => (
@@ -20,6 +21,7 @@ export const Route = createRootRoute({
           <PageCTA />
           <Footer />
           <WhatsAppButton />
+          <CookieBanner />
           <PageTransition />
         </TransitionProvider>
       </SmoothScroll>
