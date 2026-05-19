@@ -1,5 +1,5 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { Code, Palette, MessageCircle, Bot, Zap, Sparkles, Globe, Wand2, Search, Share2 } from "lucide-react";
+import { Code, Palette, MessageCircle, Bot, Zap, Sparkles, Globe, Wand2, Search, BarChart2 } from "lucide-react";
 import { useRef, useState } from "react";
 import { TransitionLink } from "@/components/transition/transition-link";
 
@@ -23,10 +23,10 @@ const mainServices = [
     description: "Construimos marcas que la gente recuerda. Desde el nombre hasta cada pixel: coherencia, caracter y una identidad visual que genera confianza instantanea.",
   },
   {
-    icon: Share2,
-    title: "GESTION DE REDES SOCIALES",
-    subtitle: "CONTENIDO | COMUNIDAD | CRECIMIENTO",
-    description: "Gestionamos tus redes con estrategia y coherencia de marca. Contenido que engancha, comunidad que crece y presencia digital que convierte.",
+    icon: BarChart2,
+    title: "ANALYTICS & TRACKING",
+    subtitle: "GA4 | TAG MANAGER | CLARITY | PÍXELES",
+    description: "Configuramos e implementamos las herramientas de medicion que necesitas para entender a tus usuarios, optimizar cada canal y tomar decisiones basadas en datos reales.",
   },
 ];
 

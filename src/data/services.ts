@@ -48,17 +48,17 @@ export const services: Service[] = [
   },
   {
     id: "4",
-    title: "Branding Digital",
-    shortDescription: "Identidad visual que conecta",
+    title: "Analytics & Tracking",
+    shortDescription: "Medicion y datos para tomar mejores decisiones",
     description:
-      "Desarrollamos marcas memorables con sistemas de diseno coherentes para todos los puntos de contacto digitales.",
-    icon: "Palette",
+      "Implementamos y configuramos herramientas de analitica para que entiendas el comportamiento de tus usuarios y optimices cada canal.",
+    icon: "ChartBar",
     features: [
-      "Identidad visual",
-      "Guidelines de marca",
-      "Social media branding",
-      "Motion graphics",
+      "Google Analytics 4",
+      "Google Tag Manager",
+      "Microsoft Clarity",
+      "Meta Pixel y conversion tracking",
     ],
-    slug: "branding-digital",
+    slug: "analytics-tracking",
   },
 ];

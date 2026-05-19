@@ -518,11 +518,10 @@ function FAQsPage() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+          <div className="grid grid-cols-3 md:grid-cols-3 gap-8 md:gap-12 justify-items-center text-center">
             {[
               { number: "2-3", label: "DIAS DESARROLLO", sublabel: "con codigo" },
               { number: "50%", label: "SENA INICIAL", sublabel: "para arrancar" },
-              { number: "15", label: "DIAS SOPORTE", sublabel: "post-lanzamiento" },
               { number: "24H", label: "RESPUESTA", sublabel: "garantizada" },
             ].map((stat, index) => (
               <motion.div
