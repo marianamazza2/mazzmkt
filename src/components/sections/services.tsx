@@ -63,6 +63,13 @@ const aiServices = [
   },
 ];
 
+const mobileAiCards = [
+  { icon: Globe, title: "Webs con IA", subtitle: "En tiempo récord" },
+  { icon: Bot, title: "Automatización", subtitle: "Procesos eficientes" },
+  { icon: MessageCircle, title: "WhatsApp", subtitle: "Ventas en chat" },
+  { icon: Sparkles, title: "IA generativa", subtitle: "Contenido y SEO" },
+];
+
 
 function ServiceCard({
   service,
@@ -246,7 +253,6 @@ function ServiceCardDark({
 
 export function Services() {
   const [openMobileService, setOpenMobileService] = useState(-1);
-  const [openMobileAi, setOpenMobileAi] = useState(-1);
 
   return (
     <>
@@ -384,67 +390,31 @@ export function Services() {
             </p>
           </motion.div>
 
-          {/* Mobile: lista acordeón de servicios IA */}
-          <div className="md:hidden flex flex-col gap-[2px] mb-5">
-            {aiServices.map((service, index) => {
-              const isOpen = openMobileAi === index;
-              const Icon = service.icon;
-
+          {/* Mobile: grid 2x2 de cards IA */}
+          <div className="md:hidden grid grid-cols-2 gap-[2px] mb-5">
+            {mobileAiCards.map((card, index) => {
+              const Icon = card.icon;
               return (
-                <div
-                  key={service.title}
-                  className="overflow-hidden rounded-sm"
-                  style={{ background: "rgba(44, 44, 42, 0.04)" }}
+                <motion.div
+                  key={card.title}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.07 }}
+                  className="rounded-sm p-5"
+                  style={{ background: "#e9e5d9" }}
                 >
-                  <button
-                    type="button"
-                    aria-expanded={isOpen}
-                    aria-controls={`mobile-ai-${index}`}
-                    onClick={() => setOpenMobileAi((current) => current === index ? -1 : index)}
-                    className="flex w-full items-center justify-between px-4 py-[14px] text-left"
+                  <Icon size={20} strokeWidth={1.5} className="mb-4" style={{ color: "#5F5E5A" }} />
+                  <p
+                    className="text-[13px] font-semibold uppercase text-[#141414] mb-1"
+                    style={{ letterSpacing: "0.04em" }}
                   >
-                    <div className="flex items-center gap-[10px]">
-                      <span
-                        className="text-[11px] font-medium"
-                        style={{ color: "#777570", minWidth: "18px" }}
-                      >
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
-                      <div className="flex items-center gap-[8px]">
-                        <Icon size={14} strokeWidth={1.5} style={{ color: "#5F5E5A" }} />
-                        <p
-                          className="text-[13px] font-medium uppercase"
-                          style={{ letterSpacing: "0.5px", color: "#141414" }}
-                        >
-                          {service.title}
-                        </p>
-                      </div>
-                    </div>
-                    <motion.span
-                      animate={{ rotate: isOpen ? 90 : 0 }}
-                      transition={{ duration: 0.2 }}
-                      className="text-[14px]"
-                      style={{ color: "#888780" }}
-                    >
-                      ›
-                    </motion.span>
-                  </button>
-
-                  <motion.div
-                    id={`mobile-ai-${index}`}
-                    initial={false}
-                    animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
-                    transition={{ duration: 0.25, ease: "easeOut" }}
-                    className="overflow-hidden"
-                  >
-                    <p
-                      className="px-4 pb-4 pl-[52px] text-[13px] leading-[1.6]"
-                      style={{ color: "#5F5E5A" }}
-                    >
-                      {service.description}
-                    </p>
-                  </motion.div>
-                </div>
+                    {card.title}
+                  </p>
+                  <p className="text-[12px] text-[#888780] leading-[1.4]">
+                    {card.subtitle}
+                  </p>
+                </motion.div>
               );
             })}
           </div>

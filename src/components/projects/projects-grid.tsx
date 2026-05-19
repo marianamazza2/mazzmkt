@@ -418,110 +418,81 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
 }
 
 function MobileProjectsCarousel({ projects }: { projects: Project[] }) {
-  const [[current, direction], setPage] = useState([0, 0]);
-
-  const paginate = (newDir: number) => {
-    const next = current + newDir;
-    if (next < 0 || next >= projects.length) return;
-    setPage([next, newDir]);
-  };
+  const [current, setCurrent] = useState(0);
 
   const handleDragEnd = (_: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
-    if (info.offset.x < -50) paginate(1);
-    else if (info.offset.x > 50) paginate(-1);
+    if (info.offset.x < -50 && current < projects.length - 1) setCurrent(current + 1);
+    else if (info.offset.x > 50 && current > 0) setCurrent(current - 1);
   };
-
-  const slideVariants = {
-    enter: (dir: number) => ({ x: dir > 0 ? "100%" : "-100%", opacity: 0 }),
-    center: { x: 0, opacity: 1 },
-    exit: (dir: number) => ({ x: dir > 0 ? "-100%" : "100%", opacity: 0 }),
-  };
-
-  const project = projects[current];
-  const visibleDots = (() => {
-    const count = Math.min(3, projects.length);
-    if (count < 3) return Array.from({ length: count }, (_, i) => i);
-
-    const start = Math.min(Math.max(current - 1, 0), projects.length - count);
-    return Array.from({ length: count }, (_, i) => start + i);
-  })();
 
   return (
-    <div className="w-full overflow-hidden">
-      {/* Slide container */}
-      <div className="relative overflow-hidden">
-        <AnimatePresence initial={false} custom={direction} mode="popLayout">
-          <motion.div
-            key={current}
-            custom={direction}
-            variants={slideVariants}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            transition={{ type: "tween", duration: 0.28, ease: "easeInOut" }}
-            drag="x"
-            dragConstraints={{ left: 0, right: 0 }}
-            dragElastic={0}
-            onDragEnd={handleDragEnd}
-            className="w-full touch-pan-y"
-          >
-            <TransitionLink
-              to="/proyectos/$slug"
-              params={{ slug: project.slug }}
-              className="block"
-            >
-              {/* 16/9 image — igual que la home */}
-              <div className="aspect-[16/9] relative overflow-hidden rounded-sm">
-                {project.image ? (
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover"
-                  />
-                ) : (
-                  <div className="w-full h-full bg-gradient-to-br from-[#1a1a1a] to-[#0f0f0f]" />
-                )}
-              </div>
-              {/* Texto debajo — igual que la home */}
-              <div className="flex flex-col gap-[3px] mt-3">
-                <span className="text-[10px] font-semibold tracking-widest uppercase text-[#f1ede1aa] font-geist">
-                  {project.category}
-                  {!project.client.toLowerCase().startsWith("proyecto propio") && ` · ${project.client}`}
-                </span>
-                <h3 className="text-[14px] font-semibold text-[#ffffff] leading-[1.2]">
-                  {project.title}
-                </h3>
-              </div>
-            </TransitionLink>
-          </motion.div>
-        </AnimatePresence>
+    <div className="w-full">
+      {/* Track */}
+      <div className="overflow-hidden">
+        <motion.div
+          className="flex touch-pan-y"
+          animate={{ x: `${-current * 100}%` }}
+          transition={{ type: "tween", duration: 0.28, ease: "easeInOut" }}
+          drag="x"
+          dragConstraints={{ left: 0, right: 0 }}
+          dragElastic={0.08}
+          onDragEnd={handleDragEnd}
+        >
+          {projects.map((project) => (
+            <div key={project.id} className="w-full shrink-0">
+              <TransitionLink
+                to="/proyectos/$slug"
+                params={{ slug: project.slug }}
+                className="block"
+              >
+                <div className="aspect-[16/9] overflow-hidden rounded-sm">
+                  {project.image ? (
+                    <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-[#1a1a1a] to-[#0f0f0f]" />
+                  )}
+                </div>
+                <div className="flex flex-col gap-[3px] mt-3">
+                  <span className="text-[10px] font-semibold tracking-widest uppercase text-[#f1ede1aa] font-geist">
+                    {project.category}
+                    {!project.client.toLowerCase().startsWith("proyecto propio") && ` · ${project.client}`}
+                  </span>
+                  <h3 className="text-[14px] font-semibold text-[#ffffff] leading-[1.2]">
+                    {project.title}
+                  </h3>
+                </div>
+              </TransitionLink>
+            </div>
+          ))}
+        </motion.div>
       </div>
 
-      {/* Dots */}
-      <div className="flex w-full items-center justify-center pt-1">
-        <div className="mx-auto flex items-center justify-center gap-0">
-          {visibleDots.map((projectIndex) => (
-            <button
-              key={projectIndex}
-              type="button"
-              onClick={() => setPage([projectIndex, projectIndex > current ? 1 : -1])}
-              aria-label={`Proyecto ${projectIndex + 1}`}
-              className="flex min-h-0 min-w-0 items-center justify-center px-[3px] py-0.5"
-            >
+      {/* Dots — ventana de 3 */}
+      {(() => {
+        const visibleCount = Math.min(3, projects.length);
+        const windowStart = Math.min(Math.max(current - 1, 0), projects.length - visibleCount);
+        const dots = Array.from({ length: visibleCount }, (_, i) => windowStart + i);
+        return (
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "5px", paddingTop: "10px" }}>
+            {dots.map((dotIndex) => (
               <span
-                className="block transition-all duration-300 ease-out"
+                key={dotIndex}
+                onClick={() => setCurrent(dotIndex)}
                 style={{
-                  width: projectIndex === current ? "18px" : "4px",
+                  display: "block",
+                  width: dotIndex === current ? "18px" : "4px",
                   height: "4px",
-                  borderRadius: "999px",
-                  backgroundColor: projectIndex === current ? "#F1EDE1" : "rgba(241,237,225,0.32)",
+                  borderRadius: "9999px",
+                  backgroundColor: dotIndex === current ? "#F1EDE1" : "rgba(241,237,225,0.32)",
+                  transition: "width 300ms ease-out, background-color 300ms ease-out",
+                  cursor: "pointer",
                   flexShrink: 0,
                 }}
               />
-            </button>
-          ))}
-        </div>
-      </div>
+            ))}
+          </div>
+        );
+      })()}
     </div>
   );
 }
