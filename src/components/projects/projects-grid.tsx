@@ -498,7 +498,7 @@ function MobileProjectsCarousel({ projects }: { projects: Project[] }) {
       </div>
 
       {/* Dots */}
-      <div className="flex w-full items-center justify-center pt-2">
+      <div className="flex w-full items-center justify-center pt-1">
         <div className="mx-auto flex items-center justify-center gap-0">
           {visibleDots.map((projectIndex) => (
             <button
@@ -506,7 +506,7 @@ function MobileProjectsCarousel({ projects }: { projects: Project[] }) {
               type="button"
               onClick={() => setPage([projectIndex, projectIndex > current ? 1 : -1])}
               aria-label={`Proyecto ${projectIndex + 1}`}
-              className="flex min-h-0 min-w-0 items-center justify-center px-[3px] py-1"
+              className="flex min-h-0 min-w-0 items-center justify-center px-[3px] py-0.5"
             >
               <span
                 className="block transition-all duration-300 ease-out"
