@@ -8,11 +8,12 @@ interface ProjectCardProps {
   project: Project;
   index: number;
   size?: "small" | "medium" | "large" | "wide";
+  showFloatingImage?: boolean;
   onMouseEnter?: (project: Project) => void;
   onMouseLeave?: () => void;
 }
 
-export function ProjectCard({ project, index, size = "medium", onMouseEnter, onMouseLeave }: ProjectCardProps) {
+export function ProjectCard({ project, index, size = "medium", showFloatingImage = true, onMouseEnter, onMouseLeave }: ProjectCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [, setIsHovered] = useState(false);
   const isInView = useInView(cardRef, { once: false, margin: "-25% 0px -25% 0px" });
@@ -163,14 +164,14 @@ export function ProjectCard({ project, index, size = "medium", onMouseEnter, onM
         </div>
       </TransitionLink>
 
-      {/* Floating card — mobile: siempre visible; desktop: solo en hover */}
-      {project.image && (
+      {/* Floating card — solo visible en vista showcase */}
+      {showFloatingImage && project.image && (
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-40 w-[65%] h-[65%] shadow-xl border border-[#14141410] overflow-hidden rounded-sm pointer-events-none md:hidden">
           <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
         </div>
       )}
       <AnimatePresence>
-        {isInView && project.image && (
+        {showFloatingImage && isInView && project.image && (
           <motion.div
             initial={{ opacity: 0, scale: 0.88, rotate: -2 }}
             animate={{ opacity: 1, scale: 1, rotate: 0 }}

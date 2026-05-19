@@ -374,6 +374,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
                         project={project}
                         index={index}
                         size={viewMode === "grid" ? "medium" : getCardSize(project, index)}
+                        showFloatingImage={false}
                         onMouseEnter={setHoveredProject}
                         onMouseLeave={() => setHoveredProject(null)}
                       />
