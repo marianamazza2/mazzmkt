@@ -39,7 +39,8 @@ export const services: Service[] = [
       "Combinamos creatividad con analisis de datos para disenar estrategias que generan crecimiento sostenible.",
     icon: "TrendingUp",
     features: [
-      "SEO tecnico y contenidos",
+      "SEO técnico y de contenidos",
+      "Google Search Console y Search Ads 360",
       "Paid media (Meta, Google)",
       "Email marketing automation",
       "CRO y A/B testing",

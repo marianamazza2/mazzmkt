@@ -23,6 +23,8 @@ import {
   MousePointerClick,
   MessageSquare,
   Globe,
+  FileText,
+  Map,
 } from "lucide-react";
 
 export const Route = createFileRoute("/faqs")({
@@ -161,6 +163,33 @@ const faqs: FAQ[] = [
     answer:
       "Auditoría técnica completa, investigación de palabras clave, optimización on-page (títulos, metas, estructura, velocidad), estrategia de contenido, link building, y reportes mensuales con métricas claras.",
     highlight: "SEO técnico + contenido + reportes. Todo medible.",
+  },
+  {
+    id: 23,
+    category: "SEO",
+    icon: Search,
+    question: "¿Gestionáis Google Search Console?",
+    answer:
+      "Sí. Google Search Console es una herramienta clave para entender cómo Google ve tu web: qué páginas indexa, por qué palabras clave apareces, qué errores detecta el rastreo y cómo evoluciona tu presencia orgánica. Lo configuramos, lo conectamos con Analytics y lo monitorizamos de forma continua para detectar caídas, errores de cobertura o oportunidades de mejora antes de que afecten tu posicionamiento.",
+    highlight: "Sin Search Console no sabes cómo te ve Google. Nosotros lo vemos por ti.",
+  },
+  {
+    id: 24,
+    category: "SEO",
+    icon: Map,
+    question: "¿Qué es el sitemap y por qué importa para el SEO?",
+    answer:
+      "El sitemap es un archivo XML que le dice a los motores de búsqueda qué páginas existen en tu web y cómo están organizadas. Sin él, Google tiene que descubrir tu contenido solo, lo que puede llevar más tiempo o dejar páginas sin indexar. Nos encargamos de generarlo, mantenerlo actualizado y enviarlo a Search Console para que tu sitio se rastree de forma eficiente desde el primer día.",
+    highlight: "Sitemap = hoja de ruta para que Google no se pierda nada.",
+  },
+  {
+    id: 25,
+    category: "SEO",
+    icon: FileText,
+    question: "¿Para qué sirve el archivo robots.txt?",
+    answer:
+      "El robots.txt le indica a los rastreadores de Google (y otros buscadores) qué partes de tu web pueden o no pueden visitar. Mal configurado puede bloquear páginas importantes y hundir tu posicionamiento sin que te des cuenta. Auditamos y configuramos el tuyo correctamente: bloqueamos lo que no debe indexarse (páginas de administración, duplicados, parámetros de URL) y nos aseguramos de que nada relevante quede fuera del alcance de Google.",
+    highlight: "Un robots.txt mal hecho puede dejar tu web invisible. Lo hacemos bien.",
   },
   // REDES SOCIALES
   {

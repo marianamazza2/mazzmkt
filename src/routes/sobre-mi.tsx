@@ -251,7 +251,7 @@ function SobreMiPage() {
               NUESTRA HISTORIA <span className="hidden md:inline">&raquo;</span>
             </h2>
             <p className="text-[13px] md:text-lg text-[#5F5E5A] leading-[1.7] mb-4 md:mb-6">
-              MazzMkt nació de una combinación poco usual: recursos humanos, código y diseño. Venimos de entender a las personas antes que a los píxeles, y eso lo cambió todo. Aprendimos que el marketing que realmente funciona, escucha, entiende y conecta.
+              MazzMkt nació de una combinación poco usual: recursos humanos, código, diseño y marketing. Venimos de entender a las personas antes que a los píxeles, y eso lo cambió todo. Aprendimos que el marketing que realmente funciona, escucha, entiende y conecta.
             </p>
             <p className="text-[13px] md:text-lg text-[#5F5E5A] leading-[1.7] mb-5 md:mb-8">
               Hoy somos una agencia pequeña con propósito grande. Trabajamos con marcas que quieren más que visibilidad: quieren crecer, diferenciarse y ser recordadas. Combinamos estrategia, creatividad e inteligencia artificial para construir identidades que se ven bien, se sienten bien y convierten. Sin fórmulas copiadas, sin promesas vacías.
