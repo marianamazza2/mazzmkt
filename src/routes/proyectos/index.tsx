@@ -37,8 +37,8 @@ function ProyectosPage() {
         />
         <div className="container mx-auto px-6 max-md:px-5 relative">
           <div className="max-w-5xl">
-            {/* Breadcrumb */}
-            <motion.p
+            {/* Breadcrumb — h1 semántico */}
+            <motion.h1
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -58,13 +58,10 @@ function ProyectosPage() {
                 <span className="opacity-30">/</span>
                 <span>PROYECTOS</span>
               </span>
-            </motion.p>
+            </motion.h1>
 
-            {/* Main Title */}
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
+            {/* Main Title — tagline visual */}
+            <h2
               className="font-bold text-[#ffffff]"
               style={{
                 fontSize: "var(--font-display)",
@@ -73,23 +70,23 @@ function ProyectosPage() {
                 letterSpacing: "-0.035em",
               }}
             >
-              NUESTRO
-            </motion.h1>
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="font-bold"
-              style={{
-                fontSize: "var(--font-display)",
-                lineHeight: "var(--lh-display)",
-                fontWeight: 700,
-                color: "#ffffff",
-                letterSpacing: "-0.035em",
-              }}
-            >
-              TRABAJO
-            </motion.h1>
+              <motion.span
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="block"
+              >
+                NUESTRO
+              </motion.span>
+              <motion.span
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="block"
+              >
+                TRABAJO
+              </motion.span>
+            </h2>
 
             {/* Subtitle */}
             <motion.p

@@ -74,19 +74,19 @@ export function Projects() {
           transition={{ duration: 0.6 }}
           className="mb-4 md:mb-9"
         >
-          <p
+          <h2
             className="text-[10px] uppercase mb-2 md:text-[15px] md:mb-5 md:font-medium md:font-geist"
             style={{ letterSpacing: "0.13em", color: "#B4B2A9" }}
           >
             NUESTRO TRABAJO
-          </p>
-          <h2
+          </h2>
+          <p
             className="block text-[24px] font-semibold leading-none text-[#f1ede1] md:text-[clamp(52px,5vw,64px)] md:font-bold md:leading-[0.95] md:tracking-[-0.03em] md:text-[#ffffff]"
             style={{ letterSpacing: "0" }}
           >
             PROYECTOS{" "}
             <span className="hidden md:inline" style={{ color: "#ffffff" }}>&raquo;</span>
-          </h2>
+          </p>
         </motion.div>
 
         {/* Projects list */}

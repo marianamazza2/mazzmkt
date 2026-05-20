@@ -42,7 +42,7 @@ function SobreMiPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <motion.p
+            <motion.h1
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -50,17 +50,17 @@ function SobreMiPage() {
               style={{ letterSpacing: "2.5px", color: "#888780" }}
             >
               MAZZMKT / SOBRE MI
-            </motion.p>
+            </motion.h1>
 
-            <motion.p
+            <motion.h1
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="hidden md:block text-[15px] font-medium text-[#ffffffe0] mb-5 uppercase font-geist"
               style={{ letterSpacing: "0.14em" }}
             >
-              SOMOS MAZZMKT ESTRATEGIA & CREATIVIDAD
-            </motion.p>
+              AGENCIA DE MARKETING DIGITAL - QUIENES SOMOS
+            </motion.h1>
 
             <div
               className="font-bold text-[#ffffff] mb-5 md:mb-9"
@@ -71,7 +71,7 @@ function SobreMiPage() {
                 letterSpacing: "-0.035em",
               }}
             >
-              <motion.h1
+              <motion.p
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
@@ -79,8 +79,8 @@ function SobreMiPage() {
                 style={{ fontSize: "inherit", lineHeight: "inherit", fontWeight: "inherit" }}
               >
                 HUMANO
-              </motion.h1>
-              <motion.h1
+              </motion.p>
+              <motion.p
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
@@ -88,7 +88,7 @@ function SobreMiPage() {
                 style={{ fontSize: "inherit", lineHeight: "inherit", fontWeight: "inherit" }}
               >
                 Y DIGITAL
-              </motion.h1>
+              </motion.p>
             </div>
 
             {/* Mobile: subtitle */}

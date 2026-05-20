@@ -266,16 +266,16 @@ export function Services() {
             transition={{ duration: 0.6 }}
             className="mb-4 md:mb-10"
           >
-            <p className="text-[10px] font-medium uppercase mb-2 md:text-[15px] md:mb-5 md:flex md:items-center md:gap-3 md:font-geist"
+            <h2 className="text-[10px] font-medium uppercase mb-2 md:text-[15px] md:mb-5 md:flex md:items-center md:gap-3 md:font-geist"
               style={{ letterSpacing: "0.13em", color: "#a3a199" }}>
-              SERVICIOS DE MARKETING DIGITAL
-            </p>
-            <h2
+              Servicios de Marketing Digital en Barcelona
+            </h2>
+            <p
               className="mb-4 text-[20px] font-medium leading-[1.1] text-[#ffffff] md:mb-0 md:text-[clamp(52px,5vw,64px)] md:font-bold md:leading-[0.95] md:tracking-[-0.03em]"
             >
               LO QUE HACEMOS{" "}
               <span className="hidden md:inline" style={{ color: "#ffffff" }}>&raquo;</span>
-            </h2>
+            </p>
           </motion.div>
 
           {/* Mobile: lista compacta de servicios */}
@@ -366,20 +366,20 @@ export function Services() {
             transition={{ duration: 0.6 }}
             className="mb-5 md:mb-10"
           >
-            <p
+            <h2
               className="text-[10px] uppercase mb-2 md:text-[15px] md:mb-5 md:font-medium md:font-geist"
               style={{ letterSpacing: "0.13em", color: "#77766f" }}
             >
-              INTELIGENCIA ARTIFICIAL
-            </p>
-            <h2
+              Marketing con Inteligencia Artificial
+            </h2>
+            <p
               className="text-[20px] font-medium leading-[1.1] text-[#141414] md:text-[clamp(52px,5vw,64px)] md:font-bold md:leading-[0.95] md:tracking-[-0.03em]"
             >
               TU NEGOCIO EN{" "}
               <span className="hidden md:inline text-[#141414aa]">MODO IA</span>
               <span className="md:hidden">MODO IA</span>
               <span className="hidden md:inline text-[#141414aa]"> &raquo;</span>
-            </h2>
+            </p>
 
             {/* Mobile: párrafo introductorio */}
             <p

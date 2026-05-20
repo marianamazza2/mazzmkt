@@ -66,7 +66,8 @@ function ContactoPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <motion.p
+            {/* Breadcrumb — h1 semántico */}
+            <motion.h1
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -83,7 +84,8 @@ function ContactoPage() {
                 <span className="opacity-30">/</span>
                 <span>CONTACTO</span>
               </span>
-            </motion.p>
+            </motion.h1>
+            {/* Tagline visual */}
             <div
               className="font-bold text-[#ffffff] md:mb-8"
               style={{
@@ -93,7 +95,7 @@ function ContactoPage() {
                 letterSpacing: "-0.035em",
               }}
             >
-              <motion.h1
+              <motion.p
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
@@ -101,8 +103,8 @@ function ContactoPage() {
                 style={{ fontSize: "inherit", lineHeight: "inherit", fontWeight: "inherit" }}
               >
                 HABLEMOS
-              </motion.h1>
-              <motion.h1
+              </motion.p>
+              <motion.p
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
@@ -110,7 +112,7 @@ function ContactoPage() {
                 style={{ fontSize: "inherit", lineHeight: "inherit", fontWeight: "inherit" }}
               >
                 DE TU PROYECTO
-              </motion.h1>
+              </motion.p>
             </div>
             {/* Subtítulo visible solo en mobile */}
             <p className="md:hidden text-[12px] text-[#888780] leading-[1.6] mt-2">
@@ -174,7 +176,7 @@ function ContactoPage() {
             >
               {submitted ? (
                 <div className="border border-[#14141420] p-8 md:p-12 text-center rounded-sm">
-                  <h3 className="text-2xl md:text-[36px] font-bold text-[#141414] mb-4">¡GRACIAS!</h3>
+                  <h2 className="text-2xl md:text-[36px] font-bold text-[#141414] mb-4">¡GRACIAS!</h2>
                   <p className="text-[13px] md:text-lg text-[#141414aa]">Te responderemos lo antes posible.</p>
                 </div>
               ) : (
@@ -247,9 +249,9 @@ function ContactoPage() {
                 >
                   CONTACTO DIRECTO
                 </p>
-                <h3 className="text-[10px] md:text-[clamp(42px,4vw,56px)] font-bold md:leading-[0.98] text-[#141414] mb-3 md:mb-8 uppercase tracking-[2.5px] md:tracking-[-0.03em]">
+                <h2 className="text-[10px] md:text-[clamp(42px,4vw,56px)] font-bold md:leading-[0.98] text-[#141414] mb-3 md:mb-8 uppercase tracking-[2.5px] md:tracking-[-0.03em]">
                   Informacion de Contacto
-                </h3>
+                </h2>
                 {/* Subtítulo oculto en mobile (aparece en el hero) */}
                 <p className="hidden md:block text-lg text-[#5F5E5A] leading-[1.7] mb-10 max-w-md">
                   Si preferís ir directo, escribinos por mail o agendamos una llamada para entender el proyecto.

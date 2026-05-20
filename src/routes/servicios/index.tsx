@@ -32,7 +32,8 @@ function ServiciosPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <motion.p
+            {/* Breadcrumb — h1 semántico */}
+            <motion.h1
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -48,8 +49,9 @@ function ServiciosPage() {
               <span className="opacity-50">MAZZMKT</span>
               <span className="opacity-30">/</span>
               <span>SERVICIOS</span>
-            </motion.p>
-            <h1
+            </motion.h1>
+            {/* Tagline visual */}
+            <p
               className="font-bold text-[#ffffff]"
               style={{
                 fontSize: "var(--font-display)",
@@ -58,7 +60,7 @@ function ServiciosPage() {
               }}
             >
               LO QUE HACEMOS <span className="text-[#ffffff50]">&raquo;</span>
-            </h1>
+            </p>
           </motion.div>
         </div>
       </section>

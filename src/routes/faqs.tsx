@@ -86,7 +86,7 @@ const faqs: FAQ[] = [
     icon: Code,
     question: "¿Código o No-Code? ¿Cuál es mejor para mi proyecto?",
     answer:
-      "Depende de tus objetivos. El No-Code (Webflow, Framer, Wix) es ideal si necesitas una web rápida, con bajo presupuesto y planeas editarla tu mism@. El código a medida es para proyectos que buscan diferenciarse, necesitan funcionalidades específicas, máxima velocidad de carga, o escalar sin limitaciones. Si tu marca busca destacar y transmitir innovación, el código es el camino.",
+      "Depende de tus objetivos. El No-Code (Webflow, Framer, Wix) es ideal si necesitas una web rápida, con bajo presupuesto y planeas editarla tu mism@. El código a medida es para proyectos que buscan diferenciarse, necesitan funcionalidades específicas, máxima velocidad de carga, o escalar sin limitaciones. Si buscas hacer una página web sin templates en Barcelona, con una experiencia realmente propia y preparada para crecer, el código es el camino.",
     highlight: "Si quieres que tu web grite 'esto es premium', necesitas código.",
   },
   {
@@ -95,8 +95,53 @@ const faqs: FAQ[] = [
     icon: Clock,
     question: "¿En cuánto tiempo puedo tener mi web lista?",
     answer:
-      "Con código, una landing o web puede estar lista en 2-3 días hábiles. Esto no incluye el diseño ni branding (si ya lo tienes, volamos). Proyectos más complejos con e-commerce, integraciones o funcionalidades custom pueden tomar 1-3 semanas. El No-Code suele tomar tiempos similares pero con menos flexibilidad para cambios estructurales.",
+      "Con código, una landing page de alta conversión puede estar lista en 2-3 días hábiles si ya tienes el diseño o el branding definido. Proyectos más complejos con e-commerce, integraciones o funcionalidades custom pueden tomar 1-3 semanas. El No-Code suele tomar tiempos similares pero con menos flexibilidad para cambios estructurales.",
     highlight: "2-3 días si ya tienes tu diseño listo. Sin vueltas.",
+  },
+  {
+    id: 26,
+    category: "WEB",
+    icon: Globe,
+    question: "¿Hacéis diseño web para pequeños negocios en Barcelona?",
+    answer:
+      "Sí. Trabajamos diseño web para pequeños negocios en Barcelona que necesitan una presencia digital clara, profesional y orientada a convertir: restaurantes, estudios, gimnasios, profesionales independientes, proyectos locales y marcas que quieren verse más sólidas online. Como agencia de desarrollo web en Barcelona, no hacemos webs genéricas; definimos estructura, mensajes, diseño y desarrollo según el tipo de cliente y el objetivo comercial de la web.",
+    highlight: "Webs para negocios reales: claras, rápidas y pensadas para vender.",
+  },
+  {
+    id: 27,
+    category: "WEB",
+    icon: MousePointerClick,
+    question: "¿Creáis webs profesionales para autónomos en Barcelona?",
+    answer:
+      "Sí. Una web profesional para autónomos en Barcelona tiene que explicar rápido quién eres, qué ofreces, por qué confiar en ti y cómo contratarte. Por eso trabajamos páginas con estructura estratégica, llamadas a la acción claras, diseño cuidado, SEO básico y una experiencia simple para que el usuario llegue al contacto sin perderse.",
+    highlight: "Para autónomos, la web tiene que generar confianza y consultas.",
+  },
+  {
+    id: 28,
+    category: "WEB",
+    icon: BarChart3,
+    question: "¿Cuánto cuesta una página web en España?",
+    answer:
+      "Depende del alcance. No cuesta lo mismo una landing page que una web corporativa, una tienda online o una web con diseño, branding, SEO e integraciones. En España, el precio de una página web profesional suele variar según estrategia, número de secciones, nivel de diseño, desarrollo a medida, contenidos y mantenimiento. Por eso no damos precios cerrados sin entender antes el proyecto: primero analizamos lo que necesitas y después preparamos una propuesta clara.",
+    highlight: "El precio depende del alcance, no de una tarifa genérica.",
+  },
+  {
+    id: 29,
+    category: "WEB",
+    icon: Zap,
+    question: "¿Diseñáis landing pages de alta conversión en Barcelona?",
+    answer:
+      "Sí. Una landing page de alta conversión no es solo una página bonita: necesita una promesa clara, jerarquía visual, copy directo, pruebas de confianza, velocidad de carga y una llamada a la acción bien ubicada. La diseñamos y desarrollamos para campañas, lanzamientos, captación de leads, reservas, ventas o validación de una oferta concreta.",
+    highlight: "Una landing debe guiar al usuario hacia una acción concreta.",
+  },
+  {
+    id: 30,
+    category: "WEB",
+    icon: Search,
+    question: "¿Trabajáis webs para restaurantes, psicólogos, gimnasios o inmobiliarias?",
+    answer:
+      "Sí. Ya trabajamos proyectos de diseño web para restaurante en Barcelona, web para psicólogo, web para gimnasio y branding para inmobiliaria independiente. Cada sector necesita una estructura distinta: un restaurante debe mostrar carta, reservas y personalidad; un psicólogo necesita confianza y claridad; un gimnasio debe transmitir energía y facilitar la conversión; una inmobiliaria independiente necesita profesionalidad, cercanía y credibilidad.",
+    highlight: "Adaptamos la web al sector, no al revés.",
   },
   {
     id: 3,
@@ -290,7 +335,7 @@ function FAQsPage() {
     <>
       <SEOHead
         title="FAQs - Preguntas Frecuentes | MAZZMKT"
-        description="Resolvemos tus dudas sobre desarrollo web, branding y marketing digital. Código vs No-Code, tiempos de entrega, precios y más."
+        description="Preguntas frecuentes sobre diseño web en Barcelona, desarrollo web, landings de alta conversión, webs para autónomos, branding, SEO y marketing digital."
         jsonLd={faqSchema}
       />
 
@@ -518,14 +563,14 @@ function FAQsPage() {
                             {faq.category}
                           </span>
                         </div>
-                        <h3
+                        <h2
                           className={`text-sm md:text-[22px] lg:text-[24px] font-bold leading-tight transition-colors duration-300 ${
                             isOpen ? "text-[#ffffff]" : "text-[#141414]"
                           }`}
                           style={{ letterSpacing: "-0.025em" }}
                         >
                           {faq.question}
-                        </h3>
+                        </h2>
                       </div>
 
                       {/* Toggle Icon */}

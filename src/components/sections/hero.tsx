@@ -21,29 +21,29 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          {/* Mobile: tag pequeño */}
-          <motion.p
+          {/* Mobile: h1 semántico */}
+          <motion.h1
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="md:hidden text-[11px] font-medium uppercase mb-[14px]"
             style={{ letterSpacing: "2.5px", color: "#888780" }}
           >
-            ESTRATEGIA & CREATIVIDAD
-          </motion.p>
+            Agencia de Marketing Digital en Barcelona
+          </motion.h1>
 
-          {/* Desktop: subtítulo original */}
-          <motion.p
+          {/* Desktop: h1 semántico */}
+          <motion.h1
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="hidden md:block text-[15px] font-medium text-[#ffffffe0] mb-5 uppercase font-geist"
             style={{ letterSpacing: "0.14em" }}
           >
-            SOMOS MAZZMKT ESTRATEGIA & CREATIVIDAD
-          </motion.p>
+            Agencia de Marketing Digital en Barcelona
+          </motion.h1>
 
-          <div
+          <h2
             className="font-bold text-[#ffffff] mb-5 md:mb-9"
             style={{
               fontSize: "var(--font-display)",
@@ -52,30 +52,31 @@ export function Hero() {
               letterSpacing: "-0.035em",
             }}
           >
-            <motion.h1
+            <motion.span
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
               className="font-bold text-[#ffffff]"
-              style={{ fontSize: "inherit", lineHeight: "inherit", fontWeight: "inherit" }}
+              style={{ display: "block", fontSize: "inherit", lineHeight: "inherit", fontWeight: "inherit" }}
             >
               CREAMOS MARCAS
-            </motion.h1>
-            <motion.h1
+            </motion.span>
+            <motion.span
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="font-bold text-[#ffffff]"
-              style={{ fontSize: "inherit", lineHeight: "inherit", fontWeight: "inherit" }}
+              style={{ display: "block", fontSize: "inherit", lineHeight: "inherit", fontWeight: "inherit" }}
             >
               QUE SE ENTIENDEN,
-            </motion.h1>
-            <motion.h1
+            </motion.span>
+            <motion.span
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
               className="font-bold"
               style={{
+                display: "block",
                 fontSize: "inherit",
                 lineHeight: "inherit",
                 fontWeight: "inherit",
@@ -83,13 +84,14 @@ export function Hero() {
               }}
             >
               SE SIENTEN
-            </motion.h1>
-            <motion.h1
+            </motion.span>
+            <motion.span
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
               className="font-bold"
               style={{
+                display: "block",
                 fontSize: "inherit",
                 lineHeight: "inherit",
                 fontWeight: "inherit",
@@ -97,8 +99,8 @@ export function Hero() {
               }}
             >
               & RESPONDEN
-            </motion.h1>
-          </div>
+            </motion.span>
+          </h2>
 
           {/* Mobile: párrafo subtítulo */}
           <motion.p
