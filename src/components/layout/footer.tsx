@@ -1,5 +1,6 @@
 import { Instagram, Linkedin, Phone } from "lucide-react";
 import { TransitionLink } from "@/components/transition/transition-link";
+import { trackEvent } from "@/lib/analytics";
 
 const socials = [
   { href: "https://instagram.com/mazzmkt", icon: Instagram, label: "Instagram" },
@@ -34,6 +35,7 @@ export function Footer() {
                   border: "0.5px solid rgba(241, 239, 232, 0.08)",
                   color: "#5F5E5A",
                 }}
+                onClick={label === "WhatsApp" ? () => trackEvent("whatsapp_click", { location: "footer" }) : undefined}
               >
                 <Icon size={13} />
               </a>

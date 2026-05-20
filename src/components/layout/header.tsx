@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { trackEvent } from "@/lib/analytics";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouterState } from "@tanstack/react-router";
 import {
@@ -181,7 +182,10 @@ export function Header() {
             <div className="border-t border-[rgba(255,255,255,0.08)] pt-4 mt-6">
               <TransitionLink
                 to="/contacto"
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  trackEvent("cta_click", { location: "header_mobile", label: "hablemos_de_tu_proyecto" });
+                }}
                 className="flex items-center justify-center w-full py-3.5 rounded-sm bg-[#f1ede1] text-[#141414] text-sm font-medium uppercase mb-3.5"
                 style={{
                   fontFamily: "var(--font-geist)",
@@ -199,6 +203,7 @@ export function Header() {
                     rel="noopener noreferrer"
                     aria-label={label}
                     className="w-9 h-9 rounded-full border border-[rgba(255,255,255,0.10)] flex items-center justify-center text-[rgba(255,255,255,0.4)] hover:border-[rgba(255,255,255,0.30)] transition-colors"
+                    onClick={label === "WhatsApp" ? () => trackEvent("whatsapp_click", { location: "header" }) : undefined}
                   >
                     <SocialIcon size={16} />
                   </a>

@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { SEOHead } from "@/components/seo/SEOHead";
 import { Mail, MessageCircle, Phone, MapPin } from "lucide-react";
 import { useState } from "react";
+import { trackEvent } from "@/lib/analytics";
 
 export const Route = createFileRoute("/contacto")({
   component: ContactoPage,
@@ -31,6 +32,7 @@ function ContactoPage() {
         body: JSON.stringify(formData),
         headers: { Accept: "application/json", "Content-Type": "application/json" },
       });
+      trackEvent("form_submit", { location: "contacto" });
       setSubmitted(true);
     } catch {
       alert("Error al enviar el formulario");
@@ -134,6 +136,7 @@ function ContactoPage() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-3 rounded-sm bg-[#f1ede1] px-8 py-[15px] text-sm font-semibold uppercase text-[#141414] transition-opacity hover:opacity-85 font-geist"
                 style={{ letterSpacing: "0.09em" }}
+                onClick={() => trackEvent("whatsapp_click", { location: "contacto" })}
               >
                 <MessageCircle className="h-4 w-4" strokeWidth={1.8} />
                 WHATSAPP
@@ -149,6 +152,7 @@ function ContactoPage() {
                 href="mailto:mazzmkt360@gmail.com"
                 className="inline-flex items-center justify-center rounded-sm border border-[#f1ede14d] px-8 py-[15px] text-sm font-semibold uppercase text-[#f1ede1] transition-colors hover:border-[#f1ede1] font-geist"
                 style={{ letterSpacing: "0.09em" }}
+                onClick={() => trackEvent("email_click", { location: "contacto" })}
               >
                 ESCRIBIR MAIL
               </a>
@@ -262,6 +266,7 @@ function ContactoPage() {
                     <a
                       href="mailto:mazzmkt360@gmail.com"
                       className="inline-flex items-center min-h-[44px] text-[13px] md:text-lg font-medium md:font-normal text-[#141414] hover:opacity-70 transition-opacity uppercase md:normal-case"
+                      onClick={() => trackEvent("email_click", { location: "contacto_info" })}
                     >
                       mazzmkt360@gmail.com
                     </a>

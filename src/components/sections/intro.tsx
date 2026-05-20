@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { TransitionLink } from "@/components/transition/transition-link";
+import { trackEvent } from "@/lib/analytics";
 
 function AnimatedWords({ text, className, style }: { text: string; className?: string; style?: React.CSSProperties }) {
   const words = text.split(" ");
@@ -60,6 +61,7 @@ export function Intro() {
           to="/contacto"
           className="inline-flex items-center gap-[6px] text-[11px] font-medium uppercase"
           style={{ letterSpacing: "1.5px", color: "#141414" }}
+          onClick={() => trackEvent("cta_click", { location: "intro", label: "hagamos_crecer_tus_ideas" })}
         >
           HAGAMOS CRECER TUS IDEAS →
         </TransitionLink>
@@ -110,6 +112,7 @@ export function Intro() {
               to="/contacto"
               className="group inline-flex items-center justify-center gap-3 rounded-sm bg-[#141414] px-8 py-[15px] text-sm font-semibold uppercase text-[#f1ede1] transition-opacity hover:opacity-85 font-geist"
               style={{ letterSpacing: "0.09em" }}
+              onClick={() => trackEvent("cta_click", { location: "intro", label: "hagamos_crecer_tus_ideas" })}
             >
               HAGAMOS CRECER TUS IDEAS
               <motion.span

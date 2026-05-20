@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { TransitionLink } from "@/components/transition/transition-link";
+import { trackEvent } from "@/lib/analytics";
 
 export function Hero() {
   return (
@@ -121,6 +122,7 @@ export function Hero() {
               to="/proyectos"
               className="inline-flex items-center justify-center rounded-sm text-[11px] font-medium uppercase"
               style={{ padding: "11px 20px", letterSpacing: "1.5px", background: "#f1ede1", color: "#141414" }}
+              onClick={() => trackEvent("cta_click", { location: "hero", label: "ver_proyectos" })}
             >
               VER PROYECTOS
             </TransitionLink>
@@ -134,6 +136,7 @@ export function Hero() {
                 border: "0.5px solid rgba(241,239,232,0.15)",
                 color: "#B4B2A9",
               }}
+              onClick={() => trackEvent("cta_click", { location: "hero", label: "contactar" })}
             >
               CONTACTAR
             </TransitionLink>
@@ -150,6 +153,7 @@ export function Hero() {
               to="/proyectos"
               className="inline-flex items-center justify-center rounded-sm bg-[#f1ede1] px-8 py-[15px] text-sm font-semibold uppercase text-[#141414] transition-opacity hover:opacity-85 font-geist"
               style={{ letterSpacing: "0.09em" }}
+              onClick={() => trackEvent("cta_click", { location: "hero", label: "ver_proyectos" })}
             >
               VER PROYECTOS
               <motion.span
@@ -164,6 +168,7 @@ export function Hero() {
               to="/contacto"
               className="inline-flex items-center justify-center rounded-sm border border-[#f1ede14d] px-8 py-[15px] text-sm font-semibold uppercase text-[#f1ede1] transition-colors hover:border-[#f1ede1] font-geist"
               style={{ letterSpacing: "0.09em" }}
+              onClick={() => trackEvent("cta_click", { location: "hero", label: "contactar" })}
             >
               CONTACTAR
             </TransitionLink>

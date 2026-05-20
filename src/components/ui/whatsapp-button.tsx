@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { trackEvent } from "@/lib/analytics";
 
 function WhatsAppIcon({ className }: { className?: string }) {
   return (
@@ -30,6 +31,7 @@ export function WhatsAppButton() {
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
       aria-label="Contactar por WhatsApp"
+      onClick={() => trackEvent("whatsapp_click", { location: "floating_button" })}
     >
       <WhatsAppIcon className="h-6 w-6" />
     </motion.a>

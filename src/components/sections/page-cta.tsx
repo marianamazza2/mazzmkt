@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { TransitionLink } from "@/components/transition/transition-link";
+import { trackEvent } from "@/lib/analytics";
 
 function AnimatedText({
   text,
@@ -69,6 +70,7 @@ export function PageCTA() {
             to="/contacto"
             className="inline-flex items-center justify-center rounded-sm text-[11px] font-medium uppercase"
             style={{ padding: "11px 20px", letterSpacing: "1.5px", background: "#f1ede1", color: "#141414" }}
+            onClick={() => trackEvent("cta_click", { location: "page_cta", label: "comenzar" })}
           >
             COMENZAR
           </TransitionLink>
@@ -102,6 +104,7 @@ export function PageCTA() {
               to="/contacto"
               className="inline-flex items-center justify-center rounded-sm bg-[#f1ede1] px-8 py-[15px] text-sm font-semibold uppercase text-[#141414] transition-opacity hover:opacity-85 font-geist"
               style={{ letterSpacing: "0.09em" }}
+              onClick={() => trackEvent("cta_click", { location: "page_cta", label: "comenzar" })}
             >
               COMENZAR
             </TransitionLink>
