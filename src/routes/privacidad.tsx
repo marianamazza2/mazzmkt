@@ -48,6 +48,7 @@ function PrivacidadPage() {
   return (
     <>
       <SEOHead
+        noindex
         title="Política de Privacidad | MAZZMKT"
         description="Política de privacidad de MAZZMKT. Información sobre el tratamiento de datos personales, terceros y derechos del usuario."
       />

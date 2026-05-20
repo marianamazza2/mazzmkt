@@ -10,6 +10,7 @@ function CookiesPage() {
   return (
     <>
       <SEOHead
+        noindex
         title="Política de Cookies | MAZZMKT"
         description="Información sobre las cookies y tecnologías de seguimiento que utiliza MAZZMKT, incluyendo Google Analytics, Microsoft Clarity y cómo gestionarlas."
       />

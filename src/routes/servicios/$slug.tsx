@@ -30,11 +30,26 @@ export const Route = createFileRoute("/servicios/$slug")({
 function ServicePage() {
   const { service } = Route.useLoaderData();
 
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": service.title,
+    "description": service.description,
+    "url": `https://mazzmkt.com/servicios/${service.slug}`,
+    "provider": {
+      "@type": "Organization",
+      "@id": "https://mazzmkt.com/#organization",
+      "name": "MAZZMKT",
+    },
+    "areaServed": "ES",
+  };
+
   return (
     <>
       <SEOHead
         title={`${service.title} | MAZZMKT`}
         description={service.description}
+        jsonLd={serviceSchema}
       />
 
       {/* Hero */}

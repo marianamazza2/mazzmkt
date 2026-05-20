@@ -97,7 +97,7 @@ export function ProjectCard({ project, index, size = "medium", showFloatingImage
           {project.image ? (
             <img
               src={project.image}
-              alt={project.title}
+              alt={`${project.title} — ${project.category} para ${project.client}`}
               className="absolute inset-0 w-full h-full object-cover object-cover transition-transform duration-700 group-hover:scale-105 max-md:scale-105"
             />
           ) : (
@@ -167,7 +167,7 @@ export function ProjectCard({ project, index, size = "medium", showFloatingImage
       {/* Floating card — solo visible en vista showcase */}
       {showFloatingImage && project.image && (
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-40 w-[65%] h-[65%] shadow-xl border border-[#14141410] overflow-hidden rounded-sm pointer-events-none md:hidden">
-          <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+          <img src={project.image} alt={`${project.title} — ${project.category} para ${project.client}`} className="w-full h-full object-cover" />
         </div>
       )}
       <AnimatePresence>
@@ -179,7 +179,7 @@ export function ProjectCard({ project, index, size = "medium", showFloatingImage
             transition={{ duration: 0.25, ease: "easeOut" }}
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-40 w-[65%] h-[65%] shadow-xl border border-[#14141410] overflow-hidden rounded-sm pointer-events-none hidden md:block"
           >
-            <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+            <img src={project.image} alt={`${project.title} — ${project.category} para ${project.client}`} className="w-full h-full object-cover" />
           </motion.div>
         )}
       </AnimatePresence>

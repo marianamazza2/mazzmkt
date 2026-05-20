@@ -1,5 +1,5 @@
 import { createRootRoute, Outlet } from "@tanstack/react-router";
-import { HelmetProvider } from "react-helmet-async";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import { SmoothScroll } from "@/components/effects/smooth-scroll";
 import { TransitionProvider } from "@/components/transition/transition-context";
 import { PageTransition } from "@/components/transition/page-transition";
@@ -9,9 +9,41 @@ import { PageCTA } from "@/components/sections/page-cta";
 import { WhatsAppButton } from "@/components/ui/whatsapp-button";
 import { CookieBanner } from "@/components/ui/cookie-banner";
 
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "MAZZMKT",
+  alternateName: "MazzMkt",
+  url: "https://mazzmkt.com",
+  logo: "https://mazzmkt.com/favicon.png",
+  description: "Agencia de marketing digital. Diseñamos marcas que se entienden, se sienten y responden.",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Barcelona",
+    addressCountry: "ES",
+  },
+  areaServed: "ES",
+  serviceType: [
+    "Marketing Digital",
+    "Desarrollo Web",
+    "Branding Digital",
+    "Growth Marketing",
+    "Marketing con Inteligencia Artificial",
+  ],
+  sameAs: [
+    "https://instagram.com/mazzmkt",
+    "https://linkedin.com/company/mazzmkt",
+  ],
+};
+
 export const Route = createRootRoute({
   component: () => (
     <HelmetProvider>
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(organizationSchema)}
+        </script>
+      </Helmet>
       <SmoothScroll>
         <TransitionProvider>
           <Header />

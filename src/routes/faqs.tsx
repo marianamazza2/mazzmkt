@@ -223,6 +223,19 @@ const categories = [
   "IA",
 ];
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map((faq) => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer,
+    },
+  })),
+};
+
 function FAQsPage() {
   const [openId, setOpenId] = useState<number | null>(null);
   const [activeCategory, setActiveCategory] = useState("TODOS");
@@ -249,6 +262,7 @@ function FAQsPage() {
       <SEOHead
         title="FAQs - Preguntas Frecuentes | MAZZMKT"
         description="Resolvemos tus dudas sobre desarrollo web, branding y marketing digital. Código vs No-Code, tiempos de entrega, precios y más."
+        jsonLd={faqSchema}
       />
 
       {/* Hero */}
@@ -256,7 +270,7 @@ function FAQsPage() {
         <div
           className="hidden md:block absolute -inset-x-[2%] inset-y-0 bg-no-repeat"
           style={{
-            backgroundImage: `url('/images/hero-home.png')`,
+            backgroundImage: `url('/images/hero-home.webp')`,
             backgroundPosition: "center center",
             backgroundSize: "100% auto",
             opacity: 0.25,

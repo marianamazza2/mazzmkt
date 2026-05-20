@@ -41,7 +41,7 @@ export function PageCTA() {
         <div
           className="absolute -inset-x-[6%] inset-y-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('/images/hero-home.png')",
+            backgroundImage: "url('/images/hero-home.webp')",
             opacity: 0.14,
             animation: "tv-static 0.45s steps(1) infinite",
           }}

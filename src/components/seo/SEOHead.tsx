@@ -1,15 +1,17 @@
 import { Helmet } from "react-helmet-async";
 
 const SITE_URL = "https://mazzmkt.com";
-const DEFAULT_OG_IMAGE = `${SITE_URL}/images/og-image.png`;
+const DEFAULT_OG_IMAGE = `${SITE_URL}/images/og-image.webp`;
 
 interface SEOHeadProps {
   title: string;
   description: string;
   image?: string;
+  noindex?: boolean;
+  jsonLd?: Record<string, unknown>;
 }
 
-export function SEOHead({ title, description, image }: SEOHeadProps) {
+export function SEOHead({ title, description, image, noindex, jsonLd }: SEOHeadProps) {
   const canonical = typeof window !== "undefined" ? window.location.href : SITE_URL;
   const ogImage = image ?? DEFAULT_OG_IMAGE;
 
@@ -17,6 +19,7 @@ export function SEOHead({ title, description, image }: SEOHeadProps) {
     <Helmet>
       <title>{title}</title>
       <meta name="description" content={description} />
+      {noindex && <meta name="robots" content="noindex, follow" />}
       <link rel="canonical" href={canonical} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
@@ -29,6 +32,9 @@ export function SEOHead({ title, description, image }: SEOHeadProps) {
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={ogImage} />
+      {jsonLd && (
+        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+      )}
     </Helmet>
   );
 }

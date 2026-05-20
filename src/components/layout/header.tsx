@@ -59,7 +59,7 @@ export function Header() {
             {/* Logo */}
             <TransitionLink to="/" className="flex items-center">
               <img
-                src="/images/isotipo.png"
+                src="/images/isotipo.webp"
                 alt="MAZZMKT"
                 className="h-14 md:h-16 w-auto"
                 style={{ mixBlendMode: "screen", filter: "contrast(1.2)" }}
@@ -118,7 +118,7 @@ export function Header() {
                 className="flex items-center"
               >
                 <img
-                  src="/images/isotipo.png"
+                  src="/images/isotipo.webp"
                   alt="MAZZMKT"
                   className="h-9 w-auto"
                   style={{ mixBlendMode: "screen", filter: "contrast(1.2)" }}

@@ -29,11 +29,27 @@ export const Route = createFileRoute("/proyectos/$slug")({
 function ProjectPage() {
   const { project } = Route.useLoaderData();
 
+  const projectSchema = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: project.title,
+    description: project.description,
+    creator: {
+      "@type": "Organization",
+      name: "MAZZMKT",
+      url: "https://mazzmkt.com",
+    },
+    ...(project.image && { image: `https://mazzmkt.com${project.image}` }),
+    ...(project.url && { url: project.url }),
+    keywords: project.services.join(", "),
+  };
+
   return (
     <>
       <SEOHead
         title={`${project.title} | MAZZMKT`}
         description={project.description}
+        jsonLd={projectSchema}
       />
 
       {/* Hero */}

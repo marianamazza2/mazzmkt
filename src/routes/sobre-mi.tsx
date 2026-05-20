@@ -29,7 +29,7 @@ function SobreMiPage() {
         <div
           className="hidden md:block absolute -inset-x-[2%] inset-y-0 bg-no-repeat"
           style={{
-            backgroundImage: `url('/images/hero-home.png')`,
+            backgroundImage: `url('/images/hero-home.webp')`,
             backgroundPosition: "center center",
             backgroundSize: "100% auto",
             opacity: 0.25,

@@ -10,6 +10,7 @@ function AvisoLegalPage() {
   return (
     <>
       <SEOHead
+        noindex
         title="Aviso Legal | MAZZMKT"
         description="Aviso legal de MAZZMKT — información sobre el titular del sitio web, condiciones de uso, propiedad intelectual y legislación aplicable."
       />

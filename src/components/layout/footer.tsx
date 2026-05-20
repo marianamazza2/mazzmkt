@@ -15,7 +15,7 @@ export function Footer() {
       <div className="md:hidden px-5 pt-5 pb-6">
         <div className="flex justify-between items-center mb-3">
           <img
-            src="/images/logo-cropped.png"
+            src="/images/logo-cropped.webp"
             alt="MAZZMKT"
             className="h-20 w-auto"
             style={{ mixBlendMode: "screen", filter: "contrast(10)" }}
@@ -82,7 +82,7 @@ export function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-4 order-2 md:order-1">
             <img
-              src="/images/logo-cropped.png"
+              src="/images/logo-cropped.webp"
               alt="MAZZMKT"
               className="h-20 w-auto block self-center"
               style={{ mixBlendMode: "screen", filter: "contrast(10)" }}
