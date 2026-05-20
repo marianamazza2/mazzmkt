@@ -14,13 +14,15 @@ import {
   Sparkles,
   Zap,
   Palette,
-  Target,
   Search,
   Share2,
   TrendingUp,
-  Megaphone,
   BarChart3,
   Bot,
+  Activity,
+  MousePointerClick,
+  MessageSquare,
+  Globe,
 } from "lucide-react";
 
 export const Route = createFileRoute("/faqs")({
@@ -37,24 +39,62 @@ interface FAQ {
 }
 
 const faqs: FAQ[] = [
+  // GENERAL
+  {
+    id: 17,
+    category: "GENERAL",
+    icon: MessageSquare,
+    question: "¿Cómo es el proceso para comenzar a trabajar juntos?",
+    answer:
+      "Nos contactas por whatsApp o a través de la web y te enviamos un formulario inicial para conocer mejor tu proyecto y tus necesidades. Con esa información preparamos una propuesta general adaptada a lo que buscas. Si lo que ofrecemos encaja con lo que necesitas, coordinamos una reunión para conocernos, conversar y definir detalles.",
+    highlight: "Contacto → formulario → propuesta → reunión. Así de simple.",
+  },
+  {
+    id: 22,
+    category: "GENERAL",
+    icon: Check,
+    question: "¿Cómo funciona el proceso antes de iniciar un proyecto?",
+    answer:
+      "Una vez aprobada la propuesta, enviamos un contrato digital junto con el primer pago de reserva. Esto nos permite alinear expectativas, definir el alcance del proyecto y comenzar el trabajo de manera organizada.",
+    highlight: "Propuesta aprobada → contrato + reserva → empezamos.",
+  },
+   {
+    id: 21,
+    category: "GENERAL",
+    icon: Check,
+    question: "¿Se pide una seña inicial para comenzar?",
+    answer:
+      "Sí. Para reservar tu lugar en agenda y dar inicio al proyecto, solicitamos una seña del 50% del valor total acordado. El 50% restante se abona al finalizar y antes de la entrega. Esto nos permite planificar tiempos y dedicación real a tu proyecto desde el primer día.",
+    highlight: "50% para comenzar, 50% a la entrega. Sin sorpresas.",
+  },
+  {
+    id: 20,
+    category: "GENERAL",
+    icon: MessageSquare,
+    question: "¿Cómo funcionan las revisiones?",
+    answer:
+      "Ofrecemos hasta dos rondas completas de revisiones en cada proyecto. Nuestro proceso estratégico inicial  briefing, investigación y definición de objetivos  está diseñado para alinear la dirección creativa desde el principio y asegurar que el proyecto avance con claridad y coherencia.\n\nEn caso de necesitarlo, se puede realizar una tercera ronda destinada únicamente a ajustes menores o detalles finales.",
+    highlight: "Hasta 2 rondas completas + 1 de ajustes finales si se necesita.",
+  },
+
   // WEB
   {
     id: 1,
     category: "WEB",
     icon: Code,
-    question: "¿Codigo o No-Code? ¿Cual es mejor para mi proyecto?",
+    question: "¿Código o No-Code? ¿Cuál es mejor para mi proyecto?",
     answer:
-      "Depende de tus objetivos. El No-Code (Webflow, Framer, Wix) es ideal si necesitas una web rapida, con bajo presupuesto y planeas editarla vos mism@. El codigo a medida es para proyectos que buscan diferenciarse, necesitan funcionalidades especificas, maxima velocidad de carga, o escalar sin limitaciones. Si tu marca busca destacar y transmitir innovacion, el codigo es el camino.",
-    highlight: "Si queres que tu web grite 'esto es premium', necesitas codigo.",
+      "Depende de tus objetivos. El No-Code (Webflow, Framer, Wix) es ideal si necesitas una web rápida, con bajo presupuesto y planeas editarla tu mism@. El código a medida es para proyectos que buscan diferenciarse, necesitan funcionalidades específicas, máxima velocidad de carga, o escalar sin limitaciones. Si tu marca busca destacar y transmitir innovación, el código es el camino.",
+    highlight: "Si quieres que tu web grite 'esto es premium', necesitas código.",
   },
   {
     id: 2,
     category: "WEB",
     icon: Clock,
-    question: "¿En cuanto tiempo puedo tener mi web lista?",
+    question: "¿En cuánto tiempo puedo tener mi web lista?",
     answer:
-      "Con codigo, una landing o web institucional puede estar lista en 2-3 dias habiles. Esto no incluye el diseno ni branding (si ya lo tenes, volamos). Proyectos mas complejos con e-commerce, integraciones o funcionalidades custom pueden tomar 1-3 semanas. El No-Code suele tomar tiempos similares pero con menos flexibilidad para cambios estructurales.",
-    highlight: "2-3 dias si ya tenes tu diseno listo. Sin vueltas.",
+      "Con código, una landing o web puede estar lista en 2-3 días hábiles. Esto no incluye el diseño ni branding (si ya lo tienes, volamos). Proyectos más complejos con e-commerce, integraciones o funcionalidades custom pueden tomar 1-3 semanas. El No-Code suele tomar tiempos similares pero con menos flexibilidad para cambios estructurales.",
+    highlight: "2-3 días si ya tienes tu diseño listo. Sin vueltas.",
   },
   {
     id: 3,
@@ -62,27 +102,36 @@ const faqs: FAQ[] = [
     icon: Wrench,
     question: "¿Voy a poder editar mi web yo mism@?",
     answer:
-      "Con No-Code, si. Plataformas como Webflow o Framer tienen editores visuales intuitivos. Con codigo, depende de como lo construyamos: podemos integrar un CMS headless (Sanity, Strapi) para que edites contenido facilmente, o si preferis no tocar nada, ofrecemos planes de mantenimiento mensuales donde nos encargamos de todo.",
+      "Con No-Code, sí. Plataformas como Webflow o Framer tienen editores visuales intuitivos. O si prefieres no tocar nada, ofrecemos planes de mantenimiento donde nos encargamos de todo lo que necesites.",
     highlight:
-      "No-Code = editas vos. Codigo = editas contenido o lo hacemos nosotros.",
+      "No-Code = lo editas tú. Código = editas contenido o lo hacemos nosotros.",
   },
   {
-    id: 4,
+    id: 18,
     category: "WEB",
-    icon: Zap,
-    question: "¿Que tecnologias usan para desarrollar?",
+    icon: Globe,
+    question: "¿El desarrollo incluye hosting y dominio?",
     answer:
-      "Trabajamos con el stack mas moderno del mercado: Next.js 16, React 19, TypeScript, Tailwind CSS 4, y Framer Motion para animaciones. Usamos herramientas de IA como Claude Code para acelerar desarrollo sin perder calidad. El resultado: webs ultra rapidas, SEO-friendly, y con un codigo limpio y mantenible.",
-    highlight: "Stack 2025: Next.js + React + IA = velocidad x3.",
+      "El dominio es tuyo y lo registras tú (te guiamos si lo necesitas). Para el hosting, en proyectos con código usamos Vercel, una plataforma de alto rendimiento que en muchos casos es gratuita. En proyectos No-Code, el hosting ya está incluido en la plataforma elegida. En todos los casos te asesoramos para que todo quede bajo tu control y no dependas de nosotros para nada crítico.",
+    highlight: "Tu dominio, tu hosting, tu control. Nosotros te guiamos.",
   },
   // BRANDING
+  {
+    id: 19,
+    category: "BRANDING",
+    icon: Clock,
+    question: "¿Cuánto tarda el proceso de branding?",
+    answer:
+      "Un branding completo tarda entre 2 y 4 semanas, dependiendo de la complejidad de la marca y la velocidad de feedback de tu parte. El proceso tiene etapas claras: estrategia y brief, exploración de conceptos, desarrollo de la identidad elegida, y entrega de archivos finales con guidelines. No apuramos el proceso porque una identidad bien construida es una inversión a largo plazo.",
+    highlight: "2-4 semanas para una identidad que dure años.",
+  },
   {
     id: 5,
     category: "BRANDING",
     icon: Palette,
-    question: "¿Que incluye el servicio de branding?",
+    question: "¿Qué incluye el servicio de branding?",
     answer:
-      "Nuestro branding cubre desde la estrategia de marca hasta la identidad visual completa: logo, paleta de colores, tipografias, sistema de iconos, guidelines de uso, y aplicaciones (tarjetas, redes, papeleria). No es solo un logo bonito, es construir una identidad que comunique quien sos y por que deberian elegirte.",
+      "Nuestro branding cubre desde la estrategia de marca hasta la identidad visual completa: logo, paleta de colores, tipografías, sistema de iconos, guidelines de uso, aplicaciones básicas de la marca (tarjetas, redes, papelería) y la marca en vivo, es decir, mockups reales que muestran tu identidad aplicada en distintos soportes para que puedas ver cómo se ve antes de salir al mundo. Y si además contratas el servicio de aplicaciones, sumamos un set ampliado de mockups de ejemplo para mostrar tu marca en acción con mayor profundidad y variedad. No es solo un logo bonito, es construir una identidad que comunique quién sos y por qué deberían elegirte.",
     highlight: "Branding = estrategia + identidad. No solo un logo.",
   },
   {
@@ -91,65 +140,65 @@ const faqs: FAQ[] = [
     icon: Sparkles,
     question: "¿Ya tengo logo, necesito branding completo?",
     answer:
-      "Un logo solo no es branding. Si tu marca no tiene coherencia visual (colores definidos, tipografias, tono de comunicacion), cada pieza que crees va a sentirse desconectada. Podemos trabajar desde tu logo existente y construir un sistema visual completo, o si el logo no esta a la altura, proponer un rediseno.",
+      "Un logo solo no es branding. Si tu marca no tiene coherencia visual (colores definidos, tipografías, tono de comunicación), cada pieza que crees va a sentirse desconectada. Podemos trabajar desde tu logo existente y construir un sistema visual completo, o si el logo no está a la altura, proponer un rediseño.",
     highlight: "Logo ≠ Branding. Tu marca necesita un sistema completo.",
-  },
-  // PUBLICIDAD
-  {
-    id: 7,
-    category: "PUBLICIDAD",
-    icon: Megaphone,
-    question: "¿Que tipo de publicidad digital manejan?",
-    answer:
-      "Gestionamos campanas en Meta Ads (Instagram y Facebook), Google Ads (Search, Display, YouTube), y TikTok Ads. Desde la estrategia y segmentacion hasta la creacion de piezas y la optimizacion continua. No tiramos plata en ads sin estrategia: cada peso invertido tiene un objetivo medible.",
-    highlight: "Meta + Google + TikTok. Estrategia antes que presupuesto.",
-  },
-  {
-    id: 8,
-    category: "PUBLICIDAD",
-    icon: Target,
-    question: "¿Cuanto deberia invertir en publicidad?",
-    answer:
-      "No hay un minimo universal, pero recomendamos arrancar con al menos $300-500 USD/mes en ads para tener data suficiente y optimizar. Lo importante no es cuanto invertis, sino como. Con buena segmentacion, creativos fuertes y optimizacion constante, podemos lograr resultados con presupuestos accesibles. El fee de gestion es aparte de la inversion en plataformas.",
-    highlight: "No se trata de cuanto, sino de como invertis.",
   },
   // SEO
   {
     id: 9,
     category: "SEO",
     icon: Search,
-    question: "¿Cuanto tarda en verse resultados con SEO?",
+    question: "¿Cuánto tarda en verse resultados con SEO?",
     answer:
-      "El SEO es una estrategia a mediano-largo plazo. Los primeros resultados suelen verse entre 3 y 6 meses, dependiendo de la competencia en tu sector y el estado actual de tu web. Pero una vez que posicionas, el trafico es organico y sostenido. Es la inversion que mas retorno da a largo plazo.",
-    highlight: "3-6 meses para resultados. Despues, trafico gratis y constante.",
+      "El SEO es una estrategia a mediano-largo plazo. Los primeros resultados suelen verse entre 3 y 6 meses, dependiendo de la competencia en tu sector y el estado actual de tu web. Pero una vez que posicionas, el tráfico es orgánico y sostenido. Es la inversión que más retorno da a largo plazo.",
+    highlight: "3-6 meses para resultados. Después, tráfico gratis y constante.",
   },
   {
     id: 10,
     category: "SEO",
     icon: TrendingUp,
-    question: "¿Que incluye el servicio de SEO?",
+    question: "¿Qué incluye el servicio de SEO?",
     answer:
-      "Auditoria tecnica completa, investigacion de palabras clave, optimizacion on-page (titulos, metas, estructura, velocidad), estrategia de contenido, link building, y reportes mensuales con metricas claras. No vendemos humo: si algo no se puede medir, no lo hacemos.",
-    highlight: "SEO tecnico + contenido + reportes. Todo medible.",
+      "Auditoría técnica completa, investigación de palabras clave, optimización on-page (títulos, metas, estructura, velocidad), estrategia de contenido, link building, y reportes mensuales con métricas claras.",
+    highlight: "SEO técnico + contenido + reportes. Todo medible.",
   },
   // REDES SOCIALES
   {
     id: 11,
     category: "REDES SOCIALES",
     icon: Share2,
-    question: "¿Manejan redes sociales? ¿Que incluye?",
+    question: "¿Gestionan redes sociales? ¿Qué incluye?",
     answer:
-      "Si. Ofrecemos gestion integral de redes: estrategia de contenido, calendario editorial, diseno de piezas, copywriting, publicacion, community management, y reportes mensuales. Trabajamos Instagram, TikTok, LinkedIn, y otras plataformas segun tu audiencia. No publicamos por publicar: cada post tiene un proposito.",
-    highlight: "Estrategia + contenido + gestion. No solo postear.",
+      "Sí. Ofrecemos gestión integral de redes: estrategia de contenido, calendario editorial, diseño de piezas, copywriting, publicación, community management, y reportes mensuales.",
+    highlight: "Estrategia + contenido + gestión. No solo postear.",
   },
   {
     id: 12,
     category: "REDES SOCIALES",
     icon: BarChart3,
-    question: "¿Puedo ver resultados de la gestion de redes?",
+    question: "¿Puedo ver resultados de la gestión de redes?",
     answer:
-      "Por supuesto. Entregamos reportes mensuales con metricas reales: alcance, engagement, crecimiento de seguidores, clicks, y conversiones. No nos quedamos en vanity metrics (likes). Lo que importa es si tus redes estan generando comunidad, confianza y, en ultima instancia, ventas.",
-    highlight: "Reportes mensuales. Metricas que importan, no vanity metrics.",
+      "Por supuesto. Entregamos reportes mensuales con métricas reales: alcance, engagement, crecimiento de seguidores, clicks, y conversiones. No nos quedamos en vanity metrics (likes). Lo que importa es si tus redes están generando comunidad, confianza y, en última instancia, ventas.",
+    highlight: "Reportes mensuales. Métricas que importan, no vanity metrics.",
+  },
+  // ANALYTICS
+  {
+    id: 15,
+    category: "ANALYTICS",
+    icon: Activity,
+    question: "¿Qué incluye el servicio de Analytics & Tracking?",
+    answer:
+      "Configuramos e implementamos todo el stack de medición que tu negocio necesita: GA4 para seguimiento completo de usuarios, comportamiento y conversiones; Google Tag Manager para gestionar todos los eventos y disparadores sin depender del equipo de desarrollo; Microsoft Clarity para mapas de calor, grabaciones de sesiones y análisis de experiencia; e implementamos los píxeles de Meta y TikTok para que tus campañas de publicidad pagada cuenten con datos precisos y optimización real. El objetivo es que cada decisión que tomes esté respaldada por datos reales, no suposiciones.",
+    highlight: "Sin medicion no hay optimizacion. Sin datos, no hay estrategia.",
+  },
+  {
+    id: 16,
+    category: "ANALYTICS",
+    icon: MousePointerClick,
+    question: "¿Por qué necesito GA4 y Tag Manager bien configurados?",
+    answer:
+      "Muchos negocios tienen GA4 instalado pero mal configurado: eventos que no disparan, conversiones que no se registran, datos que no reflejan la realidad. Un setup correcto te permite saber exactamente de dónde vienen tus usuarios, qué hacen en tu web, dónde se pierden y cuáles son los canales que realmente convierten. Tag Manager centraliza toda la lógica de tracking en un solo lugar, sin necesidad de tocar el código cada vez que necesitas medir algo nuevo.",
+    highlight: "GA4 mal configurado = decisiones mal tomadas.",
   },
   // IA
   {
@@ -158,27 +207,19 @@ const faqs: FAQ[] = [
     icon: Bot,
     question: "¿Usan inteligencia artificial? ¿Eso afecta la calidad?",
     answer:
-      "Si, usamos IA como herramienta de productividad, no como reemplazo. Herramientas como Claude Code nos ayudan a escribir codigo mas rapido y con menos errores. Pero cada linea es revisada, cada decision es humana, y la estrategia creativa siempre viene de nosotr@s. La IA potencia, no reemplaza.",
-    highlight: "IA = mas rapido + misma calidad. Lo mejor de ambos mundos.",
-  },
-  {
-    id: 14,
-    category: "IA",
-    icon: Sparkles,
-    question: "¿Como aplican IA en marketing y contenido?",
-    answer:
-      "Usamos IA para acelerar investigacion de mercado, generar borradores de copy, analizar datos de campanas, crear variantes de anuncios para A/B testing, y automatizar tareas repetitivas. Pero la estrategia, la creatividad y la voz de marca siempre son humanas. La IA es el turbo, nosotros manejamos el volante.",
-    highlight: "IA para acelerar. Humanos para decidir.",
+      "Sí, y nos ayuda a ser mucho más eficientes. Herramientas como Claude Code y Codex nos permiten desarrollar más rápido, con menos errores, y explorar soluciones que antes nos llevaban días, en horas. La IA nos da una ventaja competitiva real: iteramos más rápido, entregamos mejor, y el resultado final es superior. No lo usamos para hacer lo mismo de siempre, lo usamos para hacer cosas que antes no eran posibles.",
+    highlight: "IA = ventaja competitiva real. Más rápido, mejor, sin límites. IA para acelerar, humanos para decidir.",
   },
 ];
 
 const categories = [
   "TODOS",
+  "GENERAL",
   "WEB",
   "BRANDING",
-  "PUBLICIDAD",
   "SEO",
   "REDES SOCIALES",
+  "ANALYTICS",
   "IA",
 ];
 
@@ -207,7 +248,7 @@ function FAQsPage() {
     <>
       <SEOHead
         title="FAQs - Preguntas Frecuentes | MAZZMKT"
-        description="Resolvemos tus dudas sobre desarrollo web, branding y marketing digital. Codigo vs No-Code, tiempos de entrega, precios y mas."
+        description="Resolvemos tus dudas sobre desarrollo web, branding y marketing digital. Código vs No-Code, tiempos de entrega, precios y más."
       />
 
       {/* Hero */}
@@ -295,7 +336,7 @@ function FAQsPage() {
         </div>
       </section>
 
-      {/* Category Filter — oculto en mobile, visible en desktop */}
+      {/* Category Filter  oculto en mobile, visible en desktop */}
       <section className="hidden md:block bg-light py-7 border-b border-[#14141410]">
         <div className="container mx-auto px-6">
           <motion.div
@@ -325,7 +366,7 @@ function FAQsPage() {
       {/* FAQs Section */}
       <section id="faqs" className="bg-light py-8 md:py-20">
         <div className="container mx-auto px-5 md:px-6">
-          {/* Dropdown filtro — solo mobile */}
+          {/* Dropdown filtro  solo mobile */}
           <div className="relative md:hidden mb-5">
             <button
               type="button"
@@ -471,9 +512,11 @@ function FAQsPage() {
                           className="overflow-hidden"
                         >
                           <div className="px-4 md:px-7 lg:px-8 pb-4 md:pb-8 lg:pb-10">
-                            <p className="faqs-answer-text max-w-4xl text-[#ffffffaa] md:text-[17px] leading-relaxed mb-3 md:mb-6">
-                              {faq.answer}
-                            </p>
+                            <div className="faqs-answer-text max-w-4xl text-[#ffffffaa] md:text-[17px] leading-relaxed mb-3 md:mb-6 space-y-4">
+                              {faq.answer.split("\n\n").map((paragraph, i) => (
+                                <p key={i}>{paragraph}</p>
+                              ))}
+                            </div>
                             {faq.highlight && (
                               <motion.div
                                 initial={{ opacity: 0, x: -10 }}
@@ -520,8 +563,8 @@ function FAQsPage() {
 
           <div className="grid grid-cols-3 md:grid-cols-3 gap-8 md:gap-12 justify-items-center text-center">
             {[
-              { number: "2-3", label: "DIAS DESARROLLO", sublabel: "con codigo" },
-              { number: "50%", label: "SENA INICIAL", sublabel: "para arrancar" },
+              { number: "2-3", label: "DÍAS DESARROLLO", sublabel: "con código" },
+              { number: "50%", label: "SEÑAL INICIAL", sublabel: "para comenzar" },
               { number: "24H", label: "RESPUESTA", sublabel: "garantizada" },
             ].map((stat, index) => (
               <motion.div
