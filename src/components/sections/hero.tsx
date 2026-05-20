@@ -96,7 +96,7 @@ export function Hero() {
                 color: "#ffffff",
               }}
             >
-              Y RESPONDEN
+              & RESPONDEN
             </motion.h1>
           </div>
 
