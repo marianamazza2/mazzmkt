@@ -174,10 +174,6 @@ function SobreMiPage() {
                 <p className="uppercase text-[#f1ede1aa] mt-1 font-geist text-[10px] md:text-xs md:tracking-widest" style={{ letterSpacing: "1.5px" }}>Satisfacción</p>
               </div>
               <div className="md:hidden self-stretch w-px bg-[#f1ede1]/10" />
-              <div>
-                <p className="font-bold text-[#ffffff] text-[22px] md:text-5xl" style={{ letterSpacing: "-0.5px" }}>5+</p>
-                <p className="uppercase text-[#f1ede1aa] mt-1 font-geist text-[10px] md:text-xs md:tracking-widest" style={{ letterSpacing: "1.5px" }}>Países</p>
-              </div>
             </div>
           </motion.div>
         </div>

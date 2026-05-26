@@ -1,5 +1,5 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { Code, Palette, MessageCircle, Bot, Zap, Sparkles, Globe, Wand2, Search, BarChart2 } from "lucide-react";
+import { Code, Palette, MessageCircle, Bot, Zap, Sparkles, Globe, Wand2, Search, BarChart2, Share2, Target } from "lucide-react";
 import { useRef, useState } from "react";
 import { TransitionLink } from "@/components/transition/transition-link";
 
@@ -8,25 +8,37 @@ const mainServices = [
     icon: Code,
     title: "TU WEB LISTA EN DIAS",
     subtitle: "SITIOS WEB | LANDINGS | E-COMMERCE",
-    description: "Diseñamos y desarrollamos tu web en tiempo record. Velocidad real, tecnologia de ultima generacion y diseno que impacta.",
+    description: "Tu web lista en tiempo récord. Tecnología de última generación y diseño que impacta desde el primer día.",
   },
   {
     icon: Zap,
-    title: "WEB APPS & PLATAFORMAS A MEDIDA",
+    title: "WEB APPS & PLATAFORMAS",
     subtitle: "WEBAPPS | CRM | SAAS | PORTALES",
-    description: "Desarrollamos la herramienta digital que tu negocio necesita. Desde un CRM propio hasta una plataforma completa, construida exactamente como la imaginas.",
+    description: "La herramienta digital que tu negocio necesita, construida exactamente como la imaginas. CRM, SaaS o portal: a medida.",
   },
   {
     icon: Palette,
     title: "BRANDING QUE DEJA HUELLA",
-    subtitle: "IDENTIDAD VISUAL | ESTRATEGIA | POSICIONAMIENTO",
-    description: "Construimos marcas que la gente recuerda. Desde el nombre hasta cada pixel: coherencia, caracter y una identidad visual que genera confianza instantanea.",
+    subtitle: "IDENTIDAD VISUAL | ESTRATEGIA ",
+    description: "Marcas que la gente recuerda. Coherencia, carácter e identidad visual que genera confianza instantánea.",
   },
   {
     icon: BarChart2,
     title: "ANALYTICS & TRACKING",
     subtitle: "GA4 | TAG MANAGER | CLARITY | PÍXELES",
-    description: "Configuramos e implementamos las herramientas de medicion que necesitas para entender a tus usuarios, optimizar cada canal y tomar decisiones basadas en datos reales.",
+    description: "Implementamos GA4, Tag Manager y píxeles para entender a tus usuarios y tomar decisiones basadas en datos reales.",
+  },
+  {
+    icon: Search,
+    title: "SEO CON IA",
+    subtitle: "POSICIONAMIENTO | KEYWORDS | AUDITORÍA",
+    description: "Posicionamiento orgánico acelerado con inteligencia artificial. Auditoría técnica, keywords y contenido que Google quiere rankear.",
+  },
+  {
+    icon: Share2,
+    title: "GESTIÓN DE REDES SOCIALES",
+    subtitle: "INSTAGRAM | ADS MANAGER",
+    description: "Estrategia, contenido y gestión diaria. Presencia en redes que conecta con tu audiencia y genera negocio.",
   },
 ];
 
@@ -57,9 +69,9 @@ const aiServices = [
     description: "30 dias de contenido en pocas horas. Videos, copys, voiceovers e imagenes con calidad profesional generados con IA.",
   },
   {
-    icon: Search,
-    title: "SEO CON IA",
-    description: "Posicionamiento organico acelerado con inteligencia artificial. Auditoria tecnica, keywords y contenido que Google quiere rankear.",
+    icon: Target,
+    title: "SEM & PUBLICIDAD META",
+    description: "Campañas de pago que venden. Google Ads, Meta Ads y TikTok Ads gestionados con IA para maximizar tu ROAS desde el primer día.",
   },
 ];
 
@@ -67,7 +79,7 @@ const mobileAiCards = [
   { icon: Globe, title: "Webs con IA", subtitle: "En tiempo récord" },
   { icon: Bot, title: "Automatización", subtitle: "Procesos eficientes" },
   { icon: MessageCircle, title: "WhatsApp", subtitle: "Ventas en chat" },
-  { icon: Sparkles, title: "IA generativa", subtitle: "Contenido y SEO" },
+  { icon: Sparkles, title: "IA generativa", subtitle: "Contenido a escala" },
 ];
 
 
@@ -252,7 +264,15 @@ function ServiceCardDark({
 }
 
 export function Services() {
-  const [openMobileService, setOpenMobileService] = useState(-1);
+  const [selectedMobileService, setSelectedMobileService] = useState(0);
+
+  const toDisplayTitle = (title: string) => {
+    const lower = title.toLowerCase();
+    return lower.charAt(0).toUpperCase() + lower.slice(1);
+  };
+
+  const toTagCase = (tag: string) =>
+    tag.toLowerCase().charAt(0).toUpperCase() + tag.toLowerCase().slice(1);
 
   return (
     <>
@@ -278,77 +298,85 @@ export function Services() {
             </p>
           </motion.div>
 
-          {/* Mobile: lista compacta de servicios */}
-          <div className="md:hidden flex flex-col gap-[2px]">
-            {mainServices.map((service, index) => {
-              const isOpen = openMobileService === index;
-
-              return (
-                <div
-                  key={service.title}
-                  className="overflow-hidden rounded-sm"
-                  style={{ background: "rgba(241, 239, 232, 0.04)" }}
-                >
-                  <button
-                    type="button"
-                    aria-expanded={isOpen}
-                    aria-controls={`mobile-service-${index}`}
-                    onClick={() => setOpenMobileService((current) => current === index ? -1 : index)}
-                    className="flex w-full items-center justify-between px-4 py-[14px] text-left"
-                  >
-                    <div className="flex items-center gap-[10px]">
-                      <span
-                        className="text-[11px] font-medium"
-                        style={{ color: "#B4B2A9", minWidth: "18px" }}
-                      >
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
-                      <div>
-                        <p
-                          className="text-[13px] font-medium uppercase"
-                          style={{ letterSpacing: "0.5px", color: "#f1ede1" }}
-                        >
-                          {service.title}
-                        </p>
-                        <p
-                          className="mt-[1px] text-[11px]"
-                          style={{ color: "#888780" }}
-                        >
-                          {service.subtitle}
-                        </p>
-                      </div>
-                    </div>
-                    <motion.span
-                      animate={{ rotate: isOpen ? 90 : 0 }}
-                      transition={{ duration: 0.2 }}
-                      className="text-[14px]"
-                      style={{ color: "#B4B2A9" }}
-                    >
-                      ›
-                    </motion.span>
-                  </button>
-
+          {/* Mobile: slider */}
+          <div className="md:hidden">
+            <div className="h-[210px]">
+              {(() => {
+                const ActiveIcon = mainServices[selectedMobileService].icon;
+                const total = mainServices.length;
+                const handleNext = () => setSelectedMobileService((prev) => (prev + 1) % total);
+                const handlePrev = () => setSelectedMobileService((prev) => (prev - 1 + total) % total);
+                return (
                   <motion.div
-                    id={`mobile-service-${index}`}
-                    initial={false}
-                    animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
-                    transition={{ duration: 0.25, ease: "easeOut" }}
-                    className="overflow-hidden"
+                    key={selectedMobileService}
+                    initial={{ opacity: 0, x: 24 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.22, ease: "easeOut" }}
+                    className="rounded-[0.25rem] p-5 h-full overflow-hidden select-none cursor-grab active:cursor-grabbing"
+                    style={{ background: "rgba(255, 255, 255, 0.06)" }}
+                    drag="x"
+                    dragConstraints={{ left: 0, right: 0 }}
+                    dragElastic={0.08}
+                    onDragEnd={(_, info) => {
+                      if (info.offset.x < -50) handleNext();
+                      else if (info.offset.x > 50) handlePrev();
+                    }}
                   >
-                    <p
-                      className="px-4 pb-4 pl-[52px] text-[13px] leading-[1.6]"
-                      style={{ color: "#d8d4c8" }}
-                    >
-                      {service.description}
+                    <div className="flex items-center gap-3 mb-4">
+                      <div
+                        className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
+                        style={{ background: "rgba(255, 255, 255, 0.08)" }}
+                      >
+                        <ActiveIcon size={20} strokeWidth={1.5} style={{ color: "#f1ede1" }} />
+                      </div>
+                      <p className="text-[13px] font-semibold uppercase text-[#f1ede1]" style={{ letterSpacing: "0.04em" }}>
+                        {mainServices[selectedMobileService].title}
+                      </p>
+                    </div>
+
+                    <p className="text-[13px] leading-[1.6] mb-4" style={{ color: "#c8c4b8" }}>
+                      {mainServices[selectedMobileService].description}
                     </p>
+
+                    <div className="flex flex-wrap gap-2">
+                      {mainServices[selectedMobileService].subtitle.split("|").map(tag => (
+                        <span
+                          key={tag}
+                          className="text-[12px] px-3 py-[5px] rounded-full border"
+                          style={{ borderColor: "rgba(255, 255, 255, 0.18)", color: "#a3a199" }}
+                        >
+                          {toTagCase(tag.trim())}
+                        </span>
+                      ))}
+                    </div>
                   </motion.div>
-                </div>
-              );
-            })}
+                );
+              })()}
+            </div>
+
+            {/* Dots navigation */}
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "5px", paddingTop: "18px" }}>
+              {mainServices.map((_, i) => (
+                <span
+                  key={i}
+                  onClick={() => setSelectedMobileService(i)}
+                  style={{
+                    display: "block",
+                    width: i === selectedMobileService ? "18px" : "4px",
+                    height: "4px",
+                    borderRadius: "9999px",
+                    backgroundColor: i === selectedMobileService ? "#F1EDE1" : "rgba(241,237,225,0.32)",
+                    transition: "width 300ms ease-out, background-color 300ms ease-out",
+                    cursor: "pointer",
+                    flexShrink: 0,
+                  }}
+                />
+              ))}
+            </div>
           </div>
 
           {/* Desktop: carrusel horizontal de cards */}
-          <div className="hidden md:grid md:grid-cols-2 md:gap-6">
+          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6">
             {mainServices.map((service, index) => (
               <ServiceCardDark key={service.title} service={service} index={index} />
             ))}

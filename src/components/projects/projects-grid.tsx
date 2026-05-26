@@ -12,6 +12,21 @@ interface ProjectsGridProps {
 
 type ViewMode = "showcase" | "grid" | "bento" | "list";
 
+const mobileLabel: Record<string, string> = {
+  WebApp: "Webapp",
+  Web: "Web",
+  "Branding Digital": "Branding",
+  "Redes Sociales": "Redes",
+};
+
+const filterLabel: Record<string, string> = {
+  Web: "Diseño y Desarrollo Web",
+  "Redes Sociales": "Redes Sociales",
+  "Branding Digital": "Branding",
+};
+
+const getFilterSortLabel = (category: string) => filterLabel[category] ?? category;
+
 export function ProjectsGrid({ projects }: ProjectsGridProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
@@ -22,7 +37,11 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
   // Extract unique categories
   const categories = useMemo(() => {
     const cats = new Set(projects.map((p) => p.category));
-    return Array.from(cats);
+    return Array.from(cats).sort((a, b) =>
+      getFilterSortLabel(a).localeCompare(getFilterSortLabel(b), "es", {
+        sensitivity: "base",
+      })
+    );
   }, [projects]);
 
   // Filter projects based on search and category
@@ -62,18 +81,6 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
     setSearchQuery("");
     setActiveCategory(null);
     setIsMobileFilterOpen(false);
-  };
-
-  const mobileLabel: Record<string, string> = {
-    "WebApp": "Webapp",
-    "Web": "Web",
-    "Branding Digital": "Branding",
-    "Redes Sociales": "Redes",
-  };
-
-  const filterLabel: Record<string, string> = {
-    "Web": "Diseño y Desarrollo Web",
-    "Redes Sociales": "Gestión de Redes Sociales",
   };
 
   const hasActiveFilters = searchQuery !== "" || activeCategory !== null;

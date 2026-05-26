@@ -288,13 +288,13 @@ const faqs: FAQ[] = [
 
 const categories = [
   "TODOS",
-  "GENERAL",
-  "WEB",
-  "BRANDING",
-  "SEO",
-  "REDES SOCIALES",
   "ANALYTICS",
+  "BRANDING",
+  "GENERAL",
   "IA",
+  "REDES SOCIALES",
+  "SEO",
+  "WEB",
 ];
 
 const faqSchema = {
