@@ -266,11 +266,6 @@ function ServiceCardDark({
 export function Services() {
   const [selectedMobileService, setSelectedMobileService] = useState(0);
 
-  const toDisplayTitle = (title: string) => {
-    const lower = title.toLowerCase();
-    return lower.charAt(0).toUpperCase() + lower.slice(1);
-  };
-
   const toTagCase = (tag: string) =>
     tag.toLowerCase().charAt(0).toUpperCase() + tag.toLowerCase().slice(1);
 
