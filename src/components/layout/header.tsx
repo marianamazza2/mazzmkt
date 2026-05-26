@@ -108,7 +108,7 @@ export function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="md:hidden fixed inset-0 z-[999] bg-[#141414] flex flex-col pl-0 pr-6 pt-5 pb-8 overflow-y-auto"
+            className="md:hidden fixed inset-0 z-[999] bg-[#141414] flex flex-col px-6 pt-5 pb-8 overflow-y-auto"
           >
             {/* Header: logo + close button */}
             <div className="flex items-center justify-between mb-6 h-14">
