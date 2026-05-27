@@ -1,8 +1,9 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { TransitionLink } from "@/components/transition/transition-link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { SEOHead } from "@/components/seo/SEOHead";
 import { projects } from "@/data/projects";
+import { useState, useRef, useEffect, useCallback } from "react";
 
 export const Route = createFileRoute("/proyectos/$slug")({
   loader: ({ params }) => {
@@ -28,6 +29,43 @@ export const Route = createFileRoute("/proyectos/$slug")({
 
 function ProjectPage() {
   const { project } = Route.useLoaderData();
+  const [sliderOpen, setSliderOpen] = useState(false);
+  const [sliderIndex, setSliderIndex] = useState(0);
+  const touchStartX = useRef(0);
+  const images = project.images ?? [];
+
+  const openSlider = (index: number) => {
+    if (window.innerWidth < 768) {
+      setSliderIndex(index);
+      setSliderOpen(true);
+    }
+  };
+
+  const closeSlider = () => setSliderOpen(false);
+
+  const prev = useCallback(() => setSliderIndex(i => Math.max(i - 1, 0)), []);
+  const next = useCallback(() => setSliderIndex(i => Math.min(i + 1, images.length - 1)), [images.length]);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    const delta = e.changedTouches[0].clientX - touchStartX.current;
+    if (delta < -50) next();
+    else if (delta > 50) prev();
+  };
+
+  useEffect(() => {
+    if (!sliderOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") prev();
+      else if (e.key === "ArrowRight") next();
+      else if (e.key === "Escape") closeSlider();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [sliderOpen, prev, next]);
 
   const projectSchema = {
     "@context": "https://schema.org",
@@ -94,9 +132,9 @@ function ProjectPage() {
       {/* Project Gallery */}
       <section className="bg-dark pb-10 md:pb-20">
         <div className="container mx-auto px-6">
-          {project.images && project.images.length > 0 ? (
+          {images.length > 0 ? (
             <div className="grid grid-cols-2 gap-4">
-              {project.images.map((src, index) => (
+              {images.map((src, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 30 }}
@@ -108,7 +146,8 @@ function ProjectPage() {
                   <img
                     src={src}
                     alt={`${project.title} — imagen ${index + 1}`}
-                    className="w-full h-auto block"
+                    className="w-full h-auto block md:cursor-auto cursor-pointer active:opacity-90 transition-opacity"
+                    onClick={() => openSlider(index)}
                   />
                 </motion.div>
               ))}
@@ -131,6 +170,79 @@ function ProjectPage() {
           )}
         </div>
       </section>
+
+      {/* Mobile Image Slider */}
+      <AnimatePresence>
+        {sliderOpen && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center md:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            {/* Overlay */}
+            <div
+              className="absolute inset-0 bg-black/80"
+              onClick={closeSlider}
+            />
+
+            {/* Slider content */}
+            <div
+              className="relative w-full z-10 px-4"
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+            >
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={sliderIndex}
+                  src={images[sliderIndex]}
+                  alt={`${project.title} — imagen ${sliderIndex + 1}`}
+                  className="w-full h-auto max-h-[80vh] object-contain rounded-sm"
+                  initial={{ opacity: 0, x: 40 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -40 }}
+                  transition={{ duration: 0.2 }}
+                />
+              </AnimatePresence>
+
+              {/* Counter */}
+              <p className="text-center text-[#f1ede180] text-xs mt-3 font-geist tracking-widest">
+                {sliderIndex + 1} / {images.length}
+              </p>
+            </div>
+
+            {/* Close button */}
+            <button
+              className="absolute top-5 right-5 z-20 w-10 h-10 flex items-center justify-center text-[#f1ede1] bg-[#ffffff10] rounded-full"
+              onClick={closeSlider}
+              aria-label="Cerrar"
+            >
+              ✕
+            </button>
+
+            {/* Prev / Next */}
+            {sliderIndex > 0 && (
+              <button
+                className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 flex items-center justify-center text-[#f1ede1] bg-[#ffffff10] rounded-full"
+                onClick={prev}
+                aria-label="Anterior"
+              >
+                ←
+              </button>
+            )}
+            {sliderIndex < images.length - 1 && (
+              <button
+                className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 flex items-center justify-center text-[#f1ede1] bg-[#ffffff10] rounded-full"
+                onClick={next}
+                aria-label="Siguiente"
+              >
+                →
+              </button>
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Project Details */}
       <section className="bg-light py-14 md:py-24">

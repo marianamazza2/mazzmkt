@@ -108,10 +108,10 @@ export function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="md:hidden fixed inset-0 z-[999] bg-[#141414] flex flex-col px-6 pt-5 pb-8 overflow-y-auto"
+            className="md:hidden fixed inset-0 z-[999] bg-[#141414] flex flex-col pt-5 pb-8 overflow-y-auto"
           >
             {/* Header: logo + close button */}
-            <div className="flex items-center justify-between mb-6 h-14">
+            <div className="flex items-center justify-between mb-6 h-14 pr-6">
               <TransitionLink
                 to="/"
                 onClick={() => setIsMobileMenuOpen(false)}
@@ -120,7 +120,7 @@ export function Header() {
                 <img
                   src="/images/isotipo.webp"
                   alt="MAZZMKT"
-                  className="h-9 w-auto"
+                  className="h-14 w-auto"
                   style={{ mixBlendMode: "screen", filter: "contrast(1.2)" }}
                 />
               </TransitionLink>
@@ -134,7 +134,7 @@ export function Header() {
             </div>
 
             {/* Nav links as cards */}
-            <nav className="flex flex-col gap-1.5 flex-1 justify-center">
+            <nav className="flex flex-col gap-1.5 flex-1 justify-center px-6">
               {navigation.map((item) => {
                 const isActive = pathname === item.href;
                 const Icon = item.icon;
@@ -179,7 +179,7 @@ export function Header() {
             </nav>
 
             {/* Footer: CTA + socials */}
-            <div className="border-t border-[rgba(255,255,255,0.08)] pt-4 mt-6">
+            <div className="border-t border-[rgba(255,255,255,0.08)] pt-4 mt-6 px-6">
               <TransitionLink
                 to="/contacto"
                 onClick={() => {
