@@ -18,28 +18,20 @@ export function ProjectCard({ project, index, size = "medium", showFloatingImage
   const [, setIsHovered] = useState(false);
   const isInView = useInView(cardRef, { once: false, margin: "-25% 0px -25% 0px" });
 
-  // Mouse position for 3D tilt effect
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  // Smooth springs for natural movement
   const springConfig = { damping: 25, stiffness: 150 };
   const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [8, -8]), springConfig);
   const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-8, 8]), springConfig);
-
-  // Gradient position follows cursor
   const gradientX = useSpring(useTransform(mouseX, [-0.5, 0.5], [0, 100]), springConfig);
   const gradientY = useSpring(useTransform(mouseY, [-0.5, 0.5], [0, 100]), springConfig);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
-
     const rect = cardRef.current.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-
-    mouseX.set(x);
-    mouseY.set(y);
+    mouseX.set((e.clientX - rect.left) / rect.width - 0.5);
+    mouseY.set((e.clientY - rect.top) / rect.height - 0.5);
   };
 
   const handleMouseLeave = () => {
@@ -66,12 +58,7 @@ export function ProjectCard({ project, index, size = "medium", showFloatingImage
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onMouseEnter={() => { setIsHovered(true); onMouseEnter?.(project); }}
-      style={{
-        rotateX,
-        rotateY,
-        transformStyle: "preserve-3d",
-        perspective: 1000,
-      }}
+      style={{ rotateX, rotateY, transformStyle: "preserve-3d", perspective: 1000 }}
       className={`group relative overflow-hidden ${sizeClasses[size]}`}
     >
       <TransitionLink
@@ -79,37 +66,35 @@ export function ProjectCard({ project, index, size = "medium", showFloatingImage
         params={{ slug: project.slug }}
         className="block h-full w-full"
       >
-        {/* Card container */}
         <div className="relative h-full w-full overflow-hidden bg-[#141414] rounded-sm">
-          {/* Animated gradient overlay that follows cursor */}
+
+          {/* Gradient overlay */}
           <motion.div
             className="absolute inset-0 opacity-0 group-hover:opacity-100 max-md:opacity-100 transition-opacity duration-500 z-10 pointer-events-none"
             style={{
               background: useTransform(
                 [gradientX, gradientY],
-                ([x, y]) =>
-                  `radial-gradient(circle at ${x}% ${y}%, rgba(241, 237, 225, 0.15) 0%, transparent 50%)`
+                ([x, y]) => `radial-gradient(circle at ${x}% ${y}%, rgba(241, 237, 225, 0.15) 0%, transparent 50%)`
               ),
             }}
           />
 
-          {/* Background */}
+          {/* Image */}
           {project.image ? (
             <img
               src={project.image}
               alt={`${project.title} — ${project.category} para ${project.client}`}
-              className="absolute inset-0 w-full h-full object-cover object-cover transition-transform duration-700 group-hover:scale-105 max-md:scale-105"
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 max-md:scale-105"
             />
           ) : (
             <div className="absolute inset-0 bg-gradient-to-br from-[#1a1a1a] to-[#0f0f0f]" />
           )}
 
-          {/* Dark overlay so text stays readable */}
+          {/* Dark overlay */}
           <div className="absolute inset-0 bg-[#141414]/60 group-hover:bg-[#141414]/50 max-md:bg-[#141414]/50 transition-colors duration-300" />
 
-          {/* Content overlay */}
+          {/* Content */}
           <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8 z-20">
-            {/* Category tag */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -121,39 +106,25 @@ export function ProjectCard({ project, index, size = "medium", showFloatingImage
                 {project.category}
               </span>
             </motion.div>
-
-            {/* Title */}
-            <h3
-              className="font-bold text-[#ffffff] mb-2"
-              style={{
-                fontSize: "clamp(18px, 2vw, 24px)",
-                lineHeight: 1.1,
-              }}
-            >
+            <h3 className="font-bold text-[#ffffff] mb-2" style={{ fontSize: "clamp(18px, 2vw, 24px)", lineHeight: 1.1 }}>
               {project.title}
             </h3>
-
-            {/* Client */}
             <p className="text-sm text-[#f1ede1aa] group-hover:text-[#f1ede1] max-md:text-[#f1ede1] transition-colors">
               {project.client}
             </p>
-
-            {/* Results preview - only on large cards */}
             {size === "large" && project.results && (
               <div className="flex gap-6 mt-4 pt-4 border-t border-[#f1ede120]">
                 {project.results.slice(0, 3).map((result) => (
                   <div key={result.metric}>
                     <p className="text-lg font-bold text-[#ffffff]">{result.value}</p>
-                    <p className="text-[10px] uppercase tracking-wider text-[#f1ede1aa]">
-                      {result.metric}
-                    </p>
+                    <p className="text-[10px] uppercase tracking-wider text-[#f1ede1aa]">{result.metric}</p>
                   </div>
                 ))}
               </div>
             )}
           </div>
 
-          {/* Hover border animation */}
+          {/* Hover border */}
           <div className="absolute inset-0 border border-[#f1ede100] group-hover:border-[#f1ede130] max-md:border-[#f1ede130] transition-colors duration-300 z-30 pointer-events-none" />
 
           {/* Corner accent */}
@@ -164,7 +135,7 @@ export function ProjectCard({ project, index, size = "medium", showFloatingImage
         </div>
       </TransitionLink>
 
-      {/* Floating card — solo visible en vista showcase */}
+      {/* Floating card — showcase view, mobile */}
       {showFloatingImage && project.image && (
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-40 w-[65%] h-[65%] shadow-xl border border-[#14141410] overflow-hidden rounded-sm pointer-events-none md:hidden">
           <img src={project.image} alt={`${project.title} — ${project.category} para ${project.client}`} className="w-full h-full object-cover" />
@@ -177,7 +148,7 @@ export function ProjectCard({ project, index, size = "medium", showFloatingImage
             animate={{ opacity: 1, scale: 1, rotate: 0 }}
             exit={{ opacity: 0, scale: 0.88, rotate: 2 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-40 w-[65%] h-[65%] shadow-xl border border-[#14141410] overflow-hidden rounded-sm pointer-events-none hidden md:block"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-40 w-[65%] h-[65%] shadow-xl border border-[#14141010] overflow-hidden rounded-sm pointer-events-none hidden md:block"
           >
             <img src={project.image} alt={`${project.title} — ${project.category} para ${project.client}`} className="w-full h-full object-cover" />
           </motion.div>

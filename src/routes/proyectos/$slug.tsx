@@ -35,10 +35,8 @@ function ProjectPage() {
   const images = project.images ?? [];
 
   const openSlider = (index: number) => {
-    if (window.innerWidth < 768) {
-      setSliderIndex(index);
-      setSliderOpen(true);
-    }
+    setSliderIndex(index);
+    setSliderOpen(true);
   };
 
   const closeSlider = () => setSliderOpen(false);
@@ -146,7 +144,7 @@ function ProjectPage() {
                   <img
                     src={src}
                     alt={`${project.title} — imagen ${index + 1}`}
-                    className="w-full h-auto block md:cursor-auto cursor-pointer active:opacity-90 transition-opacity"
+                    className="w-full h-auto block cursor-pointer active:opacity-90 transition-opacity"
                     onClick={() => openSlider(index)}
                   />
                 </motion.div>
@@ -175,7 +173,7 @@ function ProjectPage() {
       <AnimatePresence>
         {sliderOpen && (
           <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center md:hidden"
+            className="fixed inset-0 z-50 flex items-center justify-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -187,59 +185,57 @@ function ProjectPage() {
               onClick={closeSlider}
             />
 
-            {/* Slider content */}
-            <div
-              className="relative w-full z-10 px-4"
-              onTouchStart={handleTouchStart}
-              onTouchEnd={handleTouchEnd}
-            >
-              <AnimatePresence mode="wait">
-                <motion.img
-                  key={sliderIndex}
-                  src={images[sliderIndex]}
-                  alt={`${project.title} — imagen ${sliderIndex + 1}`}
-                  className="w-full h-auto max-h-[80vh] object-contain rounded-sm"
-                  initial={{ opacity: 0, x: 40 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -40 }}
-                  transition={{ duration: 0.2 }}
-                />
-              </AnimatePresence>
-
-              {/* Counter */}
-              <p className="text-center text-[#f1ede180] text-xs mt-3 font-geist tracking-widest">
-                {sliderIndex + 1} / {images.length}
-              </p>
-            </div>
-
             {/* Close button */}
             <button
-              className="absolute top-5 right-5 z-20 w-10 h-10 flex items-center justify-center text-[#f1ede1] bg-[#ffffff10] rounded-full"
+              className="absolute top-5 right-5 z-20 w-10 h-10 flex items-center justify-center text-[#f1ede1] bg-[#ffffff10] rounded-full cursor-pointer"
               onClick={closeSlider}
               aria-label="Cerrar"
             >
               ✕
             </button>
 
-            {/* Prev / Next */}
-            {sliderIndex > 0 && (
-              <button
-                className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 flex items-center justify-center text-[#f1ede1] bg-[#ffffff10] rounded-full"
-                onClick={prev}
-                aria-label="Anterior"
-              >
-                ←
-              </button>
-            )}
-            {sliderIndex < images.length - 1 && (
-              <button
-                className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 flex items-center justify-center text-[#f1ede1] bg-[#ffffff10] rounded-full"
-                onClick={next}
-                aria-label="Siguiente"
-              >
-                →
-              </button>
-            )}
+            {/* Slider content */}
+            <div
+              className="relative z-10 flex flex-col items-center gap-3"
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+            >
+              <div className="flex items-center gap-3">
+                <button
+                  className={`shrink-0 w-10 h-10 flex items-center justify-center text-[#f1ede1] bg-[#ffffff10] rounded-full cursor-pointer ${sliderIndex === 0 ? "invisible" : ""}`}
+                  onClick={prev}
+                  aria-label="Anterior"
+                >
+                  ←
+                </button>
+
+                <AnimatePresence mode="wait">
+                  <motion.img
+                    key={sliderIndex}
+                    src={images[sliderIndex]}
+                    alt={`${project.title} — imagen ${sliderIndex + 1}`}
+                    className="block max-h-[80vh] max-w-[calc(100vw-8rem)] w-auto h-auto rounded-sm"
+                    initial={{ opacity: 0, x: 40 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -40 }}
+                    transition={{ duration: 0.2 }}
+                  />
+                </AnimatePresence>
+
+                <button
+                  className={`shrink-0 w-10 h-10 flex items-center justify-center text-[#f1ede1] bg-[#ffffff10] rounded-full cursor-pointer ${sliderIndex === images.length - 1 ? "invisible" : ""}`}
+                  onClick={next}
+                  aria-label="Siguiente"
+                >
+                  →
+                </button>
+              </div>
+
+              {/* Counter */}
+              <p className="text-center text-[#f1ede180] text-xs font-geist tracking-widest">
+                {sliderIndex + 1} / {images.length}
+              </p>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
