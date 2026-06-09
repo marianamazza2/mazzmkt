@@ -1,44 +1,44 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { Code, Palette, MessageCircle, Bot, Zap, Sparkles, Globe, Wand2, Search, BarChart2, Share2, Target } from "lucide-react";
+import { Code, Palette, MessageCircle, Bot, Zap, Wand2, BarChart2, Share2, Target, ShoppingCart, Globe, MessageSquare } from "lucide-react";
 import { useRef, useState } from "react";
 import { TransitionLink } from "@/components/transition/transition-link";
 
 const mainServices = [
   {
     icon: Code,
-    title: "TU WEB LISTA EN DIAS",
-    subtitle: "SITIOS WEB | LANDINGS | E-COMMERCE",
-    description: "Tu web lista en tiempo récord. Tecnología de última generación y diseño que impacta desde el primer día.",
+    title: "WEBS Y LANDING PAGES",
+    subtitle: "SITIOS WEB | LANDINGS",
+    description: "Código real, diseño a medida, alto rendimiento. Lista en días.",
   },
   {
     icon: Zap,
     title: "WEB APPS & PLATAFORMAS",
     subtitle: "WEBAPPS | CRM | SAAS | PORTALES",
-    description: "La herramienta digital que tu negocio necesita, construida exactamente como la imaginas. CRM, SaaS o portal: a medida.",
+    description: "CRM, SaaS, portales. La herramienta que tu negocio necesita, a medida.",
+  },
+  {
+    icon: ShoppingCart,
+    title: "E-COMMERCE",
+    subtitle: "TIENDAS ONLINE | E-COMMERCE",
+    description: "Tu tienda online sin las limitaciones de los templates.",
   },
   {
     icon: Palette,
     title: "BRANDING QUE DEJA HUELLA",
-    subtitle: "IDENTIDAD VISUAL | ESTRATEGIA ",
-    description: "Marcas que la gente recuerda. Coherencia, carácter e identidad visual que genera confianza instantánea.",
-  },
-  {
-    icon: BarChart2,
-    title: "ANALYTICS & TRACKING",
-    subtitle: "GA4 | TAG MANAGER | CLARITY | PÍXELES",
-    description: "Implementamos GA4, Tag Manager y píxeles para entender a tus usuarios y tomar decisiones basadas en datos reales.",
-  },
-  {
-    icon: Search,
-    title: "SEO CON IA",
-    subtitle: "POSICIONAMIENTO | KEYWORDS | AUDITORÍA",
-    description: "Posicionamiento orgánico acelerado con inteligencia artificial. Auditoría técnica, keywords y contenido que Google quiere rankear.",
+    subtitle: "IDENTIDAD VISUAL | ESTRATEGIA",
+    description: "Identidad visual, estrategia y carácter. Marcas que la gente recuerda.",
   },
   {
     icon: Share2,
     title: "GESTIÓN DE REDES SOCIALES",
-    subtitle: "INSTAGRAM | ADS MANAGER",
-    description: "Estrategia, contenido y gestión diaria. Presencia en redes que conecta con tu audiencia y genera negocio.",
+    subtitle: "REDES SOCIALES | SOCIAL MEDIA",
+    description: "Estrategia, contenido y gestión diaria.",
+  },
+  {
+    icon: BarChart2,
+    title: "ANALYTICS & TRACKING",
+    subtitle: "GA4 | TAG MANAGER | PÍXELES",
+    description: "GA4, Tag Manager, Clarity, píxeles. Decisiones con datos reales.",
   },
 ];
 
@@ -46,40 +46,40 @@ const aiServices = [
   {
     icon: Globe,
     title: "WEBS CON IA",
-    description: "Tu web, landing o e-commerce lista en tiempo record. Diseno a medida, alto rendimiento tecnico y resultados desde el primer dia.",
+    description: "Diseño a medida, alto rendimiento técnico y resultados desde el primer día.",
   },
   {
     icon: Bot,
     title: "AUTOMATIZACIÓN",
-    description: "Automatizamos tus procesos y creamos flujos para que tu negocio opere solo. Menos tareas repetitivas, mas tiempo para crecer.",
+    description: "Flujos y workflows para que tu negocio opere solo.",
   },
   {
     icon: MessageCircle,
     title: "VENTAS POR WHATSAPP",
-    description: "Automatiza respuestas, califica leads y cierra ventas en el canal donde tus clientes ya estan. Sin esfuerzo manual.",
+    description: "Respuestas automáticas, leads calificados, ventas cerradas.",
   },
   {
     icon: Wand2,
     title: "IA GENERATIVA",
-    description: "Imagenes de producto, avatares, reels y videos generados con IA. Produccion visual de alta calidad a escala, sin los tiempos ni costes de la produccion tradicional.",
+    description: "Imágenes, avatares, reels y videos. Producción visual a escala.",
   },
   {
-    icon: Sparkles,
-    title: "CONTENIDO SIN LIMITE",
-    description: "30 dias de contenido en pocas horas. Videos, copys, voiceovers e imagenes con calidad profesional generados con IA.",
+    icon: MessageSquare,
+    title: "CHATBOTS A MEDIDA",
+    description: "Asistentes inteligentes que atienden, venden y resuelven sin intervención humana.",
   },
   {
     icon: Target,
     title: "SEM & PUBLICIDAD META",
-    description: "Campañas de pago que venden. Google Ads, Meta Ads y TikTok Ads gestionados con IA para maximizar tu ROAS desde el primer día.",
+    description: "Google Ads, Meta Ads, TikTok Ads. Campañas optimizadas con AI.",
   },
 ];
 
 const mobileAiCards = [
-  { icon: Globe, title: "Webs con IA", subtitle: "En tiempo récord" },
+  { icon: Globe, title: "Webs con IA", subtitle: "Alto rendimiento con IA" },
   { icon: Bot, title: "Automatización", subtitle: "Procesos eficientes" },
   { icon: MessageCircle, title: "WhatsApp", subtitle: "Ventas en chat" },
-  { icon: Sparkles, title: "IA generativa", subtitle: "Contenido a escala" },
+  { icon: Target, title: "SEM & Ads", subtitle: "Campañas con AI" },
 ];
 
 
@@ -446,7 +446,7 @@ export function Services() {
           <div className="hidden md:flex overflow-x-auto snap-x snap-mandatory hide-scrollbar gap-4 pb-4 mb-10 md:grid md:grid-cols-2 lg:grid-cols-3 md:overflow-x-visible md:snap-none md:pb-0 md:gap-5 md:mb-10">
             {aiServices.map((service, index) => (
               <div key={service.title} className="snap-center flex-shrink-0 w-[85vw] md:w-auto h-full">
-                <ServiceCard service={service} index={index + 3} variant="ai" />
+                <ServiceCard service={service} index={index} variant="ai" />
               </div>
             ))}
           </div>

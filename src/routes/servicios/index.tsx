@@ -21,7 +21,7 @@ function ServiciosPage() {
     <>
       <SEOHead
         title="Servicios | MAZZMKT"
-        description="Servicios de marketing digital: Marketing con IA, Desarrollo Web, Growth Marketing y Branding Digital."
+        description="Desarrollo web, web apps, branding, automatización e IA. Soluciones digitales a medida con código real."
       />
 
       {/* Hero */}

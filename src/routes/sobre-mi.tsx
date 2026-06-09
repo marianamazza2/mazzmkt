@@ -20,8 +20,8 @@ function SobreMiPage() {
   return (
     <>
       <SEOHead
-        title="Acerca de | MAZZMKT"
-        description="Somos MazzMkt, una agencia de marketing digital en Barcelona. Creamos experiencias digitales donde la estrategia, la creatividad y la tecnologia se mezclan."
+        title="Sobre nosotros | MAZZMKT"
+        description="Somos MAZZMKT, un estudio digital en Barcelona. Diseñamos, programamos y automatizamos tu negocio digital con código real e inteligencia artificial."
       />
 
       {/* Hero */}

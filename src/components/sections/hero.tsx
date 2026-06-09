@@ -29,7 +29,7 @@ export function Hero() {
             className="md:hidden text-[11px] font-medium uppercase mb-[14px]"
             style={{ letterSpacing: "2.5px", color: "#888780" }}
           >
-            Agencia de Marketing Digital en Barcelona
+            MAZZMKT — Digital Studio · Barcelona
           </motion.h1>
 
           {/* Desktop: h1 semántico */}
@@ -40,7 +40,7 @@ export function Hero() {
             className="hidden md:block text-[15px] font-medium text-[#ffffffe0] mb-5 uppercase font-geist"
             style={{ letterSpacing: "0.14em" }}
           >
-            Agencia de Marketing Digital en Barcelona
+            MAZZMKT — Digital Studio · Barcelona
           </motion.h1>
 
           <h2
@@ -59,7 +59,7 @@ export function Hero() {
               className="font-bold text-[#ffffff]"
               style={{ display: "block", fontSize: "inherit", lineHeight: "inherit", fontWeight: "inherit" }}
             >
-              CREAMOS MARCAS
+              DISEÑAMOS,
             </motion.span>
             <motion.span
               initial={{ opacity: 0, y: 30 }}
@@ -68,7 +68,7 @@ export function Hero() {
               className="font-bold text-[#ffffff]"
               style={{ display: "block", fontSize: "inherit", lineHeight: "inherit", fontWeight: "inherit" }}
             >
-              QUE SE ENTIENDEN,
+              PROGRAMAMOS Y
             </motion.span>
             <motion.span
               initial={{ opacity: 0, y: 30 }}
@@ -83,7 +83,7 @@ export function Hero() {
                 color: "#ffffff",
               }}
             >
-              SE SIENTEN
+              AUTOMATIZAMOS
             </motion.span>
             <motion.span
               initial={{ opacity: 0, y: 30 }}
@@ -98,7 +98,7 @@ export function Hero() {
                 color: "#ffffff",
               }}
             >
-              & RESPONDEN
+              TU NEGOCIO DIGITAL
             </motion.span>
           </h2>
 
@@ -110,7 +110,7 @@ export function Hero() {
             className="md:hidden text-[13px] leading-[1.6] mb-6"
             style={{ color: "#888780" }}
           >
-            Marketing digital, diseño y desarrollo web para marcas que quieren crecer con inteligencia.
+            Webs, marcas y automatización con código real e inteligencia artificial. Proyectos a medida, listos en días.
           </motion.p>
 
           {/* Mobile: dos CTAs en fila */}

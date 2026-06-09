@@ -45,7 +45,7 @@ function ContactoPage() {
     <>
       <SEOHead
         title="Contacto | MAZZMKT"
-        description="Contacta con MAZZMKT. Hablemos sobre tu proyecto de marketing digital, branding o desarrollo web."
+        description="Hablemos de tu proyecto. Webs, marcas, apps o automatización. Cuéntanos qué necesitas y te proponemos una solución a medida."
       />
 
       {/* Hero */}

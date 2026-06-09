@@ -14,7 +14,7 @@ function ProyectosPage() {
     <>
       <SEOHead
         title="Proyectos | MAZZMKT"
-        description="Descubre nuestros proyectos de marketing digital, branding y desarrollo web. Casos de éxito y resultados medibles."
+        description="Webs, marcas, web apps y automatizaciones creadas desde cero con código real e IA. Proyectos reales con tiempos de entrega en días."
       />
 
       {/* Hero Section */}

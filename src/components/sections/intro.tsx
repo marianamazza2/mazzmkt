@@ -55,7 +55,7 @@ export function Intro() {
           className="text-[13px] leading-[1.7] mb-5"
           style={{ color: "#5F5E5A" }}
         >
-          Conectamos con inteligencia. Cada proyecto comienza comprendiendo quién eres, qué necesitas y a quién le hablás.
+          Somos un estudio digital que diseña, programa y automatiza. Combinamos código real, diseño con criterio e inteligencia artificial en cada proyecto. El resultado: soluciones a medida que funcionan, se ven increíbles y están listas en días.
         </p>
         <TransitionLink
           to="/contacto"
@@ -97,8 +97,7 @@ export function Intro() {
             className="mb-8 max-w-3xl text-[#5F5E5A]"
             style={{ fontSize: "21px", lineHeight: 1.55 }}
           >
-            Conectamos con inteligencia. Cada proyecto empieza entendiendo quién sos,
-            qué necesitás y a quién le hablás.
+            Somos un estudio digital que diseña, programa y automatiza. Combinamos código real, diseño con criterio e inteligencia artificial en cada proyecto. El resultado: soluciones a medida que funcionan, se ven increíbles y están listas en días.
           </p>
 
           <motion.div

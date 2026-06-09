@@ -335,7 +335,7 @@ function FAQsPage() {
     <>
       <SEOHead
         title="FAQs - Preguntas Frecuentes | MAZZMKT"
-        description="Preguntas frecuentes sobre diseño web en Barcelona, desarrollo web, landings de alta conversión, webs para autónomos, branding, SEO y marketing digital."
+        description="Preguntas frecuentes sobre desarrollo web con código real, branding, web apps, automatización, IA y marketing digital en Barcelona."
         jsonLd={faqSchema}
       />
 

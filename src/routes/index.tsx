@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SEOHead } from "@/components/seo/SEOHead";
 import { Hero } from "@/components/sections/hero";
 import { Marquee } from "@/components/sections/marquee";
+import { HowWeWork } from "@/components/sections/how-we-work";
 import { Intro } from "@/components/sections/intro";
 import { Services } from "@/components/sections/services";
 import { Projects } from "@/components/sections/projects";
@@ -15,7 +16,7 @@ const homeSchema = {
   "@type": "WebSite",
   "@id": "https://mazzmkt.com/#website",
   "url": "https://mazzmkt.com",
-  "name": "MAZZMKT | Estrategia & Creatividad",
+  "name": "MAZZMKT | Digital Studio Barcelona",
   "publisher": {
     "@type": "Organization",
     "name": "MAZZMKT",
@@ -27,12 +28,13 @@ function HomePage() {
   return (
     <>
       <SEOHead
-        title="MAZZMKT | Estrategia & Creatividad"
-        description="Agencia de marketing digital. Diseñamos marcas que se entienden, se sienten y responden. Estrategia, creatividad e inteligencia artificial."
+        title="MAZZMKT | Digital Studio Barcelona"
+        description="Digital Studio en Barcelona. Webs con código real, branding, web apps, automatización e IA. Proyectos a medida en días, no en meses."
         jsonLd={homeSchema}
       />
       <Hero />
       <Marquee />
+      <HowWeWork />
       <Intro />
       <Services />
       <Projects />
