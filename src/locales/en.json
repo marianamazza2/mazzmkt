@@ -1,0 +1,381 @@
+{
+  "seo": {
+    "home": {
+      "title": "MAZZMKT | Strategy & Creativity",
+      "description": "Digital marketing agency. We design brands that are understood, felt, and respond. Strategy, creativity, and artificial intelligence."
+    }
+  },
+  "hero": {
+    "tagline": "Digital Marketing Agency in Barcelona",
+    "headline_1": "WE BUILD BRANDS",
+    "headline_2": "THAT ARE UNDERSTOOD,",
+    "headline_3": "FELT",
+    "headline_4": "& RESPOND",
+    "subtitle": "Digital marketing, design and web development for brands that want to grow with intelligence.",
+    "cta_projects": "SEE PROJECTS",
+    "cta_contact": "CONTACT US"
+  },
+  "intro": {
+    "label": "WHO WE ARE",
+    "headline_1": "WE DEVELOP BRANDS,",
+    "headline_2": "ELEVATE THEIR DIGITAL PRESENCE",
+    "headline_3": "AND CONNECT WITH INTELLIGENCE.",
+    "headline_mobile": "WE DEVELOP BRANDS, ELEVATE THEIR DIGITAL PRESENCE",
+    "body_mobile": "We connect with intelligence. Every project starts by understanding who you are, what you need, and who you're talking to.",
+    "body": "We connect with intelligence. Every project starts by understanding who you are, what you need, and who you're talking to.",
+    "cta": "LET'S GROW YOUR IDEAS"
+  },
+  "marquee": {
+    "words": [
+      "AUTOMATION",
+      "WORKFLOWS",
+      "WEB DEVELOPMENT",
+      "CUSTOM PLATFORMS",
+      "WEBAPPS",
+      "ARTIFICIAL INTELLIGENCE",
+      "BRANDING",
+      "SOCIAL MEDIA",
+      "WEB DESIGN",
+      "INNOVATION"
+    ]
+  },
+  "services": {
+    "main_label": "Digital Marketing Services in Barcelona",
+    "main_headline": "WHAT WE DO",
+    "ai_label": "Marketing with Artificial Intelligence",
+    "ai_headline": "YOUR BUSINESS IN",
+    "ai_headline_sub": "AI MODE",
+    "ai_intro": "We automate processes, build intelligent assistants, and accelerate your business with AI.",
+    "ai_cta": "I WANT MY BUSINESS WITH AI",
+    "main_items": [
+      {
+        "title": "YOUR WEBSITE READY IN DAYS",
+        "subtitle": "WEBSITES | LANDINGS | E-COMMERCE",
+        "description": "Your website ready in record time. Cutting-edge technology and design that makes an impact from day one."
+      },
+      {
+        "title": "WEB APPS & PLATFORMS",
+        "subtitle": "WEBAPPS | CRM | SAAS | PORTALS",
+        "description": "The digital tool your business needs, built exactly as you imagine it. CRM, SaaS or portal: custom-made."
+      },
+      {
+        "title": "BRANDING THAT LEAVES A MARK",
+        "subtitle": "VISUAL IDENTITY | STRATEGY",
+        "description": "Brands people remember. Consistency, character and visual identity that builds instant trust."
+      },
+      {
+        "title": "ANALYTICS & TRACKING",
+        "subtitle": "GA4 | TAG MANAGER | CLARITY | PIXELS",
+        "description": "We implement GA4, Tag Manager and pixels to understand your users and make decisions based on real data."
+      },
+      {
+        "title": "SEO WITH AI",
+        "subtitle": "POSITIONING | KEYWORDS | AUDIT",
+        "description": "Accelerated organic positioning with artificial intelligence. Technical audit, keywords and content that Google wants to rank."
+      },
+      {
+        "title": "SOCIAL MEDIA MANAGEMENT",
+        "subtitle": "INSTAGRAM | ADS MANAGER",
+        "description": "Strategy, content and daily management. Social media presence that connects with your audience and generates business."
+      }
+    ],
+    "ai_items": [
+      {
+        "title": "WEBSITES WITH AI",
+        "description": "Your website, landing or e-commerce ready in record time. Custom design, high technical performance and results from day one."
+      },
+      {
+        "title": "AUTOMATION",
+        "description": "We automate your processes and create flows so your business runs on its own. Less repetitive tasks, more time to grow."
+      },
+      {
+        "title": "SALES VIA WHATSAPP",
+        "description": "Automate responses, qualify leads and close sales on the channel where your clients already are. Zero manual effort."
+      },
+      {
+        "title": "GENERATIVE AI",
+        "description": "Product images, avatars, reels and videos generated with AI. High-quality visual production at scale, without the time or cost of traditional production."
+      },
+      {
+        "title": "UNLIMITED CONTENT",
+        "description": "30 days of content in just a few hours. Videos, copy, voiceovers and images with professional quality generated with AI."
+      },
+      {
+        "title": "SEM & META ADS",
+        "description": "Paid campaigns that sell. Google Ads, Meta Ads and TikTok Ads managed with AI to maximize your ROAS from day one."
+      }
+    ],
+    "mobile_ai_items": [
+      { "title": "Websites with AI", "subtitle": "In record time" },
+      { "title": "Automation", "subtitle": "Efficient processes" },
+      { "title": "WhatsApp", "subtitle": "Sales via chat" },
+      { "title": "Generative AI", "subtitle": "Content at scale" }
+    ]
+  },
+  "projects": {
+    "label": "OUR WORK",
+    "headline": "PROJECTS",
+    "cta": "SEE ALL PROJECTS"
+  },
+  "nav": {
+    "home": "HOME",
+    "projects": "PROJECTS",
+    "about": "MAZZMKT",
+    "faqs": "FAQS",
+    "contact": "CONTACT",
+    "cta": "LET'S TALK ABOUT YOUR PROJECT"
+  },
+  "footer": {
+    "rights": "ALL RIGHTS RESERVED.",
+    "legal": "LEGAL NOTICE",
+    "cookies": "COOKIES",
+    "privacy": "PRIVACY",
+    "cookie_policy": "COOKIE POLICY",
+    "privacy_policy": "PRIVACY POLICY"
+  },
+  "about": {
+    "breadcrumb_mobile": "MAZZMKT / ABOUT",
+    "breadcrumb_desktop": "DIGITAL MARKETING AGENCY - WHO WE ARE",
+    "headline_1": "HUMAN",
+    "headline_2": "& DIGITAL",
+    "subtitle": "Strategy, creativity and technology so brands shine with intention.",
+    "cta_know": "MEET US",
+    "cta_contact": "CONTACT",
+    "stat_projects": "Projects",
+    "stat_satisfaction": "Satisfaction",
+    "values_label": "WE BELIEVE IN",
+    "values_headline_1": "OUR",
+    "values_headline_2": "VALUES",
+    "beliefs": [
+      "Authenticity as the foundation of every brand.",
+      "Simplicity as the most powerful strategy.",
+      "Closeness to build together and enjoy the process.",
+      "Real results that drive the growth of your brand."
+    ],
+    "history_label": "BEHIND MAZZMKT",
+    "history_headline_1": "OUR STORY",
+    "history_body_1": "MazzMkt was born from an unusual combination: human resources, code, design and marketing. We come from understanding people before pixels, and that changed everything. We learned that marketing that truly works listens, understands and connects.",
+    "history_body_2": "Today we are a small agency with a big purpose. We work with brands that want more than visibility: they want to grow, stand out and be remembered. We combine strategy, creativity and artificial intelligence to build identities that look good, feel good and convert. No copied formulas, no empty promises."
+  },
+  "contact": {
+    "breadcrumb_mobile": "MAZZMKT / CONTACT",
+    "headline_1": "LET'S TALK",
+    "headline_2": "ABOUT YOUR PROJECT",
+    "subtitle_mobile": "Got a project in mind? We'd love to hear about it.",
+    "subtitle_desktop": "Tell us where your brand is, what you need to move and what result you want to achieve.",
+    "cta_whatsapp": "WHATSAPP",
+    "cta_email": "SEND EMAIL",
+    "whatsapp_message": "Hi! I want to talk about a project.",
+    "form_name_label": "Name",
+    "form_name_placeholder": "Your name",
+    "form_email_label": "Email",
+    "form_message_label": "Message",
+    "form_message_placeholder": "Tell us about your project...",
+    "form_submit": "SEND MESSAGE",
+    "form_submitting": "SENDING...",
+    "form_thanks_title": "THANK YOU!",
+    "form_thanks_body": "We will get back to you as soon as possible.",
+    "info_label": "DIRECT CONTACT",
+    "info_title": "Contact Information",
+    "info_subtitle": "If you prefer to go straight to it, write to us by email or we can schedule a call to understand the project.",
+    "email_label": "Email",
+    "phone_label": "Phone",
+    "location_label": "Location",
+    "location_value": "Barcelona, Spain",
+    "follow_label": "Follow us",
+    "whatsapp_aria": "Contact via WhatsApp"
+  },
+  "projects_page": {
+    "breadcrumb_mobile": "MAZZMKT / PROJECTS",
+    "headline_1": "OUR",
+    "headline_2": "WORK",
+    "subtitle_mobile": "Every project is a story of digital transformation.",
+    "subtitle_desktop": "Every project is a story of digital transformation. Design, cutting-edge technology and results.",
+    "cta_see": "SEE PROJECTS",
+    "cta_contact": "CONTACT",
+    "stat_projects": "Projects",
+    "stat_satisfaction": "Satisfaction"
+  },
+  "cookies_banner": {
+    "title": "Cookies",
+    "body": "We use our own and third-party cookies to analyze site usage and improve your experience. You can accept all, reject them, or configure your preferences.",
+    "link": "Cookie policy",
+    "accept_all": "Accept all",
+    "preferences": "Preferences",
+    "reject": "Reject",
+    "back": "← Back",
+    "save": "Save preferences",
+    "necessary_title": "Necessary",
+    "necessary_desc": "Essential for the site to function. Cannot be deactivated.",
+    "analytics_title": "Analytics",
+    "analytics_desc": "Google Analytics and Microsoft Clarity. They help us understand how you use the site."
+  },
+  "stats_home": [
+    { "number": "10+", "label": "PROJECTS" },
+    { "number": "100%", "label": "SATISFACTION" },
+    { "number": "5+", "label": "COUNTRIES" },
+    { "number": "24H", "label": "RESPONSE" }
+  ],
+  "page_cta": {
+    "mobile_headline": "GOT A PROJECT?",
+    "mobile_subtitle": "Let's talk and make something great",
+    "cta": "GET STARTED",
+    "desktop_headline_1": "LET'S GROW",
+    "desktop_headline_2": "YOUR IDEAS"
+  },
+  "faqs_page": {
+    "hero_title_1": "FREQUENTLY",
+    "hero_title_2": "ASKED QUESTIONS",
+    "hero_subtitle": "Everything you need to know before working together. No fine print, no runaround.",
+    "cta_see": "SEE QUESTIONS",
+    "cta_contact": "CONTACT",
+    "stats_label": "IN NUMBERS",
+    "stats": [
+      { "number": "2-3", "label": "DEVELOPMENT DAYS", "sublabel": "with code" },
+      { "number": "50%", "label": "INITIAL DEPOSIT", "sublabel": "to start" },
+      { "number": "24H", "label": "RESPONSE", "sublabel": "guaranteed" }
+    ],
+    "categories": {
+      "TODOS": "ALL",
+      "ANALYTICS": "ANALYTICS",
+      "BRANDING": "BRANDING",
+      "GENERAL": "GENERAL",
+      "IA": "AI",
+      "REDES SOCIALES": "SOCIAL MEDIA",
+      "SEO": "SEO",
+      "WEB": "WEB"
+    },
+    "items": {
+      "17": {
+        "question": "How does the process work to start working together?",
+        "answer": "You contact us via WhatsApp or through the website and we send you an initial form to learn more about your project and needs. With that information we prepare a general proposal tailored to what you're looking for. If what we offer fits what you need, we schedule a meeting to get to know each other, talk and define details.",
+        "highlight": "Contact → form → proposal → meeting. Simple as that."
+      },
+      "22": {
+        "question": "How does the process work before starting a project?",
+        "answer": "Once the proposal is approved, we send a digital contract along with the first deposit payment. This allows us to align expectations, define the project scope and start the work in an organized way.",
+        "highlight": "Approved proposal → contract + deposit → we start."
+      },
+      "21": {
+        "question": "Is an initial deposit required to get started?",
+        "answer": "Yes. To reserve your spot and start the project, we ask for a 50% deposit of the total agreed amount. The remaining 50% is paid upon completion and before delivery. This allows us to plan our time and real dedication to your project from day one.",
+        "highlight": "50% to start, 50% on delivery. No surprises."
+      },
+      "20": {
+        "question": "How do revisions work?",
+        "answer": "We offer up to two complete rounds of revisions on each project. Our initial strategic process — briefing, research and objective definition — is designed to align the creative direction from the start and ensure the project moves forward with clarity and coherence.\n\nIf needed, a third round can be done for minor adjustments or final details only.",
+        "highlight": "Up to 2 full rounds + 1 for final adjustments if needed."
+      },
+      "1": {
+        "question": "Code or No-Code? Which is better for my project?",
+        "answer": "It depends on your goals. No-Code (Webflow, Framer, Wix) is ideal if you need a quick website with a low budget and plan to edit it yourself. Custom code is for projects that want to stand out, need specific functionality, maximum load speed, or to scale without limitations. If you're looking for a website without templates in Barcelona, with a truly unique experience and ready to grow, code is the way.",
+        "highlight": "If you want your website to say 'this is premium', you need code."
+      },
+      "2": {
+        "question": "How quickly can I have my website ready?",
+        "answer": "With code, a high-conversion landing page can be ready in 2-3 business days if you already have the design or branding defined. More complex projects with e-commerce, integrations or custom functionality can take 1-3 weeks. No-Code usually takes similar time but with less flexibility for structural changes.",
+        "highlight": "2-3 days if you already have your design ready. No waiting."
+      },
+      "26": {
+        "question": "Do you do web design for small businesses in Barcelona?",
+        "answer": "Yes. We work on web design for small businesses in Barcelona that need a clear, professional digital presence focused on conversions: restaurants, studios, gyms, independent professionals, local projects and brands that want to look more solid online. As a web development agency in Barcelona, we don't make generic websites; we define structure, messaging, design and development based on the type of client and the commercial objective of the site.",
+        "highlight": "Websites for real businesses: clear, fast and built to sell."
+      },
+      "27": {
+        "question": "Do you build professional websites for freelancers in Barcelona?",
+        "answer": "Yes. A professional website for freelancers in Barcelona needs to quickly explain who you are, what you offer, why they should trust you and how to hire you. That's why we work on pages with strategic structure, clear calls to action, careful design, basic SEO and a simple experience so the user gets to the contact page without getting lost.",
+        "highlight": "For freelancers, the website must generate trust and inquiries."
+      },
+      "28": {
+        "question": "How much does a website cost in Spain?",
+        "answer": "It depends on the scope. A landing page doesn't cost the same as a corporate website, an online store or a website with design, branding, SEO and integrations. In Spain, the price of a professional website usually varies depending on strategy, number of sections, design level, custom development, content and maintenance. That's why we don't give fixed prices without first understanding the project: we first analyze what you need and then prepare a clear proposal.",
+        "highlight": "The price depends on the scope, not a generic rate."
+      },
+      "29": {
+        "question": "Do you design high-conversion landing pages in Barcelona?",
+        "answer": "Yes. A high-conversion landing page is not just a pretty page: it needs a clear promise, visual hierarchy, direct copy, trust signals, load speed and a well-placed call to action. We design and develop it for campaigns, launches, lead generation, bookings, sales or validation of a specific offer.",
+        "highlight": "A landing page should guide the user toward a specific action."
+      },
+      "30": {
+        "question": "Do you work on websites for restaurants, psychologists, gyms or real estate?",
+        "answer": "Yes. We've already worked on web design projects for restaurants in Barcelona, websites for psychologists, gyms and branding for independent real estate agencies. Each sector needs a different structure: a restaurant should show the menu, reservations and personality; a psychologist needs trust and clarity; a gym must convey energy and facilitate conversions; an independent real estate agency needs professionalism, approachability and credibility.",
+        "highlight": "We adapt the website to the sector, not the other way around."
+      },
+      "3": {
+        "question": "Will I be able to edit my website myself?",
+        "answer": "With No-Code, yes. Platforms like Webflow or Framer have intuitive visual editors. Or if you prefer not to touch anything, we offer maintenance plans where we take care of everything you need.",
+        "highlight": "No-Code = you edit it. Code = you edit content or we do it."
+      },
+      "18": {
+        "question": "Does the development include hosting and domain?",
+        "answer": "The domain is yours and you register it (we guide you if you need it). For hosting, in code projects we use Vercel, a high-performance platform that in many cases is free. In No-Code projects, hosting is already included in the chosen platform. In all cases we advise you so that everything stays under your control and you don't depend on us for anything critical.",
+        "highlight": "Your domain, your hosting, your control. We guide you."
+      },
+      "19": {
+        "question": "How long does the branding process take?",
+        "answer": "A complete branding takes between 2 and 4 weeks, depending on the complexity of the brand and the speed of your feedback. The process has clear stages: strategy and brief, concept exploration, development of the chosen identity, and delivery of final files with guidelines. We don't rush the process because a well-built identity is a long-term investment.",
+        "highlight": "2-4 weeks for an identity that lasts years."
+      },
+      "5": {
+        "question": "What does the branding service include?",
+        "answer": "Our branding covers everything from brand strategy to full visual identity: logo, color palette, typography, icon system, usage guidelines, basic brand applications (cards, social media, stationery) and the live brand — real mockups showing your identity applied across different media so you can see how it looks before going to market. And if you also contract the applications service, we add an expanded set of example mockups to show your brand in action with greater depth and variety. It's not just a nice logo, it's building an identity that communicates who you are and why they should choose you.",
+        "highlight": "Branding = strategy + identity. Not just a logo."
+      },
+      "6": {
+        "question": "I already have a logo, do I need full branding?",
+        "answer": "A logo alone is not branding. If your brand doesn't have visual consistency (defined colors, typography, communication tone), every piece you create will feel disconnected. We can work from your existing logo and build a complete visual system, or if the logo isn't up to standard, propose a redesign.",
+        "highlight": "Logo ≠ Branding. Your brand needs a complete system."
+      },
+      "9": {
+        "question": "How long does it take to see results with SEO?",
+        "answer": "SEO is a medium-to-long term strategy. The first results are usually seen between 3 and 6 months, depending on competition in your sector and the current state of your website. But once you rank, the traffic is organic and sustained. It's the investment that gives the most return in the long run.",
+        "highlight": "3-6 months for results. Then free and constant traffic."
+      },
+      "10": {
+        "question": "What does the SEO service include?",
+        "answer": "Full technical audit, keyword research, on-page optimization (titles, metas, structure, speed), content strategy, link building, and monthly reports with clear metrics.",
+        "highlight": "Technical SEO + content + reports. All measurable."
+      },
+      "23": {
+        "question": "Do you manage Google Search Console?",
+        "answer": "Yes. Google Search Console is a key tool for understanding how Google sees your website: which pages it indexes, what keywords you appear for, what errors it detects in crawling and how your organic presence evolves. We set it up, connect it with Analytics and monitor it continuously to detect drops, coverage errors or improvement opportunities before they affect your rankings.",
+        "highlight": "Without Search Console you don't know how Google sees you. We see it for you."
+      },
+      "24": {
+        "question": "What is a sitemap and why does it matter for SEO?",
+        "answer": "A sitemap is an XML file that tells search engines what pages exist on your website and how they're organized. Without it, Google has to discover your content on its own, which can take longer or leave pages unindexed. We handle generating it, keeping it updated and submitting it to Search Console so your site is crawled efficiently from day one.",
+        "highlight": "Sitemap = roadmap so Google doesn't miss anything."
+      },
+      "25": {
+        "question": "What is the robots.txt file used for?",
+        "answer": "The robots.txt tells Google's crawlers (and other search engines) which parts of your website they can or cannot visit. Misconfigured, it can block important pages and sink your rankings without you realizing it. We audit and configure yours correctly: we block what should not be indexed (admin pages, duplicates, URL parameters) and make sure nothing relevant is out of Google's reach.",
+        "highlight": "A bad robots.txt can make your website invisible. We do it right."
+      },
+      "11": {
+        "question": "Do you manage social media? What does it include?",
+        "answer": "Yes. We offer comprehensive social media management: content strategy, editorial calendar, piece design, copywriting, posting, community management, and monthly reports.",
+        "highlight": "Strategy + content + management. Not just posting."
+      },
+      "12": {
+        "question": "Can I see results from social media management?",
+        "answer": "Of course. We deliver monthly reports with real metrics: reach, engagement, follower growth, clicks and conversions. We don't stick to vanity metrics (likes). What matters is whether your social media is generating community, trust and, ultimately, sales.",
+        "highlight": "Monthly reports. Metrics that matter, not vanity metrics."
+      },
+      "15": {
+        "question": "What does the Analytics & Tracking service include?",
+        "answer": "We configure and implement the entire measurement stack your business needs: GA4 for complete user tracking, behavior and conversions; Google Tag Manager to manage all events and triggers without relying on the development team; Microsoft Clarity for heat maps, session recordings and experience analysis; and we implement Meta and TikTok pixels so your paid advertising campaigns have accurate data and real optimization. The goal is for every decision you make to be backed by real data, not assumptions.",
+        "highlight": "Without measurement there's no optimization. Without data, there's no strategy."
+      },
+      "16": {
+        "question": "Why do I need GA4 and Tag Manager properly configured?",
+        "answer": "Many businesses have GA4 installed but misconfigured: events that don't fire, conversions that don't get recorded, data that doesn't reflect reality. A correct setup lets you know exactly where your users come from, what they do on your website, where they drop off and which channels actually convert. Tag Manager centralizes all tracking logic in one place, without needing to touch the code every time you need to measure something new.",
+        "highlight": "GA4 misconfigured = bad decisions."
+      },
+      "13": {
+        "question": "Do you use artificial intelligence? Does that affect quality?",
+        "answer": "Yes, and it helps us be much more efficient. Tools like Claude Code and Codex allow us to develop faster, with fewer errors, and explore solutions that used to take days in just hours. AI gives us a real competitive advantage: we iterate faster, deliver better, and the final result is superior. We don't use it to do the same old things, we use it to do things that weren't previously possible.",
+        "highlight": "AI = real competitive advantage. Faster, better, without limits. AI to accelerate, humans to decide."
+      }
+    }
+  }
+}

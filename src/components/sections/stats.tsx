@@ -1,11 +1,9 @@
-const statsData = [
-  { number: "10+", label: "PROYECTOS" },
-  { number: "100%", label: "SATISFACCIÓN" },
-  { number: "5+", label: "PAÍSES" },
-  { number: "24H", label: "RESPUESTA" },
-];
+import { useTranslation } from "react-i18next";
 
 export function Stats() {
+  const { t } = useTranslation();
+  const statsData = t("stats_home", { returnObjects: true }) as { number: string; label: string }[];
+
   return (
     <div
       className="md:hidden"

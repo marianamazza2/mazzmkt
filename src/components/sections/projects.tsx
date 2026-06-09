@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { TransitionLink } from "@/components/transition/transition-link";
 import { projects as allProjects } from "@/data/projects";
 import { ProjectCard } from "@/components/projects/project-card";
@@ -61,6 +62,7 @@ function HomeProjectCard({ project, index }: { project: Project; index: number }
 }
 
 export function Projects() {
+  const { t } = useTranslation();
   const latestProjects = allProjects.slice(0, 3);
 
   return (
@@ -78,13 +80,13 @@ export function Projects() {
             className="text-[10px] uppercase mb-2 md:text-[15px] md:mb-5 md:font-medium md:font-geist"
             style={{ letterSpacing: "0.13em", color: "#B4B2A9" }}
           >
-            NUESTRO TRABAJO
+            {t("projects.label")}
           </h2>
           <p
             className="block text-[24px] font-semibold leading-none text-[#f1ede1] md:text-[clamp(52px,5vw,64px)] md:font-bold md:leading-[0.95] md:tracking-[-0.03em] md:text-[#ffffff]"
             style={{ letterSpacing: "0" }}
           >
-            PROYECTOS{" "}
+            {t("projects.headline")}{" "}
             <span className="hidden md:inline" style={{ color: "#ffffff" }}>&raquo;</span>
           </p>
         </motion.div>
@@ -114,7 +116,7 @@ export function Projects() {
               color: "#f1ede1",
             }}
           >
-            VER TODOS LOS PROYECTOS →
+            {t("projects.cta")} →
           </TransitionLink>
 
           {/* Desktop: link original */}
@@ -123,7 +125,7 @@ export function Projects() {
             className="hidden md:inline-flex items-center justify-center gap-3 rounded-sm border border-[#f1ede14d] px-8 py-[15px] text-sm font-semibold uppercase text-[#f1ede1] transition-colors hover:border-[#f1ede1] font-geist"
             style={{ letterSpacing: "0.09em" }}
           >
-            VER TODOS LOS PROYECTOS
+            {t("projects.cta")}
             <motion.span
               className="inline-block"
               animate={{ x: [0, 5, 0] }}

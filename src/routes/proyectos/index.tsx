@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { SEOHead } from "@/components/seo/SEOHead";
 import { ProjectsGrid } from "@/components/projects/projects-grid";
 import { TransitionLink } from "@/components/transition/transition-link";
@@ -10,6 +11,7 @@ export const Route = createFileRoute("/proyectos/")({
 });
 
 function ProyectosPage() {
+  const { t } = useTranslation();
   return (
     <>
       <SEOHead
@@ -50,7 +52,7 @@ function ProyectosPage() {
                 className="md:hidden"
                 style={{ fontSize: "11px", letterSpacing: "1.5px", color: "#5F5E5A", textTransform: "uppercase" }}
               >
-                MAZZMKT / PROYECTOS
+                {t("projects_page.breadcrumb_mobile")}
               </span>
               {/* Desktop breadcrumb */}
               <span className="hidden md:contents" style={{ letterSpacing: "0.14em" }}>
@@ -76,7 +78,7 @@ function ProyectosPage() {
                 transition={{ duration: 0.6, delay: 0.1 }}
                 className="block"
               >
-                NUESTRO
+                {t("projects_page.headline_1")}
               </motion.span>
               <motion.span
                 initial={{ opacity: 0, y: 30 }}
@@ -84,7 +86,7 @@ function ProyectosPage() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="block"
               >
-                TRABAJO
+                {t("projects_page.headline_2")}
               </motion.span>
             </h2>
 
@@ -101,12 +103,11 @@ function ProyectosPage() {
                 className="md:hidden"
                 style={{ fontSize: "12px", lineHeight: "1.6", color: "#888780" }}
               >
-                Cada proyecto es una historia de transformación digital.
+                {t("projects_page.subtitle_mobile")}
               </span>
               {/* Desktop: full text */}
               <span className="hidden md:inline" style={{ fontSize: "18px" }}>
-                Cada proyecto es una historia de transformación digital.
-                Diseño, tecnología de vanguardia y resultados.
+                {t("projects_page.subtitle_desktop")}
               </span>
             </motion.p>
 
@@ -121,7 +122,7 @@ function ProyectosPage() {
                 className="inline-flex items-center justify-center rounded-sm bg-[#f1ede1] px-8 py-[15px] text-sm font-semibold uppercase text-[#141414] transition-opacity hover:opacity-85 font-geist"
                 style={{ letterSpacing: "0.09em" }}
               >
-                VER PROYECTOS
+                {t("projects_page.cta_see")}
                 <motion.span
                   className="inline-block"
                   animate={{ x: [0, 5, 0] }}
@@ -135,7 +136,7 @@ function ProyectosPage() {
                 className="inline-flex items-center justify-center rounded-sm border border-[#f1ede14d] px-8 py-[15px] text-sm font-semibold uppercase text-[#f1ede1] transition-colors hover:border-[#f1ede1] font-geist"
                 style={{ letterSpacing: "0.09em" }}
               >
-                CONTACTAR
+                {t("projects_page.cta_contact")}
               </TransitionLink>
             </motion.div>
 
@@ -157,7 +158,7 @@ function ProyectosPage() {
                   className="uppercase text-[#f1ede1aa] mt-1 font-geist text-[10px] md:text-xs md:tracking-widest"
                   style={{ letterSpacing: "1.5px" }}
                 >
-                  Proyectos
+                  {t("projects_page.stat_projects")}
                 </p>
               </div>
               {/* Mobile divider */}
@@ -176,7 +177,7 @@ function ProyectosPage() {
                   className="uppercase text-[#f1ede1aa] mt-1 font-geist text-[10px] md:text-xs md:tracking-widest"
                   style={{ letterSpacing: "1.5px" }}
                 >
-                  Satisfacción
+                  {t("projects_page.stat_satisfaction")}
                 </p>
               </div>
             </motion.div>

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { trackEvent } from "@/lib/analytics";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouterState } from "@tanstack/react-router";
@@ -18,23 +19,61 @@ import {
 import { cn } from "@/lib/utils";
 import { TransitionLink } from "@/components/transition/transition-link";
 
-const navigation = [
-  { title: "HOME", href: "/", icon: Home },
-  { title: "PROYECTOS", href: "/proyectos", icon: FolderOpen },
-  { title: "MAZZMKT", href: "/sobre-mi", icon: Users },
-  { title: "FAQS", href: "/faqs", icon: HelpCircle },
-  { title: "CONTACTO", href: "/contacto", icon: Mail },
-];
-
 const socials = [
   { href: "https://instagram.com/mazzmkt", icon: Instagram, label: "Instagram" },
   { href: "https://linkedin.com/company/mazzmkt", icon: Linkedin, label: "LinkedIn" },
   { href: "https://wa.me/5491112345678", icon: Phone, label: "WhatsApp" },
 ];
 
+function LangToggle({ className }: { className?: string }) {
+  const { i18n } = useTranslation();
+  const current = i18n.language.startsWith("en") ? "en" : "es";
+
+  const toggle = (lang: "es" | "en") => {
+    if (lang === current) return;
+    i18n.changeLanguage(lang);
+    localStorage.setItem("lang", lang);
+  };
+
+  return (
+    <div
+      className={cn(
+        "flex items-center gap-0 rounded-sm border border-[rgba(255,255,255,0.15)] overflow-hidden text-xs font-bold",
+        className
+      )}
+      style={{ fontFamily: "var(--font-geist)" }}
+    >
+      {(["es", "en"] as const).map((lang, idx) => (
+        <button
+          key={lang}
+          onClick={() => toggle(lang)}
+          className={cn(
+            "px-2.5 py-1 uppercase tracking-wider transition-colors",
+            current === lang
+              ? "bg-[rgba(255,255,255,0.12)] text-white"
+              : "text-[rgba(255,255,255,0.4)] hover:text-[rgba(255,255,255,0.7)]",
+            idx === 0 && "border-r border-[rgba(255,255,255,0.15)]"
+          )}
+        >
+          {lang}
+        </button>
+      ))}
+    </div>
+  );
+}
+
 export function Header() {
+  const { t } = useTranslation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+
+  const navigation = [
+    { titleKey: "nav.home", href: "/", icon: Home },
+    { titleKey: "nav.projects", href: "/proyectos", icon: FolderOpen },
+    { titleKey: "nav.about", href: "/sobre-mi", icon: Users },
+    { titleKey: "nav.faqs", href: "/faqs", icon: HelpCircle },
+    { titleKey: "nav.contact", href: "/contacto", icon: Mail },
+  ];
 
   useEffect(() => {
     setIsMobileMenuOpen(false);
@@ -80,22 +119,26 @@ export function Header() {
                   )}
                   style={{ fontFamily: "var(--font-geist)" }}
                 >
-                  {item.title}
+                  {t(item.titleKey)}
                   {pathname === item.href && (
                     <span className="block h-[1px] bg-[#ffffff] mt-1" />
                   )}
                 </TransitionLink>
               ))}
+              <LangToggle />
             </div>
 
-            {/* Mobile Menu Button */}
-            <button
-              className="md:hidden min-h-[44px] min-w-[44px] flex items-center justify-center text-[#ffffff]"
-              onClick={() => setIsMobileMenuOpen(true)}
-              aria-label="Abrir menú"
-            >
-              <Menu className="h-6 w-6" />
-            </button>
+            {/* Mobile: lang toggle + menu button */}
+            <div className="md:hidden flex items-center gap-3">
+              <LangToggle />
+              <button
+                className="min-h-[44px] min-w-[44px] flex items-center justify-center text-[#ffffff]"
+                onClick={() => setIsMobileMenuOpen(true)}
+                aria-label="Abrir menú"
+              >
+                <Menu className="h-6 w-6" />
+              </button>
+            </div>
           </div>
         </nav>
       </header>
@@ -166,7 +209,7 @@ export function Header() {
                           letterSpacing: "1px",
                         }}
                       >
-                        {item.title}
+                        {t(item.titleKey)}
                       </span>
                     </div>
                     <ChevronRight
@@ -192,7 +235,7 @@ export function Header() {
                   letterSpacing: "0.5px",
                 }}
               >
-                HABLEMOS DE TU PROYECTO
+                {t("nav.cta")}
               </TransitionLink>
               <div className="flex justify-center gap-4">
                 {socials.map(({ href, icon: SocialIcon, label }) => (

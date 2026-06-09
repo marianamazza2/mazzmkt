@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { trackEvent } from "@/lib/analytics";
 
 function WhatsAppIcon({ className }: { className?: string }) {
@@ -15,9 +16,9 @@ function WhatsAppIcon({ className }: { className?: string }) {
 }
 
 export function WhatsAppButton() {
+  const { t } = useTranslation();
   const whatsappNumber = "5491112345678"; // Reemplazar con tu numero
-  const message = "Hola! Me gustaria saber mas sobre sus servicios.";
-  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(t("contact.whatsapp_message"))}`;
 
   return (
     <motion.a
@@ -30,7 +31,7 @@ export function WhatsAppButton() {
       transition={{ delay: 1, duration: 0.3 }}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
-      aria-label="Contactar por WhatsApp"
+      aria-label={t("contact.whatsapp_aria")}
       onClick={() => trackEvent("whatsapp_click", { location: "floating_button" })}
     >
       <WhatsAppIcon className="h-6 w-6" />

@@ -1,86 +1,17 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { Code, Palette, MessageCircle, Bot, Zap, Sparkles, Globe, Wand2, Search, BarChart2, Share2, Target } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { TransitionLink } from "@/components/transition/transition-link";
 
-const mainServices = [
-  {
-    icon: Code,
-    title: "TU WEB LISTA EN DIAS",
-    subtitle: "SITIOS WEB | LANDINGS | E-COMMERCE",
-    description: "Tu web lista en tiempo récord. Tecnología de última generación y diseño que impacta desde el primer día.",
-  },
-  {
-    icon: Zap,
-    title: "WEB APPS & PLATAFORMAS",
-    subtitle: "WEBAPPS | CRM | SAAS | PORTALES",
-    description: "La herramienta digital que tu negocio necesita, construida exactamente como la imaginas. CRM, SaaS o portal: a medida.",
-  },
-  {
-    icon: Palette,
-    title: "BRANDING QUE DEJA HUELLA",
-    subtitle: "IDENTIDAD VISUAL | ESTRATEGIA ",
-    description: "Marcas que la gente recuerda. Coherencia, carácter e identidad visual que genera confianza instantánea.",
-  },
-  {
-    icon: BarChart2,
-    title: "ANALYTICS & TRACKING",
-    subtitle: "GA4 | TAG MANAGER | CLARITY | PÍXELES",
-    description: "Implementamos GA4, Tag Manager y píxeles para entender a tus usuarios y tomar decisiones basadas en datos reales.",
-  },
-  {
-    icon: Search,
-    title: "SEO CON IA",
-    subtitle: "POSICIONAMIENTO | KEYWORDS | AUDITORÍA",
-    description: "Posicionamiento orgánico acelerado con inteligencia artificial. Auditoría técnica, keywords y contenido que Google quiere rankear.",
-  },
-  {
-    icon: Share2,
-    title: "GESTIÓN DE REDES SOCIALES",
-    subtitle: "INSTAGRAM | ADS MANAGER",
-    description: "Estrategia, contenido y gestión diaria. Presencia en redes que conecta con tu audiencia y genera negocio.",
-  },
-];
+type MainServiceItem = { icon: LucideIcon; title: string; subtitle: string; description: string };
+type AiServiceItem = { icon: LucideIcon; title: string; description: string };
+type MobileAiItem = { icon: LucideIcon; title: string; subtitle: string };
 
-const aiServices = [
-  {
-    icon: Globe,
-    title: "WEBS CON IA",
-    description: "Tu web, landing o e-commerce lista en tiempo record. Diseno a medida, alto rendimiento tecnico y resultados desde el primer dia.",
-  },
-  {
-    icon: Bot,
-    title: "AUTOMATIZACIÓN",
-    description: "Automatizamos tus procesos y creamos flujos para que tu negocio opere solo. Menos tareas repetitivas, mas tiempo para crecer.",
-  },
-  {
-    icon: MessageCircle,
-    title: "VENTAS POR WHATSAPP",
-    description: "Automatiza respuestas, califica leads y cierra ventas en el canal donde tus clientes ya estan. Sin esfuerzo manual.",
-  },
-  {
-    icon: Wand2,
-    title: "IA GENERATIVA",
-    description: "Imagenes de producto, avatares, reels y videos generados con IA. Produccion visual de alta calidad a escala, sin los tiempos ni costes de la produccion tradicional.",
-  },
-  {
-    icon: Sparkles,
-    title: "CONTENIDO SIN LIMITE",
-    description: "30 dias de contenido en pocas horas. Videos, copys, voiceovers e imagenes con calidad profesional generados con IA.",
-  },
-  {
-    icon: Target,
-    title: "SEM & PUBLICIDAD META",
-    description: "Campañas de pago que venden. Google Ads, Meta Ads y TikTok Ads gestionados con IA para maximizar tu ROAS desde el primer día.",
-  },
-];
-
-const mobileAiCards = [
-  { icon: Globe, title: "Webs con IA", subtitle: "En tiempo récord" },
-  { icon: Bot, title: "Automatización", subtitle: "Procesos eficientes" },
-  { icon: MessageCircle, title: "WhatsApp", subtitle: "Ventas en chat" },
-  { icon: Sparkles, title: "IA generativa", subtitle: "Contenido a escala" },
-];
+const mainServiceIcons: LucideIcon[] = [Code, Zap, Palette, BarChart2, Search, Share2];
+const aiServiceIcons: LucideIcon[] = [Globe, Bot, MessageCircle, Wand2, Sparkles, Target];
+const mobileAiIconList: LucideIcon[] = [Globe, Bot, MessageCircle, Sparkles];
 
 
 function ServiceCard({
@@ -88,7 +19,7 @@ function ServiceCard({
   index,
   variant = "main",
 }: {
-  service: (typeof mainServices)[0] | (typeof aiServices)[0];
+  service: MainServiceItem | AiServiceItem;
   index: number;
   variant?: "main" | "ai";
 }) {
@@ -159,7 +90,7 @@ function ServiceCard({
           {"subtitle" in service && (
             <p className="text-[13px] font-medium text-[#141414b8] group-hover:text-[#f1ede1cc] mb-4 uppercase transition-colors"
               style={{ letterSpacing: "0.08em" }}>
-              {(service as (typeof mainServices)[0]).subtitle}
+              {(service as MainServiceItem).subtitle}
             </p>
           )}
 
@@ -181,7 +112,7 @@ function ServiceCardDark({
   service,
   index,
 }: {
-  service: (typeof mainServices)[0];
+  service: MainServiceItem;
   index: number;
 }) {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -265,6 +196,20 @@ function ServiceCardDark({
 
 export function Services() {
   const [selectedMobileService, setSelectedMobileService] = useState(0);
+  const { t } = useTranslation();
+
+  const mainServices = mainServiceIcons.map((icon, i) => ({
+    icon,
+    ...(t("services.main_items", { returnObjects: true }) as Array<Omit<MainServiceItem, "icon">>)[i],
+  }));
+  const aiServices = aiServiceIcons.map((icon, i) => ({
+    icon,
+    ...(t("services.ai_items", { returnObjects: true }) as Array<Omit<AiServiceItem, "icon">>)[i],
+  }));
+  const mobileAiCards = mobileAiIconList.map((icon, i) => ({
+    icon,
+    ...(t("services.mobile_ai_items", { returnObjects: true }) as Array<Omit<MobileAiItem, "icon">>)[i],
+  }));
 
   const toTagCase = (tag: string) =>
     tag.toLowerCase().charAt(0).toUpperCase() + tag.toLowerCase().slice(1);
@@ -283,12 +228,12 @@ export function Services() {
           >
             <h2 className="text-[10px] font-medium uppercase mb-2 md:text-[15px] md:mb-5 md:flex md:items-center md:gap-3 md:font-geist"
               style={{ letterSpacing: "0.13em", color: "#a3a199" }}>
-              Servicios de Marketing Digital en Barcelona
+              {t("services.main_label")}
             </h2>
             <p
               className="mb-4 text-[20px] font-medium leading-[1.1] text-[#ffffff] md:mb-0 md:text-[clamp(52px,5vw,64px)] md:font-bold md:leading-[0.95] md:tracking-[-0.03em]"
             >
-              LO QUE HACEMOS{" "}
+              {t("services.main_headline")}{" "}
               <span className="hidden md:inline" style={{ color: "#ffffff" }}>&raquo;</span>
             </p>
           </motion.div>
@@ -393,14 +338,14 @@ export function Services() {
               className="text-[10px] uppercase mb-2 md:text-[15px] md:mb-5 md:font-medium md:font-geist"
               style={{ letterSpacing: "0.13em", color: "#77766f" }}
             >
-              Marketing con Inteligencia Artificial
+              {t("services.ai_label")}
             </h2>
             <p
               className="text-[20px] font-medium leading-[1.1] text-[#141414] md:text-[clamp(52px,5vw,64px)] md:font-bold md:leading-[0.95] md:tracking-[-0.03em]"
             >
-              TU NEGOCIO EN{" "}
-              <span className="hidden md:inline text-[#141414aa]">MODO IA</span>
-              <span className="md:hidden">MODO IA</span>
+              {t("services.ai_headline")}{" "}
+              <span className="hidden md:inline text-[#141414aa]">{t("services.ai_headline_sub")}</span>
+              <span className="md:hidden">{t("services.ai_headline_sub")}</span>
               <span className="hidden md:inline text-[#141414aa]"> &raquo;</span>
             </p>
 
@@ -409,7 +354,7 @@ export function Services() {
               className="md:hidden text-[13px] leading-[1.7] mt-3"
               style={{ color: "#888780" }}
             >
-              Automatizamos procesos, creamos asistentes inteligentes y aceleramos tu negocio con IA.
+              {t("services.ai_intro")}
             </p>
           </motion.div>
 
@@ -462,7 +407,7 @@ export function Services() {
               className="inline-flex items-center gap-[6px] text-[11px] font-medium uppercase md:gap-3 md:rounded-sm md:border md:border-[#1414144d] md:px-8 md:py-[15px] md:text-sm md:font-semibold md:text-[#141414] md:transition-colors md:hover:border-[#141414] md:font-geist"
               style={{ letterSpacing: "0.09em", color: "#141414" }}
             >
-              QUIERO MI NEGOCIO CON IA
+              {t("services.ai_cta")}
               <motion.span
                 className="inline-block"
                 animate={{ x: [0, 5, 0] }}

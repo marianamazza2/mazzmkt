@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { TransitionLink } from "@/components/transition/transition-link";
 import { trackEvent } from "@/lib/analytics";
 
@@ -29,6 +30,7 @@ function AnimatedWords({ text, className, style }: { text: string; className?: s
 }
 
 export function Intro() {
+  const { t } = useTranslation();
   return (
     <section className="bg-light relative">
       {/* Mobile layout */}
@@ -37,7 +39,7 @@ export function Intro() {
           className="text-[10px] uppercase mb-2"
           style={{ letterSpacing: "2.5px", color: "#888780" }}
         >
-          QUIÉNES SOMOS
+          {t("intro.label")}
         </p>
         <h2
           className="uppercase mb-3"
@@ -49,13 +51,13 @@ export function Intro() {
             color: "#141414",
           }}
         >
-          DESARROLLAMOS MARCAS, ELEVAMOS SU PRESENCIA DIGITAL
+          {t("intro.headline_mobile")}
         </h2>
         <p
           className="text-[13px] leading-[1.7] mb-5"
           style={{ color: "#5F5E5A" }}
         >
-          Conectamos con inteligencia. Cada proyecto comienza comprendiendo quién eres, qué necesitas y a quién le hablás.
+          {t("intro.body_mobile")}
         </p>
         <TransitionLink
           to="/contacto"
@@ -63,7 +65,7 @@ export function Intro() {
           style={{ letterSpacing: "1.5px", color: "#141414" }}
           onClick={() => trackEvent("cta_click", { location: "intro", label: "hagamos_crecer_tus_ideas" })}
         >
-          HAGAMOS CRECER TUS IDEAS →
+          {t("intro.cta")} →
         </TransitionLink>
       </div>
 
@@ -74,7 +76,7 @@ export function Intro() {
             className="mb-5 text-[15px] font-medium uppercase text-[#5f5e5a] font-geist"
             style={{ letterSpacing: "0.13em" }}
           >
-            QUIÉNES SOMOS
+            {t("intro.label")}
           </p>
           <h2
             className="font-bold text-[#141414] mb-6"
@@ -85,20 +87,19 @@ export function Intro() {
               letterSpacing: "-0.03em",
             }}
           >
-            <AnimatedWords text="DESARROLLAMOS MARCAS," />
+            <AnimatedWords text={t("intro.headline_1")} />
             <br />
-            <AnimatedWords text="ELEVAMOS SU PRESENCIA DIGITAL" />
+            <AnimatedWords text={t("intro.headline_2")} />
             <br />
             <span style={{ color: "#141414" } as React.CSSProperties}>
-              <AnimatedWords text="Y CONECTAMOS CON INTELIGENCIA." />
+              <AnimatedWords text={t("intro.headline_3")} />
             </span>
           </h2>
           <p
             className="mb-8 max-w-3xl text-[#5F5E5A]"
             style={{ fontSize: "21px", lineHeight: 1.55 }}
           >
-            Conectamos con inteligencia. Cada proyecto empieza entendiendo quién sos,
-            qué necesitás y a quién le hablás.
+            {t("intro.body")}
           </p>
 
           <motion.div
@@ -114,7 +115,7 @@ export function Intro() {
               style={{ letterSpacing: "0.09em" }}
               onClick={() => trackEvent("cta_click", { location: "intro", label: "hagamos_crecer_tus_ideas" })}
             >
-              HAGAMOS CRECER TUS IDEAS
+              {t("intro.cta")}
               <motion.span
                 className="inline-block"
                 animate={{ x: [0, 5, 0] }}

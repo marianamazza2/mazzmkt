@@ -1,4 +1,5 @@
 import { Instagram, Linkedin, Phone } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { TransitionLink } from "@/components/transition/transition-link";
 import { trackEvent } from "@/lib/analytics";
 
@@ -9,6 +10,7 @@ const socials = [
 ];
 
 export function Footer() {
+  const { t } = useTranslation();
   return (
     <footer className="bg-[#141414] text-[#ffffff]" style={{ borderTop: "0.5px solid rgba(241, 239, 232, 0.06)" }}>
       {/* Mobile layout */}
@@ -49,21 +51,21 @@ export function Footer() {
             className="text-[11px] uppercase inline-flex items-center min-h-[44px]"
             style={{ color: "#444441", letterSpacing: "0.5px" }}
           >
-            AVISO LEGAL
+            {t("footer.legal")}
           </TransitionLink>
           <TransitionLink
             to="/cookies"
             className="text-[11px] uppercase inline-flex items-center min-h-[44px]"
             style={{ color: "#444441", letterSpacing: "0.5px" }}
           >
-            COOKIES
+            {t("footer.cookies")}
           </TransitionLink>
           <TransitionLink
             to="/privacidad"
             className="text-[11px] uppercase inline-flex items-center min-h-[44px]"
             style={{ color: "#444441", letterSpacing: "0.5px" }}
           >
-            PRIVACIDAD
+            {t("footer.privacy")}
           </TransitionLink>
         </div>
 
@@ -73,7 +75,7 @@ export function Footer() {
           className="text-[11px] uppercase"
           style={{ letterSpacing: "0.5px", color: "#444441" }}
         >
-          &copy; {new Date().getFullYear()} MAZZMKT. TODOS LOS DERECHOS RESERVADOS.
+          &copy; {new Date().getFullYear()} MAZZMKT. {t("footer.rights")}
         </p>
       </div>
 
@@ -88,7 +90,7 @@ export function Footer() {
               style={{ mixBlendMode: "screen", filter: "contrast(10)" }}
             />
             <p className="text-xs text-[#ffffffaa] leading-none self-center">
-              &copy; {new Date().getFullYear()} MAZZMKT. TODOS LOS DERECHOS RESERVADOS.
+              &copy; {new Date().getFullYear()} MAZZMKT. {t("footer.rights")}
             </p>
           </div>
           <div className="flex items-center gap-4 order-1 md:order-2 flex-wrap">
@@ -96,19 +98,19 @@ export function Footer() {
               to="/aviso-legal"
               className="text-xs text-[#ffffffaa] hover:text-[#ffffff] transition-colors min-h-[44px] inline-flex items-center"
             >
-              AVISO LEGAL
+              {t("footer.legal")}
             </TransitionLink>
             <TransitionLink
               to="/cookies"
               className="text-xs text-[#ffffffaa] hover:text-[#ffffff] transition-colors min-h-[44px] inline-flex items-center"
             >
-              POLITICA DE COOKIES
+              {t("footer.cookie_policy")}
             </TransitionLink>
             <TransitionLink
               to="/privacidad"
               className="text-xs text-[#ffffffaa] hover:text-[#ffffff] transition-colors min-h-[44px] inline-flex items-center"
             >
-              POLITICA DE PRIVACIDAD
+              {t("footer.privacy_policy")}
             </TransitionLink>
           </div>
         </div>

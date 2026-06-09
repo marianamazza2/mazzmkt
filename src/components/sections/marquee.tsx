@@ -1,19 +1,7 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
-const words = [
-  "AUTOMATIZACIÓN",
-  "WORKFLOWS",
-  "DESARROLLO WEB",
-  "PLATAFORMAS A MEDIDA",
-  "WEBAPPS",
-  "INTELIGENCIA ARTIFICIAL",
-  "BRANDING",
-  "REDES SOCIALES",
-  "DISEÑO WEB",
-  "INNOVACIÓN",
-];
-
-function MarqueeRow({ reverse = false }: { reverse?: boolean }) {
+function MarqueeRow({ reverse = false, words }: { reverse?: boolean; words: string[] }) {
   const content = words.map((word, i) => (
     <span key={i} className="flex items-center gap-8 shrink-0">
       <span className="text-sm md:text-base font-semibold tracking-[0.2em] whitespace-nowrap text-white">
@@ -44,6 +32,8 @@ function MarqueeRow({ reverse = false }: { reverse?: boolean }) {
 }
 
 export function Marquee() {
+  const { t } = useTranslation();
+  const words = t("marquee.words", { returnObjects: true }) as string[];
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -52,7 +42,7 @@ export function Marquee() {
       transition={{ duration: 0.8 }}
       className="bg-dark text-[#ffffff] py-6 md:py-8 border-t border-b border-[#ffffff08] overflow-hidden"
     >
-      <MarqueeRow />
+      <MarqueeRow words={words} />
     </motion.section>
   );
 }

@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { SEOHead } from "@/components/seo/SEOHead";
 import { Mail, MessageCircle, Phone, MapPin } from "lucide-react";
 import { useState } from "react";
@@ -10,9 +11,8 @@ export const Route = createFileRoute("/contacto")({
 });
 
 function ContactoPage() {
-  const whatsappUrl = `https://wa.me/5491112345678?text=${encodeURIComponent(
-    "Hola! Quiero hablar sobre un proyecto."
-  )}`;
+  const { t } = useTranslation();
+  const whatsappUrl = `https://wa.me/5491112345678?text=${encodeURIComponent(t("contact.whatsapp_message"))}`;
 
   const [formData, setFormData] = useState({
     name: "",
@@ -77,7 +77,7 @@ function ContactoPage() {
                 className="md:hidden"
                 style={{ fontSize: "11px", letterSpacing: "1.5px", color: "#5F5E5A", textTransform: "uppercase" }}
               >
-                MAZZMKT / CONTACTO
+                {t("contact.breadcrumb_mobile")}
               </span>
               <span className="hidden md:contents" style={{ letterSpacing: "0.14em" }}>
                 <span className="opacity-50">MAZZMKT</span>
@@ -102,7 +102,7 @@ function ContactoPage() {
                 className="font-bold text-[#ffffff]"
                 style={{ fontSize: "inherit", lineHeight: "inherit", fontWeight: "inherit" }}
               >
-                HABLEMOS
+                {t("contact.headline_1")}
               </motion.p>
               <motion.p
                 initial={{ opacity: 0, y: 30 }}
@@ -111,12 +111,12 @@ function ContactoPage() {
                 className="hidden md:block font-bold text-[#ffffff]"
                 style={{ fontSize: "inherit", lineHeight: "inherit", fontWeight: "inherit" }}
               >
-                DE TU PROYECTO
+                {t("contact.headline_2")}
               </motion.p>
             </div>
             {/* Subtítulo visible solo en mobile */}
             <p className="md:hidden text-[12px] text-[#888780] leading-[1.6] mt-2">
-              ¿Tienes un proyecto en mente? Nos encantaría escucharte.
+              {t("contact.subtitle_mobile")}
             </p>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -124,7 +124,7 @@ function ContactoPage() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="hidden md:block max-w-xl text-[18px] text-[#f1ede1aa] mb-9"
             >
-              Cuéntanos dónde está tu marca, qué necesitas mover y qué resultado querés conseguir.
+              {t("contact.subtitle_desktop")}
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -141,7 +141,7 @@ function ContactoPage() {
                 onClick={() => trackEvent("whatsapp_click", { location: "contacto" })}
               >
                 <MessageCircle className="h-4 w-4" strokeWidth={1.8} />
-                WHATSAPP
+                {t("contact.cta_whatsapp")}
                 <motion.span
                   className="inline-block"
                   animate={{ x: [0, 5, 0] }}
@@ -156,7 +156,7 @@ function ContactoPage() {
                 style={{ letterSpacing: "0.09em" }}
                 onClick={() => trackEvent("email_click", { location: "contacto" })}
               >
-                ESCRIBIR MAIL
+                {t("contact.cta_email")}
               </a>
             </motion.div>
           </motion.div>
@@ -176,14 +176,14 @@ function ContactoPage() {
             >
               {submitted ? (
                 <div className="border border-[#14141420] p-8 md:p-12 text-center rounded-sm">
-                  <h2 className="text-2xl md:text-[36px] font-bold text-[#141414] mb-4">¡GRACIAS!</h2>
-                  <p className="text-[13px] md:text-lg text-[#141414aa]">Te responderemos lo antes posible.</p>
+                  <h2 className="text-2xl md:text-[36px] font-bold text-[#141414] mb-4">{t("contact.form_thanks_title")}</h2>
+                  <p className="text-[13px] md:text-lg text-[#141414aa]">{t("contact.form_thanks_body")}</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-3 md:space-y-6">
                   <div>
                     <label className="block text-[11px] md:text-[15px] font-medium text-[#888780] md:text-[#141414] mb-1 md:mb-3 uppercase tracking-[1px] md:tracking-[0.13em] font-geist">
-                      Nombre
+                      {t("contact.form_name_label")}
                     </label>
                     <input
                       type="text"
@@ -191,12 +191,12 @@ function ContactoPage() {
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       className="w-full border border-[rgba(44,44,42,0.12)] md:border-[#14141420] bg-white md:bg-transparent px-3 py-2.5 md:px-5 md:py-4 text-[13px] md:text-lg text-[#141414] focus:border-[#141414] focus:outline-none transition-colors rounded-sm placeholder:text-[#B4B2A9] placeholder:text-[13px] md:placeholder:text-base"
-                      placeholder="Tu nombre"
+                      placeholder={t("contact.form_name_placeholder")}
                     />
                   </div>
                   <div>
                     <label className="block text-[11px] md:text-[15px] font-medium text-[#888780] md:text-[#141414] mb-1 md:mb-3 uppercase tracking-[1px] md:tracking-[0.13em] font-geist">
-                      Email
+                      {t("contact.form_email_label")}
                     </label>
                     <input
                       type="email"
@@ -209,7 +209,7 @@ function ContactoPage() {
                   </div>
                   <div>
                     <label className="block text-[11px] md:text-[15px] font-medium text-[#888780] md:text-[#141414] mb-1 md:mb-3 uppercase tracking-[1px] md:tracking-[0.13em] font-geist">
-                      Mensaje
+                      {t("contact.form_message_label")}
                     </label>
                     <textarea
                       required
@@ -217,7 +217,7 @@ function ContactoPage() {
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       className="w-full border border-[rgba(44,44,42,0.12)] md:border-[#14141420] bg-white md:bg-transparent px-3 py-2.5 md:px-5 md:py-4 text-[13px] md:text-lg text-[#141414] focus:border-[#141414] focus:outline-none transition-colors resize-y md:resize-none rounded-sm min-h-[100px] md:min-h-[180px] placeholder:text-[#B4B2A9] placeholder:text-[13px] md:placeholder:text-base"
-                      placeholder="Cuentanos sobre tu proyecto..."
+                      placeholder={t("contact.form_message_placeholder")}
                     />
                   </div>
                   <button
@@ -225,7 +225,7 @@ function ContactoPage() {
                     disabled={isSubmitting}
                     className="w-full bg-[#2C2C2A] text-[#F1EFE8] py-3 md:py-5 font-medium md:font-semibold text-[12px] md:text-sm uppercase tracking-[1.5px] md:tracking-[0.09em] hover:bg-[#3a3a38] transition-colors disabled:opacity-50 rounded-sm mt-1 font-geist"
                   >
-                    {isSubmitting ? "ENVIANDO..." : "ENVIAR MENSAJE"}
+                    {isSubmitting ? t("contact.form_submitting") : t("contact.form_submit")}
                   </button>
                 </form>
               )}
@@ -247,14 +247,14 @@ function ContactoPage() {
                   className="hidden md:block text-[15px] uppercase mb-5 font-medium font-geist"
                   style={{ letterSpacing: "0.13em", color: "#B4B2A9" }}
                 >
-                  CONTACTO DIRECTO
+                  {t("contact.info_label")}
                 </p>
                 <h2 className="text-[10px] md:text-[clamp(42px,4vw,56px)] font-bold md:leading-[0.98] text-[#141414] mb-3 md:mb-8 uppercase tracking-[2.5px] md:tracking-[-0.03em]">
-                  Informacion de Contacto
+                  {t("contact.info_title")}
                 </h2>
                 {/* Subtítulo oculto en mobile (aparece en el hero) */}
                 <p className="hidden md:block text-lg text-[#5F5E5A] leading-[1.7] mb-10 max-w-md">
-                  Si preferís ir directo, escribinos por mail o agendamos una llamada para entender el proyecto.
+                  {t("contact.info_subtitle")}
                 </p>
               </div>
 
@@ -263,7 +263,7 @@ function ContactoPage() {
                   <Mail className="h-4 w-4 md:h-6 md:w-6 text-[#888780] md:text-[#141414] mt-0 md:mt-1 flex-shrink-0" strokeWidth={1.5} />
                   <div>
                     <p className="text-[10px] md:text-sm font-medium text-[#B4B2A9] md:text-[#141414aa] uppercase tracking-[1px] md:tracking-[0.13em] mb-0.5 md:mb-1 font-geist">
-                      Email
+                      {t("contact.email_label")}
                     </p>
                     <a
                       href="mailto:mazzmkt360@gmail.com"
@@ -279,7 +279,7 @@ function ContactoPage() {
                   <Phone className="h-4 w-4 md:h-6 md:w-6 text-[#888780] md:text-[#141414] mt-0 md:mt-1 flex-shrink-0" strokeWidth={1.5} />
                   <div>
                     <p className="text-[10px] md:text-sm font-medium text-[#B4B2A9] md:text-[#141414aa] uppercase tracking-[1px] md:tracking-[0.13em] mb-0.5 md:mb-1 font-geist">
-                      Telefono
+                      {t("contact.phone_label")}
                     </p>
                     <a
                       href="tel:+34123456789"
@@ -294,10 +294,10 @@ function ContactoPage() {
                   <MapPin className="h-4 w-4 md:h-6 md:w-6 text-[#888780] md:text-[#141414] mt-0 md:mt-1 flex-shrink-0" strokeWidth={1.5} />
                   <div>
                     <p className="text-[10px] md:text-sm font-medium text-[#B4B2A9] md:text-[#141414aa] uppercase tracking-[1px] md:tracking-[0.13em] mb-0.5 md:mb-1 font-geist">
-                      Ubicacion
+                      {t("contact.location_label")}
                     </p>
                     <p className="text-[13px] md:text-lg font-medium md:font-normal text-[#141414] uppercase md:normal-case leading-[44px] md:leading-normal">
-                      Barcelona, Espana
+                      {t("contact.location_value")}
                     </p>
                   </div>
                 </div>
@@ -305,7 +305,7 @@ function ContactoPage() {
 
               <div className="pt-3.5 md:pt-8 border-t border-[#14141420]">
                 <p className="text-[10px] md:text-sm font-medium text-[#141414aa] uppercase tracking-[1px] md:tracking-[0.13em] mb-3.5 md:mb-4 font-geist">
-                  Siguenos
+                  {t("contact.follow_label")}
                 </p>
                 <div className="flex gap-2 md:gap-4">
                   <a

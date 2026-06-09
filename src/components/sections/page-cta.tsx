@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { TransitionLink } from "@/components/transition/transition-link";
 import { trackEvent } from "@/lib/analytics";
 
@@ -35,6 +36,7 @@ function AnimatedText({
 }
 
 export function PageCTA() {
+  const { t } = useTranslation();
   return (
     <section className="bg-dark pt-8 pb-7 md:py-20 relative overflow-hidden">
       <div className="hidden md:block absolute inset-0 overflow-hidden" style={{ transform: "scaleX(-1)" }}>
@@ -61,10 +63,10 @@ export function PageCTA() {
               marginBottom: "6px",
             }}
           >
-            ¿TIENES UN PROYECTO?
+            {t("page_cta.mobile_headline")}
           </h2>
           <p style={{ fontSize: "12px", color: "#5F5E5A", marginBottom: "16px" }}>
-            Hablemos y hagamos algo increíble
+            {t("page_cta.mobile_subtitle")}
           </p>
           <TransitionLink
             to="/contacto"
@@ -72,7 +74,7 @@ export function PageCTA() {
             style={{ padding: "11px 20px", letterSpacing: "1.5px", background: "#f1ede1", color: "#141414" }}
             onClick={() => trackEvent("cta_click", { location: "page_cta", label: "comenzar" })}
           >
-            COMENZAR
+            {t("page_cta.cta")}
           </TransitionLink>
         </div>
 
@@ -87,10 +89,10 @@ export function PageCTA() {
             }}
           >
             <div className="overflow-hidden">
-              <AnimatedText text="HAGAMOS CRECER" delay={0} />
+              <AnimatedText text={t("page_cta.desktop_headline_1")} delay={0} />
             </div>
             <div className="overflow-hidden mb-10">
-              <AnimatedText text="TUS IDEAS" delay={0.4} />
+              <AnimatedText text={t("page_cta.desktop_headline_2")} delay={0.4} />
             </div>
           </h2>
 
@@ -106,7 +108,7 @@ export function PageCTA() {
               style={{ letterSpacing: "0.09em" }}
               onClick={() => trackEvent("cta_click", { location: "page_cta", label: "comenzar" })}
             >
-              COMENZAR
+              {t("page_cta.cta")}
             </TransitionLink>
           </motion.div>
         </div>

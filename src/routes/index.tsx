@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
 import { SEOHead } from "@/components/seo/SEOHead";
 import { Hero } from "@/components/sections/hero";
 import { Marquee } from "@/components/sections/marquee";
@@ -24,11 +25,12 @@ const homeSchema = {
 };
 
 function HomePage() {
+  const { t } = useTranslation();
   return (
     <>
       <SEOHead
-        title="MAZZMKT | Estrategia & Creatividad"
-        description="Agencia de marketing digital. Diseñamos marcas que se entienden, se sienten y responden. Estrategia, creatividad e inteligencia artificial."
+        title={t("seo.home.title")}
+        description={t("seo.home.description")}
         jsonLd={homeSchema}
       />
       <Hero />

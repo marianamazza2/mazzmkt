@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { TransitionLink } from "@/components/transition/transition-link";
 import { trackEvent } from "@/lib/analytics";
 
 export function Hero() {
+  const { t } = useTranslation();
   return (
     <section className="bg-dark pt-[100px] pb-7 md:pt-32 md:pb-16 relative overflow-hidden">
       <div
@@ -29,7 +31,7 @@ export function Hero() {
             className="md:hidden text-[11px] font-medium uppercase mb-[14px]"
             style={{ letterSpacing: "2.5px", color: "#888780" }}
           >
-            Agencia de Marketing Digital en Barcelona
+            {t("hero.tagline")}
           </motion.h1>
 
           {/* Desktop: h1 semántico */}
@@ -40,7 +42,7 @@ export function Hero() {
             className="hidden md:block text-[15px] font-medium text-[#ffffffe0] mb-5 uppercase font-geist"
             style={{ letterSpacing: "0.14em" }}
           >
-            Agencia de Marketing Digital en Barcelona
+            {t("hero.tagline")}
           </motion.h1>
 
           <h2
@@ -59,7 +61,7 @@ export function Hero() {
               className="font-bold text-[#ffffff]"
               style={{ display: "block", fontSize: "inherit", lineHeight: "inherit", fontWeight: "inherit" }}
             >
-              CREAMOS MARCAS
+              {t("hero.headline_1")}
             </motion.span>
             <motion.span
               initial={{ opacity: 0, y: 30 }}
@@ -68,7 +70,7 @@ export function Hero() {
               className="font-bold text-[#ffffff]"
               style={{ display: "block", fontSize: "inherit", lineHeight: "inherit", fontWeight: "inherit" }}
             >
-              QUE SE ENTIENDEN,
+              {t("hero.headline_2")}
             </motion.span>
             <motion.span
               initial={{ opacity: 0, y: 30 }}
@@ -83,7 +85,7 @@ export function Hero() {
                 color: "#ffffff",
               }}
             >
-              SE SIENTEN
+              {t("hero.headline_3")}
             </motion.span>
             <motion.span
               initial={{ opacity: 0, y: 30 }}
@@ -98,7 +100,7 @@ export function Hero() {
                 color: "#ffffff",
               }}
             >
-              & RESPONDEN
+              {t("hero.headline_4")}
             </motion.span>
           </h2>
 
@@ -110,7 +112,7 @@ export function Hero() {
             className="md:hidden text-[13px] leading-[1.6] mb-6"
             style={{ color: "#888780" }}
           >
-            Marketing digital, diseño y desarrollo web para marcas que quieren crecer con inteligencia.
+            {t("hero.subtitle")}
           </motion.p>
 
           {/* Mobile: dos CTAs en fila */}
@@ -126,7 +128,7 @@ export function Hero() {
               style={{ padding: "11px 20px", letterSpacing: "1.5px", background: "#f1ede1", color: "#141414" }}
               onClick={() => trackEvent("cta_click", { location: "hero", label: "ver_proyectos" })}
             >
-              VER PROYECTOS
+              {t("hero.cta_projects")}
             </TransitionLink>
             <TransitionLink
               to="/contacto"
@@ -140,7 +142,7 @@ export function Hero() {
               }}
               onClick={() => trackEvent("cta_click", { location: "hero", label: "contactar" })}
             >
-              CONTACTAR
+              {t("hero.cta_contact")}
             </TransitionLink>
           </motion.div>
 
@@ -157,7 +159,7 @@ export function Hero() {
               style={{ letterSpacing: "0.09em" }}
               onClick={() => trackEvent("cta_click", { location: "hero", label: "ver_proyectos" })}
             >
-              VER PROYECTOS
+              {t("hero.cta_projects")}
               <motion.span
                 className="inline-block"
                 animate={{ x: [0, 5, 0] }}
@@ -172,7 +174,7 @@ export function Hero() {
               style={{ letterSpacing: "0.09em" }}
               onClick={() => trackEvent("cta_click", { location: "hero", label: "contactar" })}
             >
-              CONTACTAR
+              {t("hero.cta_contact")}
             </TransitionLink>
           </motion.div>
         </motion.div>
