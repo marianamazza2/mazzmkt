@@ -11,6 +11,8 @@ export function TransitionLink({ children, onClick, ...props }: LinkProps) {
     e.preventDefault();
     if (isTransitioning) return;
 
+    if (onClick) onClick(e);
+
     const to = props.to as string;
     const params = props.params as Record<string, string> | undefined;
     navigateWithTransition(to, params);
