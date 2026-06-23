@@ -15,7 +15,7 @@ function WhatsAppIcon({ className }: { className?: string }) {
 }
 
 export function WhatsAppButton() {
-  const whatsappNumber = "5491112345678"; // Reemplazar con tu numero
+  const whatsappNumber = "34672340061"; // Reemplazar con tu numero
   const message = "Hola! Me gustaria saber mas sobre sus servicios.";
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 

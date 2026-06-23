@@ -5,7 +5,7 @@ import { trackEvent } from "@/lib/analytics";
 const socials = [
   { href: "https://instagram.com/mazzmkt", icon: Instagram, label: "Instagram" },
   { href: "https://linkedin.com/company/mazzmkt", icon: Linkedin, label: "LinkedIn" },
-  { href: "https://wa.me/5491112345678", icon: Phone, label: "WhatsApp" },
+  { href: "https://wa.me/34672340061", icon: Phone, label: "WhatsApp" },
 ];
 
 export function Footer() {

@@ -10,7 +10,7 @@ export const Route = createFileRoute("/contacto")({
 });
 
 function ContactoPage() {
-  const whatsappUrl = `https://wa.me/5491112345678?text=${encodeURIComponent(
+  const whatsappUrl = `https://wa.me/34672340061?text=${encodeURIComponent(
     "Hola! Quiero hablar sobre un proyecto."
   )}`;
 
@@ -282,10 +282,10 @@ function ContactoPage() {
                       Telefono
                     </p>
                     <a
-                      href="tel:+34123456789"
+                      href="tel:+34672340061"
                       className="inline-flex items-center min-h-[44px] text-[13px] md:text-lg font-medium md:font-normal text-[#141414] hover:opacity-70 transition-opacity"
                     >
-                      +34 123 456 789
+                      +34 672 340 061
                     </a>
                   </div>
                 </div>
