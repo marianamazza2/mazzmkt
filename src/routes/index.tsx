@@ -5,6 +5,7 @@ import { Marquee } from "@/components/sections/marquee";
 import { HowWeWork } from "@/components/sections/how-we-work";
 import { Intro } from "@/components/sections/intro";
 import { Services } from "@/components/sections/services";
+import { AiAgents } from "@/components/sections/ai-agents";
 import { Projects } from "@/components/sections/projects";
 
 export const Route = createFileRoute("/")({
@@ -35,6 +36,7 @@ function HomePage() {
       <Hero />
       <Marquee />
       <HowWeWork />
+      <AiAgents />
       <Intro />
       <Services />
       <Projects />

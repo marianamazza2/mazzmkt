@@ -6,6 +6,7 @@ import {
   Menu,
   X,
   Home,
+  Bot,
   FolderOpen,
   Users,
   HelpCircle,
@@ -20,6 +21,7 @@ import { TransitionLink } from "@/components/transition/transition-link";
 
 const navigation = [
   { title: "HOME", href: "/", icon: Home },
+  { title: "IA & AGENTES", href: "/agentes-ia", icon: Bot },
   { title: "PROYECTOS", href: "/proyectos", icon: FolderOpen },
   { title: "MAZZMKT", href: "/sobre-mi", icon: Users },
   { title: "FAQS", href: "/faqs", icon: HelpCircle },

@@ -1,5 +1,5 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { Code, Palette, MessageCircle, Bot, Zap, Wand2, BarChart2, Share2, Target, ShoppingCart, Globe, MessageSquare } from "lucide-react";
+import { Code, Palette, MessageCircle, Bot, Zap, Wand2, BarChart2, Share2, Target, ShoppingCart, Globe } from "lucide-react";
 import { useRef, useState } from "react";
 import { TransitionLink } from "@/components/transition/transition-link";
 
@@ -44,29 +44,29 @@ const mainServices = [
 
 const aiServices = [
   {
+    icon: Zap,
+    title: "AUTOMATIZACIÓN",
+    description: "Flujos que conectan tus herramientas y hacen que tu negocio opere solo.",
+  },
+  {
+    icon: Bot,
+    title: "AGENTES IA A MEDIDA",
+    description: "Responden por ti a cualquier hora, califican leads y cierran ventas. Sin guiones rígidos: entienden y actúan.",
+  },
+  {
+    icon: MessageCircle,
+    title: "VENTAS POR WHATSAPP",
+    description: "El canal donde vive tu agente: atiende, responde y vende directamente en el chat.",
+  },
+  {
     icon: Globe,
     title: "SEO CON IA",
     description: "Diseño a medida, alto rendimiento técnico y resultados desde el primer día.",
   },
   {
-    icon: Bot,
-    title: "AUTOMATIZACIÓN",
-    description: "Flujos y workflows para que tu negocio opere solo.",
-  },
-  {
-    icon: MessageCircle,
-    title: "VENTAS POR WHATSAPP",
-    description: "Respuestas automáticas, leads calificados, ventas cerradas.",
-  },
-  {
     icon: Wand2,
     title: "IA GENERATIVA",
     description: "Imágenes, avatares, reels y videos. Producción visual a escala.",
-  },
-  {
-    icon: MessageSquare,
-    title: "CHATBOTS A MEDIDA",
-    description: "Asistentes inteligentes que atienden, venden y resuelven sin intervención humana.",
   },
   {
     icon: Target,
@@ -76,10 +76,10 @@ const aiServices = [
 ];
 
 const mobileAiCards = [
-  { icon: Globe, title: "Webs con IA", subtitle: "Alto rendimiento con IA" },
-  { icon: Bot, title: "Automatización", subtitle: "Procesos eficientes" },
-  { icon: MessageCircle, title: "WhatsApp", subtitle: "Ventas en chat" },
-  { icon: Target, title: "SEM & Ads", subtitle: "Campañas con AI" },
+  { icon: Bot, title: "Agentes IA", subtitle: "Responden y venden por ti" },
+  { icon: Zap, title: "Automatización", subtitle: "Tu negocio opera solo" },
+  { icon: MessageCircle, title: "WhatsApp", subtitle: "Tu agente en el chat" },
+  { icon: Globe, title: "SEO con IA", subtitle: "Visibilidad real" },
 ];
 
 

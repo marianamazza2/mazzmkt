@@ -1,4 +1,4 @@
-import { createRootRoute, Outlet } from "@tanstack/react-router";
+import { createRootRoute, Outlet, useRouterState } from "@tanstack/react-router";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { SmoothScroll } from "@/components/effects/smooth-scroll";
 import { TransitionProvider } from "@/components/transition/transition-context";
@@ -36,8 +36,11 @@ const organizationSchema = {
   ],
 };
 
-export const Route = createRootRoute({
-  component: () => (
+function RootComponent() {
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const hidePageCTA = pathname === "/agentes-ia";
+
+  return (
     <HelmetProvider>
       <Helmet>
         <script type="application/ld+json">
@@ -50,7 +53,7 @@ export const Route = createRootRoute({
           <main>
             <Outlet />
           </main>
-          <PageCTA />
+          {!hidePageCTA && <PageCTA />}
           <Footer />
           <WhatsAppButton />
           <CookieBanner />
@@ -58,5 +61,9 @@ export const Route = createRootRoute({
         </TransitionProvider>
       </SmoothScroll>
     </HelmetProvider>
-  ),
+  );
+}
+
+export const Route = createRootRoute({
+  component: RootComponent,
 });
