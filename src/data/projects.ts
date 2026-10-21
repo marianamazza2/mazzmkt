@@ -2,6 +2,98 @@ import type { Project } from "@/types";
 import { projectImages } from "virtual:project-images";
 
 export const projects: Project[] = [
+   {
+    id: "18",
+    title: "Mía",
+    client: "Consultora para empresarias",
+    category: "Branding Digital",
+    description:
+      "Branding completo para Mía, una consultora para mujeres que lideran empresas: estrategia, identidad verbal, identidad visual y papelería.",
+    about:
+      "Mía comenzó siendo una manera de mirar, mucho antes de ser una consultora. Acompaña a mujeres que dirigen empresas a comprender cómo su forma de conducir incide en el funcionamiento de su organización. La pregunta de partida era: ¿qué hacemos con aquello que no se ve, pero que está produciendo efectos concretos? De ahí nació el concepto de marca: operacionalizar lo sensible.",
+    work: [
+      "Empezamos por la estrategia: definimos la historia de la marca, su propósito, visión y misión, y el público objetivo. El propósito, darle lugar a aquello que organiza una empresa sin ser percibido, se convirtió en el eje de todas las decisiones posteriores.",
+      "Trabajamos la identidad verbal: personalidad, tono y un manifiesto con una voz clara, precisa y cercana, capaz de nombrar lo que se siente pero no se dice, siempre con criterio.",
+      "Diseñamos el logotipo con descriptor 'Consultora para empresarias' y un isotipo protagonizado por una «a» manuscrita dentro de un círculo. Esa «a» se convirtió en el recurso gráfico principal de la marca: patrones, recortes en los bordes y un sistema de versiones para cada soporte.",
+      "Definimos una paleta de burdeos, dorado y blanco cálido, que transmite solidez y calidez a la vez, y un sistema tipográfico con Cormorant Garamond para títulos e Inter para el cuerpo de texto.",
+      "Llevamos la marca a sus aplicaciones: tarjetas de visita, papelería, sobres y carpeta A4, pensadas como una extensión de la consultora con papel de algodón, burdeos plano y la «a» recortada por el borde.",
+    ],
+    image: "/images/projects/mia/cover.webp",
+    images: projectImages["mia"],
+    results: [],
+    services: ["Estrategia de Marca", "Identidad Visual", "Branding Digital", "Dirección Creativa"],
+    slug: "mia",
+    featured: false,
+  },
+  {
+    id: "16",
+    title: "Group Casas",
+    client: "Inmobiliaria",
+    category: "Web",
+    description:
+      "Identidad visual y web inmobiliaria para Group Casas: buscador de propiedades con mapa, fichas de vivienda y una página propia para cada servicio.",
+    about:
+      "Group Casas es una inmobiliaria que acompaña en cada etapa de la vivienda: comprar, vender, financiar, reformar y administrar. Su punto de partida era claro, 'hay otra forma de ser una inmobiliaria', y el proyecto consistía en trasladar esa idea a una marca y una web que se sintieran cálidas, cuidadas y muy distintas a los portales del sector.",
+    work: [
+      "Empezamos por la marca: un logotipo tipográfico en versales con mucho aire entre letras, el claim 'Tu hogar empieza aquí' y un manifiesto que resume la propuesta: superar expectativas, transformar la experiencia inmobiliaria y reunir todo lo que necesita una vivienda en un solo lugar.",
+      "Definimos un sistema visual sobrio y elegante: paleta de oro (#A47B36), tierra (#2E1C0B), arena y lino, con Cormorant Garamond para titulares y DM Sans para el texto. La palabra CASAS se convirtió en un recurso gráfico que aparece de fondo en distintas secciones de la web.",
+      "Diseñamos y desarrollamos una web mobile-first con buscador de propiedades por ciudad, barrio o zona, carrusel de inmuebles destacados, bloque de servicios y una sección de cifras que refuerza la confianza: más de 1000 operaciones, 98% de satisfacción y más de 10 años de experiencia.",
+      "La búsqueda con mapa fue la pieza central: cada inmueble aparece geolocalizado con su precio y, al pulsar un pin, se abre una tarjeta con la vivienda sin salir del mapa. Las fichas de propiedad muestran galería de fotos, características principales, precio por metro cuadrado y un botón de contacto siempre visible.",
+      "Cada servicio tiene su propia página interior (Nosotros, Vender, Reformas) con fotografía cálida, titulares en versales y una llamada a la acción clara, para que cada visita termine en una conversación con el equipo.",
+    ],
+    image: "/images/projects/group-casas/cover.webp",
+    images: projectImages["group-casas"],
+    results: [],
+    services: ["Identidad Visual", "Diseño Web", "Desarrollo Web", "UX/UI"],
+    slug: "group-casas",
+    featured: false,
+  },
+  {
+    id: "19",
+    title: "Laura Serafini",
+    client: "Arteterapia",
+    category: "Web",
+    description:
+      "Web one-page para Laura Serafini, arteterapeuta: un espacio cálido y artesanal para presentar sus sesiones individuales y talleres, presenciales y online.",
+    about:
+      "Laura es Instructora en Arteterapia por la Universidad de Buenos Aires y acompaña a personas que atraviesan momentos de cambio, malestar emocional o búsqueda personal. Su formación une arte, creatividad y salud, y necesitaba una web que explicara con claridad qué es la arteterapia y transmitiera la misma sensación de escucha, respeto y libertad que tienen sus sesiones.",
+    work: [
+      "Partimos de un mockup en HTML que definió la dirección visual completa: paleta de tonos tierra (fondo arena #F5EFE4, terracota #C4744E, ocre #DDA94E, salvia #93A17E y carbón #33302B), Newsreader para los titulares y DM Sans para el texto.",
+      "La firma visual de la marca es un trazo tipo pincelada que subraya palabras clave como 'habitarte', 'paso a paso' o 'primer paso'. Lo convertimos en un componente reutilizable para que el gesto artesanal acompañe toda la web.",
+      "Estructuramos la one-page en un recorrido narrativo: quién es Laura y su formación, qué es la arteterapia y sus beneficios (expresar sin palabras, procesar lo que pesa, encontrar nuevas posibilidades), cómo es una sesión en cuatro pasos (entrevista, propuesta, expresión y reflexión) y una galería de momentos del proceso con nota de confidencialidad.",
+      "Desarrollamos la web en React y Vite, componentizada y con animaciones de aparición al hacer scroll que respetan la preferencia de movimiento reducido. La accesibilidad se cuidó desde el diseño: foco visible, áreas táctiles amplias y formularios con etiquetas.",
+      "Cerramos con una sección de contacto que reduce la fricción: formulario sencillo, acceso directo a WhatsApp con mensaje predefinido y una cita de Nise da Silveira, la psiquiatra que inspira su forma de trabajar.",
+    ],
+    image: "",
+    images: projectImages["laura-serafini-arteterapia"],
+    results: [],
+    services: ["Diseño Web", "Desarrollo Web", "UX/UI"],
+    slug: "laura-serafini-arteterapia",
+    featured: false,
+  },
+  {
+    id: "17",
+    title: "Julián Ortega",
+    client: "Psicólogo",
+    category: "Web",
+    description:
+      "Identidad visual y web para el Dr. Julián Ortega, psicólogo en Barcelona: un espacio digital cercano y sereno para psicoterapia online y presencial.",
+    about:
+      "Julián Ortega es psicólogo colegiado en Barcelona, egresado de la Universidad de Buenos Aires, y acompaña a personas adultas y parejas en momentos de dificultad emocional, relacional o vital. Su práctica es integrativa, inclusiva y afirmativa, y necesitaba una presencia digital que transmitiera exactamente eso: escucha, calma y confianza desde el primer clic.",
+    work: [
+      "Partimos del manifiesto de marca, construido alrededor de una idea: la psicoterapia como un espacio para 'ponerle palabras a lo que te sucede'. Ese mensaje define el tono de toda la web: cercano, sin tecnicismos y centrado en la singularidad de cada persona.",
+      "Creamos una identidad suave y luminosa: Cormorant Garamond con cursivas expresivas para los titulares, DM Sans para el texto y una paleta de verde bosque y salvia acompañada de tonos pastel (melocotón, bruma y lavanda) que diferencian cada área de trabajo.",
+      "Diseñamos una web mobile-first con hero, sección Sobre mí con pestañas (Quién soy, Enfoque, Diversidad), formación y credenciales desplegables, y preguntas frecuentes para resolver las dudas habituales antes de empezar.",
+      "Organizamos los servicios en tarjetas con iconografía y color propios: psicoterapia individual, terapia de pareja, acompañamiento al colectivo LGBTIQ+, orientación vocacional y procesos migratorios. Cada una detalla los motivos de consulta más frecuentes para que la persona se reconozca rápidamente.",
+      "Cerramos con una página de contacto pensada para reducir la fricción: modalidad presencial u online, teléfono, email y un formulario sencillo para solicitar la primera sesión orientativa.",
+    ],
+    image: "/images/projects/julian-ortega/cover.webp",
+    images: projectImages["julian-ortega"],
+    results: [],
+    services: ["Identidad Visual", "Diseño Web", "Desarrollo Web", "UX/UI"],
+    slug: "julian-ortega",
+    featured: false,
+  },
   {
     id: "1",
     title: "TrainX",
