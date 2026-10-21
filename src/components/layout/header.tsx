@@ -188,7 +188,7 @@ export function Header() {
                   setIsMobileMenuOpen(false);
                   trackEvent("cta_click", { location: "header_mobile", label: "hablemos_de_tu_proyecto" });
                 }}
-                className="flex items-center justify-center w-full py-3.5 rounded-sm bg-light text-dark text-sm font-medium uppercase mb-3.5"
+                className="flex items-center justify-center w-full py-3.5 rounded-sm border border-light/30 text-light text-sm font-medium uppercase mb-3.5"
                 style={{
                   fontFamily: "var(--font-mono)",
                   letterSpacing: "0.5px",

@@ -115,7 +115,7 @@ function SobreMiPage() {
               <a
                 href="#quienes-somos"
                 className="inline-flex items-center justify-center rounded-sm text-[11px] font-medium uppercase"
-                style={{ padding: "11px 20px", letterSpacing: "1.5px", background: "#ffffff", color: "#0a0a0a" }}
+                style={{ padding: "11px 20px", letterSpacing: "1.5px", background: "transparent", border: "0.5px solid rgba(255, 255, 255, 0.3)", color: "#ffffff" }}
               >
                 CONÓCENOS
               </a>
@@ -142,7 +142,7 @@ function SobreMiPage() {
             >
               <a
                 href="#quienes-somos"
-                className="inline-flex items-center justify-center rounded-sm bg-light px-8 py-[15px] text-[13px] font-semibold uppercase text-dark transition-opacity hover:opacity-85 font-mono"
+                className="inline-flex items-center justify-center rounded-sm border border-light/30 px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono"
                 style={{ letterSpacing: "0.09em" }}
               >
                 CONÓCENOS

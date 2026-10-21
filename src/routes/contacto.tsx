@@ -137,7 +137,7 @@ function ContactoPage() {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-3 rounded-sm bg-light px-8 py-[15px] text-[13px] font-semibold uppercase text-dark transition-opacity hover:opacity-85 font-mono"
+                className="inline-flex items-center justify-center gap-3 rounded-sm border border-light/30 px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono"
                 style={{ letterSpacing: "0.09em" }}
                 onClick={() => trackEvent("whatsapp_click", { location: "contacto" })}
               >
@@ -224,7 +224,7 @@ function ContactoPage() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-[#d2d2d2] text-[#0a0a0a] py-3 md:py-5 font-medium md:font-semibold text-[12px] md:text-[13px] uppercase tracking-[1.5px] md:tracking-[0.09em] hover:bg-[#bdbdbd] transition-colors disabled:opacity-50 rounded-sm mt-1 font-mono"
+                    className="w-full border border-light/30 text-light py-3 md:py-5 font-medium md:font-semibold text-[12px] md:text-[13px] uppercase tracking-[1.5px] md:tracking-[0.09em] hover:border-light transition-colors disabled:opacity-50 rounded-sm mt-1 font-mono"
                   >
                     {isSubmitting ? "ENVIANDO..." : "ENVIAR MENSAJE"}
                   </button>

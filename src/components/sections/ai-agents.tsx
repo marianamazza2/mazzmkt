@@ -218,7 +218,7 @@ export function AiAgents() {
             >
               <TransitionLink
                 to="/contacto"
-                className="inline-flex items-center gap-3 rounded-sm bg-light px-7 py-[14px] text-[12px] md:text-[13px] font-semibold uppercase text-dark transition-opacity hover:opacity-85 font-mono"
+                className="inline-flex items-center gap-3 rounded-sm border border-light/30 px-7 py-[14px] text-[12px] md:text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono"
                 style={{ letterSpacing: "0.09em" }}
                 onClick={() => trackEvent("cta_click", { location: "ai_agents", label: "quiero_mi_agente" })}
               >

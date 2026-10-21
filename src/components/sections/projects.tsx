@@ -1,67 +1,44 @@
 import { motion } from "framer-motion";
 import { TransitionLink } from "@/components/transition/transition-link";
 import { projects as allProjects } from "@/data/projects";
-import { ProjectCard } from "@/components/projects/project-card";
 import type { Project } from "@/types";
 
 function HomeProjectCard({ project, index }: { project: Project; index: number }) {
+  const isOwnProject = project.client.toLowerCase().startsWith("proyecto propio");
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.6, delay: index * 0.04 }}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
     >
-      {/* Mobile: imagen arriba + info abajo — fondo beige */}
-      <div className="md:hidden flex flex-col">
-        <TransitionLink
-          to="/proyectos/$slug"
-          params={{ slug: project.slug }}
-          className="block relative overflow-hidden rounded-sm"
-          style={{ height: "180px" }}
-        >
-          {project.image ? (
+      <TransitionLink to="/proyectos/$slug" params={{ slug: project.slug }} className="group block">
+        <div className="relative aspect-[4/3] overflow-hidden rounded-sm bg-[#1a1a1a]">
+          {project.image && (
             <img
               src={project.image}
-              alt={project.title}
-              className="w-full h-full object-cover"
+              alt={`${project.title} — ${project.category} para ${project.client}`}
+              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
             />
-          ) : (
-            <div className="w-full h-full bg-gradient-to-br from-[#d2d2d2] to-[#b3b3b3]" />
           )}
-        </TransitionLink>
-        <div
-          className="flex items-baseline justify-between py-2"
-        >
-          <div>
-            <span
-              className="font-mono text-[10px] font-semibold uppercase block"
-              style={{ letterSpacing: "1.5px", color: "#b3b3b3" }}
-            >
-              {project.category}
-              {!project.client.toLowerCase().startsWith("proyecto propio") && ` · ${project.client}`}
-            </span>
-            <h3
-              className="font-medium uppercase mt-[2px]"
-              style={{ fontSize: "14px", letterSpacing: "0.5px", color: "#ffffff" }}
-            >
-              {project.title}
-            </h3>
-          </div>
-          <span className="text-[15px] ml-3 shrink-0" style={{ color: "#b3b3b3" }}>›</span>
         </div>
-      </div>
-
-      {/* Desktop: ProjectCard original */}
-      <div className="hidden md:block">
-        <ProjectCard project={project} index={index} size="wide" />
-      </div>
+        <div className="flex items-baseline justify-between gap-4 pt-3 md:pt-4">
+          <h3 className="text-[16px] md:text-[20px] font-bold tracking-[-0.02em] text-light">
+            {project.title}
+          </h3>
+          <span className="font-mono text-[10px] md:text-[12px] uppercase tracking-[0.1em] text-light/50 group-hover:text-light transition-colors text-right">
+            {project.category}
+            {!isOwnProject && ` · ${project.client}`} →
+          </span>
+        </div>
+      </TransitionLink>
     </motion.div>
   );
 }
 
 export function Projects() {
-  const latestProjects = allProjects.slice(0, 3);
+  const latestProjects = allProjects.slice(0, 2);
 
   return (
     <section className="bg-dark py-7 md:py-20 relative overflow-hidden">
@@ -89,7 +66,7 @@ export function Projects() {
         </motion.div>
 
         {/* Projects list */}
-        <div className="flex flex-col gap-3 md:gap-5 mb-5 md:mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 md:mb-10">
           {latestProjects.map((project, index) => (
             <HomeProjectCard key={project.id} project={project} index={index} />
           ))}

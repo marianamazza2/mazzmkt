@@ -124,10 +124,10 @@ export function CookieBanner() {
                         className="font-sans w-full cursor-pointer transition-colors"
                         style={{
                           fontSize: "11px", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase",
-                          color: "#0a0a0a", background: "#ffffff", padding: "13px 0", border: "none", borderRadius: "2px",
+                          color: "#ffffff", background: "transparent", padding: "13px 0", border: "0.5px solid rgba(255, 255, 255, 0.3)", borderRadius: "2px",
                         }}
-                        onMouseEnter={e => (e.currentTarget.style.background = "#ffffff")}
-                        onMouseLeave={e => (e.currentTarget.style.background = "#ffffff")}
+                        onMouseEnter={e => (e.currentTarget.style.borderColor = "#ffffff")}
+                        onMouseLeave={e => (e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.3)")}
                       >
                         Aceptar todas
                       </button>
@@ -210,10 +210,10 @@ export function CookieBanner() {
                       className="font-sans w-full cursor-pointer transition-colors"
                       style={{
                         fontSize: "11px", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase",
-                        color: "#0a0a0a", background: "#ffffff", padding: "13px 0", border: "none", borderRadius: "2px",
+                        color: "#ffffff", background: "transparent", padding: "13px 0", border: "0.5px solid rgba(255, 255, 255, 0.3)", borderRadius: "2px",
                       }}
-                      onMouseEnter={e => (e.currentTarget.style.background = "#ffffff")}
-                      onMouseLeave={e => (e.currentTarget.style.background = "#ffffff")}
+                      onMouseEnter={e => (e.currentTarget.style.borderColor = "#ffffff")}
+                      onMouseLeave={e => (e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.3)")}
                     >
                       Guardar preferencias
                     </button>

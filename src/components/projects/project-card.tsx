@@ -90,8 +90,8 @@ export function ProjectCard({ project, index, size = "medium", showFloatingImage
             <div className="absolute inset-0 bg-gradient-to-br from-[#1a1a1a] to-[#0f0f0f]" />
           )}
 
-          {/* Dark overlay */}
-          <div className="absolute inset-0 bg-dark/60 group-hover:bg-dark/50 max-md:bg-dark/50 transition-colors duration-300" />
+          {/* Degradado inferior: imagen a todo color, texto legible */}
+          <div className="absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-dark/85 via-dark/35 to-transparent pointer-events-none" />
 
           {/* Content */}
           <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8 z-20">

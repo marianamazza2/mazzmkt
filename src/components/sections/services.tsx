@@ -397,8 +397,7 @@ export function Services() {
               {alsoServices.map((svc) => (
                 <span
                   key={svc}
-                  className="text-[12px] md:text-[13px] font-medium px-3.5 py-[6px] rounded-full transition-transform duration-200 hover:-translate-y-0.5"
-                  style={{ background: "#ffffff", color: "#0a0a0a" }}
+                  className="font-mono text-[11px] md:text-[12px] uppercase tracking-[0.08em] px-3.5 py-[6px] rounded-full border border-light/30 text-light"
                 >
                   {svc}
                 </span>

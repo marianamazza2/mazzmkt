@@ -401,7 +401,7 @@ function FAQsPage() {
             >
               <a
                 href="#faqs"
-                className="inline-flex items-center justify-center rounded-sm bg-light px-8 py-[15px] text-[13px] font-semibold uppercase text-dark transition-opacity hover:opacity-85 font-mono"
+                className="inline-flex items-center justify-center rounded-sm border border-light/30 px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono"
                 style={{ letterSpacing: "0.09em" }}
               >
                 VER PREGUNTAS
