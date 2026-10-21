@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { TransitionLink } from "@/components/transition/transition-link";
+import { Molinillo } from "@/components/brand/molinillo";
 
 type Crumb = { label: string; to?: string };
 
@@ -34,13 +35,7 @@ export function PageHero({ crumbs, title, subtitle, actions, heading = "title", 
             transition={{ duration: 0.6, delay: 0.2 }}
             className="font-mono text-[11px] md:text-[13px] font-medium uppercase tracking-[0.14em] text-light/80 mb-4 md:mb-6 flex flex-wrap items-center gap-3"
           >
-            <motion.span
-              className="inline-block w-8 h-[1px] bg-light"
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              style={{ transformOrigin: "left" }}
-            />
+            <Molinillo className="h-[0.95em] w-[0.95em] opacity-50" alasClassName="molinillo-intro" />
             <span className="opacity-50">MAZZMKT</span>
             {crumbs.map((crumb) => (
               <span key={crumb.label} className="contents">

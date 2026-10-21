@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { TransitionLink } from "@/components/transition/transition-link";
 import { projects as allProjects } from "@/data/projects";
 import type { Project } from "@/types";
+import { Molinillo } from "@/components/brand/molinillo";
+import { Isotipo } from "@/components/brand/isotipo";
 
 function HomeProjectCard({ project, index }: { project: Project; index: number }) {
   const isOwnProject = project.client.toLowerCase().startsWith("proyecto propio");
@@ -22,6 +24,7 @@ function HomeProjectCard({ project, index }: { project: Project; index: number }
               className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
             />
           )}
+          <Isotipo className="absolute bottom-4 right-4 h-[26px] w-[28px] text-light/85 drop-shadow-[0_1px_6px_rgba(0,0,0,0.45)]" />
         </div>
         <div className="flex items-baseline justify-between gap-4 pt-3 md:pt-4">
           <h3 className="text-[16px] md:text-[20px] font-bold tracking-[-0.02em] text-light">
@@ -29,7 +32,7 @@ function HomeProjectCard({ project, index }: { project: Project; index: number }
           </h3>
           <span className="font-mono text-[10px] md:text-[12px] uppercase tracking-[0.1em] text-light/50 group-hover:text-light transition-colors text-right">
             {project.category}
-            {!isOwnProject && ` · ${project.client}`} →
+            {!isOwnProject && ` · ${project.client}`}
           </span>
         </div>
       </TransitionLink>
@@ -53,15 +56,14 @@ export function Projects() {
         >
           <h2
             className="text-[10px] uppercase mb-2 md:text-[13px] md:mb-5 md:font-medium font-mono"
-            style={{ letterSpacing: "0.13em", color: "#b3b3b3" }}
+            style={{ letterSpacing: "0.13em", color: "#a1a1a1" }}
           >
-            NUESTRO TRABAJO
+            <span className="inline-flex items-center gap-2 align-middle opacity-50"><span>06</span><Molinillo className="h-[0.9em] w-[0.9em]" /></span> NUESTRO TRABAJO
           </h2>
           <p
             className="block text-[30px] font-bold leading-none tracking-[-0.04em] text-light font-heading md:text-[clamp(56px,6vw,88px)] md:font-bold md:leading-[0.92] md:tracking-[-0.045em] md:text-[#ffffff]"
           >
-            Proyectos{" "}
-            <span className="hidden md:inline" style={{ color: "#ffffff" }}>&raquo;</span>
+            Proyectos
           </p>
         </motion.div>
 
@@ -90,7 +92,8 @@ export function Projects() {
               color: "#ffffff",
             }}
           >
-            VER TODOS LOS PROYECTOS →
+            VER TODOS LOS PROYECTOS
+            <Molinillo className="h-[12px] w-[12px] ml-2.5" />
           </TransitionLink>
 
           {/* Desktop: link original */}
@@ -100,13 +103,7 @@ export function Projects() {
             style={{ letterSpacing: "0.09em" }}
           >
             VER TODOS LOS PROYECTOS
-            <motion.span
-              className="inline-block"
-              animate={{ x: [0, 5, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-            >
-              →
-            </motion.span>
+            <Molinillo className="h-[14px] w-[14px]" />
           </TransitionLink>
         </motion.div>
       </div>

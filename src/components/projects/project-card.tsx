@@ -3,6 +3,7 @@ import { motion, AnimatePresence, useMotionValue, useSpring, useTransform, useIn
 import { useRef } from "react";
 import type { Project } from "@/types";
 import { TransitionLink } from "@/components/transition/transition-link";
+import { Isotipo } from "@/components/brand/isotipo";
 
 interface ProjectCardProps {
   project: Project;
@@ -123,6 +124,9 @@ export function ProjectCard({ project, index, size = "medium", showFloatingImage
               </div>
             )}
           </div>
+
+          {/* Firma: isotipo en la esquina */}
+          <Isotipo className="absolute bottom-6 right-6 md:bottom-8 md:right-8 z-20 h-[26px] w-[28px] text-light/85 drop-shadow-[0_1px_6px_rgba(0,0,0,0.45)]" />
 
           {/* Hover border */}
           <div className="absolute inset-0 border border-light/0 group-hover:border-light/19 max-md:border-light/19 transition-colors duration-300 z-30 pointer-events-none" />

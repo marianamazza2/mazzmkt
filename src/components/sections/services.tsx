@@ -1,23 +1,20 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { Code, Bot, Zap, Wand2, Target, ShoppingCart, Globe, Workflow } from "lucide-react";
 import { useRef, useState } from "react";
 import { TransitionLink } from "@/components/transition/transition-link";
+import { Molinillo } from "@/components/brand/molinillo";
 
 const mainServices = [
   {
-    icon: Code,
     title: "WEBS Y LANDING PAGES",
     subtitle: "SITIOS WEB | LANDINGS",
     description: "Código real, diseño a medida, alto rendimiento. Lista en días.",
   },
   {
-    icon: Zap,
     title: "WEB APPS & PLATAFORMAS",
     subtitle: "WEBAPPS | CRM | SAAS | PORTALES",
     description: "CRM, SaaS, portales. La herramienta que tu negocio necesita, a medida.",
   },
   {
-    icon: ShoppingCart,
     title: "E-COMMERCE",
     subtitle: "TIENDAS ONLINE | E-COMMERCE",
     description: "Tu tienda online sin las limitaciones de los templates.",
@@ -28,32 +25,26 @@ const alsoServices = ["Branding", "Redes Sociales", "Analytics & Tracking"];
 
 const aiServices = [
   {
-    icon: Bot,
     title: "AGENTES IA",
     description: "Atienden y venden por ti en WhatsApp y web, a cualquier hora. Los viste en acción más arriba.",
   },
   {
-    icon: Zap,
     title: "AUTOMATIZACIÓN",
     description: "Flujos que conectan tus herramientas y hacen que tu negocio opere solo, sin tareas manuales repetidas.",
   },
   {
-    icon: Workflow,
     title: "INTEGRACIONES",
     description: "Conectamos tu CRM, agenda, email y las apps que ya usas para que la información viva en un solo sitio.",
   },
   {
-    icon: Wand2,
     title: "IA GENERATIVA",
     description: "Imágenes, avatares, reels y vídeos. Producción de contenido visual a escala.",
   },
   {
-    icon: Globe,
     title: "SEO CON IA",
     description: "Contenido Y ESTRUCTURA optimizada con IA. Más visibilidad orgánica.",
   },
   {
-    icon: Target,
     title: "SEM & PUBLICIDAD META",
     description: "Google Ads y Meta Ads. Campañas creadas y optimizadas con IA.",
   },
@@ -86,8 +77,6 @@ function ServiceCardDark({
     mouseY.set(0);
   };
 
-  const Icon = service.icon;
-
   return (
     <motion.div
       ref={cardRef}
@@ -112,12 +101,9 @@ function ServiceCardDark({
         />
 
         <div className="relative z-10 p-5 md:p-8">
-          <div className="flex items-start justify-between mb-6 md:mb-7">
-            <Icon className="h-10 w-10 text-light group-hover:text-dark transition-colors" strokeWidth={1.5} />
-            <span className="font-mono text-[13px] text-light/50 group-hover:text-dark/60 transition-colors duration-300">
-              {String(index + 1).padStart(2, "0")}
-            </span>
-          </div>
+          <span className="block mb-10 md:mb-14 font-mono text-[13px] text-light/50 group-hover:text-dark/60 transition-colors duration-300">
+            {String(index + 1).padStart(2, "0")}
+          </span>
 
           <h3
             className="text-[20px] md:text-[24px] leading-[1.1] tracking-[-0.025em] font-bold text-light group-hover:text-dark mb-3 transition-colors"
@@ -153,13 +139,12 @@ function AiHeader() {
         className="text-[10px] uppercase mb-2 md:text-[13px] md:mb-5 md:font-medium font-mono"
         style={{ letterSpacing: "0.13em", color: "#a1a1a1" }}
       >
-        Servicios con Inteligencia Artificial
+        <span className="inline-flex items-center gap-2 align-middle opacity-50"><span>04</span><Molinillo className="h-[0.9em] w-[0.9em]" /></span> Servicios con Inteligencia Artificial
       </h2>
       <p className="text-[30px] font-bold leading-[1] tracking-[-0.04em] text-[#ffffff] font-heading md:text-[clamp(56px,6vw,88px)] md:font-bold md:leading-[0.92] md:tracking-[-0.045em]">
         Tu negocio en{" "}
         <span className="hidden md:inline text-[#a1a1a1]">modo IA</span>
         <span className="md:hidden">modo IA</span>
-        <span className="hidden md:inline text-[#a1a1a1]"> &raquo;</span>
       </p>
       <p
         className="text-[14px] leading-[1.7] mt-3 md:text-[19px] md:leading-[1.55] md:mt-6 md:max-w-2xl"
@@ -199,7 +184,6 @@ function AiShowcase() {
           <div className="h-[190px]">
             {(() => {
               const active = aiServices[selectedAiService];
-              const ActiveIcon = active.icon;
               const total = aiServices.length;
               const handleNext = () => setSelectedAiService((prev) => (prev + 1) % total);
               const handlePrev = () => setSelectedAiService((prev) => (prev - 1 + total) % total);
@@ -220,12 +204,7 @@ function AiShowcase() {
                   }}
                 >
                   <div className="flex items-center gap-3 mb-4">
-                    <div
-                      className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
-                      style={{ background: "rgba(255, 255, 255, 0.08)" }}
-                    >
-                      <ActiveIcon size={20} strokeWidth={1.5} style={{ color: "#ffffff" }} />
-                    </div>
+                    <span className="font-mono text-[11px] text-light/50 flex-shrink-0">{String(selectedAiService + 1).padStart(2, "0")}</span>
                     <p className="text-[13px] font-semibold uppercase text-light" style={{ letterSpacing: "0.04em" }}>
                       {active.title}
                     </p>
@@ -283,14 +262,13 @@ export function Services() {
             className="mb-4 md:mb-10"
           >
             <h2 className="text-[10px] font-medium uppercase mb-2 md:text-[13px] md:mb-5 md:flex md:items-center md:gap-3 font-mono"
-              style={{ letterSpacing: "0.13em", color: "#8f8f8f" }}>
-              Soluciones digitales en Barcelona
+              style={{ letterSpacing: "0.13em", color: "#a1a1a1" }}>
+              <span className="inline-flex items-center gap-2 align-middle opacity-50"><span>03</span><Molinillo className="h-[0.9em] w-[0.9em]" /></span> Soluciones digitales en Barcelona
             </h2>
             <p
               className="mb-4 text-[30px] font-bold leading-[1] tracking-[-0.04em] text-light md:mb-0 font-heading md:text-[clamp(56px,6vw,88px)] md:font-bold md:leading-[0.92] md:tracking-[-0.045em]"
             >
-              Lo que hacemos{" "}
-              <span className="hidden md:inline" style={{ color: "#ffffffaa" }}>&raquo;</span>
+              Lo que hacemos
             </p>
           </motion.div>
 
@@ -298,7 +276,6 @@ export function Services() {
           <div className="md:hidden">
             <div className="h-[210px]">
               {(() => {
-                const ActiveIcon = mainServices[selectedMobileService].icon;
                 const total = mainServices.length;
                 const handleNext = () => setSelectedMobileService((prev) => (prev + 1) % total);
                 const handlePrev = () => setSelectedMobileService((prev) => (prev - 1 + total) % total);
@@ -319,12 +296,7 @@ export function Services() {
                     }}
                   >
                     <div className="flex items-center gap-3 mb-4">
-                      <div
-                        className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
-                        style={{ background: "rgba(255, 255, 255, 0.08)" }}
-                      >
-                        <ActiveIcon size={20} strokeWidth={1.5} style={{ color: "#ffffff" }} />
-                      </div>
+                      <span className="font-mono text-[11px] text-light/50 flex-shrink-0">{String(selectedMobileService + 1).padStart(2, "0")}</span>
                       <p className="text-[13px] font-semibold uppercase text-light" style={{ letterSpacing: "0.04em" }}>
                         {mainServices[selectedMobileService].title}
                       </p>
@@ -424,13 +396,7 @@ export function Services() {
               style={{ letterSpacing: "0.09em", color: "#ffffff" }}
             >
               QUIERO MI NEGOCIO CON IA
-              <motion.span
-                className="inline-block"
-                animate={{ x: [0, 5, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-              >
-                →
-              </motion.span>
+              <Molinillo className="h-[14px] w-[14px]" />
             </TransitionLink>
           </motion.div>
         </div>

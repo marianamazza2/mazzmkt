@@ -1,22 +1,19 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { Zap, Bot, Clock } from "lucide-react";
+import { Molinillo } from "@/components/brand/molinillo";
 
 const pillars = [
   {
-    icon: Zap,
     title: "Código real",
     description:
       "Programamos desde cero con las tecnologías más avanzadas. Tu web carga en menos de 2 segundos, es 100% tuya y no depende de ninguna plataforma.",
   },
   {
-    icon: Bot,
     title: "AI en cada proyecto",
     description:
       "La inteligencia artificial no es un extra. Está en el diseño, el código, la automatización y el contenido de cada proyecto.",
   },
   {
-    icon: Clock,
     title: "Días, no meses",
     description:
       "Marca completa en 2-3 días. Web profesional en 5-7 días. Webapp a medida en 2-3 semanas. Resultados rápidos sin sacrificar calidad.",
@@ -33,14 +30,13 @@ export function HowWeWork() {
       <div className="md:hidden px-5 pt-8 pb-7">
         <p
           className="font-mono text-[10px] uppercase mb-6"
-          style={{ letterSpacing: "2.5px", color: "#878787" }}
+          style={{ letterSpacing: "0.13em", color: "#a1a1a1" }}
         >
-          CÓMO TRABAJAMOS
+          <span className="inline-flex items-center gap-2 align-middle opacity-50"><span>01</span><Molinillo className="h-[0.9em] w-[0.9em]" /></span> CÓMO TRABAJAMOS
         </p>
 
         <div className="h-[200px]">
           {(() => {
-            const ActiveIcon = pillars[selected].icon;
             const handleNext = () => setSelected((prev) => (prev + 1) % total);
             const handlePrev = () => setSelected((prev) => (prev - 1 + total) % total);
             return (
@@ -60,12 +56,7 @@ export function HowWeWork() {
                 }}
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <div
-                    className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
-                    style={{ background: "rgba(255, 255, 255, 0.08)" }}
-                  >
-                    <ActiveIcon size={20} strokeWidth={1.5} style={{ color: "#ffffff" }} />
-                  </div>
+                  <span className="font-mono text-[11px] text-light/50 flex-shrink-0">{String(selected + 1).padStart(2, "0")}</span>
                   <p className="text-[13px] font-semibold uppercase text-light" style={{ letterSpacing: "0.04em" }}>
                     {pillars[selected].title}
                   </p>
@@ -106,11 +97,10 @@ export function HowWeWork() {
           className="mb-10 text-[13px] font-medium uppercase text-[#a1a1a1] font-mono"
           style={{ letterSpacing: "0.13em" }}
         >
-          CÓMO TRABAJAMOS
+          <span className="inline-flex items-center gap-2 align-middle opacity-50"><span>01</span><Molinillo className="h-[0.9em] w-[0.9em]" /></span> CÓMO TRABAJAMOS
         </p>
         <div className="grid grid-cols-3 gap-6">
           {pillars.map((pillar, i) => {
-            const Icon = pillar.icon;
             return (
               <motion.div
                 key={pillar.title}
@@ -120,7 +110,9 @@ export function HowWeWork() {
                 transition={{ duration: 0.6, delay: i * 0.12 }}
                 className="group px-8 py-10 border border-light/13 rounded-sm hover:border-light hover:bg-light transition-all duration-300"
               >
-                <Icon size={32} strokeWidth={1.5} className="mb-6 text-light group-hover:text-dark transition-colors" />
+                <span className="block mb-10 md:mb-14 font-mono text-[13px] text-light/50 group-hover:text-dark/60 transition-colors">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
                 <h3
                   className="text-[20px] md:text-[24px] leading-[1.1] tracking-[-0.025em] font-bold text-light group-hover:text-dark mb-4 uppercase transition-colors"
                 >

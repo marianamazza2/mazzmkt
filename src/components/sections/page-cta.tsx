@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { TransitionLink } from "@/components/transition/transition-link";
 import { trackEvent } from "@/lib/analytics";
+import { MolinilloQueMira } from "@/components/brand/molinillo-que-mira";
 
 function AnimatedText({
   text,
@@ -40,6 +41,7 @@ export function PageCTA() {
       <div className="container mx-auto px-5 md:px-6 relative z-10">
         {/* Mobile: compact static CTA */}
         <div className="md:hidden text-center">
+          <MolinilloQueMira className="mx-auto mb-5 block h-[72px] w-[72px] text-light" />
           <h2
             style={{
               fontSize: "18px",
@@ -66,8 +68,10 @@ export function PageCTA() {
           </TransitionLink>
         </div>
 
-        {/* Desktop: original animated CTA */}
-        <div className="hidden md:block text-center">
+        {/* Desktop: molinillo grande ("te mira") junto al titular */}
+        <div className="hidden md:flex items-center justify-center gap-12 lg:gap-16">
+          <MolinilloQueMira className="block shrink-0 h-[150px] w-[150px] lg:h-[190px] lg:w-[190px] text-light" />
+          <div className="text-left">
           <h2
             className="font-bold normal-case text-[#ffffff]"
             style={{
@@ -100,6 +104,7 @@ export function PageCTA() {
               COMENZAR
             </TransitionLink>
           </motion.div>
+          </div>
         </div>
       </div>
     </section>

@@ -3,6 +3,7 @@ import { motion, AnimatePresence, LayoutGroup, useMotionValue, useSpring } from 
 import type { PanInfo } from "framer-motion";
 import { Check, ChevronDown, Search, Grid3X3, List, X } from "lucide-react";
 import { ProjectCard } from "./project-card";
+import { Molinillo } from "@/components/brand/molinillo";
 import { TransitionLink } from "@/components/transition/transition-link";
 import type { Project } from "@/types";
 
@@ -582,10 +583,7 @@ function ProjectListItem({
         ))}
       </div>
 
-      {/* Arrow */}
-      <span className="text-light text-2xl transition-colors">
-        →
-      </span>
+      <Molinillo className="h-[18px] w-[18px] text-light" />
     </motion.a>
   );
 }

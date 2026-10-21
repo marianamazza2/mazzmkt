@@ -5,6 +5,7 @@ import { Mail, MessageCircle, Phone, MapPin } from "lucide-react";
 import { useState } from "react";
 import { trackEvent } from "@/lib/analytics";
 import { PageHero } from "@/components/sections/page-hero";
+import { Molinillo } from "@/components/brand/molinillo";
 
 export const Route = createFileRoute("/contacto")({
   component: ContactoPage,
@@ -66,13 +67,7 @@ function ContactoPage() {
               >
                 <MessageCircle className="h-4 w-4" strokeWidth={1.8} />
                 WHATSAPP
-                <motion.span
-                  className="inline-block"
-                  animate={{ x: [0, 5, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                >
-                  →
-                </motion.span>
+                <Molinillo className="h-[14px] w-[14px]" />
               </a>
               <a
                 href="mailto:mazzmkt360@gmail.com"
@@ -146,9 +141,10 @@ function ContactoPage() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full border border-light/30 text-light py-3 md:py-5 font-medium md:font-semibold text-[12px] md:text-[13px] uppercase tracking-[1.5px] md:tracking-[0.09em] hover:border-light transition-colors disabled:opacity-50 rounded-sm mt-1 font-mono"
+                    className="w-full inline-flex items-center justify-center gap-3 border border-light/30 text-light py-3 md:py-5 font-medium md:font-semibold text-[12px] md:text-[13px] uppercase tracking-[1.5px] md:tracking-[0.09em] hover:border-light transition-colors disabled:opacity-50 rounded-sm mt-1 font-mono"
                   >
-                    {isSubmitting ? "ENVIANDO..." : "ENVIAR MENSAJE"}
+                    {isSubmitting ? "ENVIANDO" : "ENVIAR MENSAJE"}
+                    <Molinillo spinning={isSubmitting} className="h-[14px] w-[14px]" />
                   </button>
                 </form>
               )}

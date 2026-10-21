@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-136 -136 272 272" fill="currentColor">
+  <g id="alas">
+    <polygon points="30,0 100.5,-16 136,-80 78.5,-67 64,-57"/>
+    <polygon points="0,30 16,100.5 80,136 67,78.5 57,64"/>
+    <polygon points="-30,0 -100.5,16 -136,80 -78.5,67 -64,57"/>
+    <polygon points="0,-30 -16,-100.5 -80,-136 -67,-78.5 -57,-64"/>
+  </g>
+  <g id="ojos">
+    <circle cx="-12" cy="0" r="8.5"/>
+    <circle cx="12" cy="0" r="8.5"/>
+  </g>
+</svg>

@@ -3,7 +3,6 @@ export interface Service {
   title: string;
   shortDescription: string;
   description: string;
-  icon: string;
   features: string[];
   slug: string;
 }

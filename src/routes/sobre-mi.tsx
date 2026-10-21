@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { SEOHead } from "@/components/seo/SEOHead";
 import { CheckCircle2 } from "lucide-react";
 import { PageHero } from "@/components/sections/page-hero";
+import { Molinillo } from "@/components/brand/molinillo";
 
 export const Route = createFileRoute("/sobre-mi")({
   component: SobreMiPage,
@@ -50,7 +51,7 @@ function SobreMiPage() {
               <h2 className="text-[30px] font-bold leading-[1] tracking-[-0.04em] text-[#ffffff] normal-case font-heading md:text-[clamp(56px,6vw,88px)] md:font-bold md:leading-[0.92] md:tracking-[-0.045em]">
                 Nuestros
                 <br />
-                valores <span className="hidden md:inline">&raquo;</span>
+                valores
               </h2>
             </motion.div>
 
@@ -96,13 +97,14 @@ function SobreMiPage() {
               DETRÁS DE MAZZMKT
             </p>
             <h2 className="text-[30px] font-bold leading-[1] tracking-[-0.04em] text-light normal-case font-heading md:text-[clamp(56px,6vw,88px)] md:font-bold md:leading-[0.92] md:tracking-[-0.045em] mb-3 md:mb-8">
-              Nuestra historia <span className="hidden md:inline">&raquo;</span>
+              Nuestra historia
             </h2>
             <p className="text-[13px] md:text-lg text-[#a1a1a1] leading-[1.7] mb-4 md:mb-6">
               MazzMkt nació de una combinación poco usual: recursos humanos, código, diseño y marketing. Venimos de entender a las personas antes que a los píxeles, y eso lo cambió todo. Aprendimos que el marketing que realmente funciona, escucha, entiende y conecta.
             </p>
             <p className="text-[13px] md:text-lg text-[#a1a1a1] leading-[1.7] mb-5 md:mb-8">
               Hoy somos una agencia pequeña con propósito grande. Trabajamos con marcas que quieren más que visibilidad: quieren crecer, diferenciarse y ser recordadas. Combinamos estrategia, creatividad e inteligencia artificial para construir identidades que se ven bien, se sienten bien y convierten. Sin fórmulas copiadas, sin promesas vacías.
+              <Molinillo className="ml-2 h-[0.7em] w-[0.7em] align-baseline" />
             </p>
 
             <div className="flex flex-wrap gap-[10px] md:gap-3">

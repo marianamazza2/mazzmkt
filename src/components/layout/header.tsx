@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { TransitionLink } from "@/components/transition/transition-link";
+import { Isotipo } from "@/components/brand/isotipo";
 
 const navigation = [
   { title: "HOME", href: "/", icon: Home },
@@ -56,16 +57,11 @@ export function Header() {
           "fixed top-0 left-0 right-0 z-50 bg-dark",
         )}
       >
-        <nav className="container mx-auto pl-0 pr-6">
+        <nav className="container mx-auto px-5 md:px-6">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <TransitionLink to="/" className="flex items-center">
-              <img
-                src="/images/isotipo.webp"
-                alt="MAZZMKT"
-                className="h-14 md:h-16 w-auto"
-                style={{ mixBlendMode: "screen", filter: "contrast(1.2)" }}
-              />
+              <Isotipo className="h-[26px] w-[28px] md:h-[28px] md:w-[31px] text-light" />
             </TransitionLink>
 
             {/* Desktop Navigation */}
@@ -113,18 +109,13 @@ export function Header() {
             className="md:hidden fixed inset-0 z-[999] bg-dark flex flex-col pb-8 overflow-y-auto"
           >
             {/* Header: logo + close button */}
-            <div className="flex items-center justify-between mb-6 h-20 pr-6">
+            <div className="flex items-center justify-between mb-6 h-20 px-5">
               <TransitionLink
                 to="/"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="flex items-center"
               >
-                <img
-                  src="/images/isotipo.webp"
-                  alt="MAZZMKT"
-                  className="h-14 w-auto"
-                  style={{ mixBlendMode: "screen", filter: "contrast(1.2)" }}
-                />
+                <Isotipo className="h-[26px] w-[28px] text-light" />
               </TransitionLink>
               <button
                 onClick={() => setIsMobileMenuOpen(false)}

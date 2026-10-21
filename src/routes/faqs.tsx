@@ -8,23 +8,7 @@ import {
   ChevronDown,
   Plus,
   Minus,
-  Code,
-  Clock,
-  Wrench,
-  Sparkles,
   Zap,
-  Palette,
-  Search,
-  Share2,
-  TrendingUp,
-  BarChart3,
-  Bot,
-  Activity,
-  MousePointerClick,
-  MessageSquare,
-  Globe,
-  FileText,
-  Map,
 } from "lucide-react";
 
 export const Route = createFileRoute("/faqs")({
@@ -37,7 +21,6 @@ interface FAQ {
   question: string;
   answer: string;
   highlight?: string;
-  icon: typeof Code;
 }
 
 const faqs: FAQ[] = [
@@ -45,7 +28,6 @@ const faqs: FAQ[] = [
   {
     id: 17,
     category: "GENERAL",
-    icon: MessageSquare,
     question: "¿Cómo es el proceso para comenzar a trabajar juntos?",
     answer:
       "Nos contactas por whatsApp o a través de la web y te enviamos un formulario inicial para conocer mejor tu proyecto y tus necesidades. Con esa información preparamos una propuesta general adaptada a lo que buscas. Si lo que ofrecemos encaja con lo que necesitas, coordinamos una reunión para conocernos, conversar y definir detalles.",
@@ -54,7 +36,6 @@ const faqs: FAQ[] = [
   {
     id: 22,
     category: "GENERAL",
-    icon: Check,
     question: "¿Cómo funciona el proceso antes de iniciar un proyecto?",
     answer:
       "Una vez aprobada la propuesta, enviamos un contrato digital junto con el primer pago de reserva. Esto nos permite alinear expectativas, definir el alcance del proyecto y comenzar el trabajo de manera organizada.",
@@ -63,7 +44,6 @@ const faqs: FAQ[] = [
    {
     id: 21,
     category: "GENERAL",
-    icon: Check,
     question: "¿Se pide una seña inicial para comenzar?",
     answer:
       "Sí. Para reservar tu lugar en agenda y dar inicio al proyecto, solicitamos una seña del 50% del valor total acordado. El 50% restante se abona al finalizar y antes de la entrega. Esto nos permite planificar tiempos y dedicación real a tu proyecto desde el primer día.",
@@ -72,7 +52,6 @@ const faqs: FAQ[] = [
   {
     id: 20,
     category: "GENERAL",
-    icon: MessageSquare,
     question: "¿Cómo funcionan las revisiones?",
     answer:
       "Ofrecemos hasta dos rondas completas de revisiones en cada proyecto. Nuestro proceso estratégico inicial  briefing, investigación y definición de objetivos  está diseñado para alinear la dirección creativa desde el principio y asegurar que el proyecto avance con claridad y coherencia.\n\nEn caso de necesitarlo, se puede realizar una tercera ronda destinada únicamente a ajustes menores o detalles finales.",
@@ -83,7 +62,6 @@ const faqs: FAQ[] = [
   {
     id: 1,
     category: "WEB",
-    icon: Code,
     question: "¿Código o No-Code? ¿Cuál es mejor para mi proyecto?",
     answer:
       "Depende de tus objetivos. El No-Code (Webflow, Framer, Wix) es ideal si necesitas una web rápida, con bajo presupuesto y planeas editarla tu mism@. El código a medida es para proyectos que buscan diferenciarse, necesitan funcionalidades específicas, máxima velocidad de carga, o escalar sin limitaciones. Si buscas hacer una página web sin templates en Barcelona, con una experiencia realmente propia y preparada para crecer, el código es el camino.",
@@ -92,7 +70,6 @@ const faqs: FAQ[] = [
   {
     id: 2,
     category: "WEB",
-    icon: Clock,
     question: "¿En cuánto tiempo puedo tener mi web lista?",
     answer:
       "Con código, una landing page de alta conversión puede estar lista en 2-3 días hábiles si ya tienes el diseño o el branding definido. Proyectos más complejos con e-commerce, integraciones o funcionalidades custom pueden tomar 1-3 semanas. El No-Code suele tomar tiempos similares pero con menos flexibilidad para cambios estructurales.",
@@ -101,7 +78,6 @@ const faqs: FAQ[] = [
   {
     id: 26,
     category: "WEB",
-    icon: Globe,
     question: "¿Hacéis diseño web para pequeños negocios en Barcelona?",
     answer:
       "Sí. Trabajamos diseño web para pequeños negocios en Barcelona que necesitan una presencia digital clara, profesional y orientada a convertir: restaurantes, estudios, gimnasios, profesionales independientes, proyectos locales y marcas que quieren verse más sólidas online. Como agencia de desarrollo web en Barcelona, no hacemos webs genéricas; definimos estructura, mensajes, diseño y desarrollo según el tipo de cliente y el objetivo comercial de la web.",
@@ -110,7 +86,6 @@ const faqs: FAQ[] = [
   {
     id: 27,
     category: "WEB",
-    icon: MousePointerClick,
     question: "¿Creáis webs profesionales para autónomos en Barcelona?",
     answer:
       "Sí. Una web profesional para autónomos en Barcelona tiene que explicar rápido quién eres, qué ofreces, por qué confiar en ti y cómo contratarte. Por eso trabajamos páginas con estructura estratégica, llamadas a la acción claras, diseño cuidado, SEO básico y una experiencia simple para que el usuario llegue al contacto sin perderse.",
@@ -119,7 +94,6 @@ const faqs: FAQ[] = [
   {
     id: 28,
     category: "WEB",
-    icon: BarChart3,
     question: "¿Cuánto cuesta una página web en España?",
     answer:
       "Depende del alcance. No cuesta lo mismo una landing page que una web corporativa, una tienda online o una web con diseño, branding, SEO e integraciones. En España, el precio de una página web profesional suele variar según estrategia, número de secciones, nivel de diseño, desarrollo a medida, contenidos y mantenimiento. Por eso no damos precios cerrados sin entender antes el proyecto: primero analizamos lo que necesitas y después preparamos una propuesta clara.",
@@ -128,7 +102,6 @@ const faqs: FAQ[] = [
   {
     id: 29,
     category: "WEB",
-    icon: Zap,
     question: "¿Diseñáis landing pages de alta conversión en Barcelona?",
     answer:
       "Sí. Una landing page de alta conversión no es solo una página bonita: necesita una promesa clara, jerarquía visual, copy directo, pruebas de confianza, velocidad de carga y una llamada a la acción bien ubicada. La diseñamos y desarrollamos para campañas, lanzamientos, captación de leads, reservas, ventas o validación de una oferta concreta.",
@@ -137,7 +110,6 @@ const faqs: FAQ[] = [
   {
     id: 30,
     category: "WEB",
-    icon: Search,
     question: "¿Trabajáis webs para restaurantes, psicólogos, gimnasios o inmobiliarias?",
     answer:
       "Sí. Ya trabajamos proyectos de diseño web para restaurante en Barcelona, web para psicólogo, web para gimnasio y branding para inmobiliaria independiente. Cada sector necesita una estructura distinta: un restaurante debe mostrar carta, reservas y personalidad; un psicólogo necesita confianza y claridad; un gimnasio debe transmitir energía y facilitar la conversión; una inmobiliaria independiente necesita profesionalidad, cercanía y credibilidad.",
@@ -146,7 +118,6 @@ const faqs: FAQ[] = [
   {
     id: 3,
     category: "WEB",
-    icon: Wrench,
     question: "¿Voy a poder editar mi web yo mism@?",
     answer:
       "Con No-Code, sí. Plataformas como Webflow o Framer tienen editores visuales intuitivos. O si prefieres no tocar nada, ofrecemos planes de mantenimiento donde nos encargamos de todo lo que necesites.",
@@ -156,7 +127,6 @@ const faqs: FAQ[] = [
   {
     id: 18,
     category: "WEB",
-    icon: Globe,
     question: "¿El desarrollo incluye hosting y dominio?",
     answer:
       "El dominio es tuyo y lo registras tú (te guiamos si lo necesitas). Para el hosting, en proyectos con código usamos Vercel, una plataforma de alto rendimiento que en muchos casos es gratuita. En proyectos No-Code, el hosting ya está incluido en la plataforma elegida. En todos los casos te asesoramos para que todo quede bajo tu control y no dependas de nosotros para nada crítico.",
@@ -166,7 +136,6 @@ const faqs: FAQ[] = [
   {
     id: 19,
     category: "BRANDING",
-    icon: Clock,
     question: "¿Cuánto tarda el proceso de branding?",
     answer:
       "Un branding completo tarda entre 2 y 4 semanas, dependiendo de la complejidad de la marca y la velocidad de feedback de tu parte. El proceso tiene etapas claras: estrategia y brief, exploración de conceptos, desarrollo de la identidad elegida, y entrega de archivos finales con guidelines. No apuramos el proceso porque una identidad bien construida es una inversión a largo plazo.",
@@ -175,7 +144,6 @@ const faqs: FAQ[] = [
   {
     id: 5,
     category: "BRANDING",
-    icon: Palette,
     question: "¿Qué incluye el servicio de branding?",
     answer:
       "Nuestro branding cubre desde la estrategia de marca hasta la identidad visual completa: logo, paleta de colores, tipografías, sistema de iconos, guidelines de uso, aplicaciones básicas de la marca (tarjetas, redes, papelería) y la marca en vivo, es decir, mockups reales que muestran tu identidad aplicada en distintos soportes para que puedas ver cómo se ve antes de salir al mundo. Y si además contratas el servicio de aplicaciones, sumamos un set ampliado de mockups de ejemplo para mostrar tu marca en acción con mayor profundidad y variedad. No es solo un logo bonito, es construir una identidad que comunique quién sos y por qué deberían elegirte.",
@@ -184,7 +152,6 @@ const faqs: FAQ[] = [
   {
     id: 6,
     category: "BRANDING",
-    icon: Sparkles,
     question: "¿Ya tengo logo, necesito branding completo?",
     answer:
       "Un logo solo no es branding. Si tu marca no tiene coherencia visual (colores definidos, tipografías, tono de comunicación), cada pieza que crees va a sentirse desconectada. Podemos trabajar desde tu logo existente y construir un sistema visual completo, o si el logo no está a la altura, proponer un rediseño.",
@@ -194,7 +161,6 @@ const faqs: FAQ[] = [
   {
     id: 9,
     category: "SEO",
-    icon: Search,
     question: "¿Cuánto tarda en verse resultados con SEO?",
     answer:
       "El SEO es una estrategia a mediano-largo plazo. Los primeros resultados suelen verse entre 3 y 6 meses, dependiendo de la competencia en tu sector y el estado actual de tu web. Pero una vez que posicionas, el tráfico es orgánico y sostenido. Es la inversión que más retorno da a largo plazo.",
@@ -203,7 +169,6 @@ const faqs: FAQ[] = [
   {
     id: 10,
     category: "SEO",
-    icon: TrendingUp,
     question: "¿Qué incluye el servicio de SEO?",
     answer:
       "Auditoría técnica completa, investigación de palabras clave, optimización on-page (títulos, metas, estructura, velocidad), estrategia de contenido, link building, y reportes mensuales con métricas claras.",
@@ -212,7 +177,6 @@ const faqs: FAQ[] = [
   {
     id: 23,
     category: "SEO",
-    icon: Search,
     question: "¿Gestionáis Google Search Console?",
     answer:
       "Sí. Google Search Console es una herramienta clave para entender cómo Google ve tu web: qué páginas indexa, por qué palabras clave apareces, qué errores detecta el rastreo y cómo evoluciona tu presencia orgánica. Lo configuramos, lo conectamos con Analytics y lo monitorizamos de forma continua para detectar caídas, errores de cobertura o oportunidades de mejora antes de que afecten tu posicionamiento.",
@@ -221,7 +185,6 @@ const faqs: FAQ[] = [
   {
     id: 24,
     category: "SEO",
-    icon: Map,
     question: "¿Qué es el sitemap y por qué importa para el SEO?",
     answer:
       "El sitemap es un archivo XML que le dice a los motores de búsqueda qué páginas existen en tu web y cómo están organizadas. Sin él, Google tiene que descubrir tu contenido solo, lo que puede llevar más tiempo o dejar páginas sin indexar. Nos encargamos de generarlo, mantenerlo actualizado y enviarlo a Search Console para que tu sitio se rastree de forma eficiente desde el primer día.",
@@ -230,7 +193,6 @@ const faqs: FAQ[] = [
   {
     id: 25,
     category: "SEO",
-    icon: FileText,
     question: "¿Para qué sirve el archivo robots.txt?",
     answer:
       "El robots.txt le indica a los rastreadores de Google (y otros buscadores) qué partes de tu web pueden o no pueden visitar. Mal configurado puede bloquear páginas importantes y hundir tu posicionamiento sin que te des cuenta. Auditamos y configuramos el tuyo correctamente: bloqueamos lo que no debe indexarse (páginas de administración, duplicados, parámetros de URL) y nos aseguramos de que nada relevante quede fuera del alcance de Google.",
@@ -240,7 +202,6 @@ const faqs: FAQ[] = [
   {
     id: 11,
     category: "REDES SOCIALES",
-    icon: Share2,
     question: "¿Gestionan redes sociales? ¿Qué incluye?",
     answer:
       "Sí. Ofrecemos gestión integral de redes: estrategia de contenido, calendario editorial, diseño de piezas, copywriting, publicación, community management, y reportes mensuales.",
@@ -249,7 +210,6 @@ const faqs: FAQ[] = [
   {
     id: 12,
     category: "REDES SOCIALES",
-    icon: BarChart3,
     question: "¿Puedo ver resultados de la gestión de redes?",
     answer:
       "Por supuesto. Entregamos reportes mensuales con métricas reales: alcance, engagement, crecimiento de seguidores, clicks, y conversiones. No nos quedamos en vanity metrics (likes). Lo que importa es si tus redes están generando comunidad, confianza y, en última instancia, ventas.",
@@ -259,7 +219,6 @@ const faqs: FAQ[] = [
   {
     id: 15,
     category: "ANALYTICS",
-    icon: Activity,
     question: "¿Qué incluye el servicio de Analytics & Tracking?",
     answer:
       "Configuramos e implementamos todo el stack de medición que tu negocio necesita: GA4 para seguimiento completo de usuarios, comportamiento y conversiones; Google Tag Manager para gestionar todos los eventos y disparadores sin depender del equipo de desarrollo; Microsoft Clarity para mapas de calor, grabaciones de sesiones y análisis de experiencia; e implementamos los píxeles de Meta y TikTok para que tus campañas de publicidad pagada cuenten con datos precisos y optimización real. El objetivo es que cada decisión que tomes esté respaldada por datos reales, no suposiciones.",
@@ -268,7 +227,6 @@ const faqs: FAQ[] = [
   {
     id: 16,
     category: "ANALYTICS",
-    icon: MousePointerClick,
     question: "¿Por qué necesito GA4 y Tag Manager bien configurados?",
     answer:
       "Muchos negocios tienen GA4 instalado pero mal configurado: eventos que no disparan, conversiones que no se registran, datos que no reflejan la realidad. Un setup correcto te permite saber exactamente de dónde vienen tus usuarios, qué hacen en tu web, dónde se pierden y cuáles son los canales que realmente convierten. Tag Manager centraliza toda la lógica de tracking en un solo lugar, sin necesidad de tocar el código cada vez que necesitas medir algo nuevo.",
@@ -278,7 +236,6 @@ const faqs: FAQ[] = [
   {
     id: 13,
     category: "IA",
-    icon: Bot,
     question: "¿Usan inteligencia artificial? ¿Eso afecta la calidad?",
     answer:
       "Sí, y nos ayuda a ser mucho más eficientes. Herramientas como Claude Code y Codex nos permiten desarrollar más rápido, con menos errores, y explorar soluciones que antes nos llevaban días, en horas. La IA nos da una ventaja competitiva real: iteramos más rápido, entregamos mejor, y el resultado final es superior. No lo usamos para hacer lo mismo de siempre, lo usamos para hacer cosas que antes no eran posibles.",
@@ -449,7 +406,6 @@ function FAQsPage() {
             >
               {filteredFaqs.map((faq, index) => {
                 const isOpen = openId === faq.id;
-                const IconComponent = faq.icon;
 
                 return (
                   <motion.div
@@ -465,17 +421,11 @@ function FAQsPage() {
                   >
                     <button
                       onClick={() => toggleFaq(faq.id)}
-                      className="w-full py-3.5 px-4 md:p-7 lg:p-8 flex items-start gap-3 md:gap-5 lg:gap-6 text-left"
+                      className="w-full py-3.5 px-4 md:p-7 lg:p-8 flex items-center gap-3 md:gap-5 lg:gap-6 text-left"
                     >
                       {/* Content */}
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 md:gap-3 mb-1.5 md:mb-2">
-                          <IconComponent
-                            className={`w-3 h-3 md:w-5 md:h-5 transition-colors duration-300 ${
-                              isOpen ? "text-[#0a0a0aaa]" : "text-light/67"
-                            }`}
-                            strokeWidth={1.5}
-                          />
                           <span
                             className={`text-[10px] md:text-xs font-semibold tracking-[1.5px] md:tracking-widest transition-colors duration-300 font-mono ${
                               isOpen ? "text-[#0a0a0aaa]" : "text-light/67"

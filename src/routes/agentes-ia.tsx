@@ -2,23 +2,15 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
-  Bot,
-  Workflow,
   Clock,
-  MessageCircle,
   Plug,
-  BrainCircuit,
-  CalendarCheck,
-  Filter,
-  Bell,
-  Users,
-  Layers,
-  CreditCard,
 } from "lucide-react";
 import { SEOHead } from "@/components/seo/SEOHead";
 import { TransitionLink } from "@/components/transition/transition-link";
 import { trackEvent } from "@/lib/analytics";
 import { PageHero } from "@/components/sections/page-hero";
+import { Molinillo } from "@/components/brand/molinillo";
+import { MolinilloQueMira } from "@/components/brand/molinillo-que-mira";
 
 export const Route = createFileRoute("/agentes-ia")({
   component: AgentesIAPage,
@@ -26,31 +18,26 @@ export const Route = createFileRoute("/agentes-ia")({
 
 const capabilities = [
   {
-    icon: Bot,
     title: "AGENTES IA",
     description:
       "Asistentes que entienden lenguaje natural, conocen tu negocio y actúan: responden, agendan, derivan y venden. Sin guiones rígidos.",
   },
   {
-    icon: Workflow,
     title: "AUTOMATIZACIÓN DE FLUJOS",
     description:
       "Conectamos tus herramientas para que las tareas repetitivas ocurran solas: reservas, seguimientos, altas, avisos y reporting.",
   },
   {
-    icon: Clock,
     title: "ATENCIÓN 24/7",
     description:
       "Un recepcionista digital que no duerme ni falla. Atiende cada consulta al instante, festivos y madrugadas incluidas.",
   },
   {
-    icon: Plug,
     title: "INTEGRACIONES",
     description:
       "Tu agente vive donde ya trabajas: WhatsApp, agenda, CRM, email y hojas de cálculo. Todo conectado.",
   },
   {
-    icon: BrainCircuit,
     title: "IA CON TU CONOCIMIENTO",
     description:
       "Entrenamos al agente con el conocimiento de tu negocio (precios, servicios, políticas) para que responda con precisión, como lo harías tú.",
@@ -58,14 +45,14 @@ const capabilities = [
 ];
 
 const agentSkills = [
-  { icon: CalendarCheck, title: "Agenda citas", description: "Programa y reprograma citas sin solapar." },
-  { icon: MessageCircle, title: "Respuestas", description: "Resuelve las dudas frecuentes sin que nadie tenga que esperar." },
-  { icon: Filter, title: "Filtra leads", description: "Califica cada consulta antes de compartir la lista para cerrar." },
-  { icon: Bell, title: "Menos ausencias", description: "Envía recordatorios automáticos antes de cada cita." },
-  { icon: Users, title: "Humano", description: "Pasa la conversación a tu equipo cuando de verdad hace falta." },
-  { icon: Clock, title: "Activo 24/7", description: "Trabaja sin descanso, sin errores y sin días libres." },
-  { icon: Layers, title: "Sin esperas", description: "Atiende todas las conversaciones a la vez." },
-  { icon: CreditCard, title: "Cuota fija", description: "Precio predecible, sin cargas por uso ni sorpresas." },
+  { title: "Agenda citas", description: "Programa y reprograma citas sin solapar." },
+  { title: "Respuestas", description: "Resuelve las dudas frecuentes sin que nadie tenga que esperar." },
+  { title: "Filtra leads", description: "Califica cada consulta antes de compartir la lista para cerrar." },
+  { title: "Menos ausencias", description: "Envía recordatorios automáticos antes de cada cita." },
+  { title: "Humano", description: "Pasa la conversación a tu equipo cuando de verdad hace falta." },
+  { title: "Activo 24/7", description: "Trabaja sin descanso, sin errores y sin días libres." },
+  { title: "Sin esperas", description: "Atiende todas las conversaciones a la vez." },
+  { title: "Cuota fija", description: "Precio predecible, sin cargas por uso ni sorpresas." },
 ];
 
 const process = [
@@ -153,19 +140,17 @@ function BuildShowcase() {
         Lo que construimos
       </p>
       <h2 className="text-[30px] font-bold leading-[1] tracking-[-0.04em] text-light normal-case font-heading md:text-[clamp(56px,6vw,88px)] md:font-bold md:leading-[0.92] md:tracking-[-0.045em]">
-        IA lista para tu negocio <span className="hidden md:inline">&raquo;</span>
+        IA lista para tu negocio
       </h2>
     </>
   );
 
-  const Card = ({ cap }: { cap: (typeof capabilities)[number] }) => {
-    const Icon = cap.icon;
+  const Card = ({ cap, index }: { cap: (typeof capabilities)[number]; index: number }) => {
     return (
       <div className="group h-full border border-light/13 p-5 md:p-8 hover:border-light hover:bg-light transition-all duration-300 rounded-sm">
-        <Icon
-          className="h-9 w-9 md:h-10 md:w-10 text-light group-hover:text-[#0a0a0a] mb-5 md:mb-7 transition-colors"
-          strokeWidth={1.5}
-        />
+        <span className="block mb-10 md:mb-14 font-mono text-[13px] text-light/50 group-hover:text-dark/60 transition-colors">
+          {String(index + 1).padStart(2, "0")}
+        </span>
         <h3
           className="text-[20px] md:text-[24px] leading-[1.1] tracking-[-0.025em] font-bold text-light group-hover:text-[#0a0a0a] mb-3 transition-colors"
         >
@@ -187,9 +172,9 @@ function BuildShowcase() {
             <Header />
           </div>
           <motion.div ref={trackRef} style={{ x }} className="flex gap-6 px-6 w-max">
-            {capabilities.map((cap) => (
+            {capabilities.map((cap, index) => (
               <div key={cap.title} className="shrink-0 w-[calc((100vw-96px)/3)]">
-                <Card cap={cap} />
+                <Card cap={cap} index={index} />
               </div>
             ))}
           </motion.div>
@@ -202,9 +187,9 @@ function BuildShowcase() {
           <Header />
         </div>
         <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory hide-scrollbar px-5 pb-2">
-          {capabilities.map((cap) => (
+          {capabilities.map((cap, index) => (
             <div key={cap.title} className="snap-start shrink-0 w-[80vw]">
-              <Card cap={cap} />
+              <Card cap={cap} index={index} />
             </div>
           ))}
         </div>
@@ -235,13 +220,7 @@ function AgentesIAPage() {
                 onClick={() => trackEvent("cta_click", { location: "agentes_hero", label: "quiero_mi_agente" })}
               >
                 QUIERO MI AGENTE IA
-                <motion.span
-                  className="inline-block"
-                  animate={{ x: [0, 5, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                >
-                  →
-                </motion.span>
+                <Molinillo className="h-[14px] w-[14px]" />
               </TransitionLink>
               <a
                 href="#casos"
@@ -312,7 +291,6 @@ function AgentesIAPage() {
           {/* Capacidades — rejilla con divisorias */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-t border-l border-[#ffffff14]">
             {agentSkills.map((skill, index) => {
-              const Icon = skill.icon;
               return (
                 <motion.div
                   key={skill.title}
@@ -322,7 +300,9 @@ function AgentesIAPage() {
                   transition={{ duration: 0.4, delay: (index % 4) * 0.08 }}
                   className="border-r border-b border-[#ffffff14] p-6 md:p-8"
                 >
-                  <Icon size={30} strokeWidth={1.5} style={{ color: "#ffffff" }} className="mb-6 md:mb-8" />
+                  <span className="block mb-10 md:mb-14 font-mono text-[13px] text-light/50">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
                   <h3
                     className="text-[24px] font-bold text-[#ffffff] mb-3"
                     style={{ lineHeight: 1.1, letterSpacing: "-0.02em" }}
@@ -359,7 +339,7 @@ function AgentesIAPage() {
               Mientras dormías
             </p>
             <h2 className="text-[30px] font-bold leading-[1] tracking-[-0.04em] text-[#ffffff] normal-case font-heading md:text-[clamp(44px,5vw,72px)] md:leading-[0.92] md:tracking-[-0.045em] mb-5 md:mb-7">
-              La última cita de hoy la agendaste durmiendo <span className="hidden md:inline">&raquo;</span>
+              La última cita de hoy la agendaste durmiendo
             </h2>
 
             <span
@@ -405,7 +385,7 @@ function AgentesIAPage() {
               Cómo lo hacemos
             </p>
             <h2 className="text-[30px] font-bold leading-[1] tracking-[-0.04em] text-light normal-case font-heading md:text-[clamp(56px,6vw,88px)] md:font-bold md:leading-[0.92] md:tracking-[-0.045em]">
-              De la idea al agente en marcha <span className="hidden md:inline">&raquo;</span>
+              De la idea al agente en marcha
             </h2>
           </motion.div>
 
@@ -474,6 +454,7 @@ function AgentesIAPage() {
       {/* CTA final */}
       <section className="bg-dark pt-8 pb-10 md:py-24 relative overflow-hidden">
         <div className="container mx-auto px-5 md:px-6 relative z-10 text-center">
+          <MolinilloQueMira className="mx-auto mb-6 md:mb-10 block h-[72px] w-[72px] md:h-[140px] md:w-[140px] text-light" />
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -511,13 +492,7 @@ function AgentesIAPage() {
               onClick={() => trackEvent("cta_click", { location: "agentes_cta_final", label: "comenzar" })}
             >
               COMENZAR
-              <motion.span
-                className="inline-block"
-                animate={{ x: [0, 5, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-              >
-                →
-              </motion.span>
+              <Molinillo className="h-[14px] w-[14px]" />
             </TransitionLink>
           </motion.div>
         </div>

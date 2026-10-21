@@ -3,15 +3,7 @@ import { TransitionLink } from "@/components/transition/transition-link";
 import { motion } from "framer-motion";
 import { SEOHead } from "@/components/seo/SEOHead";
 import { services } from "@/data/services";
-import { Bot, Code, TrendingUp, Palette } from "lucide-react";
 import { PageHero } from "@/components/sections/page-hero";
-
-const iconMap: Record<string, React.ComponentType<{ className?: string; strokeWidth?: number }>> = {
-  Bot,
-  Code,
-  TrendingUp,
-  Palette,
-};
 
 export const Route = createFileRoute("/servicios/")({
   component: ServiciosPage,
@@ -37,7 +29,6 @@ function ServiciosPage() {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {services.map((service, index) => {
-              const IconComponent = iconMap[service.icon] || Bot;
               return (
                 <motion.div
                   key={service.id}
@@ -51,10 +42,9 @@ function ServiciosPage() {
                     params={{ slug: service.slug }}
                     className="group block border border-light/13 p-10 hover:border-light hover:bg-light transition-all duration-300"
                   >
-                    <IconComponent
-                      className="h-12 w-12 text-light group-hover:text-[#0a0a0a] mb-8 transition-colors"
-                      strokeWidth={1.5}
-                    />
+                    <span className="block mb-10 md:mb-14 font-mono text-[13px] text-light/50 group-hover:text-dark/60 transition-colors">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
                     <h2
                       className="font-bold text-light group-hover:text-[#0a0a0a] mb-4 transition-colors"
                       style={{

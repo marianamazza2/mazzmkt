@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { TransitionLink } from "@/components/transition/transition-link";
 import { trackEvent } from "@/lib/analytics";
+import { Molinillo } from "@/components/brand/molinillo";
 
 function AnimatedWords({ text, className, style }: { text: string; className?: string; style?: React.CSSProperties }) {
   const words = text.split(" ");
@@ -35,9 +36,9 @@ export function Intro() {
       <div className="md:hidden px-5 pt-8 pb-7">
         <p
           className="font-mono text-[10px] uppercase mb-2"
-          style={{ letterSpacing: "2.5px", color: "#878787" }}
+          style={{ letterSpacing: "0.13em", color: "#a1a1a1" }}
         >
-          QUIÉNES SOMOS
+          <span className="inline-flex items-center gap-2 align-middle opacity-50"><span>05</span><Molinillo className="h-[0.9em] w-[0.9em]" /></span> QUIÉNES SOMOS
         </p>
         <h2
           className="normal-case mb-3"
@@ -64,7 +65,8 @@ export function Intro() {
           style={{ letterSpacing: "1.5px", color: "#ffffff" }}
           onClick={() => trackEvent("cta_click", { location: "intro", label: "hagamos_crecer_tus_ideas" })}
         >
-          HAGAMOS CRECER TUS IDEAS →
+          HAGAMOS CRECER TUS IDEAS
+          <Molinillo className="h-[12px] w-[12px] ml-1" />
         </TransitionLink>
       </div>
 
@@ -75,7 +77,7 @@ export function Intro() {
             className="mb-4 text-[13px] font-medium uppercase text-[#a1a1a1] font-mono"
             style={{ letterSpacing: "0.13em" }}
           >
-            QUIÉNES SOMOS
+            <span className="inline-flex items-center gap-2 align-middle opacity-50"><span>05</span><Molinillo className="h-[0.9em] w-[0.9em]" /></span> QUIÉNES SOMOS
           </p>
           <h2
             className="font-bold normal-case text-light mb-5"
@@ -117,13 +119,7 @@ export function Intro() {
             onClick={() => trackEvent("cta_click", { location: "intro", label: "hagamos_crecer_tus_ideas" })}
           >
             HAGAMOS CRECER TUS IDEAS
-            <motion.span
-              className="inline-block"
-              animate={{ x: [0, 5, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-            >
-              →
-            </motion.span>
+            <Molinillo className="h-[14px] w-[14px]" />
           </TransitionLink>
         </motion.div>
       </div>

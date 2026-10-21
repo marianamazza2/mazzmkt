@@ -3,6 +3,7 @@ import { motion, useInView } from "framer-motion";
 import { CalendarCheck, Clock, Filter, MessageCircle } from "lucide-react";
 import { TransitionLink } from "@/components/transition/transition-link";
 import { trackEvent } from "@/lib/analytics";
+import { Molinillo } from "@/components/brand/molinillo";
 
 type Msg = { from: "user" | "agent"; text: string };
 
@@ -26,17 +27,11 @@ const capabilities = [
   { icon: MessageCircle, text: "Responde dudas al instante" },
 ];
 
+// El agente está escribiendo: el molinillo gira como indicador de carga
 function TypingDots() {
   return (
-    <div className="flex items-center gap-1 py-1">
-      {[0, 1, 2].map((i) => (
-        <motion.span
-          key={i}
-          className="block w-[6px] h-[6px] rounded-full bg-dark"
-          animate={{ opacity: [0.25, 1, 0.25] }}
-          transition={{ duration: 1, repeat: Infinity, delay: i * 0.2 }}
-        />
-      ))}
+    <div className="flex items-center py-1 text-dark">
+      <Molinillo spinning className="h-[16px] w-[16px]" />
     </div>
   );
 }
@@ -154,7 +149,7 @@ export function AiAgents() {
               className="text-[10px] md:text-[13px] font-medium uppercase mb-3 md:mb-5 font-mono"
               style={{ letterSpacing: "0.13em", color: "#a1a1a1" }}
             >
-              Agentes de IA a medida
+              <span className="inline-flex items-center gap-2 align-middle opacity-50"><span>02</span><Molinillo className="h-[0.9em] w-[0.9em]" /></span> Agentes de IA a medida
             </motion.p>
 
             <motion.h2
@@ -223,13 +218,7 @@ export function AiAgents() {
                 onClick={() => trackEvent("cta_click", { location: "ai_agents", label: "quiero_mi_agente" })}
               >
                 QUIERO MI AGENTE IA
-                <motion.span
-                  className="inline-block"
-                  animate={{ x: [0, 5, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                >
-                  →
-                </motion.span>
+                <Molinillo className="h-[14px] w-[14px]" />
               </TransitionLink>
             </motion.div>
           </div>

@@ -1,6 +1,7 @@
 import { Instagram, Linkedin, Phone } from "lucide-react";
 import { TransitionLink } from "@/components/transition/transition-link";
 import { trackEvent } from "@/lib/analytics";
+import { LogotipoReducido } from "@/components/brand/logotipo";
 
 const socials = [
   { href: "https://instagram.com/mazzmkt", icon: Instagram, label: "Instagram" },
@@ -12,14 +13,9 @@ export function Footer() {
   return (
     <footer className="bg-dark text-[#ffffff]" style={{ borderTop: "0.5px solid rgba(255, 255, 255, 0.06)" }}>
       {/* Mobile layout */}
-      <div className="md:hidden px-5 pt-5 pb-6">
+      <div className="md:hidden px-5 pt-7 pb-6">
         <div className="flex justify-between items-center mb-3">
-          <img
-            src="/images/logo-cropped.webp"
-            alt="MAZZMKT"
-            className="h-20 w-auto"
-            style={{ mixBlendMode: "screen", filter: "contrast(10)" }}
-          />
+          <LogotipoReducido className="h-[16px] w-auto text-light" />
           <div className="flex gap-2">
             {socials.map(({ href, icon: Icon, label }) => (
               <a
@@ -33,7 +29,7 @@ export function Footer() {
                   width: "28px",
                   height: "28px",
                   border: "0.5px solid rgba(255, 255, 255, 0.08)",
-                  color: "#5e5e5e",
+                  color: "#a1a1a1",
                 }}
                 onClick={label === "WhatsApp" ? () => trackEvent("whatsapp_click", { location: "footer" }) : undefined}
               >
@@ -46,22 +42,19 @@ export function Footer() {
         <div className="flex flex-wrap gap-3 mb-3">
           <TransitionLink
             to="/aviso-legal"
-            className="text-[11px] uppercase inline-flex items-center min-h-[44px]"
-            style={{ color: "#444444", letterSpacing: "0.5px" }}
+            className="font-mono text-[10px] uppercase tracking-[0.13em] text-[#a1a1a1] hover:text-light transition-colors inline-flex items-center min-h-[44px]"
           >
             AVISO LEGAL
           </TransitionLink>
           <TransitionLink
             to="/cookies"
-            className="text-[11px] uppercase inline-flex items-center min-h-[44px]"
-            style={{ color: "#444444", letterSpacing: "0.5px" }}
+            className="font-mono text-[10px] uppercase tracking-[0.13em] text-[#a1a1a1] hover:text-light transition-colors inline-flex items-center min-h-[44px]"
           >
             COOKIES
           </TransitionLink>
           <TransitionLink
             to="/privacidad"
-            className="text-[11px] uppercase inline-flex items-center min-h-[44px]"
-            style={{ color: "#444444", letterSpacing: "0.5px" }}
+            className="font-mono text-[10px] uppercase tracking-[0.13em] text-[#a1a1a1] hover:text-light transition-colors inline-flex items-center min-h-[44px]"
           >
             PRIVACIDAD
           </TransitionLink>
@@ -70,45 +63,39 @@ export function Footer() {
         <div style={{ height: "0.5px", background: "rgba(255, 255, 255, 0.06)", marginBottom: "8px" }} />
 
         <p
-          className="text-[11px] uppercase"
-          style={{ letterSpacing: "0.5px", color: "#444444" }}
+          className="font-mono text-[10px] uppercase tracking-[0.13em] text-[#a1a1a1]"
         >
           &copy; {new Date().getFullYear()} MAZZMKT. TODOS LOS DERECHOS RESERVADOS.
         </p>
       </div>
 
       {/* Desktop layout */}
-      <div className="hidden md:block py-3 container mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex items-center gap-4 order-2 md:order-1">
-            <img
-              src="/images/logo-cropped.webp"
-              alt="MAZZMKT"
-              className="h-20 w-auto block self-center"
-              style={{ mixBlendMode: "screen", filter: "contrast(10)" }}
-            />
-            <p className="text-xs text-[#ffffffaa] leading-none self-center">
+      <div className="hidden md:block py-6 container mx-auto px-6">
+        <div className="flex flex-col lg:flex-row justify-between items-center gap-x-6 gap-y-2">
+          <div className="flex items-center gap-4 order-2 lg:order-1">
+            <LogotipoReducido className="h-[16px] w-auto text-light self-center" />
+            <p className="font-mono text-[13px] uppercase tracking-[0.13em] text-[#a1a1a1] leading-none self-center whitespace-nowrap">
               &copy; {new Date().getFullYear()} MAZZMKT. TODOS LOS DERECHOS RESERVADOS.
             </p>
           </div>
-          <div className="flex items-center gap-4 order-1 md:order-2 flex-wrap">
+          <div className="flex items-center gap-x-6 order-1 lg:order-2 flex-wrap justify-center">
             <TransitionLink
               to="/aviso-legal"
-              className="text-xs text-[#ffffffaa] hover:text-[#ffffff] transition-colors min-h-[44px] inline-flex items-center"
+              className="font-mono text-[13px] uppercase tracking-[0.13em] text-[#a1a1a1] hover:text-light transition-colors min-h-[44px] inline-flex items-center"
             >
               AVISO LEGAL
             </TransitionLink>
             <TransitionLink
               to="/cookies"
-              className="text-xs text-[#ffffffaa] hover:text-[#ffffff] transition-colors min-h-[44px] inline-flex items-center"
+              className="font-mono text-[13px] uppercase tracking-[0.13em] text-[#a1a1a1] hover:text-light transition-colors min-h-[44px] inline-flex items-center"
             >
-              POLITICA DE COOKIES
+              POLÍTICA DE COOKIES
             </TransitionLink>
             <TransitionLink
               to="/privacidad"
-              className="text-xs text-[#ffffffaa] hover:text-[#ffffff] transition-colors min-h-[44px] inline-flex items-center"
+              className="font-mono text-[13px] uppercase tracking-[0.13em] text-[#a1a1a1] hover:text-light transition-colors min-h-[44px] inline-flex items-center"
             >
-              POLITICA DE PRIVACIDAD
+              POLÍTICA DE PRIVACIDAD
             </TransitionLink>
           </div>
         </div>

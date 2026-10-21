@@ -5,6 +5,7 @@ import { SEOHead } from "@/components/seo/SEOHead";
 import { projects } from "@/data/projects";
 import { useState, useRef, useEffect, useCallback } from "react";
 import { PageHero } from "@/components/sections/page-hero";
+import { Molinillo } from "@/components/brand/molinillo";
 
 export const Route = createFileRoute("/proyectos/$slug")({
   loader: ({ params }) => {
@@ -226,6 +227,7 @@ function ProjectPage() {
                 </h2>
                 <p className="text-xl text-light leading-relaxed">
                   {project.about ?? project.description}
+                  <Molinillo className="ml-2 h-[0.7em] w-[0.7em] align-baseline" />
                 </p>
               </motion.div>
 
@@ -280,16 +282,10 @@ function ProjectPage() {
                     href={project.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-3 bg-light text-dark px-8 py-4 text-sm font-semibold uppercase tracking-wide hover:bg-[#2a2a2a] transition-colors"
+                    className="inline-flex items-center gap-3 rounded-sm border border-light/30 text-light px-8 py-[15px] text-[13px] font-semibold uppercase tracking-[0.09em] hover:border-light transition-colors font-mono"
                   >
                     {project.category === "WebApp" ? "Ver webapp" : "Ver website"}
-                    <motion.span
-                      className="inline-block"
-                      animate={{ x: [0, 5, 0] }}
-                      transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                    >
-                      →
-                    </motion.span>
+                    <Molinillo className="h-[14px] w-[14px]" />
                   </a>
                 )
               )}

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { TransitionLink } from "@/components/transition/transition-link";
 import { trackEvent } from "@/lib/analytics";
+import { Molinillo } from "@/components/brand/molinillo";
 
 export function Hero() {
   return (
@@ -11,7 +12,6 @@ export function Hero() {
           backgroundImage: `url('/images/hero-home.webp')`,
           backgroundPosition: "right center",
           backgroundSize: "cover",
-          animation: "tv-static 0.45s steps(1) infinite",
         }}
       />
       {/* Degradados: titular legible a la izquierda y transición suave hacia el marquee */}
@@ -29,7 +29,7 @@ export function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="font-mono md:hidden text-[11px] font-medium uppercase mb-[14px]"
-            style={{ letterSpacing: "2.5px", color: "#a1a1a1" }}
+            style={{ letterSpacing: "0.13em", color: "#a1a1a1" }}
           >
             MAZZMKT — Digital Studio · Barcelona
           </motion.h1>
@@ -156,18 +156,12 @@ export function Hero() {
           >
             <TransitionLink
               to="/proyectos"
-              className="inline-flex items-center justify-center rounded-sm border border-light/30 px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono"
+              className="inline-flex items-center justify-center gap-3 rounded-sm border border-light/30 px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono"
               style={{ letterSpacing: "0.09em" }}
               onClick={() => trackEvent("cta_click", { location: "hero", label: "ver_proyectos" })}
             >
               VER PROYECTOS
-              <motion.span
-                className="inline-block"
-                animate={{ x: [0, 5, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-              >
-                →
-              </motion.span>
+              <Molinillo className="h-[14px] w-[14px]" />
             </TransitionLink>
             <TransitionLink
               to="/contacto"
