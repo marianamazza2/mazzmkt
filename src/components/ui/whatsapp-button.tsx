@@ -15,8 +15,8 @@ function WhatsAppIcon({ className }: { className?: string }) {
 }
 
 export function WhatsAppButton() {
-  const whatsappNumber = "34672340061"; // Reemplazar con tu numero
-  const message = "Hola! Me gustaria saber mas sobre sus servicios.";
+  const whatsappNumber = "34672340061"; // Número de WhatsApp de MAZZMKT
+  const message = "¡Hola! Me gustaría saber más sobre vuestros servicios.";
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
   return (

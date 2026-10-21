@@ -106,7 +106,7 @@ export function CookieBanner() {
                       className="font-sans mb-6"
                       style={{ fontSize: "12px", fontWeight: 400, lineHeight: 1.7, color: "rgba(255, 255, 255,0.5)", letterSpacing: "0.01em" }}
                     >
-                      Usamos cookies propias y de terceros para analizar el uso del sitio y mejorar tu experiencia. Podés aceptar todas, rechazarlas o configurar tus preferencias.{" "}
+                      Usamos cookies propias y de terceros para analizar el uso del sitio y mejorar tu experiencia. Puedes aceptar todas, rechazarlas o configurar tus preferencias.{" "}
                       <TransitionLink
                         to="/cookies"
                         className="transition-colors"
@@ -199,7 +199,7 @@ export function CookieBanner() {
                       {/* Analíticas */}
                       <CookieRow
                         title="Analíticas"
-                        description="Google Analytics y Microsoft Clarity. Nos ayudan a entender cómo usás el sitio."
+                        description="Google Analytics y Microsoft Clarity. Nos ayudan a entender cómo usas el sitio."
                         enabled={analytics}
                         onChange={setAnalytics}
                       />

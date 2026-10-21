@@ -2,31 +2,18 @@ import { useState, useEffect } from "react";
 import { trackEvent } from "@/lib/analytics";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouterState } from "@tanstack/react-router";
-import {
-  Menu,
-  X,
-  Home,
-  Bot,
-  FolderOpen,
-  Users,
-  HelpCircle,
-  Mail,
-  ChevronRight,
-  Instagram,
-  Linkedin,
-  Phone,
-} from "lucide-react";
+import { Menu, X, Instagram, Linkedin, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { TransitionLink } from "@/components/transition/transition-link";
 import { Isotipo } from "@/components/brand/isotipo";
 
 const navigation = [
-  { title: "HOME", href: "/", icon: Home },
-  { title: "IA & AGENTES", href: "/agentes-ia", icon: Bot },
-  { title: "PROYECTOS", href: "/proyectos", icon: FolderOpen },
-  { title: "MAZZMKT", href: "/sobre-mi", icon: Users },
-  { title: "FAQS", href: "/faqs", icon: HelpCircle },
-  { title: "CONTACTO", href: "/contacto", icon: Mail },
+  { title: "HOME", href: "/" },
+  { title: "IA & AGENTES", href: "/agentes-ia" },
+  { title: "PROYECTOS", href: "/proyectos" },
+  { title: "MAZZMKT", href: "/sobre-mi" },
+  { title: "FAQS", href: "/faqs" },
+  { title: "CONTACTO", href: "/contacto" },
 ];
 
 const socials = [
@@ -126,68 +113,46 @@ export function Header() {
               </button>
             </div>
 
-            {/* Nav links as cards */}
-            <nav className="flex flex-col gap-1.5 flex-1 justify-center px-6">
-              {navigation.map((item) => {
+            {/* Enlaces: número en mono y nombre grande, como el índice de la web */}
+            <nav className="flex flex-col flex-1 justify-center px-5">
+              {navigation.map((item, i) => {
                 const isActive = pathname === item.href;
-                const Icon = item.icon;
                 return (
                   <TransitionLink
                     key={item.href}
                     to={item.href}
                     onClick={() => setIsMobileMenuOpen(false)}
+                    aria-current={isActive ? "page" : undefined}
                     className={cn(
-                      "flex items-center justify-between px-4 py-3.5 rounded-sm transition-colors",
-                      isActive
-                        ? "bg-light/12 border border-light/20"
-                        : "bg-[rgba(255,255,255,0.06)] border border-transparent hover:bg-[rgba(255,255,255,0.10)]"
+                      "flex items-baseline gap-4 py-4 border-b border-light/13 first:border-t transition-colors",
+                      isActive ? "text-light" : "text-light/60 hover:text-light"
                     )}
                   >
-                    <div className="flex items-center gap-2.5">
-                      <Icon
-                        size={18}
-                        className={
-                          isActive
-                            ? "text-light"
-                            : "text-[rgba(255,255,255,0.5)]"
-                        }
-                      />
-                      <span
-                        className="text-[15px] font-medium text-white uppercase"
-                        style={{
-                          fontFamily: "var(--font-mono)",
-                          letterSpacing: "1px",
-                        }}
-                      >
-                        {item.title}
-                      </span>
-                    </div>
-                    <ChevronRight
-                      size={14}
-                      className="text-[rgba(255,255,255,0.25)]"
-                    />
+                    <span className="font-mono text-[11px] tracking-[0.13em] text-[#a1a1a1]">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="font-heading text-[30px] font-bold leading-none tracking-[-0.03em] uppercase">
+                      {item.title}
+                    </span>
                   </TransitionLink>
                 );
               })}
             </nav>
 
-            {/* Footer: CTA + socials */}
-            <div className="border-t border-[rgba(255,255,255,0.08)] pt-4 mt-6 px-6">
+            {/* Pie del menú: botón y redes */}
+            <div className="pt-6 mt-6 px-5">
               <TransitionLink
                 to="/contacto"
                 onClick={() => {
                   setIsMobileMenuOpen(false);
                   trackEvent("cta_click", { location: "header_mobile", label: "hablemos_de_tu_proyecto" });
                 }}
-                className="flex items-center justify-center w-full py-3.5 rounded-sm border border-light/30 text-light text-sm font-medium uppercase mb-3.5"
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  letterSpacing: "0.5px",
-                }}
+                className="flex w-full items-center justify-center rounded-sm border border-light/30 px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono mb-5"
+                style={{ letterSpacing: "0.09em" }}
               >
                 HABLEMOS DE TU PROYECTO
               </TransitionLink>
-              <div className="flex justify-center gap-4">
+              <div className="flex justify-center gap-2">
                 {socials.map(({ href, icon: SocialIcon, label }) => (
                   <a
                     key={label}
@@ -195,7 +160,7 @@ export function Header() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={label}
-                    className="w-9 h-9 rounded-full border border-[rgba(255,255,255,0.10)] flex items-center justify-center text-[rgba(255,255,255,0.4)] hover:border-[rgba(255,255,255,0.30)] transition-colors"
+                    className="flex h-11 w-11 items-center justify-center rounded-sm border border-light/13 text-[#a1a1a1] transition-colors hover:border-light hover:text-light"
                     onClick={label === "WhatsApp" ? () => trackEvent("whatsapp_click", { location: "header" }) : undefined}
                   >
                     <SocialIcon size={16} />

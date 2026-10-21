@@ -54,14 +54,14 @@ function ServiciosPage() {
                     >
                       {service.title}
                     </h2>
-                    <p className="text-lg text-light/67 group-hover:text-dark/67 mb-6 transition-colors">
+                    <p className="text-body text-light/67 group-hover:text-dark/67 mb-6 transition-colors">
                       {service.shortDescription}
                     </p>
                     <ul className="space-y-2">
                       {service.features.slice(0, 3).map((feature) => (
                         <li
                           key={feature}
-                          className="text-sm text-light/80 group-hover:text-dark/80 transition-colors"
+                          className="text-body text-light/80 group-hover:text-dark/80 transition-colors"
                         >
                           • {feature}
                         </li>

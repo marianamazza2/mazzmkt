@@ -37,73 +37,44 @@ function AnimatedText({
 
 export function PageCTA() {
   return (
-    <section className="bg-dark pt-8 pb-7 md:py-20 relative overflow-hidden">
+    <section className="bg-dark py-14 md:py-20 relative overflow-hidden">
       <div className="container mx-auto px-5 md:px-6 relative z-10">
-        {/* Mobile: compact static CTA */}
-        <div className="md:hidden text-center">
-          <MolinilloQueMira className="mx-auto mb-5 block h-[72px] w-[72px] text-light" />
-          <h2
-            style={{
-              fontSize: "18px",
-              fontWeight: 500,
-              textTransform: "uppercase",
-              letterSpacing: "0.3px",
-              color: "#ffffff",
-              lineHeight: "1.2",
-              marginBottom: "6px",
-            }}
-          >
-            ¿TIENES UN PROYECTO?
-          </h2>
-          <p style={{ fontSize: "12px", color: "#5e5e5e", marginBottom: "16px" }}>
-            Hablemos y hagamos algo increíble
-          </p>
-          <TransitionLink
-            to="/contacto"
-            className="font-mono inline-flex items-center justify-center rounded-sm text-[11px] font-medium uppercase"
-            style={{ padding: "11px 20px", letterSpacing: "1.5px", background: "transparent", border: "0.5px solid rgba(255, 255, 255, 0.3)", color: "#ffffff" }}
-            onClick={() => trackEvent("cta_click", { location: "page_cta", label: "comenzar" })}
-          >
-            COMENZAR
-          </TransitionLink>
-        </div>
-
-        {/* Desktop: molinillo grande ("te mira") junto al titular */}
-        <div className="hidden md:flex items-center justify-center gap-12 lg:gap-16">
-          <MolinilloQueMira className="block shrink-0 h-[150px] w-[150px] lg:h-[190px] lg:w-[190px] text-light" />
-          <div className="text-left">
-          <h2
-            className="font-bold normal-case text-[#ffffff]"
-            style={{
-              fontSize: "var(--font-cta)",
-              fontFamily: "var(--font-heading)",
-              lineHeight: "var(--lh-cta)",
-              letterSpacing: "-0.045em",
-            }}
-          >
-            <div className="overflow-hidden">
-              <AnimatedText text="Hagamos crecer" delay={0} />
-            </div>
-            <div className="overflow-hidden mb-10">
-              <AnimatedText text="tus ideas" delay={0.4} />
-            </div>
-          </h2>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-          >
-            <TransitionLink
-              to="/contacto"
-              className="inline-flex items-center justify-center rounded-sm border border-light/30 px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono"
-              style={{ letterSpacing: "0.09em" }}
-              onClick={() => trackEvent("cta_click", { location: "page_cta", label: "comenzar" })}
+        {/* Molinillo grande ("te mira") junto al titular: encima en móvil, al lado en escritorio */}
+        <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 lg:gap-16 text-center md:text-left">
+          <MolinilloQueMira className="block shrink-0 h-[96px] w-[96px] md:h-[150px] md:w-[150px] lg:h-[190px] lg:w-[190px] text-light" />
+          <div>
+            <h2
+              className="font-bold normal-case text-[#ffffff]"
+              style={{
+                fontSize: "var(--font-cta)",
+                fontFamily: "var(--font-heading)",
+                lineHeight: "var(--lh-cta)",
+                letterSpacing: "-0.045em",
+              }}
             >
-              COMENZAR
-            </TransitionLink>
-          </motion.div>
+              <div className="overflow-hidden">
+                <AnimatedText text="Hagamos crecer" delay={0} />
+              </div>
+              <div className="overflow-hidden mb-7 md:mb-10">
+                <AnimatedText text="tus ideas" delay={0.4} />
+              </div>
+            </h2>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+            >
+              <TransitionLink
+                to="/contacto"
+                className="inline-flex items-center justify-center rounded-sm border border-light/30 px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono"
+                style={{ letterSpacing: "0.09em" }}
+                onClick={() => trackEvent("cta_click", { location: "page_cta", label: "comenzar" })}
+              >
+                COMENZAR
+              </TransitionLink>
+            </motion.div>
           </div>
         </div>
       </div>

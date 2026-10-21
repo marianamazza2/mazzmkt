@@ -72,7 +72,7 @@ function SobreMiPage() {
                   className="flex items-center gap-2.5 md:gap-4 py-3.5 px-4 md:p-6 border border-light/30 hover:border-light transition-colors rounded-sm"
                 >
                   <CheckCircle2 className="h-[18px] w-[18px] md:h-6 md:w-6 text-[#b3b3b3] md:text-light flex-shrink-0" strokeWidth={1.5} />
-                  <p className="text-[13px] md:text-lg text-light/67 leading-[1.5]">{creencia.text}</p>
+                  <p className="text-body text-light/67">{creencia.text}</p>
                 </motion.div>
               ))}
             </motion.div>
@@ -99,20 +99,20 @@ function SobreMiPage() {
             <h2 className="text-[30px] font-bold leading-[1] tracking-[-0.04em] text-light normal-case font-heading md:text-[clamp(56px,6vw,88px)] md:font-bold md:leading-[0.92] md:tracking-[-0.045em] mb-3 md:mb-8">
               Nuestra historia
             </h2>
-            <p className="text-[13px] md:text-lg text-[#a1a1a1] leading-[1.7] mb-4 md:mb-6">
+            <p className="text-body text-[#a1a1a1] mb-4 md:mb-6">
               MazzMkt nació de una combinación poco usual: recursos humanos, código, diseño y marketing. Venimos de entender a las personas antes que a los píxeles, y eso lo cambió todo. Aprendimos que el marketing que realmente funciona, escucha, entiende y conecta.
             </p>
-            <p className="text-[13px] md:text-lg text-[#a1a1a1] leading-[1.7] mb-5 md:mb-8">
+            <p className="text-body text-[#a1a1a1] mb-5 md:mb-8">
               Hoy somos una agencia pequeña con propósito grande. Trabajamos con marcas que quieren más que visibilidad: quieren crecer, diferenciarse y ser recordadas. Combinamos estrategia, creatividad e inteligencia artificial para construir identidades que se ven bien, se sienten bien y convierten. Sin fórmulas copiadas, sin promesas vacías.
               <Molinillo className="ml-2 h-[0.7em] w-[0.7em] align-baseline" />
             </p>
 
-            <div className="flex flex-wrap gap-[10px] md:gap-3">
+            <div className="flex flex-wrap gap-3">
               <a
                 href="https://instagram.com/mazzmkt"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-sm border border-light/15 px-5 py-[11px] text-[11px] md:px-8 md:py-[15px] md:text-[13px] font-semibold uppercase text-light transition-colors hover:bg-light hover:text-dark font-mono"
+                className="inline-flex items-center justify-center gap-3 rounded-sm border border-light/30 px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono"
                 style={{ letterSpacing: "0.09em" }}
               >
                 <svg className="w-[15px] h-[15px] flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
@@ -124,7 +124,7 @@ function SobreMiPage() {
                 href="https://linkedin.com/company/mazzmkt"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-sm border border-light/15 px-5 py-[11px] text-[11px] md:px-8 md:py-[15px] md:text-[13px] font-semibold uppercase text-light transition-colors hover:bg-light hover:text-dark font-mono"
+                className="inline-flex items-center justify-center gap-3 rounded-sm border border-light/30 px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono"
                 style={{ letterSpacing: "0.09em" }}
               >
                 <svg className="w-[15px] h-[15px] flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">

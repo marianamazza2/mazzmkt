@@ -24,7 +24,7 @@ function CookiesPage() {
             {/* Intro */}
             <div>
               <p className="text-sm text-light/67 mb-4">Última actualización: mayo de 2026</p>
-              <p className="leading-relaxed">
+              <p className="text-body">
                 Esta política explica qué cookies y tecnologías similares utiliza el sitio web <strong>mazzmkt.com</strong> (en adelante, «el Sitio»), operado por Mariana Mazzariello bajo la marca MAZZMKT, para qué sirven y cómo puedes controlarlas.
               </p>
             </div>
@@ -32,10 +32,10 @@ function CookiesPage() {
             {/* ¿Qué son las cookies? */}
             <div>
               <h2 className="text-lg font-semibold uppercase tracking-widest mb-3">¿Qué son las cookies?</h2>
-              <p className="leading-relaxed">
+              <p className="text-body">
                 Las cookies son pequeños archivos de texto que un sitio web deposita en tu dispositivo cuando lo visitas. Permiten que el sitio recuerde información sobre tu visita —como tus preferencias o acciones— para que la experiencia sea más fluida en visitas posteriores.
               </p>
-              <p className="leading-relaxed mt-3">
+              <p className="text-body mt-3">
                 Además de cookies, este Sitio también puede utilizar <strong>almacenamiento local del navegador</strong> (<em>localStorage</em>), que funciona de forma similar pero los datos quedan guardados únicamente en tu dispositivo y no se envían al servidor en cada petición.
               </p>
             </div>
@@ -43,7 +43,7 @@ function CookiesPage() {
             {/* Cookies propias */}
             <div>
               <h2 className="text-lg font-semibold uppercase tracking-widest mb-3">Almacenamiento propio</h2>
-              <p className="leading-relaxed mb-4">
+              <p className="text-body mb-4">
                 El Sitio guarda la siguiente entrada en el almacenamiento local de tu navegador:
               </p>
               <div className="overflow-x-auto">
@@ -71,14 +71,14 @@ function CookiesPage() {
             {/* Cookies de terceros */}
             <div>
               <h2 className="text-lg font-semibold uppercase tracking-widest mb-3">Herramientas de terceros</h2>
-              <p className="leading-relaxed mb-6">
+              <p className="text-body mb-6">
                 El Sitio puede cargar servicios de terceros con distintos niveles de consentimiento. A continuación se detalla cada uno:
               </p>
 
               {/* Google Analytics */}
               <div className="mb-8">
                 <h3 className="font-semibold mb-1">Google Analytics 4</h3>
-                <p className="text-sm text-light/67 mb-3">Solo se activa si aceptas las cookies de analítica.</p>
+                <p className="text-body text-light/67 mb-3">Solo se activa si aceptas las cookies de analítica.</p>
                 <div className="overflow-x-auto mb-3">
                   <table className="w-full text-sm border-collapse">
                     <thead>
@@ -102,7 +102,7 @@ function CookiesPage() {
                     </tbody>
                   </table>
                 </div>
-                <p className="text-sm text-light/67">
+                <p className="text-body text-light/67">
                   <strong className="text-light">Empresa:</strong> Google LLC, EE. UU.{" "}
                   <strong className="text-light ml-2">Datos recogidos:</strong> páginas visitadas, tiempo en el sitio, dispositivo, navegador, país, fuente de tráfico, IP anonimizada.{" "}
                   <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="underline ml-1">Política de privacidad</a>
@@ -112,7 +112,7 @@ function CookiesPage() {
               {/* Microsoft Clarity */}
               <div className="mb-8">
                 <h3 className="font-semibold mb-1">Microsoft Clarity</h3>
-                <p className="text-sm text-light/67 mb-3">Solo se activa si aceptas las cookies de analítica.</p>
+                <p className="text-body text-light/67 mb-3">Solo se activa si aceptas las cookies de analítica.</p>
                 <div className="overflow-x-auto mb-3">
                   <table className="w-full text-sm border-collapse">
                     <thead>
@@ -141,7 +141,7 @@ function CookiesPage() {
                     </tbody>
                   </table>
                 </div>
-                <p className="text-sm text-light/67">
+                <p className="text-body text-light/67">
                   <strong className="text-light">Empresa:</strong> Microsoft Corporation, EE. UU.{" "}
                   <strong className="text-light ml-2">Datos recogidos:</strong> grabaciones de sesión, heatmaps de clics, scroll depth, dispositivo y navegador.{" "}
                   <a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener noreferrer" className="underline ml-1">Política de privacidad</a>
@@ -151,8 +151,8 @@ function CookiesPage() {
               {/* Google Fonts */}
               <div className="mb-8">
                 <h3 className="font-semibold mb-1">Google Fonts</h3>
-                <p className="text-sm text-light/67 mb-3">Se carga siempre, sin necesidad de consentimiento previo, ya que es técnicamente necesario para mostrar la tipografía del Sitio.</p>
-                <p className="text-sm text-light/67">
+                <p className="text-body text-light/67 mb-3">Se carga siempre, sin necesidad de consentimiento previo, ya que es técnicamente necesario para mostrar la tipografía del Sitio.</p>
+                <p className="text-body text-light/67">
                   <strong className="text-light">Empresa:</strong> Google LLC, EE. UU.{" "}
                   <strong className="text-light ml-2">Datos recogidos:</strong> dirección IP y user-agent para servir la tipografía DM Sans. No instala cookies, pero realiza solicitudes a <em>fonts.googleapis.com</em>.{" "}
                   <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="underline ml-1">Política de privacidad</a>
@@ -162,8 +162,8 @@ function CookiesPage() {
               {/* Formspree */}
               <div className="mb-8">
                 <h3 className="font-semibold mb-1">Formspree</h3>
-                <p className="text-sm text-light/67 mb-3">Solo se activa cuando envías el formulario de contacto del Sitio.</p>
-                <p className="text-sm text-light/67">
+                <p className="text-body text-light/67 mb-3">Solo se activa cuando envías el formulario de contacto del Sitio.</p>
+                <p className="text-body text-light/67">
                   <strong className="text-light">Empresa:</strong> Formspree Inc., EE. UU.{" "}
                   <strong className="text-light ml-2">Datos recogidos:</strong> nombre, dirección de correo electrónico, mensaje y dirección IP del remitente. No instala cookies.{" "}
                   <a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="underline ml-1">Política de privacidad</a>
@@ -173,8 +173,8 @@ function CookiesPage() {
               {/* Vercel */}
               <div>
                 <h3 className="font-semibold mb-1">Vercel (infraestructura)</h3>
-                <p className="text-sm text-light/67 mb-3">Siempre activo. Es el proveedor de alojamiento del Sitio y su uso es estrictamente necesario para que este funcione.</p>
-                <p className="text-sm text-light/67">
+                <p className="text-body text-light/67 mb-3">Siempre activo. Es el proveedor de alojamiento del Sitio y su uso es estrictamente necesario para que este funcione.</p>
+                <p className="text-body text-light/67">
                   <strong className="text-light">Empresa:</strong> Vercel Inc., EE. UU.{" "}
                   <strong className="text-light ml-2">Datos recogidos:</strong> dirección IP, cabeceras de solicitud y registros técnicos de acceso. No instala cookies de seguimiento.{" "}
                   <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="underline ml-1">Política de privacidad</a>
@@ -185,8 +185,8 @@ function CookiesPage() {
             {/* Gestión del consentimiento */}
             <div>
               <h2 className="text-lg font-semibold uppercase tracking-widest mb-3">Cómo gestionar tus preferencias</h2>
-              <p className="leading-relaxed mb-4">
-                Al acceder al Sitio por primera vez, verás un aviso de cookies donde podés aceptar o rechazar las cookies de analítica. Podés cambiar tu decisión en cualquier momento:
+              <p className="text-body mb-4">
+                Al acceder al Sitio por primera vez, verás un aviso de cookies donde puedes aceptar o rechazar las cookies de analítica. Puedes cambiar tu decisión en cualquier momento:
               </p>
               <button
                 onClick={() => {
@@ -212,10 +212,10 @@ function CookiesPage() {
               </button>
               <ul className="list-disc list-inside space-y-2 text-light/80">
                 <li>
-                  <strong>Desde tu navegador:</strong> podés eliminar o bloquear cookies en la configuración de tu navegador. Ten en cuenta que bloquear todas las cookies puede afectar al funcionamiento de algunos sitios.
+                  <strong>Desde tu navegador:</strong> puedes eliminar o bloquear cookies en la configuración de tu navegador. Ten en cuenta que bloquear todas las cookies puede afectar al funcionamiento de algunos sitios.
                 </li>
                 <li>
-                  <strong>Opt-out de Google Analytics:</strong> podés instalar el <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" className="underline">complemento de inhabilitación del navegador</a> que ofrece Google.
+                  <strong>Opt-out de Google Analytics:</strong> puedes instalar el <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" className="underline">complemento de inhabilitación del navegador</a> que ofrece Google.
                 </li>
               </ul>
             </div>
@@ -223,7 +223,7 @@ function CookiesPage() {
             {/* Transferencias internacionales */}
             <div>
               <h2 className="text-lg font-semibold uppercase tracking-widest mb-3">Transferencias internacionales</h2>
-              <p className="leading-relaxed">
+              <p className="text-body">
                 Algunos de los terceros mencionados están ubicados en Estados Unidos. Las transferencias de datos a EE. UU. se realizan bajo las garantías adecuadas previstas en la normativa aplicable (incluyendo, en su caso, las cláusulas contractuales tipo aprobadas por la Comisión Europea y el Marco de Privacidad de Datos UE–EE. UU.).
               </p>
             </div>
@@ -231,7 +231,7 @@ function CookiesPage() {
             {/* Actualizaciones */}
             <div>
               <h2 className="text-lg font-semibold uppercase tracking-widest mb-3">Actualizaciones de esta política</h2>
-              <p className="leading-relaxed">
+              <p className="text-body">
                 Esta política puede actualizarse para reflejar cambios en las herramientas que utiliza el Sitio o en la normativa aplicable. La fecha de la última revisión siempre se indica al inicio del documento. Te recomendamos revisarla periódicamente.
               </p>
             </div>
@@ -239,7 +239,7 @@ function CookiesPage() {
             {/* Contacto */}
             <div>
               <h2 className="text-lg font-semibold uppercase tracking-widest mb-3">Contacto</h2>
-              <p className="leading-relaxed">
+              <p className="text-body">
                 Si tienes preguntas sobre esta política o sobre el tratamiento de tus datos, puedes escribirnos a{" "}
                 <a href="mailto:hola@mazzmkt.com" className="underline">hola@mazzmkt.com</a>.
               </p>

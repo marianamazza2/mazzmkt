@@ -15,13 +15,13 @@ function Section({ title, children }: { title: string; children: React.ReactNode
           fontWeight: 600,
           letterSpacing: "0.08em",
           textTransform: "uppercase",
-          color: "#0a0a0a",
+          color: "#ffffff",
           marginBottom: "14px",
         }}
       >
         {title}
       </h2>
-      <div style={{ fontSize: "14px", lineHeight: 1.8, color: "#0a0a0abb" }}>
+      <div className="text-body" style={{ color: "#ffffffbb" }}>
         {children}
       </div>
     </div>
@@ -75,7 +75,7 @@ function PrivacidadPage() {
           <Section title="2. Datos personales que tratamos">
             <P>Tratamos los siguientes datos personales según la categoría de uso:</P>
 
-            <P><strong>a) Datos de navegación</strong> (solo si aceptás las cookies analíticas):</P>
+            <P><strong>a) Datos de navegación</strong> (solo si aceptas las cookies analíticas):</P>
             <UL>
               <LI>Dirección IP anonimizada</LI>
               <LI>Páginas visitadas y tiempo de permanencia</LI>
@@ -84,7 +84,7 @@ function PrivacidadPage() {
               <LI>Profundidad de scroll y mapas de calor de clics</LI>
             </UL>
 
-            <P><strong>b) Datos del formulario de contacto</strong> (solo si lo enviás):</P>
+            <P><strong>b) Datos del formulario de contacto</strong> (solo si lo envías):</P>
             <UL>
               <LI>Nombre y apellido</LI>
               <LI>Dirección de correo electrónico</LI>
@@ -165,7 +165,7 @@ function PrivacidadPage() {
 
           <Section title="6. Derechos del interesado">
             <P>
-              Podés ejercer los siguientes derechos enviando un correo a{" "}
+              Puedes ejercer los siguientes derechos enviando un correo a{" "}
               <a href="mailto:mfmazzariello@gmail.com" style={{ color: "#ffffff", textDecoration: "underline", textUnderlineOffset: "3px" }}>
                 mfmazzariello@gmail.com
               </a>
@@ -178,7 +178,7 @@ function PrivacidadPage() {
               <LI><strong>Oposición:</strong> oponerte al tratamiento basado en interés legítimo.</LI>
               <LI><strong>Limitación:</strong> solicitar que suspendamos el tratamiento en determinadas circunstancias.</LI>
               <LI><strong>Portabilidad:</strong> recibir tus datos en un formato estructurado y de uso común.</LI>
-              <LI><strong>Retirar el consentimiento:</strong> en cualquier momento, sin que ello afecte la licitud del tratamiento previo. Podés gestionar las cookies desde la{" "}
+              <LI><strong>Retirar el consentimiento:</strong> en cualquier momento, sin que ello afecte la licitud del tratamiento previo. Puedes gestionar las cookies desde la{" "}
                 <a href="/cookies" style={{ color: "#ffffff", textDecoration: "underline", textUnderlineOffset: "3px" }}>
                   Política de Cookies
                 </a>
@@ -186,7 +186,7 @@ function PrivacidadPage() {
               </LI>
             </UL>
             <P>
-              Respondemos en un plazo máximo de 30 días. Si considerás que el tratamiento no es adecuado, podés reclamar ante la Agencia de Acceso a la Información Pública (Argentina) en{" "}
+              Respondemos en un plazo máximo de 30 días. Si consideras que el tratamiento no es adecuado, puedes reclamar ante la Agencia de Acceso a la Información Pública (Argentina) en{" "}
               <span style={{ color: "#ffffff" }}>aaip.gob.ar</span>.
             </P>
           </Section>

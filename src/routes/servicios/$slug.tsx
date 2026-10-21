@@ -71,9 +71,9 @@ function ServicePage() {
               transition={{ duration: 0.6 }}
             >
               <h2 className="text-[13px] font-medium text-light/67 mb-6 uppercase tracking-widest font-mono">
-                Descripcion
+                Descripción
               </h2>
-              <p className="text-2xl text-light leading-relaxed">
+              <p className="text-body text-light">
                 {service.description}
               </p>
             </motion.div>
@@ -85,7 +85,7 @@ function ServicePage() {
               transition={{ duration: 0.6, delay: 0.1 }}
             >
               <h2 className="text-[13px] font-medium text-light/67 mb-6 uppercase tracking-widest font-mono">
-                Que incluye
+                Qué incluye
               </h2>
               <ul className="space-y-4">
                 {service.features.map((feature) => (

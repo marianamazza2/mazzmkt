@@ -1,17 +1,15 @@
 import { useState, useMemo, useCallback, useEffect } from "react";
 import { motion, AnimatePresence, LayoutGroup, useMotionValue, useSpring } from "framer-motion";
-import type { PanInfo } from "framer-motion";
 import { Check, ChevronDown, Search, Grid3X3, List, X } from "lucide-react";
-import { ProjectCard } from "./project-card";
+import { ProjectTile } from "./project-tile";
 import { Molinillo } from "@/components/brand/molinillo";
-import { TransitionLink } from "@/components/transition/transition-link";
 import type { Project } from "@/types";
 
 interface ProjectsGridProps {
   projects: Project[];
 }
 
-type ViewMode = "showcase" | "grid" | "bento" | "list";
+type ViewMode = "showcase" | "grid" | "list";
 
 const mobileLabel: Record<string, string> = {
   WebApp: "Webapp",
@@ -31,7 +29,7 @@ const getFilterSortLabel = (category: string) => filterLabel[category] ?? catego
 export function ProjectsGrid({ projects }: ProjectsGridProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
-  const [viewMode, setViewMode] = useState<ViewMode>("showcase");
+  const [viewMode, setViewMode] = useState<ViewMode>("grid");
   const [hoveredProject, setHoveredProject] = useState<Project | null>(null);
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
 
@@ -65,18 +63,6 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
   const selectCategory = useCallback((category: string) => {
     setActiveCategory((prev) => (prev === category ? null : category));
   }, []);
-
-  // Calculate bento sizes - featured get large, others vary
-  const getCardSize = useCallback(
-    (project: Project, index: number): "small" | "medium" | "large" => {
-      if (project.featured) return "large";
-      // Create visual rhythm: medium, small, small, medium pattern
-      const pattern = index % 4;
-      if (pattern === 0 || pattern === 3) return "medium";
-      return "small";
-    },
-    []
-  );
 
   const clearFilters = () => {
     setSearchQuery("");
@@ -136,27 +122,11 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
                 ? "bg-light text-dark"
                 : "text-light/67 hover:text-light"
             }`}
-            title="Vista Showcase"
+            title="Vista un proyecto por fila"
           >
             <svg className="h-4 w-4" viewBox="0 0 16 16" fill="currentColor">
               <rect x="0" y="0" width="16" height="6" />
-              <rect x="0" y="8" width="16" height="6" rx="0" />
-            </svg>
-          </button>
-          <button
-            onClick={() => setViewMode("bento")}
-            className={`p-2 transition-colors ${
-              viewMode === "bento"
-                ? "bg-light text-dark"
-                : "text-light/67 hover:text-light"
-            }`}
-            title="Vista Bento"
-          >
-            <svg className="h-4 w-4" viewBox="0 0 16 16" fill="currentColor">
-              <rect x="0" y="0" width="7" height="7" />
-              <rect x="9" y="0" width="7" height="3" />
-              <rect x="9" y="5" width="7" height="7" />
-              <rect x="0" y="9" width="7" height="7" />
+              <rect x="0" y="9" width="16" height="6" />
             </svg>
           </button>
           <button
@@ -166,7 +136,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
                 ? "bg-light text-dark"
                 : "text-light/67 hover:text-light"
             }`}
-            title="Vista Grid"
+            title="Vista cuadrícula"
           >
             <Grid3X3 className="h-4 w-4" />
           </button>
@@ -177,7 +147,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
                 ? "bg-light text-dark"
                 : "text-light/67 hover:text-light"
             }`}
-            title="Vista Lista"
+            title="Vista lista"
           >
             <List className="h-4 w-4" />
           </button>
@@ -314,25 +284,8 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
         )}
       </AnimatePresence>
 
-      {/* Mobile: Carousel */}
-      <div className="md:hidden">
-        {filteredProjects.length === 0 ? (
-          <div className="py-20 text-center">
-            <p className="text-light/67 text-lg mb-4">No se encontraron proyectos</p>
-            <button onClick={clearFilters} className="text-light underline hover:no-underline">
-              Limpiar filtros
-            </button>
-          </div>
-        ) : (
-          <MobileProjectsCarousel
-            key={`${searchQuery}-${activeCategory ?? ""}`}
-            projects={filteredProjects}
-          />
-        )}
-      </div>
-
-      {/* Desktop: Grid / Showcase / List / Bento */}
-      <div className="hidden md:block">
+      {/* Resultados: misma tarjeta en móvil y escritorio; el selector de vista es solo para escritorio */}
+      <div>
         <LayoutGroup>
           <AnimatePresence mode="popLayout">
             {filteredProjects.length > 0 ? (
@@ -342,25 +295,18 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
                   viewMode === "list"
                     ? "flex flex-col gap-4"
                     : viewMode === "showcase"
-                    ? "flex flex-col gap-5"
-                    : viewMode === "grid"
-                    ? "grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
-                    : "grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 auto-rows-fr"
+                    ? "flex flex-col gap-8 md:gap-14"
+                    : "grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-8 md:gap-y-12"
                 }
               >
                 {filteredProjects.map((project, index) => (
                   <motion.div
                     key={project.id}
                     layout
-                    initial={{ opacity: 0, scale: 0.9 }}
+                    initial={{ opacity: 0, scale: 0.97 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.9 }}
+                    exit={{ opacity: 0, scale: 0.97 }}
                     transition={{ duration: 0.3 }}
-                    className={
-                      viewMode === "bento" && getCardSize(project, index) === "large"
-                        ? "col-span-2"
-                        : ""
-                    }
                   >
                     {viewMode === "list" ? (
                       <ProjectListItem
@@ -370,22 +316,8 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
                         onMouseEnter={setHoveredProject}
                         onMouseLeave={() => setHoveredProject(null)}
                       />
-                    ) : viewMode === "showcase" ? (
-                      <ProjectShowcaseItem
-                        project={project}
-                        index={index}
-                        onMouseEnter={setHoveredProject}
-                        onMouseLeave={() => setHoveredProject(null)}
-                      />
                     ) : (
-                      <ProjectCard
-                        project={project}
-                        index={index}
-                        size={viewMode === "grid" ? "medium" : getCardSize(project, index)}
-                        showFloatingImage={false}
-                        onMouseEnter={setHoveredProject}
-                        onMouseLeave={() => setHoveredProject(null)}
-                      />
+                      <ProjectTile project={project} index={index} wide={viewMode === "showcase"} />
                     )}
                   </motion.div>
                 ))}
@@ -396,7 +328,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
                 animate={{ opacity: 1 }}
                 className="py-20 text-center"
               >
-                <p className="text-light/67 text-lg mb-4">No se encontraron proyectos</p>
+                <p className="text-body text-light/67 mb-4">No se encontraron proyectos</p>
                 <button onClick={clearFilters} className="text-light underline hover:no-underline">
                   Limpiar filtros
                 </button>
@@ -426,109 +358,6 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
   );
 }
 
-function MobileProjectsCarousel({ projects }: { projects: Project[] }) {
-  const [current, setCurrent] = useState(0);
-
-  const handleDragEnd = (_: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
-    if (info.offset.x < -50 && current < projects.length - 1) setCurrent(current + 1);
-    else if (info.offset.x > 50 && current > 0) setCurrent(current - 1);
-  };
-
-  return (
-    <div className="w-full">
-      {/* Track */}
-      <div className="overflow-hidden">
-        <motion.div
-          className="flex touch-pan-y"
-          animate={{ x: `${-current * 100}%` }}
-          transition={{ type: "tween", duration: 0.28, ease: "easeInOut" }}
-          drag="x"
-          dragConstraints={{ left: 0, right: 0 }}
-          dragElastic={0.08}
-          onDragEnd={handleDragEnd}
-        >
-          {projects.map((project) => (
-            <div key={project.id} className="w-full shrink-0">
-              <TransitionLink
-                to="/proyectos/$slug"
-                params={{ slug: project.slug }}
-                className="block"
-              >
-                <div className="aspect-[16/9] overflow-hidden rounded-sm">
-                  {project.image ? (
-                    <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
-                  ) : (
-                    <div className="w-full h-full bg-gradient-to-br from-[#1a1a1a] to-[#0f0f0f]" />
-                  )}
-                </div>
-                <div className="flex flex-col gap-[3px] mt-3">
-                  <span className="text-[10px] font-semibold tracking-widest uppercase text-light/67 font-mono">
-                    {project.category}
-                    {!project.client.toLowerCase().startsWith("proyecto propio") && ` · ${project.client}`}
-                  </span>
-                  <h3 className="text-[14px] font-semibold text-[#ffffff] leading-[1.2]">
-                    {project.title}
-                  </h3>
-                </div>
-              </TransitionLink>
-            </div>
-          ))}
-        </motion.div>
-      </div>
-
-      {/* Dots — ventana de 3 */}
-      {(() => {
-        const visibleCount = Math.min(3, projects.length);
-        const windowStart = Math.min(Math.max(current - 1, 0), projects.length - visibleCount);
-        const dots = Array.from({ length: visibleCount }, (_, i) => windowStart + i);
-        return (
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "5px", paddingTop: "10px" }}>
-            {dots.map((dotIndex) => (
-              <span
-                key={dotIndex}
-                onClick={() => setCurrent(dotIndex)}
-                style={{
-                  display: "block",
-                  width: dotIndex === current ? "18px" : "4px",
-                  height: "4px",
-                  borderRadius: "9999px",
-                  backgroundColor: dotIndex === current ? "#ffffff" : "rgba(255, 255, 255,0.32)",
-                  transition: "width 300ms ease-out, background-color 300ms ease-out",
-                  cursor: "pointer",
-                  flexShrink: 0,
-                }}
-              />
-            ))}
-          </div>
-        );
-      })()}
-    </div>
-  );
-}
-
-// Showcase view item — same wide card treatment used on the home desktop section.
-function ProjectShowcaseItem({
-  project,
-  index,
-  onMouseEnter,
-  onMouseLeave,
-}: {
-  project: Project;
-  index: number;
-  onMouseEnter: (project: Project) => void;
-  onMouseLeave: () => void;
-}) {
-  return (
-    <div
-      onMouseEnter={() => onMouseEnter(project)}
-      onMouseLeave={onMouseLeave}
-      className="relative"
-    >
-      <ProjectCard project={project} index={index} size="wide" />
-    </div>
-  );
-}
-
 // List view item component
 function ProjectListItem({
   project,
@@ -552,7 +381,7 @@ function ProjectListItem({
       onMouseLeave={onMouseLeave}
     >
       {/* Number */}
-      <span className="text-4xl font-bold text-light/19 group-hover:text-light transition-colors w-16 shrink-0">
+      <span className="font-mono text-[13px] text-light/50 group-hover:text-light transition-colors w-10 shrink-0">
         {String(total - index).padStart(2, "0")}
       </span>
 

@@ -225,7 +225,7 @@ function ProjectPage() {
                 <h2 className="text-[13px] font-medium text-light/67 mb-4 uppercase tracking-widest font-mono">
                   Info del Proyecto
                 </h2>
-                <p className="text-xl text-light leading-relaxed">
+                <p className="text-body text-light">
                   {project.about ?? project.description}
                   <Molinillo className="ml-2 h-[0.7em] w-[0.7em] align-baseline" />
                 </p>
@@ -244,7 +244,7 @@ function ProjectPage() {
                   </h2>
                   <ul className="space-y-4">
                     {project.work.map((item, i) => (
-                      <li key={i} className="flex gap-4 text-lg text-light leading-relaxed">
+                      <li key={i} className="text-body flex gap-4 text-light">
                         <span className="mt-2 w-1.5 h-1.5 rounded-full bg-light shrink-0" />
                         {item}
                       </li>
@@ -266,7 +266,7 @@ function ProjectPage() {
               </h2>
               <ul className="space-y-2 mb-8">
                 {project.services.map((service) => (
-                  <li key={service} className="text-lg text-light">
+                  <li key={service} className="text-body text-light">
                     {service}
                   </li>
                 ))}

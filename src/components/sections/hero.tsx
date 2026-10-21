@@ -23,30 +23,19 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          {/* Mobile: h1 semántico */}
           <motion.h1
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="font-mono md:hidden text-[11px] font-medium uppercase mb-[14px]"
-            style={{ letterSpacing: "0.13em", color: "#a1a1a1" }}
-          >
-            MAZZMKT — Digital Studio · Barcelona
-          </motion.h1>
-
-          {/* Desktop: h1 semántico */}
-          <motion.h1
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="hidden md:block text-[13px] font-medium text-[#a1a1a1] mb-5 uppercase font-mono"
+            className="font-mono flex items-center gap-3 text-[11px] md:text-[13px] font-medium uppercase text-[#a1a1a1] mb-[14px] md:mb-5"
             style={{ letterSpacing: "0.13em" }}
           >
+            <Molinillo className="h-[0.95em] w-[0.95em] opacity-50" alasClassName="molinillo-intro" />
             MAZZMKT — Digital Studio · Barcelona
           </motion.h1>
 
           <h2
-            className="font-bold normal-case text-[#ffffff] mb-5 md:mb-9"
+            className="font-bold normal-case text-[#ffffff] mb-5 md:mb-6"
             style={{
               fontSize: "var(--font-display)",
               fontFamily: "var(--font-heading)",
@@ -105,54 +94,20 @@ export function Hero() {
             </motion.span>
           </h2>
 
-          {/* Mobile: párrafo subtítulo */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="md:hidden text-[14px] leading-[1.6] mb-6"
-            style={{ color: "#878787" }}
+            className="text-body text-light/67 max-w-xl mb-6 md:mb-9"
           >
             Webs, marcas y automatización con código real e inteligencia artificial. Proyectos a medida, listos en días.
           </motion.p>
 
-          {/* Mobile: dos CTAs en fila */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="md:hidden flex gap-[10px]"
-          >
-            <TransitionLink
-              to="/proyectos"
-              className="font-mono inline-flex items-center justify-center rounded-sm text-[11px] font-medium uppercase"
-              style={{ padding: "11px 20px", letterSpacing: "1.5px", background: "transparent", border: "0.5px solid rgba(255, 255, 255, 0.3)", color: "#ffffff" }}
-              onClick={() => trackEvent("cta_click", { location: "hero", label: "ver_proyectos" })}
-            >
-              VER PROYECTOS
-            </TransitionLink>
-            <TransitionLink
-              to="/contacto"
-              className="font-mono inline-flex items-center justify-center rounded-sm text-[11px] font-medium uppercase"
-              style={{
-                padding: "11px 20px",
-                letterSpacing: "1.5px",
-                background: "transparent",
-                border: "0.5px solid rgba(255, 255, 255,0.15)",
-                color: "#b3b3b3",
-              }}
-              onClick={() => trackEvent("cta_click", { location: "hero", label: "contactar" })}
-            >
-              CONTACTAR
-            </TransitionLink>
-          </motion.div>
-
-          {/* Desktop: CTA original */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="hidden md:flex items-center gap-3"
+            className="flex flex-wrap items-center gap-3"
           >
             <TransitionLink
               to="/proyectos"
@@ -165,7 +120,7 @@ export function Hero() {
             </TransitionLink>
             <TransitionLink
               to="/contacto"
-              className="inline-flex items-center justify-center rounded-sm border border-light/30 px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono"
+              className="inline-flex items-center justify-center gap-3 rounded-sm border border-light/30 px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono"
               style={{ letterSpacing: "0.09em" }}
               onClick={() => trackEvent("cta_click", { location: "hero", label: "contactar" })}
             >

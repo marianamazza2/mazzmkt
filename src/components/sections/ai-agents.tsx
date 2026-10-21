@@ -176,7 +176,7 @@ export function AiAgents() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-[14px] md:text-[19px] leading-[1.6] mb-8 max-w-xl"
+              className="text-body mb-8 max-w-xl"
               style={{ color: "#b3b3b3" }}
             >
               Creamos agentes de IA a medida que responden por ti a cualquier hora,

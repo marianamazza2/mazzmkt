@@ -95,53 +95,51 @@ function ContactoPage() {
               {submitted ? (
                 <div className="border border-light/13 p-8 md:p-12 text-center rounded-sm">
                   <h2 className="text-2xl md:text-[36px] font-bold text-light mb-4">¡GRACIAS!</h2>
-                  <p className="text-[13px] md:text-lg text-light/67">Te responderemos lo antes posible.</p>
+                  <p className="text-body text-light/67">Te responderemos lo antes posible.</p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-3 md:space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-5 md:space-y-6">
                   <div>
-                    <label className="block text-[11px] md:text-[13px] font-medium text-[#878787] md:text-light mb-1 md:mb-3 uppercase tracking-[1px] md:tracking-[0.13em] font-mono">
-                      Nombre
-                    </label>
+                    <label htmlFor="contacto-nombre" className="block font-mono text-[10px] md:text-[13px] font-medium uppercase tracking-[0.13em] text-[#a1a1a1] mb-2 md:mb-3">Nombre</label>
                     <input
+                      id="contacto-nombre"
                       type="text"
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full border border-[rgba(55,255,255,0.12)] md:border-light/13 bg-dark md:bg-transparent px-3 py-2.5 md:px-5 md:py-4 text-[13px] md:text-lg text-light focus:border-light focus:outline-none transition-colors rounded-sm placeholder:text-[#b3b3b3] placeholder:text-[13px] md:placeholder:text-base"
+                      className="w-full rounded-sm border border-light/13 bg-transparent px-4 py-3 md:px-5 md:py-4 text-base text-light placeholder:text-light/40 focus:border-light focus:outline-none transition-colors"
                       placeholder="Tu nombre"
                     />
                   </div>
                   <div>
-                    <label className="block text-[11px] md:text-[13px] font-medium text-[#878787] md:text-light mb-1 md:mb-3 uppercase tracking-[1px] md:tracking-[0.13em] font-mono">
-                      Email
-                    </label>
+                    <label htmlFor="contacto-email" className="block font-mono text-[10px] md:text-[13px] font-medium uppercase tracking-[0.13em] text-[#a1a1a1] mb-2 md:mb-3">Email</label>
                     <input
+                      id="contacto-email"
                       type="email"
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full border border-[rgba(55,255,255,0.12)] md:border-light/13 bg-dark md:bg-transparent px-3 py-2.5 md:px-5 md:py-4 text-[13px] md:text-lg text-light focus:border-light focus:outline-none transition-colors rounded-sm placeholder:text-[#b3b3b3] placeholder:text-[13px] md:placeholder:text-base"
+                      className="w-full rounded-sm border border-light/13 bg-transparent px-4 py-3 md:px-5 md:py-4 text-base text-light placeholder:text-light/40 focus:border-light focus:outline-none transition-colors"
                       placeholder="tu@email.com"
                     />
                   </div>
                   <div>
-                    <label className="block text-[11px] md:text-[13px] font-medium text-[#878787] md:text-light mb-1 md:mb-3 uppercase tracking-[1px] md:tracking-[0.13em] font-mono">
-                      Mensaje
-                    </label>
+                    <label htmlFor="contacto-mensaje" className="block font-mono text-[10px] md:text-[13px] font-medium uppercase tracking-[0.13em] text-[#a1a1a1] mb-2 md:mb-3">Mensaje</label>
                     <textarea
+                      id="contacto-mensaje"
                       required
-                      rows={4}
+                      rows={5}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full border border-[rgba(55,255,255,0.12)] md:border-light/13 bg-dark md:bg-transparent px-3 py-2.5 md:px-5 md:py-4 text-[13px] md:text-lg text-light focus:border-light focus:outline-none transition-colors resize-y md:resize-none rounded-sm min-h-[100px] md:min-h-[180px] placeholder:text-[#b3b3b3] placeholder:text-[13px] md:placeholder:text-base"
-                      placeholder="Cuentanos sobre tu proyecto..."
+                      className="w-full rounded-sm border border-light/13 bg-transparent px-4 py-3 md:px-5 md:py-4 text-base text-light placeholder:text-light/40 focus:border-light focus:outline-none transition-colors resize-y min-h-[140px] md:min-h-[180px]"
+                      placeholder="Cuéntanos sobre tu proyecto..."
                     />
                   </div>
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full inline-flex items-center justify-center gap-3 border border-light/30 text-light py-3 md:py-5 font-medium md:font-semibold text-[12px] md:text-[13px] uppercase tracking-[1.5px] md:tracking-[0.09em] hover:border-light transition-colors disabled:opacity-50 rounded-sm mt-1 font-mono"
+                    className="w-full inline-flex items-center justify-center gap-3 rounded-sm border border-light/30 px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light disabled:opacity-50 font-mono"
+                    style={{ letterSpacing: "0.09em" }}
                   >
                     {isSubmitting ? "ENVIANDO" : "ENVIAR MENSAJE"}
                     <Molinillo spinning={isSubmitting} className="h-[14px] w-[14px]" />
@@ -150,108 +148,72 @@ function ContactoPage() {
               )}
             </motion.div>
 
-            {/* Divisor visible solo en mobile entre form e info */}
-            <div className="md:hidden h-[0.5px] bg-[rgba(55,255,255,0.06)] -mx-5" />
-
             {/* Contact Info */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="space-y-4 md:space-y-8"
+              className="space-y-8"
             >
               <div>
-                <p
-                  className="hidden md:block text-[13px] uppercase mb-5 font-medium font-mono"
-                  style={{ letterSpacing: "0.13em", color: "#b3b3b3" }}
-                >
-                  CONTACTO DIRECTO
+                <p className="font-mono text-[10px] md:text-[13px] font-medium uppercase tracking-[0.13em] text-[#a1a1a1] mb-2 md:mb-5">
+                  Contacto directo
                 </p>
-                <h2 className="text-[10px] md:text-[clamp(42px,4vw,56px)] font-bold md:leading-[0.92] text-light mb-3 md:mb-8 uppercase md:normal-case tracking-[2.5px] md:tracking-[-0.045em]">
+                <h2 className="normal-case font-heading text-[30px] md:text-[clamp(42px,4vw,56px)] font-bold leading-[1] md:leading-[0.92] tracking-[-0.045em] text-light mb-4 md:mb-6">
                   Información de contacto
                 </h2>
-                {/* Subtítulo oculto en mobile (aparece en el hero) */}
-                <p className="hidden md:block text-lg text-[#a1a1a1] leading-[1.7] mb-10 max-w-md">
-                  Si preferís ir directo, escribinos por mail o agendamos una llamada para entender el proyecto.
+                <p className="text-body text-[#a1a1a1] max-w-md">
+                  Si prefieres ir directo, escríbenos por mail o agendamos una llamada para entender el proyecto.
                 </p>
               </div>
 
-              <div className="flex flex-col gap-0.5 md:gap-7">
-                <div className="flex items-center md:items-start gap-2.5 md:gap-5 px-3.5 py-3 md:px-0 md:py-0 bg-[rgba(55,255,255,0.03)] md:bg-transparent rounded-[3px] md:rounded-none">
-                  <Mail className="h-4 w-4 md:h-6 md:w-6 text-[#878787] md:text-light mt-0 md:mt-1 flex-shrink-0" strokeWidth={1.5} />
-                  <div>
-                    <p className="text-[10px] md:text-[13px] font-medium text-[#b3b3b3] md:text-light/67 uppercase tracking-[1px] md:tracking-[0.13em] mb-0.5 md:mb-1 font-mono">
-                      Email
-                    </p>
-                    <a
-                      href="mailto:mazzmkt360@gmail.com"
-                      className="inline-flex items-center min-h-[44px] text-[13px] md:text-lg font-medium md:font-normal text-light hover:opacity-70 transition-opacity uppercase md:normal-case"
-                      onClick={() => trackEvent("email_click", { location: "contacto_info" })}
-                    >
-                      mazzmkt360@gmail.com
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-center md:items-start gap-2.5 md:gap-5 px-3.5 py-3 md:px-0 md:py-0 bg-[rgba(55,255,255,0.03)] md:bg-transparent rounded-[3px] md:rounded-none">
-                  <Phone className="h-4 w-4 md:h-6 md:w-6 text-[#878787] md:text-light mt-0 md:mt-1 flex-shrink-0" strokeWidth={1.5} />
-                  <div>
-                    <p className="text-[10px] md:text-[13px] font-medium text-[#b3b3b3] md:text-light/67 uppercase tracking-[1px] md:tracking-[0.13em] mb-0.5 md:mb-1 font-mono">
-                      Telefono
-                    </p>
-                    <a
-                      href="tel:+34672340061"
-                      className="inline-flex items-center min-h-[44px] text-[13px] md:text-lg font-medium md:font-normal text-light hover:opacity-70 transition-opacity"
-                    >
-                      +34 672 340 061
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-center md:items-start gap-2.5 md:gap-5 px-3.5 py-3 md:px-0 md:py-0 bg-[rgba(55,255,255,0.03)] md:bg-transparent rounded-[3px] md:rounded-none">
-                  <MapPin className="h-4 w-4 md:h-6 md:w-6 text-[#878787] md:text-light mt-0 md:mt-1 flex-shrink-0" strokeWidth={1.5} />
-                  <div>
-                    <p className="text-[10px] md:text-[13px] font-medium text-[#b3b3b3] md:text-light/67 uppercase tracking-[1px] md:tracking-[0.13em] mb-0.5 md:mb-1 font-mono">
-                      Ubicacion
-                    </p>
-                    <p className="text-[13px] md:text-lg font-medium md:font-normal text-light uppercase md:normal-case leading-[44px] md:leading-normal">
-                      Barcelona, Espana
-                    </p>
-                  </div>
-                </div>
+              <div className="flex flex-col gap-5 md:gap-7">
+                <ContactItem icon={Mail} label="Email">
+                  <a
+                    href="mailto:mazzmkt360@gmail.com"
+                    className="hover:opacity-70 transition-opacity"
+                    onClick={() => trackEvent("email_click", { location: "contacto_info" })}
+                  >
+                    mazzmkt360@gmail.com
+                  </a>
+                </ContactItem>
+                <ContactItem icon={Phone} label="Teléfono">
+                  <a href="tel:+34672340061" className="hover:opacity-70 transition-opacity">
+                    +34 672 340 061
+                  </a>
+                </ContactItem>
+                <ContactItem icon={MapPin} label="Ubicación">
+                  Barcelona, España
+                </ContactItem>
               </div>
 
-              <div className="pt-3.5 md:pt-8 border-t border-light/13">
-                <p className="text-[10px] md:text-[13px] font-medium text-light/67 uppercase tracking-[1px] md:tracking-[0.13em] mb-3.5 md:mb-4 font-mono">
-                  Siguenos
+              <div className="pt-6 md:pt-8 border-t border-light/13">
+                <p className="font-mono text-[10px] md:text-[13px] font-medium uppercase tracking-[0.13em] text-[#a1a1a1] mb-4">
+                  Síguenos
                 </p>
-                <div className="flex gap-2 md:gap-4">
+                <div className="flex gap-2 md:gap-3">
                   <a
                     href="https://instagram.com/mazzmkt"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 px-3.5 py-2 md:w-12 md:h-12 md:px-0 md:justify-center border border-[rgba(55,255,255,0.12)] md:border-light/19 text-[#a1a1a1] md:text-light hover:bg-light hover:text-[#0a0a0a] transition-all rounded-[3px]"
+                    aria-label="Instagram"
+                    className="flex h-11 w-11 md:h-12 md:w-12 items-center justify-center rounded-sm border border-light/13 text-[#a1a1a1] transition-colors hover:border-light hover:text-light"
                   >
-                    <svg className="w-[15px] h-[15px] md:w-5 md:h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                     </svg>
-                    <span className="text-[11px] font-medium uppercase tracking-[0.5px] md:hidden">
-                      INSTAGRAM
-                    </span>
                   </a>
                   <a
                     href="https://linkedin.com/company/mazzmkt"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 px-3.5 py-2 md:w-12 md:h-12 md:px-0 md:justify-center border border-[rgba(55,255,255,0.12)] md:border-light/19 text-[#a1a1a1] md:text-light hover:bg-light hover:text-[#0a0a0a] transition-all rounded-[3px]"
+                    aria-label="LinkedIn"
+                    className="flex h-11 w-11 md:h-12 md:w-12 items-center justify-center rounded-sm border border-light/13 text-[#a1a1a1] transition-colors hover:border-light hover:text-light"
                   >
-                    <svg className="w-[15px] h-[15px] md:w-5 md:h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                     </svg>
-                    <span className="text-[11px] font-medium uppercase tracking-[0.5px] md:hidden">
-                      LINKEDIN
-                    </span>
                   </a>
                 </div>
               </div>
@@ -260,5 +222,27 @@ function ContactoPage() {
         </div>
       </section>
     </>
+  );
+}
+
+function ContactItem({
+  icon: Icon,
+  label,
+  children,
+}: {
+  icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
+  label: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="flex items-start gap-4 md:gap-5">
+      <Icon className="h-5 w-5 md:h-6 md:w-6 text-light mt-0.5 flex-shrink-0" strokeWidth={1.5} />
+      <div>
+        <p className="font-mono text-[10px] md:text-[13px] font-medium uppercase tracking-[0.13em] text-[#a1a1a1] mb-1">
+          {label}
+        </p>
+        <div className="text-body text-light">{children}</div>
+      </div>
+    </div>
   );
 }

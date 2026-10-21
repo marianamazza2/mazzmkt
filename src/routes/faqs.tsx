@@ -202,7 +202,7 @@ const faqs: FAQ[] = [
   {
     id: 11,
     category: "REDES SOCIALES",
-    question: "¿Gestionan redes sociales? ¿Qué incluye?",
+    question: "¿Gestionáis redes sociales? ¿Qué incluye?",
     answer:
       "Sí. Ofrecemos gestión integral de redes: estrategia de contenido, calendario editorial, diseño de piezas, copywriting, publicación, community management, y reportes mensuales.",
     highlight: "Estrategia + contenido + gestión. No solo postear.",
@@ -222,7 +222,7 @@ const faqs: FAQ[] = [
     question: "¿Qué incluye el servicio de Analytics & Tracking?",
     answer:
       "Configuramos e implementamos todo el stack de medición que tu negocio necesita: GA4 para seguimiento completo de usuarios, comportamiento y conversiones; Google Tag Manager para gestionar todos los eventos y disparadores sin depender del equipo de desarrollo; Microsoft Clarity para mapas de calor, grabaciones de sesiones y análisis de experiencia; e implementamos los píxeles de Meta y TikTok para que tus campañas de publicidad pagada cuenten con datos precisos y optimización real. El objetivo es que cada decisión que tomes esté respaldada por datos reales, no suposiciones.",
-    highlight: "Sin medicion no hay optimizacion. Sin datos, no hay estrategia.",
+    highlight: "Sin medición no hay optimización. Sin datos, no hay estrategia.",
   },
   {
     id: 16,
@@ -471,7 +471,7 @@ function FAQsPage() {
                           className="overflow-hidden"
                         >
                           <div className="px-4 md:px-7 lg:px-8 pb-4 md:pb-8 lg:pb-10">
-                            <div className="faqs-answer-text max-w-4xl text-[#0a0a0aaa] md:text-[17px] leading-relaxed mb-3 md:mb-6 space-y-4">
+                            <div className="text-body max-w-4xl text-[#0a0a0aaa] mb-3 md:mb-6 space-y-4">
                               {faq.answer.split("\n\n").map((paragraph, i) => (
                                 <p key={i}>{paragraph}</p>
                               ))}
@@ -516,7 +516,7 @@ function FAQsPage() {
           >
             <p className="text-[10px] md:text-[13px] font-medium text-[#ffffffaa] mb-6 md:mb-5 uppercase tracking-[0.13em] flex items-center gap-3 font-mono">
               <span className="inline-block w-8 h-[1px] bg-[#ffffff]" />
-              EN NUMEROS
+              EN NÚMEROS
             </p>
           </motion.div>
 

@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   Clock,
   Plug,
@@ -11,6 +10,7 @@ import { trackEvent } from "@/lib/analytics";
 import { PageHero } from "@/components/sections/page-hero";
 import { Molinillo } from "@/components/brand/molinillo";
 import { MolinilloQueMira } from "@/components/brand/molinillo-que-mira";
+import { CardRail } from "@/components/ui/card-rail";
 
 export const Route = createFileRoute("/agentes-ia")({
   component: AgentesIAPage,
@@ -110,91 +110,51 @@ const jsonLd = {
     "Creación de agentes de IA a medida, recepcionistas virtuales, chatbots inteligentes y automatización de flujos de trabajo para negocios y clínicas.",
 };
 
-function BuildShowcase() {
-  const targetRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: targetRef,
-    offset: ["start start", "end end"],
-  });
-  const [maxX, setMaxX] = useState(0);
-  const x = useTransform(scrollYProgress, [0, 1], [0, -maxX]);
-
-  useEffect(() => {
-    const calc = () => {
-      if (trackRef.current) {
-        setMaxX(Math.max(0, trackRef.current.scrollWidth - window.innerWidth));
-      }
-    };
-    calc();
-    window.addEventListener("resize", calc);
-    return () => window.removeEventListener("resize", calc);
-  }, []);
-
-  const Header = () => (
-    <>
-      <p
-        className="text-[10px] uppercase mb-2 md:text-[13px] md:mb-5 md:font-medium font-mono"
-        style={{ letterSpacing: "0.13em", color: "#8f8f8f" }}
-      >
-        Lo que construimos
-      </p>
-      <h2 className="text-[30px] font-bold leading-[1] tracking-[-0.04em] text-light normal-case font-heading md:text-[clamp(56px,6vw,88px)] md:font-bold md:leading-[0.92] md:tracking-[-0.045em]">
-        IA lista para tu negocio
-      </h2>
-    </>
-  );
-
-  const Card = ({ cap, index }: { cap: (typeof capabilities)[number]; index: number }) => {
-    return (
-      <div className="group h-full border border-light/13 p-5 md:p-8 hover:border-light hover:bg-light transition-all duration-300 rounded-sm">
-        <span className="block mb-10 md:mb-14 font-mono text-[13px] text-light/50 group-hover:text-dark/60 transition-colors">
-          {String(index + 1).padStart(2, "0")}
-        </span>
-        <h3
-          className="text-[20px] md:text-[24px] leading-[1.1] tracking-[-0.025em] font-bold text-light group-hover:text-[#0a0a0a] mb-3 transition-colors"
-        >
-          {cap.title}
-        </h3>
-        <p className="text-[14px] md:text-[16px] text-light/80 group-hover:text-dark/80 leading-[1.55] transition-colors">
-          {cap.description}
-        </p>
-      </div>
-    );
-  };
-
+function CapabilityCard({ cap, index }: { cap: (typeof capabilities)[number]; index: number }) {
   return (
-    <>
-      {/* Desktop: scroll horizontal fijado */}
-      <div ref={targetRef} className="hidden md:block relative h-[220vh] bg-dark">
-        <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
-          <div className="container mx-auto px-6 w-full mb-10">
-            <Header />
-          </div>
-          <motion.div ref={trackRef} style={{ x }} className="flex gap-6 px-6 w-max">
-            {capabilities.map((cap, index) => (
-              <div key={cap.title} className="shrink-0 w-[calc((100vw-96px)/3)]">
-                <Card cap={cap} index={index} />
-              </div>
-            ))}
-          </motion.div>
-        </div>
-      </div>
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay: (index % 3) * 0.1 }}
+      className="group h-full border border-light/13 p-5 md:p-8 hover:border-light hover:bg-light transition-all duration-300 rounded-sm"
+    >
+      <span className="block mb-10 md:mb-14 font-mono text-[13px] text-light/50 group-hover:text-dark/60 transition-colors">
+        {String(index + 1).padStart(2, "0")}
+      </span>
+      <h3 className="text-[20px] md:text-[24px] leading-[1.1] tracking-[-0.025em] font-bold text-light group-hover:text-[#0a0a0a] mb-3 transition-colors">
+        {cap.title}
+      </h3>
+      <p className="text-body text-light/80 group-hover:text-dark/80 transition-colors">
+        {cap.description}
+      </p>
+    </motion.div>
+  );
+}
 
-      {/* Móvil: carrusel deslizable */}
-      <section className="md:hidden bg-dark py-9">
-        <div className="container mx-auto px-5 mb-6">
-          <Header />
+// Lo que construimos: carrusel deslizable en móvil y rejilla en escritorio, como en la home
+function BuildShowcase() {
+  return (
+    <section className="bg-dark py-9 md:py-20">
+      <div className="container mx-auto px-5 md:px-6">
+        <div className="mb-6 md:mb-10">
+          <p
+            className="font-mono text-[10px] md:text-[13px] font-medium uppercase text-[#a1a1a1] mb-2 md:mb-5"
+            style={{ letterSpacing: "0.13em" }}
+          >
+            Lo que construimos
+          </p>
+          <h2 className="text-[30px] font-bold leading-[1] tracking-[-0.04em] text-light normal-case font-heading md:text-[clamp(56px,6vw,88px)] md:leading-[0.92] md:tracking-[-0.045em]">
+            IA lista para tu negocio
+          </h2>
         </div>
-        <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory hide-scrollbar px-5 pb-2">
+        <CardRail>
           {capabilities.map((cap, index) => (
-            <div key={cap.title} className="snap-start shrink-0 w-[80vw]">
-              <Card cap={cap} index={index} />
-            </div>
+            <CapabilityCard key={cap.title} cap={cap} index={index} />
           ))}
-        </div>
-      </section>
-    </>
+        </CardRail>
+      </div>
+    </section>
   );
 }
 
@@ -215,7 +175,7 @@ function AgentesIAPage() {
           <>
               <TransitionLink
                 to="/contacto"
-                className="inline-flex items-center justify-center gap-2 rounded-sm border border-light/30 px-6 py-[12px] text-[11px] md:px-8 md:py-[15px] md:text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono"
+                className="inline-flex items-center justify-center gap-3 rounded-sm border border-light/30 px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono"
                 style={{ letterSpacing: "0.09em" }}
                 onClick={() => trackEvent("cta_click", { location: "agentes_hero", label: "quiero_mi_agente" })}
               >
@@ -224,7 +184,7 @@ function AgentesIAPage() {
               </TransitionLink>
               <a
                 href="#casos"
-                className="inline-flex items-center justify-center rounded-sm border border-light/30 px-6 py-[12px] text-[11px] md:px-8 md:py-[15px] md:text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono"
+                className="inline-flex items-center justify-center gap-3 rounded-sm border border-light/30 px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono"
                 style={{ letterSpacing: "0.09em" }}
               >
                 VER CASOS DE USO
@@ -252,7 +212,7 @@ function AgentesIAPage() {
               <h2 className="text-[30px] font-bold leading-[1] tracking-[-0.04em] text-[#ffffff] normal-case font-heading md:text-[clamp(44px,5vw,72px)] md:leading-[0.92] md:tracking-[-0.045em] mb-4 md:mb-6">
                 Un recepcionista que no duerme
               </h2>
-              <p className="text-[14px] md:text-[18px] leading-[1.6] max-w-xl" style={{ color: "#b3b3b3" }}>
+              <p className="text-body max-w-xl" style={{ color: "#b3b3b3" }}>
                 El producto ideal para cualquier negocio con agenda. Atiende cada
                 mensaje, ofrece los huecos libres, confirma la cita y avisa antes para
                 que nadie falte. Todo mientras te dedicas a lo que importa.
@@ -278,7 +238,7 @@ function AgentesIAPage() {
               </div>
 
               <div className="mt-4 md:mt-6 p-5 md:p-6 rounded-sm border-l-2 border-light">
-                <p className="text-[13px] md:text-[16px] leading-[1.6]" style={{ color: "#b3b3b3" }}>
+                <p className="text-body" style={{ color: "#b3b3b3" }}>
                   No sustituye a tu equipo, lo libera. Tus profesionales dejan de perder
                   el día respondiendo &laquo;¿qué horario tenéis?&raquo; y se centran en
                   lo que de verdad importa: las conversaciones delicadas, donde el trato
@@ -309,7 +269,7 @@ function AgentesIAPage() {
                   >
                     {skill.title}
                   </h3>
-                  <p className="text-[17px] leading-[1.5]" style={{ color: "#888888" }}>
+                  <p className="text-body" style={{ color: "#888888" }}>
                     {skill.description}
                   </p>
                 </motion.div>
@@ -350,12 +310,12 @@ function AgentesIAPage() {
               23:41 · Martes
             </span>
 
-            <p className="text-[14px] md:text-[19px] leading-[1.7] mb-4" style={{ color: "#b3b3b3" }}>
+            <p className="text-body mb-4" style={{ color: "#b3b3b3" }}>
               Alguien entró a tu WhatsApp buscando hora para el jueves. No había nadie
               despierto en tu negocio, pero tu asistente respondió al instante, revisó
               la agenda, ofreció el único hueco libre y lo confirmó.
             </p>
-            <p className="text-[14px] md:text-[19px] leading-[1.7] mb-7 md:mb-8" style={{ color: "#b3b3b3" }}>
+            <p className="text-body mb-7 md:mb-8" style={{ color: "#b3b3b3" }}>
               Tú te enteraste a la mañana, con el café. Una cita más, sin que movieras
               un dedo.
             </p>
@@ -406,7 +366,7 @@ function AgentesIAPage() {
                 >
                   {item.title}
                 </h3>
-                <p className="text-[13px] md:text-[15px] leading-[1.55] text-[#a1a1a1]">{item.description}</p>
+                <p className="text-body text-[#a1a1a1]">{item.description}</p>
               </motion.div>
             ))}
           </div>
@@ -430,7 +390,7 @@ function AgentesIAPage() {
               >
                 Se conecta con
               </p>
-              <p className="text-[15px] md:text-[18px] leading-[1.5]" style={{ color: "#b3b3b3" }}>
+              <p className="text-body" style={{ color: "#b3b3b3" }}>
                 Tu agente vive donde ya trabajas. Y si usas otra herramienta, la
                 integramos.
               </p>
@@ -474,7 +434,7 @@ function AgentesIAPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="text-[14px] md:text-[19px] leading-[1.6] mx-auto max-w-2xl mb-7 md:mb-9"
+            className="text-body mx-auto max-w-2xl mb-7 md:mb-9"
             style={{ color: "#b3b3b3" }}
           >
             Monta tu asistente esta semana y deja de perder lo que ya estabas por ganar.

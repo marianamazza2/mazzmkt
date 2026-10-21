@@ -1,7 +1,8 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { TransitionLink } from "@/components/transition/transition-link";
 import { Molinillo } from "@/components/brand/molinillo";
+import { CardRail } from "@/components/ui/card-rail";
 
 const mainServices = [
   {
@@ -118,7 +119,7 @@ function ServiceCardDark({
             </p>
           )}
 
-          <p className="text-[17px] text-light/80 group-hover:text-dark/80 leading-[1.55] transition-colors">
+          <p className="text-body text-light/80 group-hover:text-dark/80 transition-colors">
             {service.description}
           </p>
         </div>
@@ -143,11 +144,10 @@ function AiHeader() {
       </h2>
       <p className="text-[30px] font-bold leading-[1] tracking-[-0.04em] text-[#ffffff] font-heading md:text-[clamp(56px,6vw,88px)] md:font-bold md:leading-[0.92] md:tracking-[-0.045em]">
         Tu negocio en{" "}
-        <span className="hidden md:inline text-[#a1a1a1]">modo IA</span>
-        <span className="md:hidden">modo IA</span>
+        <span className="text-[#a1a1a1]">modo IA</span>
       </p>
       <p
-        className="text-[14px] leading-[1.7] mt-3 md:text-[19px] md:leading-[1.55] md:mt-6 md:max-w-2xl"
+        className="text-body mt-3 md:mt-6 md:max-w-2xl"
         style={{ color: "#b3b3b3" }}
       >
         Más allá del agente: la IA automatiza tus procesos, conecta tus herramientas y produce tu contenido. Tu negocio funcionando solo, de fondo.
@@ -157,98 +157,23 @@ function AiHeader() {
 }
 
 function AiShowcase() {
-  const [selectedAiService, setSelectedAiService] = useState(0);
-
   return (
-    <>
-      {/* Desktop: rejilla de cards */}
-      <section className="hidden md:block bg-dark pt-18 pb-10">
-        <div className="container mx-auto px-6">
-          <div className="mb-10">
-            <AiHeader />
-          </div>
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
-            {aiServices.map((service, index) => (
-              <ServiceCardDark key={service.title} service={service} index={index} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Móvil: slider (mismo estilo que "Lo que hacemos", en dark) */}
-      <section className="md:hidden bg-dark pt-7">
-        <div className="container mx-auto px-5 mb-6">
+    <section className="bg-dark pt-7 md:pt-18 md:pb-10">
+      <div className="container mx-auto px-5 md:px-6">
+        <div className="mb-6 md:mb-10">
           <AiHeader />
         </div>
-        <div className="px-5">
-          <div className="h-[190px]">
-            {(() => {
-              const active = aiServices[selectedAiService];
-              const total = aiServices.length;
-              const handleNext = () => setSelectedAiService((prev) => (prev + 1) % total);
-              const handlePrev = () => setSelectedAiService((prev) => (prev - 1 + total) % total);
-              return (
-                <motion.div
-                  key={selectedAiService}
-                  initial={{ opacity: 0, x: 24 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.22, ease: "easeOut" }}
-                  className="rounded-[0.25rem] p-5 h-full overflow-hidden select-none cursor-grab active:cursor-grabbing border border-[#ffffff20]"
-                  style={{ background: "#1a1a1a" }}
-                  drag="x"
-                  dragConstraints={{ left: 0, right: 0 }}
-                  dragElastic={0.08}
-                  onDragEnd={(_, info) => {
-                    if (info.offset.x < -50) handleNext();
-                    else if (info.offset.x > 50) handlePrev();
-                  }}
-                >
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className="font-mono text-[11px] text-light/50 flex-shrink-0">{String(selectedAiService + 1).padStart(2, "0")}</span>
-                    <p className="text-[13px] font-semibold uppercase text-light" style={{ letterSpacing: "0.04em" }}>
-                      {active.title}
-                    </p>
-                  </div>
-
-                  <p className="text-[13px] leading-[1.6]" style={{ color: "#b3b3b3" }}>
-                    {active.description}
-                  </p>
-                </motion.div>
-              );
-            })()}
-          </div>
-
-          {/* Dots navigation */}
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "5px", paddingTop: "18px" }}>
-            {aiServices.map((_, i) => (
-              <span
-                key={i}
-                onClick={() => setSelectedAiService(i)}
-                style={{
-                  display: "block",
-                  width: i === selectedAiService ? "18px" : "4px",
-                  height: "4px",
-                  borderRadius: "9999px",
-                  backgroundColor: i === selectedAiService ? "#ffffff" : "rgba(255, 255, 255,0.25)",
-                  transition: "width 300ms ease-out, background-color 300ms ease-out",
-                  cursor: "pointer",
-                  flexShrink: 0,
-                }}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-    </>
+        <CardRail>
+          {aiServices.map((service, index) => (
+            <ServiceCardDark key={service.title} service={service} index={index} />
+          ))}
+        </CardRail>
+      </div>
+    </section>
   );
 }
 
 export function Services() {
-  const [selectedMobileService, setSelectedMobileService] = useState(0);
-
-  const toTagCase = (tag: string) =>
-    tag.toLowerCase().charAt(0).toUpperCase() + tag.toLowerCase().slice(1);
-
   return (
     <>
       {/* Main Services — Light Section */}
@@ -272,83 +197,11 @@ export function Services() {
             </p>
           </motion.div>
 
-          {/* Mobile: slider */}
-          <div className="md:hidden">
-            <div className="h-[210px]">
-              {(() => {
-                const total = mainServices.length;
-                const handleNext = () => setSelectedMobileService((prev) => (prev + 1) % total);
-                const handlePrev = () => setSelectedMobileService((prev) => (prev - 1 + total) % total);
-                return (
-                  <motion.div
-                    key={selectedMobileService}
-                    initial={{ opacity: 0, x: 24 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.22, ease: "easeOut" }}
-                    className="rounded-[0.25rem] p-5 h-full overflow-hidden select-none cursor-grab active:cursor-grabbing"
-                    style={{ background: "#1a1a1a" }}
-                    drag="x"
-                    dragConstraints={{ left: 0, right: 0 }}
-                    dragElastic={0.08}
-                    onDragEnd={(_, info) => {
-                      if (info.offset.x < -50) handleNext();
-                      else if (info.offset.x > 50) handlePrev();
-                    }}
-                  >
-                    <div className="flex items-center gap-3 mb-4">
-                      <span className="font-mono text-[11px] text-light/50 flex-shrink-0">{String(selectedMobileService + 1).padStart(2, "0")}</span>
-                      <p className="text-[13px] font-semibold uppercase text-light" style={{ letterSpacing: "0.04em" }}>
-                        {mainServices[selectedMobileService].title}
-                      </p>
-                    </div>
-
-                    <p className="text-[13px] leading-[1.6] mb-4" style={{ color: "#a1a1a1" }}>
-                      {mainServices[selectedMobileService].description}
-                    </p>
-
-                    <div className="flex flex-wrap gap-2">
-                      {mainServices[selectedMobileService].subtitle.split("|").map(tag => (
-                        <span
-                          key={tag}
-                          className="text-[12px] px-3 py-[5px] rounded-full border"
-                          style={{ borderColor: "rgba(255, 255, 255, 0.18)", color: "#8f8f8f" }}
-                        >
-                          {toTagCase(tag.trim())}
-                        </span>
-                      ))}
-                    </div>
-                  </motion.div>
-                );
-              })()}
-            </div>
-
-            {/* Dots navigation */}
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "5px", paddingTop: "18px" }}>
-              {mainServices.map((_, i) => (
-                <span
-                  key={i}
-                  onClick={() => setSelectedMobileService(i)}
-                  style={{
-                    display: "block",
-                    width: i === selectedMobileService ? "18px" : "4px",
-                    height: "4px",
-                    borderRadius: "9999px",
-                    backgroundColor: i === selectedMobileService ? "#ffffff" : "rgba(255, 255, 255,0.25)",
-                    transition: "width 300ms ease-out, background-color 300ms ease-out",
-                    cursor: "pointer",
-                    flexShrink: 0,
-                  }}
-                />
-              ))}
-            </div>
-          </div>
-
-          {/* Desktop: carrusel horizontal de cards */}
-          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6">
+          <CardRail>
             {mainServices.map((service, index) => (
               <ServiceCardDark key={service.title} service={service} index={index} />
             ))}
-          </div>
+          </CardRail>
 
           {/* También */}
           <motion.div
@@ -392,8 +245,8 @@ export function Services() {
           >
             <TransitionLink
               to="/contacto"
-              className="inline-flex items-center gap-[6px] text-[11px] font-medium uppercase md:gap-3 md:rounded-sm md:border md:border-light/30 md:px-8 md:py-[15px] md:text-[13px] md:font-semibold md:text-light md:transition-colors md:hover:border-light font-mono"
-              style={{ letterSpacing: "0.09em", color: "#ffffff" }}
+              className="inline-flex items-center justify-center gap-3 rounded-sm border border-light/30 px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono"
+              style={{ letterSpacing: "0.09em" }}
             >
               QUIERO MI NEGOCIO CON IA
               <Molinillo className="h-[14px] w-[14px]" />

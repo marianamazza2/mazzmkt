@@ -9,95 +9,52 @@ const socials = [
   { href: "https://wa.me/34672340061", icon: Phone, label: "WhatsApp" },
 ];
 
+const legalLinks = [
+  { to: "/aviso-legal", label: "Aviso legal" },
+  { to: "/cookies", label: "Cookies" },
+  { to: "/privacidad", label: "Privacidad" },
+];
+
+const label = "font-mono text-[10px] md:text-[13px] uppercase tracking-[0.13em] text-[#a1a1a1]";
+
 export function Footer() {
   return (
-    <footer className="bg-dark text-[#ffffff]" style={{ borderTop: "0.5px solid rgba(255, 255, 255, 0.06)" }}>
-      {/* Mobile layout */}
-      <div className="md:hidden px-5 pt-7 pb-6">
-        <div className="flex justify-between items-center mb-3">
+    <footer className="bg-dark text-light border-t border-light/6">
+      <div className="container mx-auto px-5 md:px-6 pt-7 pb-6 md:pt-10 md:pb-8">
+        {/* Logotipo y redes */}
+        <div className="flex items-center justify-between gap-6 pb-5 md:pb-7 border-b border-light/6">
           <LogotipoReducido className="h-[16px] w-auto text-light" />
           <div className="flex gap-2">
-            {socials.map(({ href, icon: Icon, label }) => (
+            {socials.map(({ href, icon: Icon, label: name }) => (
               <a
-                key={label}
+                key={name}
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={label}
-                className="flex items-center justify-center rounded-sm"
-                style={{
-                  width: "28px",
-                  height: "28px",
-                  border: "0.5px solid rgba(255, 255, 255, 0.08)",
-                  color: "#a1a1a1",
-                }}
-                onClick={label === "WhatsApp" ? () => trackEvent("whatsapp_click", { location: "footer" }) : undefined}
+                aria-label={name}
+                className="flex h-11 w-11 md:h-8 md:w-8 items-center justify-center rounded-sm border border-light/13 text-[#a1a1a1] transition-colors hover:border-light hover:text-light"
+                onClick={name === "WhatsApp" ? () => trackEvent("whatsapp_click", { location: "footer" }) : undefined}
               >
-                <Icon size={13} />
+                <Icon size={14} />
               </a>
             ))}
           </div>
         </div>
 
-        <div className="flex flex-wrap gap-3 mb-3">
-          <TransitionLink
-            to="/aviso-legal"
-            className="font-mono text-[10px] uppercase tracking-[0.13em] text-[#a1a1a1] hover:text-light transition-colors inline-flex items-center min-h-[44px]"
-          >
-            AVISO LEGAL
-          </TransitionLink>
-          <TransitionLink
-            to="/cookies"
-            className="font-mono text-[10px] uppercase tracking-[0.13em] text-[#a1a1a1] hover:text-light transition-colors inline-flex items-center min-h-[44px]"
-          >
-            COOKIES
-          </TransitionLink>
-          <TransitionLink
-            to="/privacidad"
-            className="font-mono text-[10px] uppercase tracking-[0.13em] text-[#a1a1a1] hover:text-light transition-colors inline-flex items-center min-h-[44px]"
-          >
-            PRIVACIDAD
-          </TransitionLink>
-        </div>
-
-        <div style={{ height: "0.5px", background: "rgba(255, 255, 255, 0.06)", marginBottom: "8px" }} />
-
-        <p
-          className="font-mono text-[10px] uppercase tracking-[0.13em] text-[#a1a1a1]"
-        >
-          &copy; {new Date().getFullYear()} MAZZMKT. TODOS LOS DERECHOS RESERVADOS.
-        </p>
-      </div>
-
-      {/* Desktop layout */}
-      <div className="hidden md:block py-6 container mx-auto px-6">
-        <div className="flex flex-col lg:flex-row justify-between items-center gap-x-6 gap-y-2">
-          <div className="flex items-center gap-4 order-2 lg:order-1">
-            <LogotipoReducido className="h-[16px] w-auto text-light self-center" />
-            <p className="font-mono text-[13px] uppercase tracking-[0.13em] text-[#a1a1a1] leading-none self-center whitespace-nowrap">
-              &copy; {new Date().getFullYear()} MAZZMKT. TODOS LOS DERECHOS RESERVADOS.
-            </p>
-          </div>
-          <div className="flex items-center gap-x-6 order-1 lg:order-2 flex-wrap justify-center">
-            <TransitionLink
-              to="/aviso-legal"
-              className="font-mono text-[13px] uppercase tracking-[0.13em] text-[#a1a1a1] hover:text-light transition-colors min-h-[44px] inline-flex items-center"
-            >
-              AVISO LEGAL
-            </TransitionLink>
-            <TransitionLink
-              to="/cookies"
-              className="font-mono text-[13px] uppercase tracking-[0.13em] text-[#a1a1a1] hover:text-light transition-colors min-h-[44px] inline-flex items-center"
-            >
-              POLÍTICA DE COOKIES
-            </TransitionLink>
-            <TransitionLink
-              to="/privacidad"
-              className="font-mono text-[13px] uppercase tracking-[0.13em] text-[#a1a1a1] hover:text-light transition-colors min-h-[44px] inline-flex items-center"
-            >
-              POLÍTICA DE PRIVACIDAD
-            </TransitionLink>
-          </div>
+        {/* Legales y copyright */}
+        <div className="flex flex-col gap-2 pt-3 md:pt-5 lg:flex-row lg:items-center lg:justify-between lg:gap-6">
+          <nav className="flex flex-wrap gap-x-5 md:gap-x-6">
+            {legalLinks.map(({ to, label: name }) => (
+              <TransitionLink
+                key={to}
+                to={to}
+                className={`${label} inline-flex min-h-[44px] items-center hover:text-light transition-colors`}
+              >
+                {name}
+              </TransitionLink>
+            ))}
+          </nav>
+          <p className={label}>&copy; {new Date().getFullYear()} MAZZMKT. Todos los derechos reservados.</p>
         </div>
       </div>
     </footer>
