@@ -37,16 +37,6 @@ function AnimatedText({
 export function PageCTA() {
   return (
     <section className="bg-dark pt-8 pb-7 md:py-20 relative overflow-hidden">
-      <div className="hidden md:block absolute inset-0 overflow-hidden" style={{ transform: "scaleX(-1)" }}>
-        <div
-          className="absolute -inset-x-[6%] inset-y-0 bg-cover bg-center"
-          style={{
-            backgroundImage: "url('/images/hero-home.webp')",
-            opacity: 0.14,
-            animation: "tv-static 0.45s steps(1) infinite",
-          }}
-        />
-      </div>
       <div className="container mx-auto px-5 md:px-6 relative z-10">
         {/* Mobile: compact static CTA */}
         <div className="md:hidden text-center">

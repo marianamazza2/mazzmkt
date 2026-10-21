@@ -2,8 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 
 import { SEOHead } from "@/components/seo/SEOHead";
-import { TransitionLink } from "@/components/transition/transition-link";
 import { CheckCircle2 } from "lucide-react";
+import { PageHero } from "@/components/sections/page-hero";
 
 export const Route = createFileRoute("/sobre-mi")({
   component: SobreMiPage,
@@ -24,161 +24,12 @@ function SobreMiPage() {
         description="Somos MAZZMKT, un estudio digital en Barcelona. Diseñamos, programamos y automatizamos tu negocio digital con código real e inteligencia artificial."
       />
 
-      {/* Hero */}
-      <section className="bg-dark pt-[100px] pb-7 md:pt-32 md:pb-16 relative overflow-hidden">
-        <div
-          className="hidden md:block absolute -inset-x-[2%] inset-y-0 bg-no-repeat"
-          style={{
-            backgroundImage: `url('/images/hero-home.webp')`,
-            backgroundPosition: "center center",
-            backgroundSize: "100% auto",
-            opacity: 0.25,
-            animation: "tv-static 0.45s steps(1) infinite",
-          }}
-        />
-        <div className="container mx-auto px-5 md:px-6 relative">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <motion.h1
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="md:hidden text-[11px] font-medium uppercase mb-[14px]"
-              style={{ letterSpacing: "2.5px", color: "#878787" }}
-            >
-              MAZZMKT / SOBRE MI
-            </motion.h1>
-
-            <motion.h1
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="hidden md:block text-[13px] font-medium text-[#ffffffe0] mb-5 uppercase font-mono"
-              style={{ letterSpacing: "0.14em" }}
-            >
-              AGENCIA DE MARKETING DIGITAL - QUIENES SOMOS
-            </motion.h1>
-
-            <div
-              className="normal-case font-bold text-[#ffffff] mb-5 md:mb-9"
-              style={{
-                fontSize: "var(--font-display)",
-                fontFamily: "var(--font-heading)",
-                lineHeight: "var(--lh-display)",
-                fontWeight: 700,
-                letterSpacing: "-0.045em",
-              }}
-            >
-              <motion.p
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className="font-bold text-[#ffffff]"
-                style={{ fontSize: "inherit", lineHeight: "inherit", fontWeight: "inherit" }}
-              >
-                Humano
-              </motion.p>
-              <motion.p
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="font-bold text-[#ffffff]"
-                style={{ fontSize: "inherit", lineHeight: "inherit", fontWeight: "inherit" }}
-              >
-                y digital
-              </motion.p>
-            </div>
-
-            {/* Mobile: subtitle */}
-            <p className="md:hidden text-[13px] text-[#878787] leading-[1.6] mb-6">
-              Estrategia, creatividad y tecnología para que las marcas brillen con intención.
-            </p>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="hidden md:block max-w-xl text-[18px] text-light/67 mb-9"
-            >
-              Estrategia, creatividad y tecnología para que las marcas brillen con intención.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="md:hidden flex gap-[10px] mb-6"
-            >
-              <a
-                href="#quienes-somos"
-                className="inline-flex items-center justify-center rounded-sm text-[11px] font-medium uppercase"
-                style={{ padding: "11px 20px", letterSpacing: "1.5px", background: "transparent", border: "0.5px solid rgba(255, 255, 255, 0.3)", color: "#ffffff" }}
-              >
-                CONÓCENOS
-              </a>
-              <TransitionLink
-                to="/contacto"
-                className="inline-flex items-center justify-center rounded-sm text-[11px] font-medium uppercase"
-                style={{
-                  padding: "11px 20px",
-                  letterSpacing: "1.5px",
-                  background: "transparent",
-                  border: "0.5px solid rgba(255, 255, 255,0.15)",
-                  color: "#b3b3b3",
-                }}
-              >
-                CONTACTAR
-              </TransitionLink>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="hidden md:flex items-center gap-3"
-            >
-              <a
-                href="#quienes-somos"
-                className="inline-flex items-center justify-center rounded-sm border border-light/30 px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono"
-                style={{ letterSpacing: "0.09em" }}
-              >
-                CONÓCENOS
-                <motion.span
-                  className="inline-block"
-                  animate={{ x: [0, 5, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                >
-                  →
-                </motion.span>
-              </a>
-              <TransitionLink
-                to="/contacto"
-                className="inline-flex items-center justify-center rounded-sm border border-light/30 px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono"
-                style={{ letterSpacing: "0.09em" }}
-              >
-                CONTACTAR
-              </TransitionLink>
-            </motion.div>
-
-            {/* Mobile: stats */}
-            <div className="flex items-start gap-12 mt-12 max-md:gap-4 max-md:mt-0">
-              <div>
-                <p className="font-bold text-[#ffffff] text-[22px] md:text-5xl" style={{ letterSpacing: "-0.5px" }}>10+</p>
-                <p className="uppercase text-light/67 mt-1 font-mono text-[10px] md:text-xs md:tracking-widest" style={{ letterSpacing: "1.5px" }}>Proyectos</p>
-              </div>
-              <div className="md:hidden self-stretch w-px bg-light/10" />
-              <div>
-                <p className="font-bold text-[#ffffff] text-[22px] md:text-5xl" style={{ letterSpacing: "-0.5px" }}>98%</p>
-                <p className="uppercase text-light/67 mt-1 font-mono text-[10px] md:text-xs md:tracking-widest" style={{ letterSpacing: "1.5px" }}>Satisfacción</p>
-              </div>
-              <div className="md:hidden self-stretch w-px bg-light/10" />
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      <PageHero
+        heading="crumbs"
+        crumbs={[{ label: "Quiénes somos" }]}
+        title={<>Humano<br />y digital</>}
+        subtitle="Estrategia, creatividad y tecnología para que las marcas brillen con intención."
+      />
 
       {/* Valores */}
       <section className="bg-dark py-7 md:py-20">

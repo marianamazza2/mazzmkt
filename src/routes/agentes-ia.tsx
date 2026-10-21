@@ -18,6 +18,7 @@ import {
 import { SEOHead } from "@/components/seo/SEOHead";
 import { TransitionLink } from "@/components/transition/transition-link";
 import { trackEvent } from "@/lib/analytics";
+import { PageHero } from "@/components/sections/page-hero";
 
 export const Route = createFileRoute("/agentes-ia")({
   component: AgentesIAPage,
@@ -222,69 +223,12 @@ function AgentesIAPage() {
         jsonLd={jsonLd}
       />
 
-      {/* Hero */}
-      <section className="bg-dark pt-[100px] pb-9 md:pt-32 md:pb-20 relative overflow-hidden">
-        <div
-          className="hidden md:block absolute -inset-x-[2%] inset-y-0 bg-no-repeat"
-          style={{
-            backgroundImage: `url('/images/hero-home.webp')`,
-            backgroundPosition: "center center",
-            backgroundSize: "100% auto",
-            opacity: 0.22,
-            animation: "tv-static 0.45s steps(1) infinite",
-          }}
-        />
-        <div className="container mx-auto px-5 md:px-6 relative">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-5xl"
-          >
-            <motion.p
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-[11px] md:text-[13px] font-medium text-[#878787] md:text-[#ffffffe0] mb-3 md:mb-5 tracking-[1.5px] md:tracking-[0.14em] uppercase flex items-center gap-3 font-mono"
-            >
-              <span className="opacity-50">MAZZMKT</span>
-              <span className="opacity-30">/</span>
-              <span>IA &amp; AUTOMATIZACIÓN</span>
-            </motion.p>
-
-            <h1
-              className="normal-case font-bold text-[#ffffff] mb-5 md:mb-8"
-              style={{
-                fontSize: "var(--font-display)",
-                fontFamily: "var(--font-heading)",
-                lineHeight: "var(--lh-display)",
-                fontWeight: 700,
-                letterSpacing: "-0.045em",
-              }}
-            >
-              IA que trabaja
-              <br />
-              por ti <span className="text-[#a1a1a1]">&raquo;</span>
-            </h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.35 }}
-              className="text-[14px] md:text-[20px] leading-[1.6] mb-8 md:mb-9 max-w-2xl"
-              style={{ color: "#b3b3b3" }}
-            >
-              Un asistente que atiende, agenda y responde por tu negocio las 24 horas.
-              Cada mensaje respondido al instante es una cita más. Y un cliente que no
-              se va a la competencia.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="flex flex-wrap gap-[10px] md:gap-3"
-            >
+      <PageHero
+        crumbs={[{ label: "IA & Automatización" }]}
+        title={<>IA que trabaja<br />por ti</>}
+        subtitle="Un asistente que atiende, agenda y responde por tu negocio las 24 horas. Cada mensaje respondido al instante es una cita más. Y un cliente que no se va a la competencia."
+        actions={
+          <>
               <TransitionLink
                 to="/contacto"
                 className="inline-flex items-center justify-center gap-2 rounded-sm border border-light/30 px-6 py-[12px] text-[11px] md:px-8 md:py-[15px] md:text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono"
@@ -307,10 +251,9 @@ function AgentesIAPage() {
               >
                 VER CASOS DE USO
               </a>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
+          </>
+        }
+      />
 
       {/* Recepcionista IA — qué sabe hacer */}
       <section id="casos" className="bg-dark py-9 md:py-20">
@@ -531,16 +474,6 @@ function AgentesIAPage() {
 
       {/* CTA final */}
       <section className="bg-dark pt-8 pb-10 md:py-24 relative overflow-hidden">
-        <div className="hidden md:block absolute inset-0 overflow-hidden" style={{ transform: "scaleX(-1)" }}>
-          <div
-            className="absolute -inset-x-[6%] inset-y-0 bg-cover bg-center"
-            style={{
-              backgroundImage: "url('/images/hero-home.webp')",
-              opacity: 0.14,
-              animation: "tv-static 0.45s steps(1) infinite",
-            }}
-          />
-        </div>
         <div className="container mx-auto px-5 md:px-6 relative z-10 text-center">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}

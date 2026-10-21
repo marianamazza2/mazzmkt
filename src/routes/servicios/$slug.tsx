@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { SEOHead } from "@/components/seo/SEOHead";
 import { services } from "@/data/services";
 import { CheckCircle2 } from "lucide-react";
+import { PageHero } from "@/components/sections/page-hero";
 
 export const Route = createFileRoute("/servicios/$slug")({
   loader: ({ params }) => {
@@ -52,50 +53,12 @@ function ServicePage() {
         jsonLd={serviceSchema}
       />
 
-      {/* Hero */}
-      <section className="bg-dark pt-24 pb-8 md:pt-32 md:pb-20">
-        <div className="container mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <motion.p
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-[11px] md:text-[13px] font-medium text-light/80 mb-8 tracking-widest flex items-center gap-3 font-mono"
-            >
-              <motion.span
-                className="inline-block w-8 h-[1px] bg-light"
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                style={{ transformOrigin: "left" }}
-              />
-              <TransitionLink to="/servicios" className="inline-flex items-center min-h-[44px] opacity-50 hover:opacity-80 transition-opacity">SERVICIOS</TransitionLink>
-              <span className="opacity-30">/</span>
-              <span className="uppercase">{service.title.toUpperCase()}</span>
-            </motion.p>
-
-            <h1
-              className="normal-case font-bold text-[#ffffff] mb-6"
-              style={{
-                fontSize: "var(--font-cta)",
-                fontFamily: "var(--font-heading)",
-                letterSpacing: "-0.045em",
-                lineHeight: "var(--lh-cta)",
-                fontWeight: 700,
-              }}
-            >
-              {service.title}
-            </h1>
-            <p className="text-xl text-light/67 max-w-3xl">
-              {service.shortDescription}
-            </p>
-          </motion.div>
-        </div>
-      </section>
+      <PageHero
+        size="cta"
+        crumbs={[{ label: "Servicios", to: "/servicios" }, { label: service.title }]}
+        title={service.title}
+        subtitle={service.shortDescription}
+      />
 
       {/* Description */}
       <section className="bg-dark py-14 md:py-24">

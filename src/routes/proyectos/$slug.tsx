@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { SEOHead } from "@/components/seo/SEOHead";
 import { projects } from "@/data/projects";
 import { useState, useRef, useEffect, useCallback } from "react";
+import { PageHero } from "@/components/sections/page-hero";
 
 export const Route = createFileRoute("/proyectos/$slug")({
   loader: ({ params }) => {
@@ -88,46 +89,11 @@ function ProjectPage() {
         jsonLd={projectSchema}
       />
 
-      {/* Hero */}
-      <section className="bg-dark pt-24 pb-8 md:pt-32 md:pb-20">
-        <div className="container mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <motion.p
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-[11px] md:text-[13px] font-medium text-light/80 mb-8 tracking-widest flex items-center gap-3 font-mono"
-            >
-              <motion.span
-                className="inline-block w-8 h-[1px] bg-light"
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                style={{ transformOrigin: "left" }}
-              />
-              <TransitionLink to="/proyectos" className="inline-flex items-center min-h-[44px] opacity-50 hover:opacity-80 transition-opacity">PROYECTOS</TransitionLink>
-              <span className="opacity-30">/</span>
-              <span className="uppercase">{project.category}</span>
-            </motion.p>
-            <h1
-              className="normal-case font-bold text-[#ffffff] mb-6"
-              style={{
-                fontSize: "var(--font-cta)",
-                fontFamily: "var(--font-heading)",
-                letterSpacing: "-0.045em",
-                lineHeight: "var(--lh-cta)",
-                fontWeight: 700,
-              }}
-            >
-              {project.title}
-            </h1>
-          </motion.div>
-        </div>
-      </section>
+      <PageHero
+        size="cta"
+        crumbs={[{ label: "Proyectos", to: "/proyectos" }, { label: project.category }]}
+        title={project.title}
+      />
 
       {/* Project Gallery */}
       <section className="bg-dark pb-10 md:pb-20">

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { SEOHead } from "@/components/seo/SEOHead";
 import { services } from "@/data/services";
 import { Bot, Code, TrendingUp, Palette } from "lucide-react";
+import { PageHero } from "@/components/sections/page-hero";
 
 const iconMap: Record<string, React.ComponentType<{ className?: string; strokeWidth?: number }>> = {
   Bot,
@@ -24,48 +25,12 @@ function ServiciosPage() {
         description="Desarrollo web, web apps, branding, automatización e IA. Soluciones digitales a medida con código real."
       />
 
-      {/* Hero */}
-      <section className="bg-dark pt-24 pb-12 md:pt-32 md:pb-20">
-        <div className="container mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            {/* Breadcrumb — h1 semántico */}
-            <motion.h1
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-[11px] md:text-[13px] font-medium text-light/80 mb-6 tracking-widest flex items-center gap-3 font-mono"
-            >
-              <motion.span
-                className="inline-block w-8 h-[1px] bg-light"
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                style={{ transformOrigin: "left" }}
-              />
-              <span className="opacity-50">MAZZMKT</span>
-              <span className="opacity-30">/</span>
-              <span>SERVICIOS</span>
-            </motion.h1>
-            {/* Tagline visual */}
-            <p
-              className="normal-case font-bold text-[#ffffff]"
-              style={{
-                fontSize: "var(--font-display)",
-                fontFamily: "var(--font-heading)",
-                letterSpacing: "-0.045em",
-                lineHeight: "var(--lh-display)",
-                fontWeight: 700,
-              }}
-            >
-              Lo que hacemos <span className="text-[#ffffff50]">&raquo;</span>
-            </p>
-          </motion.div>
-        </div>
-      </section>
+      <PageHero
+        heading="crumbs"
+        crumbs={[{ label: "Servicios" }]}
+        title="Lo que hacemos"
+        subtitle="Webs, web apps, branding, automatización e IA. Soluciones digitales a medida con código real."
+      />
 
       {/* Services Grid */}
       <section className="bg-dark py-14 md:py-24">

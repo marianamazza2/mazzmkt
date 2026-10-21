@@ -4,18 +4,20 @@ import { trackEvent } from "@/lib/analytics";
 
 export function Hero() {
   return (
-    <section className="bg-dark pt-[100px] pb-7 md:pt-32 md:pb-16 relative overflow-hidden">
+    <section className="bg-dark pt-[100px] pb-7 md:pt-32 md:pb-16 md:min-h-[calc(100svh-58px)] md:flex md:items-end relative overflow-hidden">
       <div
-        className="hidden md:block absolute -inset-x-[2%] inset-y-0 bg-no-repeat"
+        className="absolute -inset-x-[2%] inset-y-0 bg-no-repeat opacity-50 md:opacity-85"
         style={{
           backgroundImage: `url('/images/hero-home.webp')`,
-          backgroundPosition: "center center",
-          backgroundSize: "100% auto",
-          opacity: 0.25,
+          backgroundPosition: "right center",
+          backgroundSize: "cover",
           animation: "tv-static 0.45s steps(1) infinite",
         }}
       />
-      <div className="container mx-auto px-5 md:px-6 relative">
+      {/* Degradados: titular legible a la izquierda y transición suave hacia el marquee */}
+      <div className="absolute inset-0 bg-gradient-to-r from-dark via-dark/60 to-transparent md:via-dark/40" />
+      <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-dark to-transparent" />
+      <div className="container mx-auto px-5 md:px-6 relative w-full">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}

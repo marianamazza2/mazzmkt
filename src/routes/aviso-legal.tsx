@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { motion } from "framer-motion";
 import { SEOHead } from "@/components/seo/SEOHead";
+import { PageHero } from "@/components/sections/page-hero";
 
 export const Route = createFileRoute("/aviso-legal")({
   component: AvisoLegalPage,
@@ -15,46 +15,7 @@ function AvisoLegalPage() {
         description="Aviso legal de MAZZMKT — información sobre el titular del sitio web, condiciones de uso, propiedad intelectual y legislación aplicable."
       />
 
-      {/* Hero */}
-      <section className="bg-dark pt-24 pb-8 md:pt-32 md:pb-20">
-        <div className="container mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <motion.p
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-[11px] md:text-[13px] font-medium text-light/80 mb-6 tracking-widest flex items-center gap-3 font-mono"
-            >
-              <motion.span
-                className="inline-block w-8 h-[1px] bg-light"
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                style={{ transformOrigin: "left" }}
-              />
-              <span className="opacity-50">MAZZMKT</span>
-              <span className="opacity-30">/</span>
-              <span>AVISO LEGAL</span>
-            </motion.p>
-            <h1
-              className="normal-case font-bold text-[#ffffff]"
-              style={{
-                fontSize: "var(--font-display)",
-                fontFamily: "var(--font-heading)",
-                letterSpacing: "-0.045em",
-                lineHeight: "var(--lh-display)",
-                fontWeight: 700,
-              }}
-            >
-              Aviso legal
-            </h1>
-          </motion.div>
-        </div>
-      </section>
+      <PageHero crumbs={[{ label: "Aviso legal" }]} title="Aviso legal" />
 
       <section className="bg-dark py-14 md:py-24">
         <div className="container mx-auto px-6 max-w-3xl">

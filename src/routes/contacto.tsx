@@ -4,6 +4,7 @@ import { SEOHead } from "@/components/seo/SEOHead";
 import { Mail, MessageCircle, Phone, MapPin } from "lucide-react";
 import { useState } from "react";
 import { trackEvent } from "@/lib/analytics";
+import { PageHero } from "@/components/sections/page-hero";
 
 export const Route = createFileRoute("/contacto")({
   component: ContactoPage,
@@ -48,91 +49,13 @@ function ContactoPage() {
         description="Hablemos de tu proyecto. Webs, marcas, apps o automatización. Cuéntanos qué necesitas y te proponemos una solución a medida."
       />
 
-      {/* Hero */}
-      <section className="bg-dark pt-24 pb-6 md:pt-32 md:pb-16 relative overflow-hidden">
-        <div
-          className="hidden md:block absolute -inset-x-[2%] inset-y-0 bg-no-repeat"
-          style={{
-            backgroundImage: `url('/images/hero-home.webp')`,
-            backgroundPosition: "center center",
-            backgroundSize: "100% auto",
-            opacity: 0.25,
-            animation: "tv-static 0.45s steps(1) infinite",
-          }}
-        />
-        <div className="container mx-auto px-5 md:px-6 relative">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            {/* Breadcrumb — h1 semántico */}
-            <motion.h1
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="font-medium flex items-center gap-3 mb-1.5 md:mb-5 md:text-[13px] md:uppercase md:text-[#ffffffe0] font-mono"
-            >
-              <span
-                className="md:hidden"
-                style={{ fontSize: "11px", letterSpacing: "1.5px", color: "#5e5e5e", textTransform: "uppercase" }}
-              >
-                MAZZMKT / CONTACTO
-              </span>
-              <span className="hidden md:contents" style={{ letterSpacing: "0.14em" }}>
-                <span className="opacity-50">MAZZMKT</span>
-                <span className="opacity-30">/</span>
-                <span>CONTACTO</span>
-              </span>
-            </motion.h1>
-            {/* Tagline visual */}
-            <div
-              className="normal-case font-bold text-[#ffffff] md:mb-8"
-              style={{
-                fontSize: "var(--font-display)",
-                fontFamily: "var(--font-heading)",
-                lineHeight: "var(--lh-display)",
-                fontWeight: 700,
-                letterSpacing: "-0.045em",
-              }}
-            >
-              <motion.p
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className="font-bold text-[#ffffff]"
-                style={{ fontSize: "inherit", lineHeight: "inherit", fontWeight: "inherit" }}
-              >
-                Hablemos
-              </motion.p>
-              <motion.p
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="hidden md:block font-bold text-[#ffffff]"
-                style={{ fontSize: "inherit", lineHeight: "inherit", fontWeight: "inherit" }}
-              >
-                de tu proyecto
-              </motion.p>
-            </div>
-            {/* Subtítulo visible solo en mobile */}
-            <p className="md:hidden text-[12px] text-[#878787] leading-[1.6] mt-2">
-              ¿Tienes un proyecto en mente? Nos encantaría escucharte.
-            </p>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="hidden md:block max-w-xl text-[18px] text-light/67 mb-9"
-            >
-              Cuéntanos dónde está tu marca, qué necesitas mover y qué resultado quieres conseguir.
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.45 }}
-              className="hidden md:flex items-center gap-3"
-            >
+      <PageHero
+        heading="crumbs"
+        crumbs={[{ label: "Contacto" }]}
+        title={<>Hablemos<br />de tu proyecto</>}
+        subtitle="Cuéntanos dónde está tu marca, qué necesitas mover y qué resultado quieres conseguir."
+        actions={
+          <>
               <a
                 href={whatsappUrl}
                 target="_blank"
@@ -159,10 +82,9 @@ function ContactoPage() {
               >
                 ESCRIBIR MAIL
               </a>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
+          </>
+        }
+      />
 
       {/* Contact Form & Info */}
       <section id="contacto-form" className="bg-dark py-5 md:py-20">
