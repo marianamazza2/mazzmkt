@@ -32,7 +32,7 @@ function TypingDots() {
       {[0, 1, 2].map((i) => (
         <motion.span
           key={i}
-          className="block w-[6px] h-[6px] rounded-full bg-[#141414]"
+          className="block w-[6px] h-[6px] rounded-full bg-dark"
           animate={{ opacity: [0.25, 1, 0.25] }}
           transition={{ duration: 1, repeat: Infinity, delay: i * 0.2 }}
         />
@@ -90,12 +90,12 @@ function ChatMockup() {
       >
         <div
           className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0"
-          style={{ background: "#f1ede1" }}
+          style={{ background: "#ffffff" }}
         >
-          <MessageCircle size={18} strokeWidth={2} style={{ color: "#141414" }} />
+          <MessageCircle size={18} strokeWidth={2} style={{ color: "#0a0a0a" }} />
         </div>
         <div className="flex-1">
-          <p className="text-[13px] font-semibold text-[#f1ede1] leading-tight">Recepción IA · Peluquería</p>
+          <p className="text-[13px] font-semibold text-light leading-tight">Recepción IA · Peluquería</p>
           <p className="text-[11px] flex items-center gap-1.5" style={{ color: "#7ecb8f" }}>
             <span className="block w-[6px] h-[6px] rounded-full" style={{ background: "#7ecb8f" }} />
             En línea
@@ -116,8 +116,8 @@ function ChatMockup() {
             }`}
             style={
               msg.from === "agent"
-                ? { background: "#f1ede1", color: "#141414" }
-                : { background: "rgba(255,255,255,0.08)", color: "#f1ede1" }
+                ? { background: "#ffffff", color: "#0a0a0a" }
+                : { background: "rgba(255,255,255,0.08)", color: "#ffffff" }
             }
           >
             {msg.text}
@@ -129,7 +129,7 @@ function ChatMockup() {
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             className="self-start px-4 py-2 rounded-2xl rounded-bl-md"
-            style={{ background: "#f1ede1" }}
+            style={{ background: "#ffffff" }}
           >
             <TypingDots />
           </motion.div>
@@ -151,8 +151,8 @@ export function AiAgents() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="text-[10px] md:text-[15px] font-medium uppercase mb-3 md:mb-5 md:font-geist"
-              style={{ letterSpacing: "0.13em", color: "#a3a199" }}
+              className="text-[10px] md:text-[13px] font-medium uppercase mb-3 md:mb-5 font-mono"
+              style={{ letterSpacing: "0.13em", color: "#a1a1a1" }}
             >
               Agentes de IA a medida
             </motion.p>
@@ -162,18 +162,18 @@ export function AiAgents() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-bold text-[#ffffff] mb-5 md:mb-6"
+              className="font-bold normal-case text-[#ffffff] mb-5 md:mb-6"
               style={{
-                fontSize: "clamp(30px, 5vw, 60px)",
-                lineHeight: 0.98,
-                letterSpacing: "-0.03em",
+                fontSize: "clamp(36px, 6vw, 88px)",
+                lineHeight: 0.92,
+                letterSpacing: "-0.045em",
               }}
             >
-              UN RECEPCIONISTA
+              Un recepcionista
               <br />
-              QUE NO DUERME,
+              que no duerme,
               <br />
-              <span style={{ color: "#a3a199" }}>NI FALLA.</span>
+              <span style={{ color: "#a1a1a1" }}>ni falla.</span>
             </motion.h2>
 
             <motion.p
@@ -182,7 +182,7 @@ export function AiAgents() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-[14px] md:text-[19px] leading-[1.6] mb-8 max-w-xl"
-              style={{ color: "#b4b2a9" }}
+              style={{ color: "#b3b3b3" }}
             >
               Creamos agentes de IA a medida que responden por ti a cualquier hora,
               agendan citas, resuelven dudas y filtran leads. No son guiones rígidos:
@@ -201,8 +201,8 @@ export function AiAgents() {
                 const Icon = cap.icon;
                 return (
                   <div key={cap.text} className="flex items-center gap-2.5">
-                    <Icon size={18} strokeWidth={1.5} style={{ color: "#f1ede1" }} className="flex-shrink-0" />
-                    <span className="text-[12px] md:text-[14px]" style={{ color: "#d5d1c5" }}>
+                    <Icon size={18} strokeWidth={1.5} style={{ color: "#ffffff" }} className="flex-shrink-0" />
+                    <span className="text-[12px] md:text-[14px]" style={{ color: "#d4d4d4" }}>
                       {cap.text}
                     </span>
                   </div>
@@ -218,7 +218,7 @@ export function AiAgents() {
             >
               <TransitionLink
                 to="/contacto"
-                className="inline-flex items-center gap-3 rounded-sm bg-[#f1ede1] px-7 py-[14px] text-[12px] md:text-sm font-semibold uppercase text-[#141414] transition-opacity hover:opacity-85 font-geist"
+                className="inline-flex items-center gap-3 rounded-sm bg-light px-7 py-[14px] text-[12px] md:text-[13px] font-semibold uppercase text-dark transition-opacity hover:opacity-85 font-mono"
                 style={{ letterSpacing: "0.09em" }}
                 onClick={() => trackEvent("cta_click", { location: "ai_agents", label: "quiero_mi_agente" })}
               >

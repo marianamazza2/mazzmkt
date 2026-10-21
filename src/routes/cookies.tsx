@@ -27,10 +27,10 @@ function CookiesPage() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-[11px] md:text-sm font-medium text-[#f1ede1cc] mb-6 tracking-widest flex items-center gap-3 font-geist"
+              className="text-[11px] md:text-[13px] font-medium text-light/80 mb-6 tracking-widest flex items-center gap-3 font-mono"
             >
               <motion.span
-                className="inline-block w-8 h-[1px] bg-[#f1ede1]"
+                className="inline-block w-8 h-[1px] bg-light"
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
@@ -41,26 +41,28 @@ function CookiesPage() {
               <span>COOKIES</span>
             </motion.p>
             <h1
-              className="font-bold text-[#ffffff]"
+              className="normal-case font-bold text-[#ffffff]"
               style={{
                 fontSize: "var(--font-display)",
+                fontFamily: "var(--font-heading)",
+                letterSpacing: "-0.045em",
                 lineHeight: "var(--lh-display)",
                 fontWeight: 700,
               }}
             >
-              POLÍTICA DE COOKIES
+              Política de cookies
             </h1>
           </motion.div>
         </div>
       </section>
 
-      <section className="bg-light py-14 md:py-24">
+      <section className="bg-dark py-14 md:py-24">
         <div className="container mx-auto px-6 max-w-3xl">
-          <div className="space-y-10 text-[#141414]">
+          <div className="space-y-10 text-light">
 
             {/* Intro */}
             <div>
-              <p className="text-sm text-[#141414aa] mb-4">Última actualización: mayo de 2026</p>
+              <p className="text-sm text-light/67 mb-4">Última actualización: mayo de 2026</p>
               <p className="leading-relaxed">
                 Esta política explica qué cookies y tecnologías similares utiliza el sitio web <strong>mazzmkt.com</strong> (en adelante, «el Sitio»), operado por Mariana Mazzariello bajo la marca MAZZMKT, para qué sirven y cómo puedes controlarlas.
               </p>
@@ -86,7 +88,7 @@ function CookiesPage() {
               <div className="overflow-x-auto">
                 <table className="w-full text-sm border-collapse">
                   <thead>
-                    <tr className="border-b border-[#14141420]">
+                    <tr className="border-b border-light/13">
                       <th className="text-left py-2 pr-4 font-semibold uppercase tracking-wider text-xs">Nombre</th>
                       <th className="text-left py-2 pr-4 font-semibold uppercase tracking-wider text-xs">Tipo</th>
                       <th className="text-left py-2 pr-4 font-semibold uppercase tracking-wider text-xs">Duración</th>
@@ -94,11 +96,11 @@ function CookiesPage() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr className="border-b border-[#14141410]">
+                    <tr className="border-b border-light/6">
                       <td className="py-3 pr-4 font-mono text-xs align-top">mazzmkt_cookie_consent</td>
-                      <td className="py-3 pr-4 align-top text-[#141414aa]">localStorage</td>
-                      <td className="py-3 pr-4 align-top text-[#141414aa]">Permanente</td>
-                      <td className="py-3 text-[#141414aa]">Guarda tu decisión sobre cookies (aceptadas/rechazadas y preferencias por categoría) para no mostrarte el aviso en cada visita.</td>
+                      <td className="py-3 pr-4 align-top text-light/67">localStorage</td>
+                      <td className="py-3 pr-4 align-top text-light/67">Permanente</td>
+                      <td className="py-3 text-light/67">Guarda tu decisión sobre cookies (aceptadas/rechazadas y preferencias por categoría) para no mostrarte el aviso en cada visita.</td>
                     </tr>
                   </tbody>
                 </table>
@@ -115,33 +117,33 @@ function CookiesPage() {
               {/* Google Analytics */}
               <div className="mb-8">
                 <h3 className="font-semibold mb-1">Google Analytics 4</h3>
-                <p className="text-sm text-[#141414aa] mb-3">Solo se activa si aceptas las cookies de analítica.</p>
+                <p className="text-sm text-light/67 mb-3">Solo se activa si aceptas las cookies de analítica.</p>
                 <div className="overflow-x-auto mb-3">
                   <table className="w-full text-sm border-collapse">
                     <thead>
-                      <tr className="border-b border-[#14141420]">
+                      <tr className="border-b border-light/13">
                         <th className="text-left py-2 pr-4 font-semibold uppercase tracking-wider text-xs">Cookie</th>
                         <th className="text-left py-2 pr-4 font-semibold uppercase tracking-wider text-xs">Duración</th>
                         <th className="text-left py-2 font-semibold uppercase tracking-wider text-xs">Finalidad</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr className="border-b border-[#14141410]">
+                      <tr className="border-b border-light/6">
                         <td className="py-3 pr-4 font-mono text-xs align-top">_ga</td>
-                        <td className="py-3 pr-4 align-top text-[#141414aa]">2 años</td>
-                        <td className="py-3 text-[#141414aa]">Identifica usuarios únicos para distinguir sesiones.</td>
+                        <td className="py-3 pr-4 align-top text-light/67">2 años</td>
+                        <td className="py-3 text-light/67">Identifica usuarios únicos para distinguir sesiones.</td>
                       </tr>
                       <tr>
                         <td className="py-3 pr-4 font-mono text-xs align-top">_ga_HHGW5C4PSN</td>
-                        <td className="py-3 pr-4 align-top text-[#141414aa]">2 años</td>
-                        <td className="py-3 text-[#141414aa]">Almacena el estado de la sesión para este ID de propiedad de GA4.</td>
+                        <td className="py-3 pr-4 align-top text-light/67">2 años</td>
+                        <td className="py-3 text-light/67">Almacena el estado de la sesión para este ID de propiedad de GA4.</td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
-                <p className="text-sm text-[#141414aa]">
-                  <strong className="text-[#141414]">Empresa:</strong> Google LLC, EE. UU.{" "}
-                  <strong className="text-[#141414] ml-2">Datos recogidos:</strong> páginas visitadas, tiempo en el sitio, dispositivo, navegador, país, fuente de tráfico, IP anonimizada.{" "}
+                <p className="text-sm text-light/67">
+                  <strong className="text-light">Empresa:</strong> Google LLC, EE. UU.{" "}
+                  <strong className="text-light ml-2">Datos recogidos:</strong> páginas visitadas, tiempo en el sitio, dispositivo, navegador, país, fuente de tráfico, IP anonimizada.{" "}
                   <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="underline ml-1">Política de privacidad</a>
                 </p>
               </div>
@@ -149,38 +151,38 @@ function CookiesPage() {
               {/* Microsoft Clarity */}
               <div className="mb-8">
                 <h3 className="font-semibold mb-1">Microsoft Clarity</h3>
-                <p className="text-sm text-[#141414aa] mb-3">Solo se activa si aceptas las cookies de analítica.</p>
+                <p className="text-sm text-light/67 mb-3">Solo se activa si aceptas las cookies de analítica.</p>
                 <div className="overflow-x-auto mb-3">
                   <table className="w-full text-sm border-collapse">
                     <thead>
-                      <tr className="border-b border-[#14141420]">
+                      <tr className="border-b border-light/13">
                         <th className="text-left py-2 pr-4 font-semibold uppercase tracking-wider text-xs">Cookie</th>
                         <th className="text-left py-2 pr-4 font-semibold uppercase tracking-wider text-xs">Duración</th>
                         <th className="text-left py-2 font-semibold uppercase tracking-wider text-xs">Finalidad</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr className="border-b border-[#14141410]">
+                      <tr className="border-b border-light/6">
                         <td className="py-3 pr-4 font-mono text-xs align-top">_clck</td>
-                        <td className="py-3 pr-4 align-top text-[#141414aa]">1 año</td>
-                        <td className="py-3 text-[#141414aa]">Identifica de forma persistente al usuario para heatmaps y grabaciones.</td>
+                        <td className="py-3 pr-4 align-top text-light/67">1 año</td>
+                        <td className="py-3 text-light/67">Identifica de forma persistente al usuario para heatmaps y grabaciones.</td>
                       </tr>
-                      <tr className="border-b border-[#14141410]">
+                      <tr className="border-b border-light/6">
                         <td className="py-3 pr-4 font-mono text-xs align-top">_clsk</td>
-                        <td className="py-3 pr-4 align-top text-[#141414aa]">1 día</td>
-                        <td className="py-3 text-[#141414aa]">Agrupa acciones del usuario en una misma sesión de grabación.</td>
+                        <td className="py-3 pr-4 align-top text-light/67">1 día</td>
+                        <td className="py-3 text-light/67">Agrupa acciones del usuario en una misma sesión de grabación.</td>
                       </tr>
                       <tr>
                         <td className="py-3 pr-4 font-mono text-xs align-top">CLID</td>
-                        <td className="py-3 pr-4 align-top text-[#141414aa]">1 año</td>
-                        <td className="py-3 text-[#141414aa]">Almacena el identificador de cliente de Clarity.</td>
+                        <td className="py-3 pr-4 align-top text-light/67">1 año</td>
+                        <td className="py-3 text-light/67">Almacena el identificador de cliente de Clarity.</td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
-                <p className="text-sm text-[#141414aa]">
-                  <strong className="text-[#141414]">Empresa:</strong> Microsoft Corporation, EE. UU.{" "}
-                  <strong className="text-[#141414] ml-2">Datos recogidos:</strong> grabaciones de sesión, heatmaps de clics, scroll depth, dispositivo y navegador.{" "}
+                <p className="text-sm text-light/67">
+                  <strong className="text-light">Empresa:</strong> Microsoft Corporation, EE. UU.{" "}
+                  <strong className="text-light ml-2">Datos recogidos:</strong> grabaciones de sesión, heatmaps de clics, scroll depth, dispositivo y navegador.{" "}
                   <a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener noreferrer" className="underline ml-1">Política de privacidad</a>
                 </p>
               </div>
@@ -188,10 +190,10 @@ function CookiesPage() {
               {/* Google Fonts */}
               <div className="mb-8">
                 <h3 className="font-semibold mb-1">Google Fonts</h3>
-                <p className="text-sm text-[#141414aa] mb-3">Se carga siempre, sin necesidad de consentimiento previo, ya que es técnicamente necesario para mostrar la tipografía del Sitio.</p>
-                <p className="text-sm text-[#141414aa]">
-                  <strong className="text-[#141414]">Empresa:</strong> Google LLC, EE. UU.{" "}
-                  <strong className="text-[#141414] ml-2">Datos recogidos:</strong> dirección IP y user-agent para servir la tipografía DM Sans. No instala cookies, pero realiza solicitudes a <em>fonts.googleapis.com</em>.{" "}
+                <p className="text-sm text-light/67 mb-3">Se carga siempre, sin necesidad de consentimiento previo, ya que es técnicamente necesario para mostrar la tipografía del Sitio.</p>
+                <p className="text-sm text-light/67">
+                  <strong className="text-light">Empresa:</strong> Google LLC, EE. UU.{" "}
+                  <strong className="text-light ml-2">Datos recogidos:</strong> dirección IP y user-agent para servir la tipografía DM Sans. No instala cookies, pero realiza solicitudes a <em>fonts.googleapis.com</em>.{" "}
                   <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="underline ml-1">Política de privacidad</a>
                 </p>
               </div>
@@ -199,10 +201,10 @@ function CookiesPage() {
               {/* Formspree */}
               <div className="mb-8">
                 <h3 className="font-semibold mb-1">Formspree</h3>
-                <p className="text-sm text-[#141414aa] mb-3">Solo se activa cuando envías el formulario de contacto del Sitio.</p>
-                <p className="text-sm text-[#141414aa]">
-                  <strong className="text-[#141414]">Empresa:</strong> Formspree Inc., EE. UU.{" "}
-                  <strong className="text-[#141414] ml-2">Datos recogidos:</strong> nombre, dirección de correo electrónico, mensaje y dirección IP del remitente. No instala cookies.{" "}
+                <p className="text-sm text-light/67 mb-3">Solo se activa cuando envías el formulario de contacto del Sitio.</p>
+                <p className="text-sm text-light/67">
+                  <strong className="text-light">Empresa:</strong> Formspree Inc., EE. UU.{" "}
+                  <strong className="text-light ml-2">Datos recogidos:</strong> nombre, dirección de correo electrónico, mensaje y dirección IP del remitente. No instala cookies.{" "}
                   <a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="underline ml-1">Política de privacidad</a>
                 </p>
               </div>
@@ -210,10 +212,10 @@ function CookiesPage() {
               {/* Vercel */}
               <div>
                 <h3 className="font-semibold mb-1">Vercel (infraestructura)</h3>
-                <p className="text-sm text-[#141414aa] mb-3">Siempre activo. Es el proveedor de alojamiento del Sitio y su uso es estrictamente necesario para que este funcione.</p>
-                <p className="text-sm text-[#141414aa]">
-                  <strong className="text-[#141414]">Empresa:</strong> Vercel Inc., EE. UU.{" "}
-                  <strong className="text-[#141414] ml-2">Datos recogidos:</strong> dirección IP, cabeceras de solicitud y registros técnicos de acceso. No instala cookies de seguimiento.{" "}
+                <p className="text-sm text-light/67 mb-3">Siempre activo. Es el proveedor de alojamiento del Sitio y su uso es estrictamente necesario para que este funcione.</p>
+                <p className="text-sm text-light/67">
+                  <strong className="text-light">Empresa:</strong> Vercel Inc., EE. UU.{" "}
+                  <strong className="text-light ml-2">Datos recogidos:</strong> dirección IP, cabeceras de solicitud y registros técnicos de acceso. No instala cookies de seguimiento.{" "}
                   <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="underline ml-1">Política de privacidad</a>
                 </p>
               </div>
@@ -235,8 +237,8 @@ function CookiesPage() {
                   fontWeight: 500,
                   letterSpacing: "0.1em",
                   textTransform: "uppercase",
-                  color: "#f1ede1",
-                  background: "#141414",
+                  color: "#0a0a0a",
+                  background: "#ffffff",
                   padding: "12px 24px",
                   border: "none",
                   borderRadius: "2px",
@@ -247,7 +249,7 @@ function CookiesPage() {
               >
                 Gestionar mis preferencias de cookies
               </button>
-              <ul className="list-disc list-inside space-y-2 text-[#141414cc]">
+              <ul className="list-disc list-inside space-y-2 text-light/80">
                 <li>
                   <strong>Desde tu navegador:</strong> podés eliminar o bloquear cookies en la configuración de tu navegador. Ten en cuenta que bloquear todas las cookies puede afectar al funcionamiento de algunos sitios.
                 </li>

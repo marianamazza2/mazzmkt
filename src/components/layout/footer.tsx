@@ -10,7 +10,7 @@ const socials = [
 
 export function Footer() {
   return (
-    <footer className="bg-[#141414] text-[#ffffff]" style={{ borderTop: "0.5px solid rgba(241, 239, 232, 0.06)" }}>
+    <footer className="bg-dark text-[#ffffff]" style={{ borderTop: "0.5px solid rgba(255, 255, 255, 0.06)" }}>
       {/* Mobile layout */}
       <div className="md:hidden px-5 pt-5 pb-6">
         <div className="flex justify-between items-center mb-3">
@@ -32,8 +32,8 @@ export function Footer() {
                 style={{
                   width: "28px",
                   height: "28px",
-                  border: "0.5px solid rgba(241, 239, 232, 0.08)",
-                  color: "#5F5E5A",
+                  border: "0.5px solid rgba(255, 255, 255, 0.08)",
+                  color: "#5e5e5e",
                 }}
                 onClick={label === "WhatsApp" ? () => trackEvent("whatsapp_click", { location: "footer" }) : undefined}
               >
@@ -47,31 +47,31 @@ export function Footer() {
           <TransitionLink
             to="/aviso-legal"
             className="text-[11px] uppercase inline-flex items-center min-h-[44px]"
-            style={{ color: "#444441", letterSpacing: "0.5px" }}
+            style={{ color: "#444444", letterSpacing: "0.5px" }}
           >
             AVISO LEGAL
           </TransitionLink>
           <TransitionLink
             to="/cookies"
             className="text-[11px] uppercase inline-flex items-center min-h-[44px]"
-            style={{ color: "#444441", letterSpacing: "0.5px" }}
+            style={{ color: "#444444", letterSpacing: "0.5px" }}
           >
             COOKIES
           </TransitionLink>
           <TransitionLink
             to="/privacidad"
             className="text-[11px] uppercase inline-flex items-center min-h-[44px]"
-            style={{ color: "#444441", letterSpacing: "0.5px" }}
+            style={{ color: "#444444", letterSpacing: "0.5px" }}
           >
             PRIVACIDAD
           </TransitionLink>
         </div>
 
-        <div style={{ height: "0.5px", background: "rgba(241, 239, 232, 0.06)", marginBottom: "8px" }} />
+        <div style={{ height: "0.5px", background: "rgba(255, 255, 255, 0.06)", marginBottom: "8px" }} />
 
         <p
           className="text-[11px] uppercase"
-          style={{ letterSpacing: "0.5px", color: "#444441" }}
+          style={{ letterSpacing: "0.5px", color: "#444444" }}
         >
           &copy; {new Date().getFullYear()} MAZZMKT. TODOS LOS DERECHOS RESERVADOS.
         </p>

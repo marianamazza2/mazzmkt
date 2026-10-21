@@ -27,10 +27,10 @@ function AvisoLegalPage() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-[11px] md:text-sm font-medium text-[#f1ede1cc] mb-6 tracking-widest flex items-center gap-3 font-geist"
+              className="text-[11px] md:text-[13px] font-medium text-light/80 mb-6 tracking-widest flex items-center gap-3 font-mono"
             >
               <motion.span
-                className="inline-block w-8 h-[1px] bg-[#f1ede1]"
+                className="inline-block w-8 h-[1px] bg-light"
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
@@ -41,26 +41,28 @@ function AvisoLegalPage() {
               <span>AVISO LEGAL</span>
             </motion.p>
             <h1
-              className="font-bold text-[#ffffff]"
+              className="normal-case font-bold text-[#ffffff]"
               style={{
                 fontSize: "var(--font-display)",
+                fontFamily: "var(--font-heading)",
+                letterSpacing: "-0.045em",
                 lineHeight: "var(--lh-display)",
                 fontWeight: 700,
               }}
             >
-              AVISO LEGAL
+              Aviso legal
             </h1>
           </motion.div>
         </div>
       </section>
 
-      <section className="bg-light py-14 md:py-24">
+      <section className="bg-dark py-14 md:py-24">
         <div className="container mx-auto px-6 max-w-3xl">
-          <div className="space-y-10 text-[#141414]">
+          <div className="space-y-10 text-light">
 
             {/* Intro */}
             <div>
-              <p className="text-sm text-[#141414aa] mb-4">Última actualización: mayo de 2026</p>
+              <p className="text-sm text-light/67 mb-4">Última actualización: mayo de 2026</p>
               <p className="leading-relaxed">
                 En cumplimiento de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se pone a disposición de los usuarios la siguiente información sobre el titular del sitio web <strong>mazzmkt.com</strong>.
               </p>
@@ -69,25 +71,25 @@ function AvisoLegalPage() {
             {/* 1. Datos del titular */}
             <div>
               <h2 className="text-lg font-semibold uppercase tracking-widest mb-4">1. Datos identificativos del titular</h2>
-              <div className="space-y-2 text-[#141414cc]">
+              <div className="space-y-2 text-light/80">
                 <div className="flex gap-3">
-                  <span className="font-semibold min-w-[120px] text-[#141414]">Titular:</span>
+                  <span className="font-semibold min-w-[120px] text-light">Titular:</span>
                   <span>Mariana Mazzariello</span>
                 </div>
                 <div className="flex gap-3">
-                  <span className="font-semibold min-w-[120px] text-[#141414]">NIF:</span>
+                  <span className="font-semibold min-w-[120px] text-light">NIF:</span>
                   <span>Y8040559A</span>
                 </div>
                 <div className="flex gap-3">
-                  <span className="font-semibold min-w-[120px] text-[#141414]">Domicilio:</span>
+                  <span className="font-semibold min-w-[120px] text-light">Domicilio:</span>
                   <span>Barcelona, España</span>
                 </div>
                 <div className="flex gap-3">
-                  <span className="font-semibold min-w-[120px] text-[#141414]">Correo electrónico:</span>
+                  <span className="font-semibold min-w-[120px] text-light">Correo electrónico:</span>
                   <a href="mailto:hola@mazzmkt.com" className="underline">hola@mazzmkt.com</a>
                 </div>
                 <div className="flex gap-3">
-                  <span className="font-semibold min-w-[120px] text-[#141414]">Sitio web:</span>
+                  <span className="font-semibold min-w-[120px] text-light">Sitio web:</span>
                   <span>mazzmkt.com</span>
                 </div>
               </div>
@@ -110,7 +112,7 @@ function AvisoLegalPage() {
               <p className="leading-relaxed mb-3">
                 El usuario se compromete a utilizar el Sitio de conformidad con la ley, la moral, el orden público y las presentes condiciones. Queda expresamente prohibido:
               </p>
-              <ul className="list-disc list-inside space-y-2 text-[#141414cc]">
+              <ul className="list-disc list-inside space-y-2 text-light/80">
                 <li>Usar el Sitio con fines ilegales o lesivos para terceros.</li>
                 <li>Reproducir, distribuir o comunicar públicamente cualquier contenido del Sitio sin autorización expresa del titular.</li>
                 <li>Introducir o difundir en la red virus, código malicioso o cualquier otro elemento que pueda dañar los sistemas informáticos del titular o de terceros.</li>
@@ -135,7 +137,7 @@ function AvisoLegalPage() {
               <p className="leading-relaxed mb-3">
                 El titular no garantiza la disponibilidad, continuidad ni infalibilidad del Sitio, y no se responsabiliza de los daños o perjuicios derivados de:
               </p>
-              <ul className="list-disc list-inside space-y-2 text-[#141414cc]">
+              <ul className="list-disc list-inside space-y-2 text-light/80">
                 <li>Interrupciones, errores o fallos técnicos del Sitio.</li>
                 <li>La presencia de virus u otros elementos dañinos en los contenidos que puedan producir alteraciones en los sistemas informáticos del usuario.</li>
                 <li>El uso que el usuario haga de los contenidos o servicios del Sitio.</li>

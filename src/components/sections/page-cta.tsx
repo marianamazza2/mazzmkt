@@ -56,20 +56,20 @@ export function PageCTA() {
               fontWeight: 500,
               textTransform: "uppercase",
               letterSpacing: "0.3px",
-              color: "#f1ede1",
+              color: "#ffffff",
               lineHeight: "1.2",
               marginBottom: "6px",
             }}
           >
             ¿TIENES UN PROYECTO?
           </h2>
-          <p style={{ fontSize: "12px", color: "#5F5E5A", marginBottom: "16px" }}>
+          <p style={{ fontSize: "12px", color: "#5e5e5e", marginBottom: "16px" }}>
             Hablemos y hagamos algo increíble
           </p>
           <TransitionLink
             to="/contacto"
-            className="inline-flex items-center justify-center rounded-sm text-[11px] font-medium uppercase"
-            style={{ padding: "11px 20px", letterSpacing: "1.5px", background: "#f1ede1", color: "#141414" }}
+            className="font-mono inline-flex items-center justify-center rounded-sm text-[11px] font-medium uppercase"
+            style={{ padding: "11px 20px", letterSpacing: "1.5px", background: "#ffffff", color: "#0a0a0a" }}
             onClick={() => trackEvent("cta_click", { location: "page_cta", label: "comenzar" })}
           >
             COMENZAR
@@ -79,18 +79,19 @@ export function PageCTA() {
         {/* Desktop: original animated CTA */}
         <div className="hidden md:block text-center">
           <h2
-            className="font-bold text-[#ffffff]"
+            className="font-bold normal-case text-[#ffffff]"
             style={{
               fontSize: "var(--font-cta)",
+              fontFamily: "var(--font-heading)",
               lineHeight: "var(--lh-cta)",
-              letterSpacing: "-0.035em",
+              letterSpacing: "-0.045em",
             }}
           >
             <div className="overflow-hidden">
-              <AnimatedText text="HAGAMOS CRECER" delay={0} />
+              <AnimatedText text="Hagamos crecer" delay={0} />
             </div>
             <div className="overflow-hidden mb-10">
-              <AnimatedText text="TUS IDEAS" delay={0.4} />
+              <AnimatedText text="tus ideas" delay={0.4} />
             </div>
           </h2>
 
@@ -102,7 +103,7 @@ export function PageCTA() {
           >
             <TransitionLink
               to="/contacto"
-              className="inline-flex items-center justify-center rounded-sm bg-[#f1ede1] px-8 py-[15px] text-sm font-semibold uppercase text-[#141414] transition-opacity hover:opacity-85 font-geist"
+              className="inline-flex items-center justify-center rounded-sm bg-light px-8 py-[15px] text-[13px] font-semibold uppercase text-dark transition-opacity hover:opacity-85 font-mono"
               style={{ letterSpacing: "0.09em" }}
               onClick={() => trackEvent("cta_click", { location: "page_cta", label: "comenzar" })}
             >

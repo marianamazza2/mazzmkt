@@ -27,7 +27,7 @@ function HomeProjectCard({ project, index }: { project: Project; index: number }
               className="w-full h-full object-cover"
             />
           ) : (
-            <div className="w-full h-full bg-gradient-to-br from-[#d3d1c7] to-[#b4b2a9]" />
+            <div className="w-full h-full bg-gradient-to-br from-[#d2d2d2] to-[#b3b3b3]" />
           )}
         </TransitionLink>
         <div
@@ -35,20 +35,20 @@ function HomeProjectCard({ project, index }: { project: Project; index: number }
         >
           <div>
             <span
-              className="text-[10px] font-semibold uppercase block"
-              style={{ letterSpacing: "1.5px", color: "#B4B2A9" }}
+              className="font-mono text-[10px] font-semibold uppercase block"
+              style={{ letterSpacing: "1.5px", color: "#b3b3b3" }}
             >
               {project.category}
               {!project.client.toLowerCase().startsWith("proyecto propio") && ` · ${project.client}`}
             </span>
             <h3
               className="font-medium uppercase mt-[2px]"
-              style={{ fontSize: "14px", letterSpacing: "0.5px", color: "#f1ede1" }}
+              style={{ fontSize: "14px", letterSpacing: "0.5px", color: "#ffffff" }}
             >
               {project.title}
             </h3>
           </div>
-          <span className="text-[15px] ml-3 shrink-0" style={{ color: "#B4B2A9" }}>›</span>
+          <span className="text-[15px] ml-3 shrink-0" style={{ color: "#b3b3b3" }}>›</span>
         </div>
       </div>
 
@@ -75,16 +75,15 @@ export function Projects() {
           className="mb-4 md:mb-9"
         >
           <h2
-            className="text-[10px] uppercase mb-2 md:text-[15px] md:mb-5 md:font-medium md:font-geist"
-            style={{ letterSpacing: "0.13em", color: "#B4B2A9" }}
+            className="text-[10px] uppercase mb-2 md:text-[13px] md:mb-5 md:font-medium font-mono"
+            style={{ letterSpacing: "0.13em", color: "#b3b3b3" }}
           >
             NUESTRO TRABAJO
           </h2>
           <p
-            className="block text-[24px] font-semibold leading-none text-[#f1ede1] md:text-[clamp(52px,5vw,64px)] md:font-bold md:leading-[0.95] md:tracking-[-0.03em] md:text-[#ffffff]"
-            style={{ letterSpacing: "0" }}
+            className="block text-[30px] font-bold leading-none tracking-[-0.04em] text-light font-heading md:text-[clamp(56px,6vw,88px)] md:font-bold md:leading-[0.92] md:tracking-[-0.045em] md:text-[#ffffff]"
           >
-            PROYECTOS{" "}
+            Proyectos{" "}
             <span className="hidden md:inline" style={{ color: "#ffffff" }}>&raquo;</span>
           </p>
         </motion.div>
@@ -107,11 +106,11 @@ export function Projects() {
           {/* Mobile: botón con borde */}
           <TransitionLink
             to="/proyectos"
-            className="md:hidden inline-flex min-h-[44px] w-full items-center justify-center rounded-sm text-[11px] font-medium uppercase border border-[#f1ede14d] hover:border-[#f1ede1] transition-colors font-geist"
+            className="md:hidden inline-flex min-h-[44px] w-full items-center justify-center rounded-sm text-[11px] font-medium uppercase border border-light/30 hover:border-light transition-colors font-mono"
             style={{
               padding: "11px 24px",
               letterSpacing: "0.09em",
-              color: "#f1ede1",
+              color: "#ffffff",
             }}
           >
             VER TODOS LOS PROYECTOS →
@@ -120,7 +119,7 @@ export function Projects() {
           {/* Desktop: link original */}
           <TransitionLink
             to="/proyectos"
-            className="hidden md:inline-flex items-center justify-center gap-3 rounded-sm border border-[#f1ede14d] px-8 py-[15px] text-sm font-semibold uppercase text-[#f1ede1] transition-colors hover:border-[#f1ede1] font-geist"
+            className="hidden md:inline-flex items-center justify-center gap-3 rounded-sm border border-light/30 px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono"
             style={{ letterSpacing: "0.09em" }}
           >
             VER TODOS LOS PROYECTOS

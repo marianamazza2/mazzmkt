@@ -146,13 +146,13 @@ function BuildShowcase() {
   const Header = () => (
     <>
       <p
-        className="text-[10px] uppercase mb-2 md:text-[15px] md:mb-5 md:font-medium md:font-geist"
-        style={{ letterSpacing: "0.13em", color: "#77766f" }}
+        className="text-[10px] uppercase mb-2 md:text-[13px] md:mb-5 md:font-medium font-mono"
+        style={{ letterSpacing: "0.13em", color: "#8f8f8f" }}
       >
         Lo que construimos
       </p>
-      <h2 className="text-[20px] font-medium leading-[1.1] text-[#141414] md:text-[clamp(52px,5vw,64px)] md:font-bold md:leading-[0.95] md:tracking-[-0.03em]">
-        IA LISTA PARA TU NEGOCIO <span className="hidden md:inline">&raquo;</span>
+      <h2 className="text-[30px] font-bold leading-[1] tracking-[-0.04em] text-light normal-case font-heading md:text-[clamp(56px,6vw,88px)] md:font-bold md:leading-[0.92] md:tracking-[-0.045em]">
+        IA lista para tu negocio <span className="hidden md:inline">&raquo;</span>
       </h2>
     </>
   );
@@ -160,18 +160,18 @@ function BuildShowcase() {
   const Card = ({ cap }: { cap: (typeof capabilities)[number] }) => {
     const Icon = cap.icon;
     return (
-      <div className="group h-full border border-[#14141420] p-5 md:p-8 hover:border-[#141414] hover:bg-[#141414] transition-all duration-300 rounded-sm">
+      <div className="group h-full border border-light/13 p-5 md:p-8 hover:border-light hover:bg-light transition-all duration-300 rounded-sm">
         <Icon
-          className="h-9 w-9 md:h-10 md:w-10 text-[#141414] group-hover:text-[#ffffff] mb-5 md:mb-7 transition-colors"
+          className="h-9 w-9 md:h-10 md:w-10 text-light group-hover:text-[#0a0a0a] mb-5 md:mb-7 transition-colors"
           strokeWidth={1.5}
         />
         <h3
-          className="font-bold text-[#141414] group-hover:text-[#ffffff] mb-3 transition-colors"
+          className="font-bold text-light group-hover:text-[#0a0a0a] mb-3 transition-colors"
           style={{ fontSize: "20px", lineHeight: 1.15, fontWeight: 600, letterSpacing: "-0.02em" }}
         >
           {cap.title}
         </h3>
-        <p className="text-[14px] md:text-[16px] text-[#141414cc] group-hover:text-[#f1ede1cc] leading-[1.55] transition-colors">
+        <p className="text-[14px] md:text-[16px] text-light/80 group-hover:text-dark/80 leading-[1.55] transition-colors">
           {cap.description}
         </p>
       </div>
@@ -181,7 +181,7 @@ function BuildShowcase() {
   return (
     <>
       {/* Desktop: scroll horizontal fijado */}
-      <div ref={targetRef} className="hidden md:block relative h-[220vh] bg-light">
+      <div ref={targetRef} className="hidden md:block relative h-[220vh] bg-dark">
         <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
           <div className="container mx-auto px-6 w-full mb-10">
             <Header />
@@ -197,7 +197,7 @@ function BuildShowcase() {
       </div>
 
       {/* Móvil: carrusel deslizable */}
-      <section className="md:hidden bg-light py-9">
+      <section className="md:hidden bg-dark py-9">
         <div className="container mx-auto px-5 mb-6">
           <Header />
         </div>
@@ -245,7 +245,7 @@ function AgentesIAPage() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-[11px] md:text-[15px] font-medium text-[#888780] md:text-[#ffffffe0] mb-3 md:mb-5 tracking-[1.5px] md:tracking-[0.14em] uppercase flex items-center gap-3 font-geist"
+              className="text-[11px] md:text-[13px] font-medium text-[#878787] md:text-[#ffffffe0] mb-3 md:mb-5 tracking-[1.5px] md:tracking-[0.14em] uppercase flex items-center gap-3 font-mono"
             >
               <span className="opacity-50">MAZZMKT</span>
               <span className="opacity-30">/</span>
@@ -253,17 +253,18 @@ function AgentesIAPage() {
             </motion.p>
 
             <h1
-              className="font-bold text-[#ffffff] mb-5 md:mb-8"
+              className="normal-case font-bold text-[#ffffff] mb-5 md:mb-8"
               style={{
                 fontSize: "var(--font-display)",
+                fontFamily: "var(--font-heading)",
                 lineHeight: "var(--lh-display)",
                 fontWeight: 700,
-                letterSpacing: "-0.035em",
+                letterSpacing: "-0.045em",
               }}
             >
-              IA QUE TRABAJA
+              IA que trabaja
               <br />
-              POR TI <span className="text-[#a3a199]">&raquo;</span>
+              por ti <span className="text-[#a1a1a1]">&raquo;</span>
             </h1>
 
             <motion.p
@@ -271,7 +272,7 @@ function AgentesIAPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.35 }}
               className="text-[14px] md:text-[20px] leading-[1.6] mb-8 md:mb-9 max-w-2xl"
-              style={{ color: "#b4b2a9" }}
+              style={{ color: "#b3b3b3" }}
             >
               Un asistente que atiende, agenda y responde por tu negocio las 24 horas.
               Cada mensaje respondido al instante es una cita más. Y un cliente que no
@@ -286,7 +287,7 @@ function AgentesIAPage() {
             >
               <TransitionLink
                 to="/contacto"
-                className="inline-flex items-center justify-center gap-2 rounded-sm bg-[#f1ede1] px-6 py-[12px] text-[11px] md:px-8 md:py-[15px] md:text-sm font-semibold uppercase text-[#141414] transition-opacity hover:opacity-85 font-geist"
+                className="inline-flex items-center justify-center gap-2 rounded-sm bg-light px-6 py-[12px] text-[11px] md:px-8 md:py-[15px] md:text-[13px] font-semibold uppercase text-dark transition-opacity hover:opacity-85 font-mono"
                 style={{ letterSpacing: "0.09em" }}
                 onClick={() => trackEvent("cta_click", { location: "agentes_hero", label: "quiero_mi_agente" })}
               >
@@ -301,7 +302,7 @@ function AgentesIAPage() {
               </TransitionLink>
               <a
                 href="#casos"
-                className="inline-flex items-center justify-center rounded-sm border border-[#f1ede14d] px-6 py-[12px] text-[11px] md:px-8 md:py-[15px] md:text-sm font-semibold uppercase text-[#f1ede1] transition-colors hover:border-[#f1ede1] font-geist"
+                className="inline-flex items-center justify-center rounded-sm border border-light/30 px-6 py-[12px] text-[11px] md:px-8 md:py-[15px] md:text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono"
                 style={{ letterSpacing: "0.09em" }}
               >
                 VER CASOS DE USO
@@ -322,15 +323,15 @@ function AgentesIAPage() {
               transition={{ duration: 0.6 }}
             >
               <p
-                className="text-[10px] uppercase mb-2 md:text-[15px] md:mb-5 md:font-medium md:font-geist"
-                style={{ letterSpacing: "0.13em", color: "#a3a199" }}
+                className="text-[10px] uppercase mb-2 md:text-[13px] md:mb-5 md:font-medium font-mono"
+                style={{ letterSpacing: "0.13em", color: "#a1a1a1" }}
               >
                 El caso estrella
               </p>
-              <h2 className="text-[20px] font-medium leading-[1.1] text-[#ffffff] md:text-[clamp(44px,5vw,60px)] md:font-bold md:leading-[0.98] md:tracking-[-0.03em] mb-4 md:mb-6">
-                UN RECEPCIONISTA QUE NO DUERME
+              <h2 className="text-[30px] font-bold leading-[1] tracking-[-0.04em] text-[#ffffff] normal-case font-heading md:text-[clamp(44px,5vw,72px)] md:leading-[0.92] md:tracking-[-0.045em] mb-4 md:mb-6">
+                Un recepcionista que no duerme
               </h2>
-              <p className="text-[14px] md:text-[18px] leading-[1.6] max-w-xl" style={{ color: "#b4b2a9" }}>
+              <p className="text-[14px] md:text-[18px] leading-[1.6] max-w-xl" style={{ color: "#b3b3b3" }}>
                 El producto ideal para cualquier negocio con agenda. Atiende cada
                 mensaje, ofrece los huecos libres, confirma la cita y avisa antes para
                 que nadie falte. Todo mientras te dedicas a lo que importa.
@@ -349,14 +350,14 @@ function AgentesIAPage() {
                 className="p-5 md:p-7 rounded-sm border"
                 style={{ borderColor: "rgba(255,255,255,0.12)", background: "rgba(255,255,255,0.03)" }}
               >
-                <p className="text-[15px] md:text-[19px] font-medium text-[#f1ede1] leading-[1.5]">
+                <p className="text-[15px] md:text-[19px] font-medium text-light leading-[1.5]">
                   &laquo;Cada consulta atendida al instante es una cita más y un cliente
                   que no se va a la competencia.&raquo;
                 </p>
               </div>
 
-              <div className="mt-4 md:mt-6 p-5 md:p-6 rounded-sm border-l-2 border-[#f1ede1]">
-                <p className="text-[13px] md:text-[16px] leading-[1.6]" style={{ color: "#b4b2a9" }}>
+              <div className="mt-4 md:mt-6 p-5 md:p-6 rounded-sm border-l-2 border-light">
+                <p className="text-[13px] md:text-[16px] leading-[1.6]" style={{ color: "#b3b3b3" }}>
                   No sustituye a tu equipo, lo libera. Tus profesionales dejan de perder
                   el día respondiendo &laquo;¿qué horario tenéis?&raquo; y se centran en
                   lo que de verdad importa: las conversaciones delicadas, donde el trato
@@ -379,14 +380,14 @@ function AgentesIAPage() {
                   transition={{ duration: 0.4, delay: (index % 4) * 0.08 }}
                   className="border-r border-b border-[#ffffff14] p-6 md:p-8"
                 >
-                  <Icon size={30} strokeWidth={1.5} style={{ color: "#f1ede1" }} className="mb-6 md:mb-8" />
+                  <Icon size={30} strokeWidth={1.5} style={{ color: "#ffffff" }} className="mb-6 md:mb-8" />
                   <h3
                     className="text-[24px] font-bold text-[#ffffff] mb-3"
                     style={{ lineHeight: 1.1, letterSpacing: "-0.02em" }}
                   >
                     {skill.title}
                   </h3>
-                  <p className="text-[17px] leading-[1.5]" style={{ color: "#8a8880" }}>
+                  <p className="text-[17px] leading-[1.5]" style={{ color: "#888888" }}>
                     {skill.description}
                   </p>
                 </motion.div>
@@ -410,34 +411,34 @@ function AgentesIAPage() {
             className="max-w-3xl"
           >
             <p
-              className="text-[10px] uppercase mb-3 md:text-[15px] md:mb-5 md:font-medium md:font-geist"
-              style={{ letterSpacing: "0.13em", color: "#a3a199" }}
+              className="text-[10px] uppercase mb-3 md:text-[13px] md:mb-5 md:font-medium font-mono"
+              style={{ letterSpacing: "0.13em", color: "#a1a1a1" }}
             >
               Mientras dormías
             </p>
-            <h2 className="text-[20px] font-medium leading-[1.1] text-[#ffffff] md:text-[clamp(40px,5vw,56px)] md:font-bold md:leading-[1] md:tracking-[-0.03em] mb-5 md:mb-7">
-              LA ÚLTIMA CITA DE HOY LA AGENDASTE DURMIENDO <span className="hidden md:inline">&raquo;</span>
+            <h2 className="text-[30px] font-bold leading-[1] tracking-[-0.04em] text-[#ffffff] normal-case font-heading md:text-[clamp(44px,5vw,72px)] md:leading-[0.92] md:tracking-[-0.045em] mb-5 md:mb-7">
+              La última cita de hoy la agendaste durmiendo <span className="hidden md:inline">&raquo;</span>
             </h2>
 
             <span
               className="inline-flex items-center gap-2 rounded-full border px-3 py-[6px] mb-6 text-[12px] md:text-[13px]"
-              style={{ borderColor: "rgba(255,255,255,0.18)", color: "#d5d1c5" }}
+              style={{ borderColor: "rgba(255,255,255,0.18)", color: "#d4d4d4" }}
             >
-              <Clock size={14} strokeWidth={1.5} style={{ color: "#a3a199" }} />
+              <Clock size={14} strokeWidth={1.5} style={{ color: "#a1a1a1" }} />
               23:41 · Martes
             </span>
 
-            <p className="text-[14px] md:text-[19px] leading-[1.7] mb-4" style={{ color: "#b4b2a9" }}>
+            <p className="text-[14px] md:text-[19px] leading-[1.7] mb-4" style={{ color: "#b3b3b3" }}>
               Alguien entró a tu WhatsApp buscando hora para el jueves. No había nadie
               despierto en tu negocio, pero tu asistente respondió al instante, revisó
               la agenda, ofreció el único hueco libre y lo confirmó.
             </p>
-            <p className="text-[14px] md:text-[19px] leading-[1.7] mb-7 md:mb-8" style={{ color: "#b4b2a9" }}>
+            <p className="text-[14px] md:text-[19px] leading-[1.7] mb-7 md:mb-8" style={{ color: "#b3b3b3" }}>
               Tú te enteraste a la mañana, con el café. Una cita más, sin que movieras
               un dedo.
             </p>
 
-            <p className="text-[16px] md:text-[24px] font-medium leading-[1.4] text-[#f1ede1]">
+            <p className="text-[16px] md:text-[24px] font-medium leading-[1.4] text-light">
               Mientras tu competencia tiene el móvil en silencio, el tuyo sigue
               trabajando.
             </p>
@@ -446,7 +447,7 @@ function AgentesIAPage() {
       </section>
 
       {/* Cómo trabajamos */}
-      <section className="bg-light py-9 md:py-20">
+      <section className="bg-dark py-9 md:py-20">
         <div className="container mx-auto px-5 md:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -456,13 +457,13 @@ function AgentesIAPage() {
             className="mb-6 md:mb-12"
           >
             <p
-              className="text-[10px] uppercase mb-2 md:text-[15px] md:mb-5 md:font-medium md:font-geist"
-              style={{ letterSpacing: "0.13em", color: "#77766f" }}
+              className="text-[10px] uppercase mb-2 md:text-[13px] md:mb-5 md:font-medium font-mono"
+              style={{ letterSpacing: "0.13em", color: "#8f8f8f" }}
             >
               Cómo lo hacemos
             </p>
-            <h2 className="text-[20px] font-medium leading-[1.1] text-[#141414] md:text-[clamp(52px,5vw,64px)] md:font-bold md:leading-[0.95] md:tracking-[-0.03em]">
-              DE LA IDEA AL AGENTE EN MARCHA <span className="hidden md:inline">&raquo;</span>
+            <h2 className="text-[30px] font-bold leading-[1] tracking-[-0.04em] text-light normal-case font-heading md:text-[clamp(56px,6vw,88px)] md:font-bold md:leading-[0.92] md:tracking-[-0.045em]">
+              De la idea al agente en marcha <span className="hidden md:inline">&raquo;</span>
             </h2>
           </motion.div>
 
@@ -474,16 +475,16 @@ function AgentesIAPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="p-5 md:p-7 border border-[#14141420] rounded-sm"
+                className="p-5 md:p-7 border border-light/13 rounded-sm"
               >
-                <span className="text-4xl md:text-5xl font-bold text-[#14141418]">{item.step}</span>
+                <span className="text-4xl md:text-5xl font-bold text-light/9">{item.step}</span>
                 <h3
-                  className="font-bold text-[#141414] mt-4 mb-2 uppercase"
+                  className="font-bold text-light mt-4 mb-2 uppercase"
                   style={{ fontSize: "18px", lineHeight: 1.1, letterSpacing: "-0.02em" }}
                 >
                   {item.title}
                 </h3>
-                <p className="text-[13px] md:text-[15px] leading-[1.55] text-[#5F5E5A]">{item.description}</p>
+                <p className="text-[13px] md:text-[15px] leading-[1.55] text-[#a1a1a1]">{item.description}</p>
               </motion.div>
             ))}
           </div>
@@ -502,12 +503,12 @@ function AgentesIAPage() {
           >
             <div className="md:max-w-xs">
               <p
-                className="text-[10px] uppercase mb-2 md:text-[15px] md:mb-3 md:font-medium md:font-geist"
-                style={{ letterSpacing: "0.13em", color: "#a3a199" }}
+                className="text-[10px] uppercase mb-2 md:text-[13px] md:mb-3 md:font-medium font-mono"
+                style={{ letterSpacing: "0.13em", color: "#a1a1a1" }}
               >
                 Se conecta con
               </p>
-              <p className="text-[15px] md:text-[18px] leading-[1.5]" style={{ color: "#b4b2a9" }}>
+              <p className="text-[15px] md:text-[18px] leading-[1.5]" style={{ color: "#b3b3b3" }}>
                 Tu agente vive donde ya trabajas. Y si usas otra herramienta, la
                 integramos.
               </p>
@@ -517,9 +518,9 @@ function AgentesIAPage() {
                 <span
                   key={tool}
                   className="inline-flex items-center gap-2 text-[12px] md:text-[14px] px-3 py-[7px] md:px-4 md:py-[9px] rounded-full border"
-                  style={{ borderColor: "rgba(255,255,255,0.18)", color: "#d5d1c5" }}
+                  style={{ borderColor: "rgba(255,255,255,0.18)", color: "#d4d4d4" }}
                 >
-                  <Plug size={13} strokeWidth={1.5} style={{ color: "#a3a199" }} />
+                  <Plug size={13} strokeWidth={1.5} style={{ color: "#a1a1a1" }} />
                   {tool}
                 </span>
               ))}
@@ -546,14 +547,14 @@ function AgentesIAPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="font-bold text-[#ffffff] mx-auto max-w-4xl mb-4 md:mb-6"
+            className="font-bold normal-case text-[#ffffff] mx-auto max-w-4xl mb-4 md:mb-6"
             style={{
-              fontSize: "clamp(24px, 4vw, 56px)",
-              lineHeight: 1.05,
-              letterSpacing: "-0.03em",
+              fontSize: "clamp(32px, 5vw, 80px)",
+              lineHeight: 0.95,
+              letterSpacing: "-0.045em",
             }}
           >
-            CADA DÍA QUE ESPERAS ES OTRA SEMANA DE CITAS PERDIDAS
+            Cada día que esperas es otra semana de citas perdidas
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -561,7 +562,7 @@ function AgentesIAPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.15 }}
             className="text-[14px] md:text-[19px] leading-[1.6] mx-auto max-w-2xl mb-7 md:mb-9"
-            style={{ color: "#b4b2a9" }}
+            style={{ color: "#b3b3b3" }}
           >
             Monta tu asistente esta semana y deja de perder lo que ya estabas por ganar.
           </motion.p>
@@ -573,7 +574,7 @@ function AgentesIAPage() {
           >
             <TransitionLink
               to="/contacto"
-              className="inline-flex items-center justify-center gap-2 rounded-sm bg-[#f1ede1] px-8 py-[15px] text-[12px] md:text-sm font-semibold uppercase text-[#141414] transition-opacity hover:opacity-85 font-geist"
+              className="inline-flex items-center justify-center gap-2 rounded-sm bg-light px-8 py-[15px] text-[12px] md:text-[13px] font-semibold uppercase text-dark transition-opacity hover:opacity-85 font-mono"
               style={{ letterSpacing: "0.09em" }}
               onClick={() => trackEvent("cta_click", { location: "agentes_cta_final", label: "comenzar" })}
             >

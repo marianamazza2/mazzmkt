@@ -2,25 +2,25 @@
 
 @theme {
   /* Colores principales MAZZMKT */
-  --color-dark: #141414;
-  --color-light: #f1ede1;
+  --color-dark: #0a0a0a;
+  --color-light: #ffffff;
 
   /* Colores base */
-  --color-background: #f1ede1;
-  --color-foreground: #141414;
-  --color-card: #f1ede1;
-  --color-card-foreground: #141414;
-  --color-muted: #e5e1d5;
-  --color-muted-foreground: #141414cc;
-  --color-border: #14141420;
+  --color-background: #0a0a0a;
+  --color-foreground: #ffffff;
+  --color-card: #0a0a0a;
+  --color-card-foreground: #ffffff;
+  --color-muted: #1a1a1a;
+  --color-muted-foreground: #ffffffcc;
+  --color-border: #ffffff20;
 
   /* Brand colors */
-  --color-brand-50: #f1ede1;
-  --color-brand-100: #e5e1d5;
-  --color-brand-200: #d5d1c5;
-  --color-brand-300: #b5b1a5;
-  --color-brand-400: #858175;
-  --color-brand-500: #141414;
+  --color-brand-50: #ffffff;
+  --color-brand-100: #ebebeb;
+  --color-brand-200: #d4d4d4;
+  --color-brand-300: #b1b1b1;
+  --color-brand-400: #808080;
+  --color-brand-500: #0a0a0a;
   --color-brand-600: #0f0f0f;
   --color-brand-700: #0a0a0a;
   --color-brand-800: #050505;
@@ -28,7 +28,8 @@
 
   /* Tipografia */
   --font-sans: "DM Sans", system-ui, sans-serif;
-  --font-geist: "DM Sans", system-ui, sans-serif;
+  --font-heading: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
 
   --radius: 0.5rem;
 
@@ -77,11 +78,11 @@
 
 /* Typography scale — fluid, responsive */
 :root {
-  --font-display: 100px;
-  --lh-display: 0.93;
+  --font-display: clamp(64px, 8.5vw, 136px);
+  --lh-display: 0.92;
   --font-section: clamp(22px, 7vw, 98px);
   --lh-section: 1.08;
-  --font-cta: clamp(64px, 6vw, 80px);
+  --font-cta: clamp(64px, 7vw, 112px);
   --lh-cta: 0.98;
   --font-h2: clamp(22px, 5vw, 48px);
   --lh-h2: 1.15;
@@ -90,11 +91,11 @@
 
 @media (max-width: 768px) {
   :root {
-    --font-display: clamp(28px, 8vw, 36px);
-    --lh-display: 1.15;
+    --font-display: clamp(40px, 11vw, 56px);
+    --lh-display: 0.98;
     --font-section: clamp(22px, 6vw, 32px);
     --lh-section: 1.15;
-    --font-cta: clamp(22px, 6vw, 32px);
+    --font-cta: clamp(36px, 10vw, 48px);
     --lh-cta: 1.15;
     --font-h2: clamp(20px, 5vw, 26px);
     --lh-h2: 1.25;
@@ -127,28 +128,32 @@
   }
 
   html {
-    background-color: #f1ede1;
+    background-color: var(--color-background);
   }
 
   body {
-    background-color: #f1ede1;
+    background-color: var(--color-background);
     color: var(--color-foreground);
   }
 
   /* Dark mode - fondo oscuro, texto claro */
   .dark {
-    --color-background: #141414;
-    --color-foreground: #f1ede1;
+    --color-background: #0a0a0a;
+    --color-foreground: #ffffff;
     --color-card: #1a1a1a;
-    --color-card-foreground: #f1ede1;
+    --color-card-foreground: #ffffff;
     --color-muted: #2a2a2a;
-    --color-muted-foreground: #f1ede1cc;
-    --color-border: #f1ede120;
+    --color-muted-foreground: #ffffffcc;
+    --color-border: #ffffff20;
   }
 
   h1, h2, h3, h4, h5, h6 {
     text-transform: uppercase;
     letter-spacing: -0.02em;
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-heading);
   }
 
   .hide-scrollbar {
@@ -199,21 +204,17 @@
 }
 
 @layer utilities {
-  .font-geist {
-    font-family: var(--font-geist);
-  }
-
   .text-balance {
     text-wrap: balance;
   }
 
   .bg-dark {
-    background-color: #141414;
-    color: #f1ede1;
+    background-color: #0a0a0a;
+    color: #ffffff;
   }
 
   .bg-light {
-    background-color: #f1ede1;
-    color: #141414;
+    background-color: #ffffff;
+    color: #0a0a0a;
   }
 }

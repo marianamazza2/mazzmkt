@@ -37,10 +37,10 @@ function ServiciosPage() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-[11px] md:text-sm font-medium text-[#f1ede1cc] mb-6 tracking-widest flex items-center gap-3 font-geist"
+              className="text-[11px] md:text-[13px] font-medium text-light/80 mb-6 tracking-widest flex items-center gap-3 font-mono"
             >
               <motion.span
-                className="inline-block w-8 h-[1px] bg-[#f1ede1]"
+                className="inline-block w-8 h-[1px] bg-light"
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
@@ -52,21 +52,23 @@ function ServiciosPage() {
             </motion.h1>
             {/* Tagline visual */}
             <p
-              className="font-bold text-[#ffffff]"
+              className="normal-case font-bold text-[#ffffff]"
               style={{
                 fontSize: "var(--font-display)",
+                fontFamily: "var(--font-heading)",
+                letterSpacing: "-0.045em",
                 lineHeight: "var(--lh-display)",
                 fontWeight: 700,
               }}
             >
-              LO QUE HACEMOS <span className="text-[#ffffff50]">&raquo;</span>
+              Lo que hacemos <span className="text-[#ffffff50]">&raquo;</span>
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* Services Grid */}
-      <section className="bg-light py-14 md:py-24">
+      <section className="bg-dark py-14 md:py-24">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {services.map((service, index) => {
@@ -82,14 +84,14 @@ function ServiciosPage() {
                   <TransitionLink
                     to="/servicios/$slug"
                     params={{ slug: service.slug }}
-                    className="group block border border-[#14141420] p-10 hover:border-[#141414] hover:bg-[#141414] transition-all duration-300"
+                    className="group block border border-light/13 p-10 hover:border-light hover:bg-light transition-all duration-300"
                   >
                     <IconComponent
-                      className="h-12 w-12 text-[#141414] group-hover:text-[#ffffff] mb-8 transition-colors"
+                      className="h-12 w-12 text-light group-hover:text-[#0a0a0a] mb-8 transition-colors"
                       strokeWidth={1.5}
                     />
                     <h2
-                      className="font-bold text-[#141414] group-hover:text-[#ffffff] mb-4 transition-colors"
+                      className="font-bold text-light group-hover:text-[#0a0a0a] mb-4 transition-colors"
                       style={{
                         fontSize: "clamp(24px, 3vw, 36px)",
                         lineHeight: "1.2",
@@ -97,14 +99,14 @@ function ServiciosPage() {
                     >
                       {service.title}
                     </h2>
-                    <p className="text-lg text-[#141414aa] group-hover:text-[#f1ede1aa] mb-6 transition-colors">
+                    <p className="text-lg text-light/67 group-hover:text-dark/67 mb-6 transition-colors">
                       {service.shortDescription}
                     </p>
                     <ul className="space-y-2">
                       {service.features.slice(0, 3).map((feature) => (
                         <li
                           key={feature}
-                          className="text-sm text-[#141414cc] group-hover:text-[#f1ede1cc] transition-colors"
+                          className="text-sm text-light/80 group-hover:text-dark/80 transition-colors"
                         >
                           • {feature}
                         </li>

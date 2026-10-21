@@ -46,7 +46,7 @@ export function Cursor() {
         mass: 0.5,
       }}
     >
-      <div className="h-4 w-4 rounded-full bg-[#f1ede1]" />
+      <div className="h-4 w-4 rounded-full bg-light" />
     </motion.div>
   );
 }

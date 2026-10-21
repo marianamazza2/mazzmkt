@@ -18,7 +18,7 @@ export const Route = createFileRoute("/servicios/$slug")({
         <h1 className="text-4xl font-bold text-[#ffffff] mb-4">Servicio no encontrado</h1>
         <TransitionLink
           to="/servicios"
-          className="text-[#f1ede1aa] hover:text-[#f1ede1] transition-colors"
+          className="text-light/67 hover:text-light transition-colors"
         >
           Volver a servicios
         </TransitionLink>
@@ -64,10 +64,10 @@ function ServicePage() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-[11px] md:text-sm font-medium text-[#f1ede1cc] mb-8 tracking-widest flex items-center gap-3 font-geist"
+              className="text-[11px] md:text-[13px] font-medium text-light/80 mb-8 tracking-widest flex items-center gap-3 font-mono"
             >
               <motion.span
-                className="inline-block w-8 h-[1px] bg-[#f1ede1]"
+                className="inline-block w-8 h-[1px] bg-light"
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
@@ -79,16 +79,18 @@ function ServicePage() {
             </motion.p>
 
             <h1
-              className="font-bold text-[#ffffff] mb-6"
+              className="normal-case font-bold text-[#ffffff] mb-6"
               style={{
                 fontSize: "var(--font-cta)",
+                fontFamily: "var(--font-heading)",
+                letterSpacing: "-0.045em",
                 lineHeight: "var(--lh-cta)",
                 fontWeight: 700,
               }}
             >
               {service.title}
             </h1>
-            <p className="text-xl text-[#f1ede1aa] max-w-3xl">
+            <p className="text-xl text-light/67 max-w-3xl">
               {service.shortDescription}
             </p>
           </motion.div>
@@ -96,7 +98,7 @@ function ServicePage() {
       </section>
 
       {/* Description */}
-      <section className="bg-light py-14 md:py-24">
+      <section className="bg-dark py-14 md:py-24">
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16">
             <motion.div
@@ -105,10 +107,10 @@ function ServicePage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-sm font-medium text-[#141414aa] mb-6 uppercase tracking-widest font-geist">
+              <h2 className="text-[13px] font-medium text-light/67 mb-6 uppercase tracking-widest font-mono">
                 Descripcion
               </h2>
-              <p className="text-2xl text-[#141414] leading-relaxed">
+              <p className="text-2xl text-light leading-relaxed">
                 {service.description}
               </p>
             </motion.div>
@@ -119,17 +121,17 @@ function ServicePage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <h2 className="text-sm font-medium text-[#141414aa] mb-6 uppercase tracking-widest font-geist">
+              <h2 className="text-[13px] font-medium text-light/67 mb-6 uppercase tracking-widest font-mono">
                 Que incluye
               </h2>
               <ul className="space-y-4">
                 {service.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-3">
                     <CheckCircle2
-                      className="h-6 w-6 text-[#141414] flex-shrink-0 mt-0.5"
+                      className="h-6 w-6 text-light flex-shrink-0 mt-0.5"
                       strokeWidth={1.5}
                     />
-                    <span className="text-lg text-[#141414]">{feature}</span>
+                    <span className="text-lg text-light">{feature}</span>
                   </li>
                 ))}
               </ul>

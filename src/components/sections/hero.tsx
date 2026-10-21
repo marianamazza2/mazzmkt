@@ -26,8 +26,8 @@ export function Hero() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="md:hidden text-[11px] font-medium uppercase mb-[14px]"
-            style={{ letterSpacing: "2.5px", color: "#888780" }}
+            className="font-mono md:hidden text-[11px] font-medium uppercase mb-[14px]"
+            style={{ letterSpacing: "2.5px", color: "#878787" }}
           >
             MAZZMKT — Digital Studio · Barcelona
           </motion.h1>
@@ -37,19 +37,20 @@ export function Hero() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="hidden md:block text-[15px] font-medium text-[#ffffffe0] mb-5 uppercase font-geist"
+            className="hidden md:block text-[13px] font-medium text-[#ffffffe0] mb-5 uppercase font-mono"
             style={{ letterSpacing: "0.14em" }}
           >
             MAZZMKT — Digital Studio · Barcelona
           </motion.h1>
 
           <h2
-            className="font-bold text-[#ffffff] mb-5 md:mb-9"
+            className="font-bold normal-case text-[#ffffff] mb-5 md:mb-9"
             style={{
               fontSize: "var(--font-display)",
+              fontFamily: "var(--font-heading)",
               lineHeight: "var(--lh-display)",
               fontWeight: 700,
-              letterSpacing: "-0.035em",
+              letterSpacing: "-0.045em",
             }}
           >
             <motion.span
@@ -59,7 +60,7 @@ export function Hero() {
               className="font-bold text-[#ffffff]"
               style={{ display: "block", fontSize: "inherit", lineHeight: "inherit", fontWeight: "inherit" }}
             >
-              DISEÑAMOS,
+              Diseñamos,
             </motion.span>
             <motion.span
               initial={{ opacity: 0, y: 30 }}
@@ -68,7 +69,7 @@ export function Hero() {
               className="font-bold text-[#ffffff]"
               style={{ display: "block", fontSize: "inherit", lineHeight: "inherit", fontWeight: "inherit" }}
             >
-              PROGRAMAMOS Y
+              programamos y
             </motion.span>
             <motion.span
               initial={{ opacity: 0, y: 30 }}
@@ -83,7 +84,7 @@ export function Hero() {
                 color: "#ffffff",
               }}
             >
-              AUTOMATIZAMOS
+              automatizamos
             </motion.span>
             <motion.span
               initial={{ opacity: 0, y: 30 }}
@@ -98,7 +99,7 @@ export function Hero() {
                 color: "#ffffff",
               }}
             >
-              TU NEGOCIO DIGITAL
+              tu negocio digital
             </motion.span>
           </h2>
 
@@ -107,8 +108,8 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="md:hidden text-[13px] leading-[1.6] mb-6"
-            style={{ color: "#888780" }}
+            className="md:hidden text-[14px] leading-[1.6] mb-6"
+            style={{ color: "#878787" }}
           >
             Webs, marcas y automatización con código real e inteligencia artificial. Proyectos a medida, listos en días.
           </motion.p>
@@ -122,21 +123,21 @@ export function Hero() {
           >
             <TransitionLink
               to="/proyectos"
-              className="inline-flex items-center justify-center rounded-sm text-[11px] font-medium uppercase"
-              style={{ padding: "11px 20px", letterSpacing: "1.5px", background: "#f1ede1", color: "#141414" }}
+              className="font-mono inline-flex items-center justify-center rounded-sm text-[11px] font-medium uppercase"
+              style={{ padding: "11px 20px", letterSpacing: "1.5px", background: "#ffffff", color: "#0a0a0a" }}
               onClick={() => trackEvent("cta_click", { location: "hero", label: "ver_proyectos" })}
             >
               VER PROYECTOS
             </TransitionLink>
             <TransitionLink
               to="/contacto"
-              className="inline-flex items-center justify-center rounded-sm text-[11px] font-medium uppercase"
+              className="font-mono inline-flex items-center justify-center rounded-sm text-[11px] font-medium uppercase"
               style={{
                 padding: "11px 20px",
                 letterSpacing: "1.5px",
                 background: "transparent",
-                border: "0.5px solid rgba(241,239,232,0.15)",
-                color: "#B4B2A9",
+                border: "0.5px solid rgba(255, 255, 255,0.15)",
+                color: "#b3b3b3",
               }}
               onClick={() => trackEvent("cta_click", { location: "hero", label: "contactar" })}
             >
@@ -153,7 +154,7 @@ export function Hero() {
           >
             <TransitionLink
               to="/proyectos"
-              className="inline-flex items-center justify-center rounded-sm bg-[#f1ede1] px-8 py-[15px] text-sm font-semibold uppercase text-[#141414] transition-opacity hover:opacity-85 font-geist"
+              className="inline-flex items-center justify-center rounded-sm bg-light px-8 py-[15px] text-[13px] font-semibold uppercase text-dark transition-opacity hover:opacity-85 font-mono"
               style={{ letterSpacing: "0.09em" }}
               onClick={() => trackEvent("cta_click", { location: "hero", label: "ver_proyectos" })}
             >
@@ -168,7 +169,7 @@ export function Hero() {
             </TransitionLink>
             <TransitionLink
               to="/contacto"
-              className="inline-flex items-center justify-center rounded-sm border border-[#f1ede14d] px-8 py-[15px] text-sm font-semibold uppercase text-[#f1ede1] transition-colors hover:border-[#f1ede1] font-geist"
+              className="inline-flex items-center justify-center rounded-sm border border-light/30 px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono"
               style={{ letterSpacing: "0.09em" }}
               onClick={() => trackEvent("cta_click", { location: "hero", label: "contactar" })}
             >

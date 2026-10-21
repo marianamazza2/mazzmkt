@@ -15,13 +15,13 @@ function Section({ title, children }: { title: string; children: React.ReactNode
           fontWeight: 600,
           letterSpacing: "0.08em",
           textTransform: "uppercase",
-          color: "#141414",
+          color: "#0a0a0a",
           marginBottom: "14px",
         }}
       >
         {title}
       </h2>
-      <div style={{ fontSize: "14px", lineHeight: 1.8, color: "#141414bb" }}>
+      <div style={{ fontSize: "14px", lineHeight: 1.8, color: "#0a0a0abb" }}>
         {children}
       </div>
     </div>
@@ -64,10 +64,10 @@ function PrivacidadPage() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-[11px] md:text-sm font-medium text-[#f1ede1cc] mb-6 tracking-widest flex items-center gap-3 font-geist"
+              className="text-[11px] md:text-[13px] font-medium text-light/80 mb-6 tracking-widest flex items-center gap-3 font-mono"
             >
               <motion.span
-                className="inline-block w-8 h-[1px] bg-[#f1ede1]"
+                className="inline-block w-8 h-[1px] bg-light"
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
@@ -78,22 +78,24 @@ function PrivacidadPage() {
               <span>PRIVACIDAD</span>
             </motion.p>
             <h1
-              className="font-bold text-[#ffffff]"
+              className="normal-case font-bold text-[#ffffff]"
               style={{
                 fontSize: "var(--font-display)",
+                fontFamily: "var(--font-heading)",
+                letterSpacing: "-0.045em",
                 lineHeight: "var(--lh-display)",
                 fontWeight: 700,
               }}
             >
-              POLÍTICA DE PRIVACIDAD
+              Política de privacidad
             </h1>
           </motion.div>
         </div>
       </section>
 
-      <section className="bg-light py-14 md:py-24">
+      <section className="bg-dark py-14 md:py-24">
         <div className="container mx-auto px-6 max-w-3xl">
-          <p style={{ fontSize: "12px", color: "#141414aa", marginBottom: "40px", letterSpacing: "0.02em" }}>
+          <p style={{ fontSize: "12px", color: "#ffffffaa", marginBottom: "40px", letterSpacing: "0.02em" }}>
             Última actualización: mayo de 2026
           </p>
 
@@ -137,9 +139,9 @@ function PrivacidadPage() {
           <Section title="3. Finalidad y base legal">
             <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "13px", marginBottom: "10px" }}>
               <thead>
-                <tr style={{ borderBottom: "1px solid #14141420" }}>
-                  <th style={{ textAlign: "left", padding: "8px 12px 8px 0", fontWeight: 600, color: "#141414" }}>Finalidad</th>
-                  <th style={{ textAlign: "left", padding: "8px 12px 8px 0", fontWeight: 600, color: "#141414" }}>Base legal</th>
+                <tr style={{ borderBottom: "1px solid #ffffff20" }}>
+                  <th style={{ textAlign: "left", padding: "8px 12px 8px 0", fontWeight: 600, color: "#ffffff" }}>Finalidad</th>
+                  <th style={{ textAlign: "left", padding: "8px 12px 8px 0", fontWeight: 600, color: "#ffffff" }}>Base legal</th>
                 </tr>
               </thead>
               <tbody>
@@ -150,9 +152,9 @@ function PrivacidadPage() {
                   ["Alojamiento e infraestructura (Vercel)", "Interés legítimo en la operación del servicio"],
                   ["Recordar tus preferencias de cookies", "Interés legítimo en respetar tus elecciones"],
                 ].map(([fin, base], i) => (
-                  <tr key={i} style={{ borderBottom: "1px solid #14141410" }}>
-                    <td style={{ padding: "9px 12px 9px 0", color: "#141414cc" }}>{fin}</td>
-                    <td style={{ padding: "9px 12px 9px 0", color: "#141414aa" }}>{base}</td>
+                  <tr key={i} style={{ borderBottom: "1px solid #ffffff10" }}>
+                    <td style={{ padding: "9px 12px 9px 0", color: "#ffffffcc" }}>{fin}</td>
+                    <td style={{ padding: "9px 12px 9px 0", color: "#ffffffaa" }}>{base}</td>
                   </tr>
                 ))}
               </tbody>
@@ -165,10 +167,10 @@ function PrivacidadPage() {
             </P>
             <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "13px", marginBottom: "10px" }}>
               <thead>
-                <tr style={{ borderBottom: "1px solid #14141420" }}>
-                  <th style={{ textAlign: "left", padding: "8px 12px 8px 0", fontWeight: 600, color: "#141414" }}>Proveedor</th>
-                  <th style={{ textAlign: "left", padding: "8px 12px 8px 0", fontWeight: 600, color: "#141414" }}>País</th>
-                  <th style={{ textAlign: "left", padding: "8px 12px 8px 0", fontWeight: 600, color: "#141414" }}>Política de privacidad</th>
+                <tr style={{ borderBottom: "1px solid #ffffff20" }}>
+                  <th style={{ textAlign: "left", padding: "8px 12px 8px 0", fontWeight: 600, color: "#ffffff" }}>Proveedor</th>
+                  <th style={{ textAlign: "left", padding: "8px 12px 8px 0", fontWeight: 600, color: "#ffffff" }}>País</th>
+                  <th style={{ textAlign: "left", padding: "8px 12px 8px 0", fontWeight: 600, color: "#ffffff" }}>Política de privacidad</th>
                 </tr>
               </thead>
               <tbody>
@@ -178,10 +180,10 @@ function PrivacidadPage() {
                   ["Formspree Inc.", "EEUU", "formspree.io/legal/privacy-policy"],
                   ["Vercel Inc.", "EEUU", "vercel.com/legal/privacy-policy"],
                 ].map(([prov, pais, url], i) => (
-                  <tr key={i} style={{ borderBottom: "1px solid #14141410" }}>
-                    <td style={{ padding: "9px 12px 9px 0", color: "#141414cc" }}>{prov}</td>
-                    <td style={{ padding: "9px 12px 9px 0", color: "#141414aa" }}>{pais}</td>
-                    <td style={{ padding: "9px 12px 9px 0", color: "#141414aa", wordBreak: "break-all" }}>{url}</td>
+                  <tr key={i} style={{ borderBottom: "1px solid #ffffff10" }}>
+                    <td style={{ padding: "9px 12px 9px 0", color: "#ffffffcc" }}>{prov}</td>
+                    <td style={{ padding: "9px 12px 9px 0", color: "#ffffffaa" }}>{pais}</td>
+                    <td style={{ padding: "9px 12px 9px 0", color: "#ffffffaa", wordBreak: "break-all" }}>{url}</td>
                   </tr>
                 ))}
               </tbody>
@@ -202,7 +204,7 @@ function PrivacidadPage() {
           <Section title="6. Derechos del interesado">
             <P>
               Podés ejercer los siguientes derechos enviando un correo a{" "}
-              <a href="mailto:mfmazzariello@gmail.com" style={{ color: "#141414", textDecoration: "underline", textUnderlineOffset: "3px" }}>
+              <a href="mailto:mfmazzariello@gmail.com" style={{ color: "#ffffff", textDecoration: "underline", textUnderlineOffset: "3px" }}>
                 mfmazzariello@gmail.com
               </a>
               :
@@ -215,7 +217,7 @@ function PrivacidadPage() {
               <LI><strong>Limitación:</strong> solicitar que suspendamos el tratamiento en determinadas circunstancias.</LI>
               <LI><strong>Portabilidad:</strong> recibir tus datos en un formato estructurado y de uso común.</LI>
               <LI><strong>Retirar el consentimiento:</strong> en cualquier momento, sin que ello afecte la licitud del tratamiento previo. Podés gestionar las cookies desde la{" "}
-                <a href="/cookies" style={{ color: "#141414", textDecoration: "underline", textUnderlineOffset: "3px" }}>
+                <a href="/cookies" style={{ color: "#ffffff", textDecoration: "underline", textUnderlineOffset: "3px" }}>
                   Política de Cookies
                 </a>
                 .
@@ -223,7 +225,7 @@ function PrivacidadPage() {
             </UL>
             <P>
               Respondemos en un plazo máximo de 30 días. Si considerás que el tratamiento no es adecuado, podés reclamar ante la Agencia de Acceso a la Información Pública (Argentina) en{" "}
-              <span style={{ color: "#141414" }}>aaip.gob.ar</span>.
+              <span style={{ color: "#ffffff" }}>aaip.gob.ar</span>.
             </P>
           </Section>
 

@@ -362,30 +362,31 @@ function FAQsPage() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-[11px] md:text-[15px] font-medium text-[#888780] md:text-[#ffffffe0] mb-1.5 md:mb-5 tracking-[1.5px] md:tracking-[0.14em] uppercase flex items-center gap-3 font-geist"
+              className="text-[11px] md:text-[13px] font-medium text-[#878787] md:text-[#ffffffe0] mb-1.5 md:mb-5 tracking-[1.5px] md:tracking-[0.14em] uppercase flex items-center gap-3 font-mono"
             >
               <span className="opacity-50">MAZZMKT</span>
               <span className="opacity-30">/</span>
               <span>FAQS</span>
             </motion.p>
             <h1
-              className="faqs-hero-title font-bold text-[#ffffff]"
+              className="normal-case faqs-hero-title font-bold text-[#ffffff]"
               style={{
                 fontSize: "var(--font-display)",
+                fontFamily: "var(--font-heading)",
                 lineHeight: "var(--lh-display)",
                 fontWeight: 700,
-                letterSpacing: "-0.035em",
+                letterSpacing: "-0.045em",
               }}
             >
-              PREGUNTAS
+              Preguntas
               <br />
-              <span className="text-[#ffffff]">FRECUENTES <span className="hidden md:inline">&raquo;</span></span>
+              <span className="text-[#ffffff]">frecuentes <span className="hidden md:inline">&raquo;</span></span>
             </h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="faqs-hero-subtitle text-[#f1ede1aa] leading-relaxed mt-8 max-w-xl"
+              className="faqs-hero-subtitle text-light/67 leading-relaxed mt-8 max-w-xl"
               style={{ fontSize: "18px" }}
             >
               Lo que necesitas saber antes de trabajar juntos. Sin letra chica,
@@ -400,7 +401,7 @@ function FAQsPage() {
             >
               <a
                 href="#faqs"
-                className="inline-flex items-center justify-center rounded-sm bg-[#f1ede1] px-8 py-[15px] text-sm font-semibold uppercase text-[#141414] transition-opacity hover:opacity-85 font-geist"
+                className="inline-flex items-center justify-center rounded-sm bg-light px-8 py-[15px] text-[13px] font-semibold uppercase text-dark transition-opacity hover:opacity-85 font-mono"
                 style={{ letterSpacing: "0.09em" }}
               >
                 VER PREGUNTAS
@@ -414,7 +415,7 @@ function FAQsPage() {
               </a>
               <TransitionLink
                 to="/contacto"
-                className="inline-flex items-center justify-center rounded-sm border border-[#f1ede14d] px-8 py-[15px] text-sm font-semibold uppercase text-[#f1ede1] transition-colors hover:border-[#f1ede1] font-geist"
+                className="inline-flex items-center justify-center rounded-sm border border-light/30 px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono"
                 style={{ letterSpacing: "0.09em" }}
               >
                 CONTACTAR
@@ -425,7 +426,7 @@ function FAQsPage() {
       </section>
 
       {/* Category Filter  oculto en mobile, visible en desktop */}
-      <section className="hidden md:block bg-light py-7 border-b border-[#14141410]">
+      <section className="hidden md:block bg-dark py-7 border-b border-light/6">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -437,10 +438,10 @@ function FAQsPage() {
               <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
-                className={`rounded-sm px-4 py-2 text-sm font-semibold uppercase transition-all duration-300 font-geist ${
+                className={`rounded-sm px-4 py-2 text-[13px] font-semibold uppercase transition-all duration-300 font-mono ${
                   activeCategory === category
-                    ? "bg-[#141414] text-[#ffffff]"
-                    : "bg-transparent text-[#141414aa] border border-[#14141420] hover:border-[#141414] hover:text-[#141414]"
+                    ? "bg-light text-[#0a0a0a]"
+                    : "bg-transparent text-light/67 border border-light/13 hover:border-light hover:text-light"
                 }`}
                 style={{ letterSpacing: "0.09em" }}
               >
@@ -452,7 +453,7 @@ function FAQsPage() {
       </section>
 
       {/* FAQs Section */}
-      <section id="faqs" className="bg-light py-8 md:py-20">
+      <section id="faqs" className="bg-dark py-8 md:py-20">
         <div className="container mx-auto px-5 md:px-6">
           {/* Dropdown filtro  solo mobile */}
           <div className="relative md:hidden mb-5">
@@ -460,16 +461,16 @@ function FAQsPage() {
               type="button"
               onClick={() => setIsMobileFilterOpen((open) => !open)}
               aria-expanded={isMobileFilterOpen}
-              className="flex w-full items-center justify-between rounded-sm border border-[#f1ede11a] bg-[#141414] px-3 py-2.5 text-left text-[#f1ede1] shadow-[0_12px_30px_rgba(0,0,0,0.18)] backdrop-blur-sm transition-colors hover:border-[#f1ede133]"
+              className="flex w-full items-center justify-between rounded-sm border border-dark/10 bg-light px-3 py-2.5 text-left text-dark shadow-[0_12px_30px_rgba(0,0,0,0.18)] backdrop-blur-sm transition-colors hover:border-dark/20"
             >
               <span className="flex min-w-0 items-center gap-2">
-                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#f1ede1]" />
-                <span className="truncate font-geist text-[12px] font-semibold uppercase tracking-[0.08em]">
+                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-dark" />
+                <span className="truncate font-mono text-[12px] font-semibold uppercase tracking-[0.08em]">
                   {activeCategory}
                 </span>
               </span>
-              <span className="flex items-center gap-2 text-[#f1ede199]">
-                <span className="font-geist text-[11px]">{activeCategoryCount}</span>
+              <span className="flex items-center gap-2 text-dark/60">
+                <span className="font-mono text-[11px]">{activeCategoryCount}</span>
                 <ChevronDown
                   className={`h-4 w-4 transition-transform ${isMobileFilterOpen ? "rotate-180" : ""}`}
                 />
@@ -483,7 +484,7 @@ function FAQsPage() {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: -6, scale: 0.98 }}
                   transition={{ duration: 0.18, ease: "easeOut" }}
-                  className="absolute left-0 right-0 top-[calc(100%+6px)] z-30 overflow-hidden rounded-sm border border-[#f1ede11f] bg-[#1b1b1b] p-1 shadow-[0_18px_40px_rgba(0,0,0,0.35)]"
+                  className="absolute left-0 right-0 top-[calc(100%+6px)] z-30 overflow-hidden rounded-sm border border-dark/12 bg-[#1b1b1b] p-1 shadow-[0_18px_40px_rgba(0,0,0,0.35)]"
                 >
                   {categoryCounts.map((category) => {
                     const isActive = category.value === activeCategory;
@@ -498,15 +499,15 @@ function FAQsPage() {
                         }}
                         className={`flex w-full items-center justify-between rounded-[2px] px-3 py-2.5 text-left transition-colors ${
                           isActive
-                            ? "bg-[#f1ede1] text-[#141414]"
-                            : "text-[#f1ede1cc] hover:bg-[#f1ede10d] hover:text-[#ffffff]"
+                            ? "bg-dark text-light"
+                            : "text-dark/80 hover:bg-dark/5 hover:text-[#0a0a0a]"
                         }`}
                       >
-                        <span className="font-geist text-[12px] font-semibold uppercase tracking-[0.08em]">
+                        <span className="font-mono text-[12px] font-semibold uppercase tracking-[0.08em]">
                           {category.value}
                         </span>
                         <span className="flex items-center gap-2">
-                          <span className="font-geist text-[11px] opacity-70">{category.count}</span>
+                          <span className="font-mono text-[11px] opacity-70">{category.count}</span>
                           {isActive && <Check className="h-3.5 w-3.5" />}
                         </span>
                       </button>
@@ -538,8 +539,8 @@ function FAQsPage() {
                     transition={{ duration: 0.4, delay: index * 0.05 }}
                     className={`rounded-sm border transition-all duration-500 ${
                       isOpen
-                        ? "border-[#141414] bg-[#141414]"
-                        : "border-[#14141420] bg-transparent hover:border-[#14141460]"
+                        ? "border-light bg-light"
+                        : "border-light/13 bg-transparent hover:border-light/38"
                     }`}
                   >
                     <button
@@ -551,13 +552,13 @@ function FAQsPage() {
                         <div className="flex items-center gap-2 md:gap-3 mb-1.5 md:mb-2">
                           <IconComponent
                             className={`w-3 h-3 md:w-5 md:h-5 transition-colors duration-300 ${
-                              isOpen ? "text-[#ffffffaa]" : "text-[#141414aa]"
+                              isOpen ? "text-[#0a0a0aaa]" : "text-light/67"
                             }`}
                             strokeWidth={1.5}
                           />
                           <span
-                            className={`text-[10px] md:text-xs font-semibold tracking-[1.5px] md:tracking-widest transition-colors duration-300 font-geist ${
-                              isOpen ? "text-[#ffffffaa]" : "text-[#141414aa]"
+                            className={`text-[10px] md:text-xs font-semibold tracking-[1.5px] md:tracking-widest transition-colors duration-300 font-mono ${
+                              isOpen ? "text-[#0a0a0aaa]" : "text-light/67"
                             }`}
                           >
                             {faq.category}
@@ -565,7 +566,7 @@ function FAQsPage() {
                         </div>
                         <h2
                           className={`text-sm md:text-[22px] lg:text-[24px] font-bold leading-tight transition-colors duration-300 ${
-                            isOpen ? "text-[#ffffff]" : "text-[#141414]"
+                            isOpen ? "text-[#0a0a0a]" : "text-light"
                           }`}
                           style={{ letterSpacing: "-0.025em" }}
                         >
@@ -577,8 +578,8 @@ function FAQsPage() {
                       <div
                         className={`w-7 h-7 md:w-10 md:h-10 flex items-center justify-center border transition-all duration-300 flex-shrink-0 ${
                           isOpen
-                            ? "border-[#ffffff30] text-[#ffffff]"
-                            : "border-[#14141420] text-[#141414]"
+                            ? "border-[#0a0a0a30] text-[#0a0a0a]"
+                            : "border-light/13 text-light"
                         }`}
                       >
                         {isOpen ? (
@@ -600,7 +601,7 @@ function FAQsPage() {
                           className="overflow-hidden"
                         >
                           <div className="px-4 md:px-7 lg:px-8 pb-4 md:pb-8 lg:pb-10">
-                            <div className="faqs-answer-text max-w-4xl text-[#ffffffaa] md:text-[17px] leading-relaxed mb-3 md:mb-6 space-y-4">
+                            <div className="faqs-answer-text max-w-4xl text-[#0a0a0aaa] md:text-[17px] leading-relaxed mb-3 md:mb-6 space-y-4">
                               {faq.answer.split("\n\n").map((paragraph, i) => (
                                 <p key={i}>{paragraph}</p>
                               ))}
@@ -610,13 +611,13 @@ function FAQsPage() {
                                 initial={{ opacity: 0, x: -10 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: 0.2 }}
-                                className="inline-flex items-center gap-2 md:gap-3 px-3 py-2.5 md:px-4 md:py-3 bg-[#ffffff10] border-l-2 border-[#ffffff]"
+                                className="inline-flex items-center gap-2 md:gap-3 px-3 py-2.5 md:px-4 md:py-3 bg-[#0a0a0a10] border-l-2 border-[#0a0a0a]"
                               >
                                 <Zap
-                                  className="w-3 h-3 md:w-4 md:h-4 text-[#ffffff] flex-shrink-0"
+                                  className="w-3 h-3 md:w-4 md:h-4 text-[#0a0a0a] flex-shrink-0"
                                   strokeWidth={1.5}
                                 />
-                                <span className="text-[#ffffff] text-[11px] md:text-[15px] font-medium">
+                                <span className="text-[#0a0a0a] text-[11px] md:text-[15px] font-medium">
                                   {faq.highlight}
                                 </span>
                               </motion.div>
@@ -643,7 +644,7 @@ function FAQsPage() {
             transition={{ duration: 0.6 }}
             className="mb-10 md:mb-12"
           >
-            <p className="text-[10px] md:text-[15px] font-medium text-[#ffffffaa] mb-6 md:mb-5 uppercase tracking-[0.13em] flex items-center gap-3 font-geist">
+            <p className="text-[10px] md:text-[13px] font-medium text-[#ffffffaa] mb-6 md:mb-5 uppercase tracking-[0.13em] flex items-center gap-3 font-mono">
               <span className="inline-block w-8 h-[1px] bg-[#ffffff]" />
               EN NUMEROS
             </p>
@@ -668,7 +669,7 @@ function FAQsPage() {
                 >
                   {stat.number}
                 </p>
-                <p className="text-xs font-semibold text-[#ffffff] uppercase font-geist" style={{ letterSpacing: "0.09em" }}>
+                <p className="text-xs font-semibold text-[#ffffff] uppercase font-mono" style={{ letterSpacing: "0.09em" }}>
                   {stat.label}
                 </p>
                 <p className="text-xs text-[#ffffffaa]">{stat.sublabel}</p>

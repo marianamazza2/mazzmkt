@@ -47,7 +47,7 @@ function SobreMiPage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="md:hidden text-[11px] font-medium uppercase mb-[14px]"
-              style={{ letterSpacing: "2.5px", color: "#888780" }}
+              style={{ letterSpacing: "2.5px", color: "#878787" }}
             >
               MAZZMKT / SOBRE MI
             </motion.h1>
@@ -56,19 +56,20 @@ function SobreMiPage() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="hidden md:block text-[15px] font-medium text-[#ffffffe0] mb-5 uppercase font-geist"
+              className="hidden md:block text-[13px] font-medium text-[#ffffffe0] mb-5 uppercase font-mono"
               style={{ letterSpacing: "0.14em" }}
             >
               AGENCIA DE MARKETING DIGITAL - QUIENES SOMOS
             </motion.h1>
 
             <div
-              className="font-bold text-[#ffffff] mb-5 md:mb-9"
+              className="normal-case font-bold text-[#ffffff] mb-5 md:mb-9"
               style={{
                 fontSize: "var(--font-display)",
+                fontFamily: "var(--font-heading)",
                 lineHeight: "var(--lh-display)",
                 fontWeight: 700,
-                letterSpacing: "-0.035em",
+                letterSpacing: "-0.045em",
               }}
             >
               <motion.p
@@ -78,7 +79,7 @@ function SobreMiPage() {
                 className="font-bold text-[#ffffff]"
                 style={{ fontSize: "inherit", lineHeight: "inherit", fontWeight: "inherit" }}
               >
-                HUMANO
+                Humano
               </motion.p>
               <motion.p
                 initial={{ opacity: 0, y: 30 }}
@@ -87,12 +88,12 @@ function SobreMiPage() {
                 className="font-bold text-[#ffffff]"
                 style={{ fontSize: "inherit", lineHeight: "inherit", fontWeight: "inherit" }}
               >
-                Y DIGITAL
+                y digital
               </motion.p>
             </div>
 
             {/* Mobile: subtitle */}
-            <p className="md:hidden text-[13px] text-[#888780] leading-[1.6] mb-6">
+            <p className="md:hidden text-[13px] text-[#878787] leading-[1.6] mb-6">
               Estrategia, creatividad y tecnología para que las marcas brillen con intención.
             </p>
 
@@ -100,7 +101,7 @@ function SobreMiPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="hidden md:block max-w-xl text-[18px] text-[#f1ede1aa] mb-9"
+              className="hidden md:block max-w-xl text-[18px] text-light/67 mb-9"
             >
               Estrategia, creatividad y tecnología para que las marcas brillen con intención.
             </motion.p>
@@ -114,7 +115,7 @@ function SobreMiPage() {
               <a
                 href="#quienes-somos"
                 className="inline-flex items-center justify-center rounded-sm text-[11px] font-medium uppercase"
-                style={{ padding: "11px 20px", letterSpacing: "1.5px", background: "#f1ede1", color: "#141414" }}
+                style={{ padding: "11px 20px", letterSpacing: "1.5px", background: "#ffffff", color: "#0a0a0a" }}
               >
                 CONÓCENOS
               </a>
@@ -125,8 +126,8 @@ function SobreMiPage() {
                   padding: "11px 20px",
                   letterSpacing: "1.5px",
                   background: "transparent",
-                  border: "0.5px solid rgba(241,239,232,0.15)",
-                  color: "#B4B2A9",
+                  border: "0.5px solid rgba(255, 255, 255,0.15)",
+                  color: "#b3b3b3",
                 }}
               >
                 CONTACTAR
@@ -141,7 +142,7 @@ function SobreMiPage() {
             >
               <a
                 href="#quienes-somos"
-                className="inline-flex items-center justify-center rounded-sm bg-[#f1ede1] px-8 py-[15px] text-sm font-semibold uppercase text-[#141414] transition-opacity hover:opacity-85 font-geist"
+                className="inline-flex items-center justify-center rounded-sm bg-light px-8 py-[15px] text-[13px] font-semibold uppercase text-dark transition-opacity hover:opacity-85 font-mono"
                 style={{ letterSpacing: "0.09em" }}
               >
                 CONÓCENOS
@@ -155,7 +156,7 @@ function SobreMiPage() {
               </a>
               <TransitionLink
                 to="/contacto"
-                className="inline-flex items-center justify-center rounded-sm border border-[#f1ede14d] px-8 py-[15px] text-sm font-semibold uppercase text-[#f1ede1] transition-colors hover:border-[#f1ede1] font-geist"
+                className="inline-flex items-center justify-center rounded-sm border border-light/30 px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono"
                 style={{ letterSpacing: "0.09em" }}
               >
                 CONTACTAR
@@ -166,14 +167,14 @@ function SobreMiPage() {
             <div className="flex items-start gap-12 mt-12 max-md:gap-4 max-md:mt-0">
               <div>
                 <p className="font-bold text-[#ffffff] text-[22px] md:text-5xl" style={{ letterSpacing: "-0.5px" }}>10+</p>
-                <p className="uppercase text-[#f1ede1aa] mt-1 font-geist text-[10px] md:text-xs md:tracking-widest" style={{ letterSpacing: "1.5px" }}>Proyectos</p>
+                <p className="uppercase text-light/67 mt-1 font-mono text-[10px] md:text-xs md:tracking-widest" style={{ letterSpacing: "1.5px" }}>Proyectos</p>
               </div>
-              <div className="md:hidden self-stretch w-px bg-[#f1ede1]/10" />
+              <div className="md:hidden self-stretch w-px bg-light/10" />
               <div>
                 <p className="font-bold text-[#ffffff] text-[22px] md:text-5xl" style={{ letterSpacing: "-0.5px" }}>98%</p>
-                <p className="uppercase text-[#f1ede1aa] mt-1 font-geist text-[10px] md:text-xs md:tracking-widest" style={{ letterSpacing: "1.5px" }}>Satisfacción</p>
+                <p className="uppercase text-light/67 mt-1 font-mono text-[10px] md:text-xs md:tracking-widest" style={{ letterSpacing: "1.5px" }}>Satisfacción</p>
               </div>
-              <div className="md:hidden self-stretch w-px bg-[#f1ede1]/10" />
+              <div className="md:hidden self-stretch w-px bg-light/10" />
             </div>
           </motion.div>
         </div>
@@ -190,15 +191,15 @@ function SobreMiPage() {
               transition={{ duration: 0.6 }}
             >
               <p
-                className="text-[10px] uppercase mb-1 md:text-[15px] md:mb-5 md:font-medium md:font-geist"
-                style={{ letterSpacing: "0.13em", color: "#B4B2A9" }}
+                className="text-[10px] uppercase mb-1 md:text-[13px] md:mb-5 md:font-medium font-mono"
+                style={{ letterSpacing: "0.13em", color: "#b3b3b3" }}
               >
                 CREEMOS EN
               </p>
-              <h2 className="text-[20px] font-medium leading-[1.1] text-[#ffffff] md:text-[clamp(52px,5vw,64px)] md:font-bold md:leading-[0.95] md:tracking-[-0.03em]">
-                NUESTROS
+              <h2 className="text-[30px] font-bold leading-[1] tracking-[-0.04em] text-[#ffffff] normal-case font-heading md:text-[clamp(56px,6vw,88px)] md:font-bold md:leading-[0.92] md:tracking-[-0.045em]">
+                Nuestros
                 <br />
-                VALORES <span className="hidden md:inline">&raquo;</span>
+                valores <span className="hidden md:inline">&raquo;</span>
               </h2>
             </motion.div>
 
@@ -216,10 +217,10 @@ function SobreMiPage() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.1 * index }}
-                  className="flex items-center gap-2.5 md:gap-4 py-3.5 px-4 md:p-6 border border-[#f1ede14d] hover:border-[#f1ede1] transition-colors rounded-sm"
+                  className="flex items-center gap-2.5 md:gap-4 py-3.5 px-4 md:p-6 border border-light/30 hover:border-light transition-colors rounded-sm"
                 >
-                  <CheckCircle2 className="h-[18px] w-[18px] md:h-6 md:w-6 text-[#B4B2A9] md:text-[#f1ede1] flex-shrink-0" strokeWidth={1.5} />
-                  <p className="text-[13px] md:text-lg text-[#f1ede1aa] leading-[1.5]">{creencia.text}</p>
+                  <CheckCircle2 className="h-[18px] w-[18px] md:h-6 md:w-6 text-[#b3b3b3] md:text-light flex-shrink-0" strokeWidth={1.5} />
+                  <p className="text-[13px] md:text-lg text-light/67 leading-[1.5]">{creencia.text}</p>
                 </motion.div>
               ))}
             </motion.div>
@@ -228,7 +229,7 @@ function SobreMiPage() {
       </section>
 
       {/* Quiénes somos */}
-      <section id="quienes-somos" className="bg-light py-7 md:py-20">
+      <section id="quienes-somos" className="bg-dark py-7 md:py-20">
         <div className="container mx-auto px-5 md:px-6">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -238,18 +239,18 @@ function SobreMiPage() {
             className="max-w-3xl"
           >
             <p
-              className="text-[10px] uppercase mb-1 md:text-[15px] md:mb-5 md:font-medium md:font-geist"
-              style={{ letterSpacing: "0.13em", color: "#B4B2A9" }}
+              className="text-[10px] uppercase mb-1 md:text-[13px] md:mb-5 md:font-medium font-mono"
+              style={{ letterSpacing: "0.13em", color: "#b3b3b3" }}
             >
               DETRÁS DE MAZZMKT
             </p>
-            <h2 className="text-[20px] font-medium leading-[1.1] text-[#141414] md:text-[clamp(52px,5vw,64px)] md:font-bold md:leading-[0.95] md:tracking-[-0.03em] mb-3 md:mb-8">
-              NUESTRA HISTORIA <span className="hidden md:inline">&raquo;</span>
+            <h2 className="text-[30px] font-bold leading-[1] tracking-[-0.04em] text-light normal-case font-heading md:text-[clamp(56px,6vw,88px)] md:font-bold md:leading-[0.92] md:tracking-[-0.045em] mb-3 md:mb-8">
+              Nuestra historia <span className="hidden md:inline">&raquo;</span>
             </h2>
-            <p className="text-[13px] md:text-lg text-[#5F5E5A] leading-[1.7] mb-4 md:mb-6">
+            <p className="text-[13px] md:text-lg text-[#a1a1a1] leading-[1.7] mb-4 md:mb-6">
               MazzMkt nació de una combinación poco usual: recursos humanos, código, diseño y marketing. Venimos de entender a las personas antes que a los píxeles, y eso lo cambió todo. Aprendimos que el marketing que realmente funciona, escucha, entiende y conecta.
             </p>
-            <p className="text-[13px] md:text-lg text-[#5F5E5A] leading-[1.7] mb-5 md:mb-8">
+            <p className="text-[13px] md:text-lg text-[#a1a1a1] leading-[1.7] mb-5 md:mb-8">
               Hoy somos una agencia pequeña con propósito grande. Trabajamos con marcas que quieren más que visibilidad: quieren crecer, diferenciarse y ser recordadas. Combinamos estrategia, creatividad e inteligencia artificial para construir identidades que se ven bien, se sienten bien y convierten. Sin fórmulas copiadas, sin promesas vacías.
             </p>
 
@@ -258,7 +259,7 @@ function SobreMiPage() {
                 href="https://instagram.com/mazzmkt"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-sm border border-[#14141426] px-5 py-[11px] text-[11px] md:px-8 md:py-[15px] md:text-sm font-semibold uppercase text-[#141414] transition-colors hover:bg-[#141414] hover:text-[#f1ede1] font-geist"
+                className="inline-flex items-center justify-center gap-2 rounded-sm border border-light/15 px-5 py-[11px] text-[11px] md:px-8 md:py-[15px] md:text-[13px] font-semibold uppercase text-light transition-colors hover:bg-light hover:text-dark font-mono"
                 style={{ letterSpacing: "0.09em" }}
               >
                 <svg className="w-[15px] h-[15px] flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
@@ -270,7 +271,7 @@ function SobreMiPage() {
                 href="https://linkedin.com/company/mazzmkt"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-sm border border-[#14141426] px-5 py-[11px] text-[11px] md:px-8 md:py-[15px] md:text-sm font-semibold uppercase text-[#141414] transition-colors hover:bg-[#141414] hover:text-[#f1ede1] font-geist"
+                className="inline-flex items-center justify-center gap-2 rounded-sm border border-light/15 px-5 py-[11px] text-[11px] md:px-8 md:py-[15px] md:text-[13px] font-semibold uppercase text-light transition-colors hover:bg-light hover:text-dark font-mono"
                 style={{ letterSpacing: "0.09em" }}
               >
                 <svg className="w-[15px] h-[15px] flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">

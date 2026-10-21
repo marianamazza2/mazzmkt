@@ -65,7 +65,7 @@ export function CookieBanner() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             className="fixed inset-0 z-[99]"
-            style={{ background: "rgba(20, 20, 20, 0.7)", backdropFilter: "blur(2px)" }}
+            style={{ background: "rgba(10, 10, 10, 0.7)", backdropFilter: "blur(2px)" }}
           />
 
           {/* Modal */}
@@ -79,8 +79,8 @@ export function CookieBanner() {
             <div
               className="w-full max-w-md"
               style={{
-                background: "#141414",
-                border: "0.5px solid rgba(241, 237, 225, 0.12)",
+                background: "#0a0a0a",
+                border: "0.5px solid rgba(255, 255, 255, 0.12)",
                 borderRadius: "6px",
                 overflow: "hidden",
               }}
@@ -97,20 +97,20 @@ export function CookieBanner() {
                     className="px-7 py-7"
                   >
                     <p
-                      className="text-[#f1ede1] mb-3 font-sans"
+                      className="text-light mb-3 font-sans"
                       style={{ fontSize: "13px", fontWeight: 500, letterSpacing: "0.06em", textTransform: "uppercase" }}
                     >
                       Cookies
                     </p>
                     <p
                       className="font-sans mb-6"
-                      style={{ fontSize: "12px", fontWeight: 400, lineHeight: 1.7, color: "rgba(241,237,225,0.5)", letterSpacing: "0.01em" }}
+                      style={{ fontSize: "12px", fontWeight: 400, lineHeight: 1.7, color: "rgba(255, 255, 255,0.5)", letterSpacing: "0.01em" }}
                     >
                       Usamos cookies propias y de terceros para analizar el uso del sitio y mejorar tu experiencia. Podés aceptar todas, rechazarlas o configurar tus preferencias.{" "}
                       <TransitionLink
                         to="/cookies"
                         className="transition-colors"
-                        style={{ color: "rgba(241,237,225,0.7)", textDecoration: "underline", textUnderlineOffset: "3px" }}
+                        style={{ color: "rgba(255, 255, 255,0.7)", textDecoration: "underline", textUnderlineOffset: "3px" }}
                         onClick={() => setVisible(false)}
                       >
                         Política de cookies
@@ -124,10 +124,10 @@ export function CookieBanner() {
                         className="font-sans w-full cursor-pointer transition-colors"
                         style={{
                           fontSize: "11px", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase",
-                          color: "#141414", background: "#f1ede1", padding: "13px 0", border: "none", borderRadius: "2px",
+                          color: "#0a0a0a", background: "#ffffff", padding: "13px 0", border: "none", borderRadius: "2px",
                         }}
                         onMouseEnter={e => (e.currentTarget.style.background = "#ffffff")}
-                        onMouseLeave={e => (e.currentTarget.style.background = "#f1ede1")}
+                        onMouseLeave={e => (e.currentTarget.style.background = "#ffffff")}
                       >
                         Aceptar todas
                       </button>
@@ -137,11 +137,11 @@ export function CookieBanner() {
                           className="font-sans flex-1 cursor-pointer transition-colors"
                           style={{
                             fontSize: "11px", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase",
-                            color: "rgba(241,237,225,0.5)", background: "transparent", padding: "13px 0",
-                            border: "0.5px solid rgba(241,237,225,0.1)", borderRadius: "2px",
+                            color: "rgba(255, 255, 255,0.5)", background: "transparent", padding: "13px 0",
+                            border: "0.5px solid rgba(255, 255, 255,0.1)", borderRadius: "2px",
                           }}
-                          onMouseEnter={e => (e.currentTarget.style.color = "rgba(241,237,225,0.8)")}
-                          onMouseLeave={e => (e.currentTarget.style.color = "rgba(241,237,225,0.5)")}
+                          onMouseEnter={e => (e.currentTarget.style.color = "rgba(255, 255, 255,0.8)")}
+                          onMouseLeave={e => (e.currentTarget.style.color = "rgba(255, 255, 255,0.5)")}
                         >
                           Preferencias
                         </button>
@@ -150,11 +150,11 @@ export function CookieBanner() {
                           className="font-sans flex-1 cursor-pointer transition-colors"
                           style={{
                             fontSize: "11px", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase",
-                            color: "rgba(241,237,225,0.5)", background: "transparent", padding: "13px 0",
-                            border: "0.5px solid rgba(241,237,225,0.1)", borderRadius: "2px",
+                            color: "rgba(255, 255, 255,0.5)", background: "transparent", padding: "13px 0",
+                            border: "0.5px solid rgba(255, 255, 255,0.1)", borderRadius: "2px",
                           }}
-                          onMouseEnter={e => (e.currentTarget.style.color = "rgba(241,237,225,0.8)")}
-                          onMouseLeave={e => (e.currentTarget.style.color = "rgba(241,237,225,0.5)")}
+                          onMouseEnter={e => (e.currentTarget.style.color = "rgba(255, 255, 255,0.8)")}
+                          onMouseLeave={e => (e.currentTarget.style.color = "rgba(255, 255, 255,0.5)")}
                         >
                           Rechazar
                         </button>
@@ -174,15 +174,15 @@ export function CookieBanner() {
                     <button
                       onClick={() => setShowPrefs(false)}
                       className="flex items-center gap-2 mb-5 cursor-pointer transition-colors"
-                      style={{ color: "rgba(241,237,225,0.35)", fontSize: "11px", fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase", background: "none", border: "none", padding: 0 }}
-                      onMouseEnter={e => (e.currentTarget.style.color = "rgba(241,237,225,0.7)")}
-                      onMouseLeave={e => (e.currentTarget.style.color = "rgba(241,237,225,0.35)")}
+                      style={{ color: "rgba(255, 255, 255,0.35)", fontSize: "11px", fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase", background: "none", border: "none", padding: 0 }}
+                      onMouseEnter={e => (e.currentTarget.style.color = "rgba(255, 255, 255,0.7)")}
+                      onMouseLeave={e => (e.currentTarget.style.color = "rgba(255, 255, 255,0.35)")}
                     >
                       <span style={{ fontSize: "14px" }}>←</span> Volver
                     </button>
 
                     <p
-                      className="text-[#f1ede1] mb-5 font-sans"
+                      className="text-light mb-5 font-sans"
                       style={{ fontSize: "13px", fontWeight: 500, letterSpacing: "0.06em", textTransform: "uppercase" }}
                     >
                       Preferencias
@@ -210,10 +210,10 @@ export function CookieBanner() {
                       className="font-sans w-full cursor-pointer transition-colors"
                       style={{
                         fontSize: "11px", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase",
-                        color: "#141414", background: "#f1ede1", padding: "13px 0", border: "none", borderRadius: "2px",
+                        color: "#0a0a0a", background: "#ffffff", padding: "13px 0", border: "none", borderRadius: "2px",
                       }}
                       onMouseEnter={e => (e.currentTarget.style.background = "#ffffff")}
-                      onMouseLeave={e => (e.currentTarget.style.background = "#f1ede1")}
+                      onMouseLeave={e => (e.currentTarget.style.background = "#ffffff")}
                     >
                       Guardar preferencias
                     </button>
@@ -244,13 +244,13 @@ function CookieRow({
   return (
     <div
       className="flex items-start justify-between gap-4 pb-4"
-      style={{ borderBottom: "0.5px solid rgba(241,237,225,0.07)" }}
+      style={{ borderBottom: "0.5px solid rgba(255, 255, 255,0.07)" }}
     >
       <div className="flex-1">
-        <p className="font-sans mb-1" style={{ fontSize: "12px", fontWeight: 500, color: "#f1ede1", letterSpacing: "0.03em" }}>
+        <p className="font-sans mb-1" style={{ fontSize: "12px", fontWeight: 500, color: "#ffffff", letterSpacing: "0.03em" }}>
           {title}
         </p>
-        <p className="font-sans" style={{ fontSize: "11px", fontWeight: 400, color: "rgba(241,237,225,0.4)", lineHeight: 1.6 }}>
+        <p className="font-sans" style={{ fontSize: "11px", fontWeight: 400, color: "rgba(255, 255, 255,0.4)", lineHeight: 1.6 }}>
           {description}
         </p>
       </div>
@@ -265,7 +265,7 @@ function CookieRow({
         <div
           style={{
             width: "36px", height: "20px", borderRadius: "10px",
-            background: enabled ? "#f1ede1" : "rgba(241,237,225,0.12)",
+            background: enabled ? "#ffffff" : "rgba(255, 255, 255,0.12)",
             position: "relative",
             transition: "background 0.2s",
             opacity: locked ? 0.4 : 1,
@@ -276,7 +276,7 @@ function CookieRow({
               position: "absolute", top: "3px",
               left: enabled ? "19px" : "3px",
               width: "14px", height: "14px", borderRadius: "50%",
-              background: enabled ? "#141414" : "rgba(241,237,225,0.5)",
+              background: enabled ? "#0a0a0a" : "rgba(255, 255, 255,0.5)",
               transition: "left 0.2s",
             }}
           />

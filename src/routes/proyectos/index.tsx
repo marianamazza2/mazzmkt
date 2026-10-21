@@ -21,8 +21,8 @@ function ProyectosPage() {
       <section
         className="pt-24 pb-5 md:pt-32 md:pb-16 overflow-hidden relative"
         style={{
-          backgroundColor: "#141414",
-          color: "#f1ede1",
+          backgroundColor: "#0a0a0a",
+          color: "#ffffff",
         }}
       >
         <div
@@ -42,13 +42,13 @@ function ProyectosPage() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="font-medium flex items-center gap-3 mb-8 max-md:mb-1.5 md:mb-5 md:text-[15px] md:uppercase md:text-[#ffffffe0] md:font-geist"
-              style={{ fontFamily: "var(--font-geist)" }}
+              className="font-medium flex items-center gap-3 mb-8 max-md:mb-1.5 md:mb-5 md:text-[13px] md:uppercase md:text-[#ffffffe0] font-mono"
+              style={{ fontFamily: "var(--font-mono)" }}
             >
               {/* Mobile breadcrumb */}
               <span
                 className="md:hidden"
-                style={{ fontSize: "11px", letterSpacing: "1.5px", color: "#5F5E5A", textTransform: "uppercase" }}
+                style={{ fontSize: "11px", letterSpacing: "1.5px", color: "#5e5e5e", textTransform: "uppercase" }}
               >
                 MAZZMKT / PROYECTOS
               </span>
@@ -62,12 +62,13 @@ function ProyectosPage() {
 
             {/* Main Title — tagline visual */}
             <h2
-              className="font-bold text-[#ffffff]"
+              className="normal-case font-bold text-[#ffffff]"
               style={{
                 fontSize: "var(--font-display)",
+                fontFamily: "var(--font-heading)",
                 lineHeight: "var(--lh-display)",
                 fontWeight: 700,
-                letterSpacing: "-0.035em",
+                letterSpacing: "-0.045em",
               }}
             >
               <motion.span
@@ -76,7 +77,7 @@ function ProyectosPage() {
                 transition={{ duration: 0.6, delay: 0.1 }}
                 className="block"
               >
-                NUESTRO
+                Nuestro
               </motion.span>
               <motion.span
                 initial={{ opacity: 0, y: 30 }}
@@ -84,7 +85,7 @@ function ProyectosPage() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="block"
               >
-                TRABAJO
+                trabajo
               </motion.span>
             </h2>
 
@@ -94,12 +95,12 @@ function ProyectosPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
               className="max-w-xl mt-8 max-md:mt-2"
-              style={{ color: "#f1ede1aa" }}
+              style={{ color: "#ffffffaa" }}
             >
               {/* Mobile: short text */}
               <span
                 className="md:hidden"
-                style={{ fontSize: "12px", lineHeight: "1.6", color: "#888780" }}
+                style={{ fontSize: "12px", lineHeight: "1.6", color: "#878787" }}
               >
                 Cada proyecto es una historia de transformación digital.
               </span>
@@ -118,7 +119,7 @@ function ProyectosPage() {
             >
               <a
                 href="#proyectos"
-                className="inline-flex items-center justify-center rounded-sm bg-[#f1ede1] px-8 py-[15px] text-sm font-semibold uppercase text-[#141414] transition-opacity hover:opacity-85 font-geist"
+                className="inline-flex items-center justify-center rounded-sm bg-light px-8 py-[15px] text-[13px] font-semibold uppercase text-dark transition-opacity hover:opacity-85 font-mono"
                 style={{ letterSpacing: "0.09em" }}
               >
                 VER PROYECTOS
@@ -132,7 +133,7 @@ function ProyectosPage() {
               </a>
               <TransitionLink
                 to="/contacto"
-                className="inline-flex items-center justify-center rounded-sm border border-[#f1ede14d] px-8 py-[15px] text-sm font-semibold uppercase text-[#f1ede1] transition-colors hover:border-[#f1ede1] font-geist"
+                className="inline-flex items-center justify-center rounded-sm border border-light/30 px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono"
                 style={{ letterSpacing: "0.09em" }}
               >
                 CONTACTAR
@@ -154,7 +155,7 @@ function ProyectosPage() {
                   {projects.length}+
                 </p>
                 <p
-                  className="uppercase text-[#f1ede1aa] mt-1 font-geist text-[10px] md:text-xs md:tracking-widest"
+                  className="uppercase text-light/67 mt-1 font-mono text-[10px] md:text-xs md:tracking-widest"
                   style={{ letterSpacing: "1.5px" }}
                 >
                   Proyectos
@@ -163,7 +164,7 @@ function ProyectosPage() {
               {/* Mobile divider */}
               <div
                 className="md:hidden self-stretch"
-                style={{ width: "0.5px", background: "rgba(241, 239, 232, 0.08)" }}
+                style={{ width: "0.5px", background: "rgba(255, 255, 255, 0.08)" }}
               />
               <div>
                 <p
@@ -173,7 +174,7 @@ function ProyectosPage() {
                   98%
                 </p>
                 <p
-                  className="uppercase text-[#f1ede1aa] mt-1 font-geist text-[10px] md:text-xs md:tracking-widest"
+                  className="uppercase text-light/67 mt-1 font-mono text-[10px] md:text-xs md:tracking-widest"
                   style={{ letterSpacing: "1.5px" }}
                 >
                   Satisfacción
@@ -192,9 +193,9 @@ function ProyectosPage() {
             <motion.div
               animate={{ y: [0, 8, 0] }}
               transition={{ duration: 1.5, repeat: Infinity }}
-              className="w-[1px] h-16 bg-gradient-to-b from-[#f1ede1] to-transparent"
+              className="w-[1px] h-16 bg-gradient-to-b from-light to-transparent"
             />
-            <span className="text-[10px] uppercase tracking-widest text-[#f1ede1aa] rotate-90 origin-center translate-y-8 font-geist">
+            <span className="text-[10px] uppercase tracking-widest text-light/67 rotate-90 origin-center translate-y-8 font-mono">
               Scroll
             </span>
           </motion.div>

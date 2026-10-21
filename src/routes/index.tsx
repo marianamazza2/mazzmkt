@@ -37,8 +37,8 @@ function HomePage() {
       <Marquee />
       <HowWeWork />
       <AiAgents />
-      <Intro />
       <Services />
+      <Intro />
       <Projects />
     </>
   );

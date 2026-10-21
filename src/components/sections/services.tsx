@@ -1,5 +1,5 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { Code, Palette, MessageCircle, Bot, Zap, Wand2, BarChart2, Share2, Target, ShoppingCart, Globe } from "lucide-react";
+import { Code, Bot, Zap, Wand2, Target, ShoppingCart, Globe, Workflow } from "lucide-react";
 import { useRef, useState } from "react";
 import { TransitionLink } from "@/components/transition/transition-link";
 
@@ -22,75 +22,49 @@ const mainServices = [
     subtitle: "TIENDAS ONLINE | E-COMMERCE",
     description: "Tu tienda online sin las limitaciones de los templates.",
   },
-  {
-    icon: Palette,
-    title: "BRANDING",
-    subtitle: "IDENTIDAD VISUAL | ESTRATEGIA",
-    description: "Identidad visual, estrategia y carácter. Marcas que la gente recuerda.",
-  },
-  {
-    icon: Share2,
-    title: "REDES SOCIALES",
-    subtitle: "REDES SOCIALES | SOCIAL MEDIA",
-    description: "Estrategia, contenido y gestión diaria.",
-  },
-  {
-    icon: BarChart2,
-    title: "ANALYTICS & TRACKING",
-    subtitle: "GA4 | TAG MANAGER | PÍXELES",
-    description: "GA4, Tag Manager, Clarity, píxeles. Decisiones con datos reales.",
-  },
 ];
+
+const alsoServices = ["Branding", "Redes Sociales", "Analytics & Tracking"];
 
 const aiServices = [
   {
+    icon: Bot,
+    title: "AGENTES IA",
+    description: "Atienden y venden por ti en WhatsApp y web, a cualquier hora. Los viste en acción más arriba.",
+  },
+  {
     icon: Zap,
     title: "AUTOMATIZACIÓN",
-    description: "Flujos que conectan tus herramientas y hacen que tu negocio opere solo.",
+    description: "Flujos que conectan tus herramientas y hacen que tu negocio opere solo, sin tareas manuales repetidas.",
   },
   {
-    icon: Bot,
-    title: "AGENTES IA A MEDIDA",
-    description: "Responden por ti a cualquier hora, califican leads y cierran ventas. Sin guiones rígidos: entienden y actúan.",
-  },
-  {
-    icon: MessageCircle,
-    title: "VENTAS POR WHATSAPP",
-    description: "El canal donde vive tu agente: atiende, responde y vende directamente en el chat.",
-  },
-  {
-    icon: Globe,
-    title: "SEO CON IA",
-    description: "Diseño a medida, alto rendimiento técnico y resultados desde el primer día.",
+    icon: Workflow,
+    title: "INTEGRACIONES",
+    description: "Conectamos tu CRM, agenda, email y las apps que ya usas para que la información viva en un solo sitio.",
   },
   {
     icon: Wand2,
     title: "IA GENERATIVA",
-    description: "Imágenes, avatares, reels y videos. Producción visual a escala.",
+    description: "Imágenes, avatares, reels y vídeos. Producción de contenido visual a escala.",
+  },
+  {
+    icon: Globe,
+    title: "SEO CON IA",
+    description: "Contenido Y ESTRUCTURA optimizada con IA. Más visibilidad orgánica.",
   },
   {
     icon: Target,
     title: "SEM & PUBLICIDAD META",
-    description: "Google Ads, Meta Ads. Campañas optimizadas con AI.",
+    description: "Google Ads y Meta Ads. Campañas creadas y optimizadas con IA.",
   },
 ];
 
-const mobileAiCards = [
-  { icon: Bot, title: "Agentes IA", subtitle: "Responden y venden por ti" },
-  { icon: Zap, title: "Automatización", subtitle: "Tu negocio opera solo" },
-  { icon: MessageCircle, title: "WhatsApp", subtitle: "Tu agente en el chat" },
-  { icon: Globe, title: "SEO con IA", subtitle: "Visibilidad real" },
-];
-
-
-function ServiceCard({
+function ServiceCardDark({
   service,
   index,
-  variant = "main",
 }: {
   service: (typeof mainServices)[0] | (typeof aiServices)[0];
   index: number;
-  variant?: "main" | "ai";
 }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const mouseX = useMotionValue(0);
@@ -112,7 +86,6 @@ function ServiceCard({
     mouseY.set(0);
   };
 
-  const isMain = variant === "main";
   const Icon = service.icon;
 
   return (
@@ -126,140 +99,169 @@ function ServiceCard({
       onMouseLeave={handleMouseLeave}
       className="group relative h-full"
     >
-      <div className="relative border border-[#14141420] h-full hover:border-[#141414] hover:bg-[#141414] transition-all duration-300 overflow-hidden rounded-sm">
+      <div className="relative border border-[#ffffff20] h-full hover:border-light hover:bg-light transition-all duration-300 overflow-hidden rounded-sm">
         <motion.div
           className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0"
           style={{
             background: useTransform(
               [glowX, glowY],
               ([x, y]) =>
-                `radial-gradient(circle at ${x}% ${y}%, rgba(241, 237, 225, 0.08) 0%, transparent 50%)`
-            ),
-          }}
-        />
-
-        <div className={`relative z-10 ${isMain ? "p-5 md:p-8" : "p-5 md:p-7"}`}>
-          <div className="flex items-start justify-between mb-6 md:mb-7">
-            <Icon
-              className={`${isMain ? "h-10 w-10" : "h-8 w-8"} text-[#141414] group-hover:text-[#ffffff] transition-colors`}
-              strokeWidth={1.5}
-            />
-            <span className="text-4xl md:text-5xl font-bold text-[#14141415] group-hover:text-[#ffffff20] transition-colors duration-300">
-              {String(index + 1).padStart(2, "0")}
-            </span>
-          </div>
-
-          <h3
-            className="font-bold text-[#141414] group-hover:text-[#ffffff] mb-3 transition-colors"
-            style={{ fontSize: "24px", lineHeight: 1.12, fontWeight: 600, letterSpacing: "-0.025em" }}
-          >
-            {service.title}
-          </h3>
-
-          {"subtitle" in service && (
-            <p className="text-[13px] font-medium text-[#141414b8] group-hover:text-[#f1ede1cc] mb-4 uppercase transition-colors"
-              style={{ letterSpacing: "0.08em" }}>
-              {(service as (typeof mainServices)[0]).subtitle}
-            </p>
-          )}
-
-          <p className={`${isMain ? "text-[17px]" : "text-base"} text-[#141414cc] group-hover:text-[#f1ede1cc] leading-[1.55] transition-colors`}>
-            {service.description}
-          </p>
-        </div>
-
-        <div className="absolute top-0 right-0 w-12 h-12 overflow-hidden pointer-events-none">
-          <div className="absolute top-0 right-0 w-[1px] h-0 bg-[#f1ede1] group-hover:h-12 transition-all duration-300" />
-          <div className="absolute top-0 right-0 w-0 h-[1px] bg-[#f1ede1] group-hover:w-12 transition-all duration-300" />
-        </div>
-      </div>
-    </motion.div>
-  );
-}
-
-function ServiceCardDark({
-  service,
-  index,
-}: {
-  service: (typeof mainServices)[0];
-  index: number;
-}) {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const springConfig = { damping: 25, stiffness: 150 };
-  const glowX = useSpring(useTransform(mouseX, [-0.5, 0.5], [0, 100]), springConfig);
-  const glowY = useSpring(useTransform(mouseY, [-0.5, 0.5], [0, 100]), springConfig);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    mouseX.set((e.clientX - rect.left) / rect.width - 0.5);
-    mouseY.set((e.clientY - rect.top) / rect.height - 0.5);
-  };
-
-  const handleMouseLeave = () => {
-    mouseX.set(0);
-    mouseY.set(0);
-  };
-
-  const Icon = service.icon;
-
-  return (
-    <motion.div
-      ref={cardRef}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      className="group relative"
-    >
-      <div className="relative border border-[#ffffff20] h-full hover:border-[#f1ede1] hover:bg-[#f1ede1] transition-all duration-300 overflow-hidden rounded-sm">
-        <motion.div
-          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0"
-          style={{
-            background: useTransform(
-              [glowX, glowY],
-              ([x, y]) =>
-                `radial-gradient(circle at ${x}% ${y}%, rgba(20, 20, 20, 0.08) 0%, transparent 50%)`
+                `radial-gradient(circle at ${x}% ${y}%, rgba(10, 10, 10, 0.08) 0%, transparent 50%)`
             ),
           }}
         />
 
         <div className="relative z-10 p-5 md:p-8">
           <div className="flex items-start justify-between mb-6 md:mb-7">
-            <Icon className="h-10 w-10 text-[#f1ede1] group-hover:text-[#141414] transition-colors" strokeWidth={1.5} />
-            <span className="text-4xl md:text-5xl font-bold text-[#ffffff15] group-hover:text-[#14141420] transition-colors duration-300">
+            <Icon className="h-10 w-10 text-light group-hover:text-dark transition-colors" strokeWidth={1.5} />
+            <span className="font-mono text-[13px] text-light/50 group-hover:text-dark/60 transition-colors duration-300">
               {String(index + 1).padStart(2, "0")}
             </span>
           </div>
 
           <h3
-            className="font-bold text-[#f1ede1] group-hover:text-[#141414] mb-3 transition-colors"
+            className="font-bold text-light group-hover:text-dark mb-3 transition-colors"
             style={{ fontSize: "24px", lineHeight: 1.12, fontWeight: 600, letterSpacing: "-0.025em" }}
           >
             {service.title}
           </h3>
 
-          <p className="text-[13px] font-medium uppercase text-[#f1ede1c2] group-hover:text-[#141414b8] mb-4 transition-colors"
-            style={{ letterSpacing: "0.08em" }}>
-            {service.subtitle}
-          </p>
+          {"subtitle" in service && (
+            <p className="font-mono text-[13px] font-medium uppercase text-light/76 group-hover:text-dark/72 mb-4 transition-colors"
+              style={{ letterSpacing: "0.08em" }}>
+              {(service as (typeof mainServices)[0]).subtitle}
+            </p>
+          )}
 
-          <p className="text-[17px] text-[#f1ede1cc] group-hover:text-[#141414cc] leading-[1.55] transition-colors">
+          <p className="text-[17px] text-light/80 group-hover:text-dark/80 leading-[1.55] transition-colors">
             {service.description}
           </p>
         </div>
 
         <div className="absolute top-0 right-0 w-12 h-12 overflow-hidden pointer-events-none">
-          <div className="absolute top-0 right-0 w-[1px] h-0 bg-[#141414] group-hover:h-12 transition-all duration-300" />
-          <div className="absolute top-0 right-0 w-0 h-[1px] bg-[#141414] group-hover:w-12 transition-all duration-300" />
+          <div className="absolute top-0 right-0 w-[1px] h-0 bg-dark group-hover:h-12 transition-all duration-300" />
+          <div className="absolute top-0 right-0 w-0 h-[1px] bg-dark group-hover:w-12 transition-all duration-300" />
         </div>
       </div>
     </motion.div>
+  );
+}
+
+function AiHeader() {
+  return (
+    <>
+      <h2
+        className="text-[10px] uppercase mb-2 md:text-[13px] md:mb-5 md:font-medium font-mono"
+        style={{ letterSpacing: "0.13em", color: "#a1a1a1" }}
+      >
+        Servicios con Inteligencia Artificial
+      </h2>
+      <p className="text-[30px] font-bold leading-[1] tracking-[-0.04em] text-[#ffffff] font-heading md:text-[clamp(56px,6vw,88px)] md:font-bold md:leading-[0.92] md:tracking-[-0.045em]">
+        Tu negocio en{" "}
+        <span className="hidden md:inline text-[#a1a1a1]">modo IA</span>
+        <span className="md:hidden">modo IA</span>
+        <span className="hidden md:inline text-[#a1a1a1]"> &raquo;</span>
+      </p>
+      <p
+        className="text-[14px] leading-[1.7] mt-3 md:text-[19px] md:leading-[1.55] md:mt-6 md:max-w-2xl"
+        style={{ color: "#b3b3b3" }}
+      >
+        Más allá del agente: la IA automatiza tus procesos, conecta tus herramientas y produce tu contenido. Tu negocio funcionando solo, de fondo.
+      </p>
+    </>
+  );
+}
+
+function AiShowcase() {
+  const [selectedAiService, setSelectedAiService] = useState(0);
+
+  return (
+    <>
+      {/* Desktop: rejilla de cards */}
+      <section className="hidden md:block bg-dark pt-18 pb-10">
+        <div className="container mx-auto px-6">
+          <div className="mb-10">
+            <AiHeader />
+          </div>
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
+            {aiServices.map((service, index) => (
+              <ServiceCardDark key={service.title} service={service} index={index} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Móvil: slider (mismo estilo que "Lo que hacemos", en dark) */}
+      <section className="md:hidden bg-dark pt-7">
+        <div className="container mx-auto px-5 mb-6">
+          <AiHeader />
+        </div>
+        <div className="px-5">
+          <div className="h-[190px]">
+            {(() => {
+              const active = aiServices[selectedAiService];
+              const ActiveIcon = active.icon;
+              const total = aiServices.length;
+              const handleNext = () => setSelectedAiService((prev) => (prev + 1) % total);
+              const handlePrev = () => setSelectedAiService((prev) => (prev - 1 + total) % total);
+              return (
+                <motion.div
+                  key={selectedAiService}
+                  initial={{ opacity: 0, x: 24 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.22, ease: "easeOut" }}
+                  className="rounded-[0.25rem] p-5 h-full overflow-hidden select-none cursor-grab active:cursor-grabbing border border-[#ffffff20]"
+                  style={{ background: "#1a1a1a" }}
+                  drag="x"
+                  dragConstraints={{ left: 0, right: 0 }}
+                  dragElastic={0.08}
+                  onDragEnd={(_, info) => {
+                    if (info.offset.x < -50) handleNext();
+                    else if (info.offset.x > 50) handlePrev();
+                  }}
+                >
+                  <div className="flex items-center gap-3 mb-4">
+                    <div
+                      className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
+                      style={{ background: "rgba(255, 255, 255, 0.08)" }}
+                    >
+                      <ActiveIcon size={20} strokeWidth={1.5} style={{ color: "#ffffff" }} />
+                    </div>
+                    <p className="text-[13px] font-semibold uppercase text-light" style={{ letterSpacing: "0.04em" }}>
+                      {active.title}
+                    </p>
+                  </div>
+
+                  <p className="text-[13px] leading-[1.6]" style={{ color: "#b3b3b3" }}>
+                    {active.description}
+                  </p>
+                </motion.div>
+              );
+            })()}
+          </div>
+
+          {/* Dots navigation */}
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "5px", paddingTop: "18px" }}>
+            {aiServices.map((_, i) => (
+              <span
+                key={i}
+                onClick={() => setSelectedAiService(i)}
+                style={{
+                  display: "block",
+                  width: i === selectedAiService ? "18px" : "4px",
+                  height: "4px",
+                  borderRadius: "9999px",
+                  backgroundColor: i === selectedAiService ? "#ffffff" : "rgba(255, 255, 255,0.25)",
+                  transition: "width 300ms ease-out, background-color 300ms ease-out",
+                  cursor: "pointer",
+                  flexShrink: 0,
+                }}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
 
@@ -271,7 +273,7 @@ export function Services() {
 
   return (
     <>
-      {/* Main Services — Dark Section */}
+      {/* Main Services — Light Section */}
       <section className="bg-dark py-7 md:py-18">
         <div className="container mx-auto px-5 md:px-6">
           <motion.div
@@ -281,15 +283,15 @@ export function Services() {
             transition={{ duration: 0.6 }}
             className="mb-4 md:mb-10"
           >
-            <h2 className="text-[10px] font-medium uppercase mb-2 md:text-[15px] md:mb-5 md:flex md:items-center md:gap-3 md:font-geist"
-              style={{ letterSpacing: "0.13em", color: "#a3a199" }}>
+            <h2 className="text-[10px] font-medium uppercase mb-2 md:text-[13px] md:mb-5 md:flex md:items-center md:gap-3 font-mono"
+              style={{ letterSpacing: "0.13em", color: "#8f8f8f" }}>
               Soluciones digitales en Barcelona
             </h2>
             <p
-              className="mb-4 text-[20px] font-medium leading-[1.1] text-[#ffffff] md:mb-0 md:text-[clamp(52px,5vw,64px)] md:font-bold md:leading-[0.95] md:tracking-[-0.03em]"
+              className="mb-4 text-[30px] font-bold leading-[1] tracking-[-0.04em] text-light md:mb-0 font-heading md:text-[clamp(56px,6vw,88px)] md:font-bold md:leading-[0.92] md:tracking-[-0.045em]"
             >
-              LO QUE HACEMOS{" "}
-              <span className="hidden md:inline" style={{ color: "#ffffff" }}>&raquo;</span>
+              Lo que hacemos{" "}
+              <span className="hidden md:inline" style={{ color: "#ffffffaa" }}>&raquo;</span>
             </p>
           </motion.div>
 
@@ -308,7 +310,7 @@ export function Services() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.22, ease: "easeOut" }}
                     className="rounded-[0.25rem] p-5 h-full overflow-hidden select-none cursor-grab active:cursor-grabbing"
-                    style={{ background: "rgba(255, 255, 255, 0.06)" }}
+                    style={{ background: "#1a1a1a" }}
                     drag="x"
                     dragConstraints={{ left: 0, right: 0 }}
                     dragElastic={0.08}
@@ -322,14 +324,14 @@ export function Services() {
                         className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
                         style={{ background: "rgba(255, 255, 255, 0.08)" }}
                       >
-                        <ActiveIcon size={20} strokeWidth={1.5} style={{ color: "#f1ede1" }} />
+                        <ActiveIcon size={20} strokeWidth={1.5} style={{ color: "#ffffff" }} />
                       </div>
-                      <p className="text-[13px] font-semibold uppercase text-[#f1ede1]" style={{ letterSpacing: "0.04em" }}>
+                      <p className="text-[13px] font-semibold uppercase text-light" style={{ letterSpacing: "0.04em" }}>
                         {mainServices[selectedMobileService].title}
                       </p>
                     </div>
 
-                    <p className="text-[13px] leading-[1.6] mb-4" style={{ color: "#c8c4b8" }}>
+                    <p className="text-[13px] leading-[1.6] mb-4" style={{ color: "#a1a1a1" }}>
                       {mainServices[selectedMobileService].description}
                     </p>
 
@@ -338,7 +340,7 @@ export function Services() {
                         <span
                           key={tag}
                           className="text-[12px] px-3 py-[5px] rounded-full border"
-                          style={{ borderColor: "rgba(255, 255, 255, 0.18)", color: "#a3a199" }}
+                          style={{ borderColor: "rgba(255, 255, 255, 0.18)", color: "#8f8f8f" }}
                         >
                           {toTagCase(tag.trim())}
                         </span>
@@ -360,7 +362,7 @@ export function Services() {
                     width: i === selectedMobileService ? "18px" : "4px",
                     height: "4px",
                     borderRadius: "9999px",
-                    backgroundColor: i === selectedMobileService ? "#F1EDE1" : "rgba(241,237,225,0.32)",
+                    backgroundColor: i === selectedMobileService ? "#ffffff" : "rgba(255, 255, 255,0.25)",
                     transition: "width 300ms ease-out, background-color 300ms ease-out",
                     cursor: "pointer",
                     flexShrink: 0,
@@ -376,81 +378,42 @@ export function Services() {
               <ServiceCardDark key={service.title} service={service} index={index} />
             ))}
           </div>
+
+          {/* También */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="mt-8 md:mt-12 flex flex-wrap items-center gap-x-3 gap-y-2"
+          >
+            <span
+              className="font-mono text-[13px] font-medium uppercase text-light/72"
+              style={{ letterSpacing: "0.08em" }}
+            >
+              También
+            </span>
+            <div className="flex flex-wrap gap-2">
+              {alsoServices.map((svc) => (
+                <span
+                  key={svc}
+                  className="text-[12px] md:text-[13px] font-medium px-3.5 py-[6px] rounded-full transition-transform duration-200 hover:-translate-y-0.5"
+                  style={{ background: "#ffffff", color: "#0a0a0a" }}
+                >
+                  {svc}
+                </span>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* AI Services — Light Section */}
-      <section className="bg-light py-7 md:py-16">
+      {/* AI Services — Dark Section (scroll horizontal / carrusel) */}
+      <AiShowcase />
+
+      {/* CTA IA */}
+      <section className="bg-dark -mt-px pt-7 pb-7 md:pt-0 md:pb-16">
         <div className="container mx-auto px-5 md:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-5 md:mb-10"
-          >
-            <h2
-              className="text-[10px] uppercase mb-2 md:text-[15px] md:mb-5 md:font-medium md:font-geist"
-              style={{ letterSpacing: "0.13em", color: "#77766f" }}
-            >
-              Servicios con Inteligencia Artificial
-            </h2>
-            <p
-              className="text-[20px] font-medium leading-[1.1] text-[#141414] md:text-[clamp(52px,5vw,64px)] md:font-bold md:leading-[0.95] md:tracking-[-0.03em]"
-            >
-              TU NEGOCIO EN{" "}
-              <span className="hidden md:inline text-[#141414aa]">MODO IA</span>
-              <span className="md:hidden">MODO IA</span>
-              <span className="hidden md:inline text-[#141414aa]"> &raquo;</span>
-            </p>
-
-            {/* Mobile: párrafo introductorio */}
-            <p
-              className="md:hidden text-[13px] leading-[1.7] mt-3"
-              style={{ color: "#888780" }}
-            >
-              Automatizamos procesos, creamos asistentes inteligentes y aceleramos tu negocio con IA.
-            </p>
-          </motion.div>
-
-          {/* Mobile: grid 2x2 de cards IA */}
-          <div className="md:hidden grid grid-cols-2 gap-[2px] mb-5">
-            {mobileAiCards.map((card, index) => {
-              const Icon = card.icon;
-              return (
-                <motion.div
-                  key={card.title}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.07 }}
-                  className="rounded-sm p-5"
-                  style={{ background: "#e9e5d9" }}
-                >
-                  <Icon size={20} strokeWidth={1.5} className="mb-4" style={{ color: "#5F5E5A" }} />
-                  <p
-                    className="text-[13px] font-semibold uppercase text-[#141414] mb-1"
-                    style={{ letterSpacing: "0.04em" }}
-                  >
-                    {card.title}
-                  </p>
-                  <p className="text-[12px] text-[#888780] leading-[1.4]">
-                    {card.subtitle}
-                  </p>
-                </motion.div>
-              );
-            })}
-          </div>
-
-          {/* Desktop: carrusel horizontal de cards */}
-          <div className="hidden md:flex overflow-x-auto snap-x snap-mandatory hide-scrollbar gap-4 pb-4 mb-10 md:grid md:grid-cols-2 lg:grid-cols-3 md:overflow-x-visible md:snap-none md:pb-0 md:gap-5 md:mb-10">
-            {aiServices.map((service, index) => (
-              <div key={service.title} className="snap-center flex-shrink-0 w-[85vw] md:w-auto h-full">
-                <ServiceCard service={service} index={index} variant="ai" />
-              </div>
-            ))}
-          </div>
-
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -459,8 +422,8 @@ export function Services() {
           >
             <TransitionLink
               to="/contacto"
-              className="inline-flex items-center gap-[6px] text-[11px] font-medium uppercase md:gap-3 md:rounded-sm md:border md:border-[#1414144d] md:px-8 md:py-[15px] md:text-sm md:font-semibold md:text-[#141414] md:transition-colors md:hover:border-[#141414] md:font-geist"
-              style={{ letterSpacing: "0.09em", color: "#141414" }}
+              className="inline-flex items-center gap-[6px] text-[11px] font-medium uppercase md:gap-3 md:rounded-sm md:border md:border-light/30 md:px-8 md:py-[15px] md:text-[13px] md:font-semibold md:text-light md:transition-colors md:hover:border-light font-mono"
+              style={{ letterSpacing: "0.09em", color: "#ffffff" }}
             >
               QUIERO MI NEGOCIO CON IA
               <motion.span

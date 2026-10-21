@@ -13,9 +13,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       "inline-flex items-center justify-center font-semibold uppercase tracking-wide transition-all duration-200 disabled:pointer-events-none disabled:opacity-50 rounded-sm";
 
     const variants = {
-      primary: "bg-[#141414] text-[#f1ede1] hover:bg-[#2a2a2a]",
-      outline: "border border-[#141414] text-[#141414] hover:bg-[#141414] hover:text-[#f1ede1]",
-      ghost: "text-[#141414] hover:bg-[#14141410]",
+      primary: "bg-dark text-light hover:bg-[#2a2a2a]",
+      outline: "border border-dark text-dark hover:bg-dark hover:text-light",
+      ghost: "text-dark hover:bg-dark/6",
     };
 
     const sizes = {

@@ -16,7 +16,7 @@ export function PageTransition() {
       {Array.from({ length: PANEL_COUNT }).map((_, i) => (
         <motion.div
           key={i}
-          className="flex-1 bg-[#141414]"
+          className="flex-1 bg-dark"
           initial={
             phase === "covering"
               ? { translateY: "-100%" }

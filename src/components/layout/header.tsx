@@ -53,7 +53,7 @@ export function Header() {
     <>
       <header
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 bg-[#141414]",
+          "fixed top-0 left-0 right-0 z-50 bg-dark",
         )}
       >
         <nav className="container mx-auto pl-0 pr-6">
@@ -80,7 +80,7 @@ export function Header() {
                       ? "text-[#ffffff]"
                       : "text-[#ffffffcc] hover:text-[#ffffff]"
                   )}
-                  style={{ fontFamily: "var(--font-geist)" }}
+                  style={{ fontFamily: "var(--font-mono)" }}
                 >
                   {item.title}
                   {pathname === item.href && (
@@ -110,7 +110,7 @@ export function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="md:hidden fixed inset-0 z-[999] bg-[#141414] flex flex-col pb-8 overflow-y-auto"
+            className="md:hidden fixed inset-0 z-[999] bg-dark flex flex-col pb-8 overflow-y-auto"
           >
             {/* Header: logo + close button */}
             <div className="flex items-center justify-between mb-6 h-20 pr-6">
@@ -148,7 +148,7 @@ export function Header() {
                     className={cn(
                       "flex items-center justify-between px-4 py-3.5 rounded-sm transition-colors",
                       isActive
-                        ? "bg-[rgba(241,237,225,0.12)] border border-[rgba(241,237,225,0.2)]"
+                        ? "bg-light/12 border border-light/20"
                         : "bg-[rgba(255,255,255,0.06)] border border-transparent hover:bg-[rgba(255,255,255,0.10)]"
                     )}
                   >
@@ -157,14 +157,14 @@ export function Header() {
                         size={18}
                         className={
                           isActive
-                            ? "text-[#f1ede1]"
+                            ? "text-light"
                             : "text-[rgba(255,255,255,0.5)]"
                         }
                       />
                       <span
                         className="text-[15px] font-medium text-white uppercase"
                         style={{
-                          fontFamily: "var(--font-geist)",
+                          fontFamily: "var(--font-mono)",
                           letterSpacing: "1px",
                         }}
                       >
@@ -188,9 +188,9 @@ export function Header() {
                   setIsMobileMenuOpen(false);
                   trackEvent("cta_click", { location: "header_mobile", label: "hablemos_de_tu_proyecto" });
                 }}
-                className="flex items-center justify-center w-full py-3.5 rounded-sm bg-[#f1ede1] text-[#141414] text-sm font-medium uppercase mb-3.5"
+                className="flex items-center justify-center w-full py-3.5 rounded-sm bg-light text-dark text-sm font-medium uppercase mb-3.5"
                 style={{
-                  fontFamily: "var(--font-geist)",
+                  fontFamily: "var(--font-mono)",
                   letterSpacing: "0.5px",
                 }}
               >

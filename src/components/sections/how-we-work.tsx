@@ -28,12 +28,12 @@ export function HowWeWork() {
   const total = pillars.length;
 
   return (
-    <section className="bg-light">
+    <section className="bg-dark">
       {/* Mobile */}
       <div className="md:hidden px-5 pt-8 pb-7">
         <p
-          className="text-[10px] uppercase mb-6"
-          style={{ letterSpacing: "2.5px", color: "#888780" }}
+          className="font-mono text-[10px] uppercase mb-6"
+          style={{ letterSpacing: "2.5px", color: "#878787" }}
         >
           CÓMO TRABAJAMOS
         </p>
@@ -50,7 +50,7 @@ export function HowWeWork() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.22, ease: "easeOut" }}
                 className="rounded-[0.25rem] p-5 h-full overflow-hidden select-none cursor-grab active:cursor-grabbing"
-                style={{ background: "#e9e5d9" }}
+                style={{ background: "#1a1a1a" }}
                 drag="x"
                 dragConstraints={{ left: 0, right: 0 }}
                 dragElastic={0.08}
@@ -62,16 +62,16 @@ export function HowWeWork() {
                 <div className="flex items-center gap-3 mb-4">
                   <div
                     className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
-                    style={{ background: "rgba(20, 20, 20, 0.08)" }}
+                    style={{ background: "rgba(255, 255, 255, 0.08)" }}
                   >
-                    <ActiveIcon size={20} strokeWidth={1.5} style={{ color: "#141414" }} />
+                    <ActiveIcon size={20} strokeWidth={1.5} style={{ color: "#ffffff" }} />
                   </div>
-                  <p className="text-[13px] font-semibold uppercase text-[#141414]" style={{ letterSpacing: "0.04em" }}>
+                  <p className="text-[13px] font-semibold uppercase text-light" style={{ letterSpacing: "0.04em" }}>
                     {pillars[selected].title}
                   </p>
                 </div>
 
-                <p className="text-[13px] leading-[1.6]" style={{ color: "#5F5E5A" }}>
+                <p className="text-[13px] leading-[1.6]" style={{ color: "#a1a1a1" }}>
                   {pillars[selected].description}
                 </p>
               </motion.div>
@@ -90,7 +90,7 @@ export function HowWeWork() {
                 width: i === selected ? "18px" : "4px",
                 height: "4px",
                 borderRadius: "9999px",
-                backgroundColor: i === selected ? "#141414" : "rgba(20, 20, 20, 0.25)",
+                backgroundColor: i === selected ? "#ffffff" : "rgba(255, 255, 255, 0.25)",
                 transition: "width 300ms ease-out, background-color 300ms ease-out",
                 cursor: "pointer",
                 flexShrink: 0,
@@ -103,7 +103,7 @@ export function HowWeWork() {
       {/* Desktop */}
       <div className="hidden md:block py-16 container mx-auto px-6">
         <p
-          className="mb-10 text-[15px] font-medium uppercase text-[#5f5e5a] font-geist"
+          className="mb-10 text-[13px] font-medium uppercase text-[#a1a1a1] font-mono"
           style={{ letterSpacing: "0.13em" }}
         >
           CÓMO TRABAJAMOS
@@ -118,18 +118,18 @@ export function HowWeWork() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.12 }}
-                className="px-8 py-10 border border-[#14141420] rounded-sm"
+                className="group px-8 py-10 border border-light/13 rounded-sm hover:border-light hover:bg-light transition-all duration-300"
               >
-                <Icon size={32} strokeWidth={1.5} className="mb-6 text-[#141414]" />
+                <Icon size={32} strokeWidth={1.5} className="mb-6 text-light group-hover:text-dark transition-colors" />
                 <h3
-                  className="font-bold text-[#141414] mb-4 uppercase"
+                  className="font-bold text-light group-hover:text-dark mb-4 uppercase transition-colors"
                   style={{ fontSize: "22px", lineHeight: 1.1, letterSpacing: "-0.02em" }}
                 >
                   {pillar.title}
                 </h3>
                 <p
-                  className="leading-[1.65]"
-                  style={{ fontSize: "17px", color: "#5F5E5A" }}
+                  className="leading-[1.65] text-[#a1a1a1] group-hover:text-dark/80 transition-colors"
+                  style={{ fontSize: "17px" }}
                 >
                   {pillar.description}
                 </p>
