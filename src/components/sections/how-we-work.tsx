@@ -122,8 +122,7 @@ export function HowWeWork() {
               >
                 <Icon size={32} strokeWidth={1.5} className="mb-6 text-light group-hover:text-dark transition-colors" />
                 <h3
-                  className="font-bold text-light group-hover:text-dark mb-4 uppercase transition-colors"
-                  style={{ fontSize: "22px", lineHeight: 1.1, letterSpacing: "-0.02em" }}
+                  className="text-[20px] md:text-[24px] leading-[1.1] tracking-[-0.025em] font-bold text-light group-hover:text-dark mb-4 uppercase transition-colors"
                 >
                   {pillar.title}
                 </h3>

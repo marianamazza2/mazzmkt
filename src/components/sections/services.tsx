@@ -120,8 +120,7 @@ function ServiceCardDark({
           </div>
 
           <h3
-            className="font-bold text-light group-hover:text-dark mb-3 transition-colors"
-            style={{ fontSize: "24px", lineHeight: 1.12, fontWeight: 600, letterSpacing: "-0.025em" }}
+            className="text-[20px] md:text-[24px] leading-[1.1] tracking-[-0.025em] font-bold text-light group-hover:text-dark mb-3 transition-colors"
           >
             {service.title}
           </h3>

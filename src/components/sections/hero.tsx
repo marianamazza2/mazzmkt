@@ -29,7 +29,7 @@ export function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="font-mono md:hidden text-[11px] font-medium uppercase mb-[14px]"
-            style={{ letterSpacing: "2.5px", color: "#878787" }}
+            style={{ letterSpacing: "2.5px", color: "#a1a1a1" }}
           >
             MAZZMKT — Digital Studio · Barcelona
           </motion.h1>
@@ -39,8 +39,8 @@ export function Hero() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="hidden md:block text-[13px] font-medium text-[#ffffffe0] mb-5 uppercase font-mono"
-            style={{ letterSpacing: "0.14em" }}
+            className="hidden md:block text-[13px] font-medium text-[#a1a1a1] mb-5 uppercase font-mono"
+            style={{ letterSpacing: "0.13em" }}
           >
             MAZZMKT — Digital Studio · Barcelona
           </motion.h1>

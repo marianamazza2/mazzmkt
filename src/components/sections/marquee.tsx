@@ -18,7 +18,7 @@ const words = [
 function MarqueeRow({ reverse = false }: { reverse?: boolean }) {
   const content = words.map((word, i) => (
     <span key={i} className="flex items-center gap-8 shrink-0">
-      <span className="text-sm md:text-base font-semibold tracking-[0.2em] whitespace-nowrap text-light">
+      <span className="font-mono text-[11px] md:text-[13px] font-medium uppercase tracking-[0.13em] whitespace-nowrap text-[#a1a1a1]">
         {word}
       </span>
       <span className="w-1.5 h-1.5 rounded-full bg-current opacity-30" />

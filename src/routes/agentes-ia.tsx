@@ -167,8 +167,7 @@ function BuildShowcase() {
           strokeWidth={1.5}
         />
         <h3
-          className="font-bold text-light group-hover:text-[#0a0a0a] mb-3 transition-colors"
-          style={{ fontSize: "20px", lineHeight: 1.15, fontWeight: 600, letterSpacing: "-0.02em" }}
+          className="text-[20px] md:text-[24px] leading-[1.1] tracking-[-0.025em] font-bold text-light group-hover:text-[#0a0a0a] mb-3 transition-colors"
         >
           {cap.title}
         </h3>
