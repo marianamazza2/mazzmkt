@@ -80,8 +80,10 @@
 :root {
   --font-display: clamp(64px, 8.5vw, 136px);
   --lh-display: 0.92;
-  --font-section: clamp(22px, 7vw, 98px);
-  --lh-section: 1.08;
+  /* Escala de titulares: display (hero) > section (titular de sección) > subsection (filas, bloques internos) */
+  --font-section: clamp(64px, 7vw, 104px);
+  --lh-section: 0.92;
+  --font-subsection: clamp(44px, 5vw, 72px);
   --font-cta: clamp(64px, 7vw, 112px);
   --lh-cta: 0.98;
   --font-h2: clamp(22px, 5vw, 48px);
@@ -93,8 +95,9 @@
   :root {
     --font-display: clamp(40px, 11vw, 56px);
     --lh-display: 0.98;
-    --font-section: clamp(22px, 6vw, 32px);
-    --lh-section: 1.15;
+    --font-section: clamp(32px, 9.5vw, 40px);
+    --lh-section: 1;
+    --font-subsection: clamp(28px, 8vw, 32px);
     --font-cta: clamp(36px, 10vw, 48px);
     --lh-cta: 1.15;
     --font-h2: clamp(20px, 5vw, 26px);
@@ -261,4 +264,13 @@
     background-color: #ffffff;
     color: #0a0a0a;
   }
+}
+
+/* Titulares de sección y de bloques internos: siempre con estos dos tamaños (admiten md:, lg:…) */
+@utility text-section-title {
+  font-size: var(--font-section);
+}
+
+@utility text-subsection-title {
+  font-size: var(--font-subsection);
 }

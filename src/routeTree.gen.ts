@@ -19,7 +19,6 @@ import { Route as AgentesIaRouteImport } from './routes/agentes-ia'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServiciosIndexRouteImport } from './routes/servicios/index'
 import { Route as ProyectosIndexRouteImport } from './routes/proyectos/index'
-import { Route as ServiciosSlugRouteImport } from './routes/servicios/$slug'
 import { Route as ProyectosSlugRouteImport } from './routes/proyectos/$slug'
 
 const SobreMiRoute = SobreMiRouteImport.update({
@@ -72,11 +71,6 @@ const ProyectosIndexRoute = ProyectosIndexRouteImport.update({
   path: '/proyectos/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ServiciosSlugRoute = ServiciosSlugRouteImport.update({
-  id: '/servicios/$slug',
-  path: '/servicios/$slug',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ProyectosSlugRoute = ProyectosSlugRouteImport.update({
   id: '/proyectos/$slug',
   path: '/proyectos/$slug',
@@ -93,7 +87,6 @@ export interface FileRoutesByFullPath {
   '/privacidad': typeof PrivacidadRoute
   '/sobre-mi': typeof SobreMiRoute
   '/proyectos/$slug': typeof ProyectosSlugRoute
-  '/servicios/$slug': typeof ServiciosSlugRoute
   '/proyectos/': typeof ProyectosIndexRoute
   '/servicios/': typeof ServiciosIndexRoute
 }
@@ -107,7 +100,6 @@ export interface FileRoutesByTo {
   '/privacidad': typeof PrivacidadRoute
   '/sobre-mi': typeof SobreMiRoute
   '/proyectos/$slug': typeof ProyectosSlugRoute
-  '/servicios/$slug': typeof ServiciosSlugRoute
   '/proyectos': typeof ProyectosIndexRoute
   '/servicios': typeof ServiciosIndexRoute
 }
@@ -122,7 +114,6 @@ export interface FileRoutesById {
   '/privacidad': typeof PrivacidadRoute
   '/sobre-mi': typeof SobreMiRoute
   '/proyectos/$slug': typeof ProyectosSlugRoute
-  '/servicios/$slug': typeof ServiciosSlugRoute
   '/proyectos/': typeof ProyectosIndexRoute
   '/servicios/': typeof ServiciosIndexRoute
 }
@@ -138,7 +129,6 @@ export interface FileRouteTypes {
     | '/privacidad'
     | '/sobre-mi'
     | '/proyectos/$slug'
-    | '/servicios/$slug'
     | '/proyectos/'
     | '/servicios/'
   fileRoutesByTo: FileRoutesByTo
@@ -152,7 +142,6 @@ export interface FileRouteTypes {
     | '/privacidad'
     | '/sobre-mi'
     | '/proyectos/$slug'
-    | '/servicios/$slug'
     | '/proyectos'
     | '/servicios'
   id:
@@ -166,7 +155,6 @@ export interface FileRouteTypes {
     | '/privacidad'
     | '/sobre-mi'
     | '/proyectos/$slug'
-    | '/servicios/$slug'
     | '/proyectos/'
     | '/servicios/'
   fileRoutesById: FileRoutesById
@@ -181,7 +169,6 @@ export interface RootRouteChildren {
   PrivacidadRoute: typeof PrivacidadRoute
   SobreMiRoute: typeof SobreMiRoute
   ProyectosSlugRoute: typeof ProyectosSlugRoute
-  ServiciosSlugRoute: typeof ServiciosSlugRoute
   ProyectosIndexRoute: typeof ProyectosIndexRoute
   ServiciosIndexRoute: typeof ServiciosIndexRoute
 }
@@ -258,13 +245,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProyectosIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/servicios/$slug': {
-      id: '/servicios/$slug'
-      path: '/servicios/$slug'
-      fullPath: '/servicios/$slug'
-      preLoaderRoute: typeof ServiciosSlugRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/proyectos/$slug': {
       id: '/proyectos/$slug'
       path: '/proyectos/$slug'
@@ -285,7 +265,6 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacidadRoute: PrivacidadRoute,
   SobreMiRoute: SobreMiRoute,
   ProyectosSlugRoute: ProyectosSlugRoute,
-  ServiciosSlugRoute: ServiciosSlugRoute,
   ProyectosIndexRoute: ProyectosIndexRoute,
   ServiciosIndexRoute: ServiciosIndexRoute,
 }

@@ -31,11 +31,10 @@ export const projects: Project[] = [
     client: "Inmobiliaria",
     category: "Web",
     description:
-      "Identidad visual y web inmobiliaria para Group Casas: buscador de propiedades con mapa, fichas de vivienda y una página propia para cada servicio.",
+      "Web inmobiliaria para Group Casas: buscador de propiedades con mapa, fichas de vivienda y una página propia para cada servicio.",
     about:
-      "Group Casas es una inmobiliaria que acompaña en cada etapa de la vivienda: comprar, vender, financiar, reformar y administrar. Su punto de partida era claro, 'hay otra forma de ser una inmobiliaria', y el proyecto consistía en trasladar esa idea a una marca y una web que se sintieran cálidas, cuidadas y muy distintas a los portales del sector.",
+      "Group Casas es una inmobiliaria que acompaña en cada etapa de la vivienda: comprar, vender, financiar, reformar y administrar. Su punto de partida era claro, 'hay otra forma de ser una inmobiliaria', y el proyecto consistía en trasladar esa idea a una web que se sintiera cálidas, cuidadas y muy distintas a los portales del sector.",
     work: [
-      "Empezamos por la marca: un logotipo tipográfico en versales con mucho aire entre letras, el claim 'Tu hogar empieza aquí' y un manifiesto que resume la propuesta: superar expectativas, transformar la experiencia inmobiliaria y reunir todo lo que necesita una vivienda en un solo lugar.",
       "Definimos un sistema visual sobrio y elegante: paleta de oro (#A47B36), tierra (#2E1C0B), arena y lino, con Cormorant Garamond para titulares y DM Sans para el texto. La palabra CASAS se convirtió en un recurso gráfico que aparece de fondo en distintas secciones de la web.",
       "Diseñamos y desarrollamos una web mobile-first con buscador de propiedades por ciudad, barrio o zona, carrusel de inmuebles destacados, bloque de servicios y una sección de cifras que refuerza la confianza: más de 1000 operaciones, 98% de satisfacción y más de 10 años de experiencia.",
       "La búsqueda con mapa fue la pieza central: cada inmueble aparece geolocalizado con su precio y, al pulsar un pin, se abre una tarjeta con la vivienda sin salir del mapa. Las fichas de propiedad muestran galería de fotos, características principales, precio por metro cuadrado y un botón de contacto siempre visible.",
@@ -47,6 +46,7 @@ export const projects: Project[] = [
     services: ["Identidad Visual", "Diseño Web", "Desarrollo Web", "UX/UI"],
     slug: "group-casas",
     featured: false,
+    url: "https://groupcasas.com/",
   },
   {
     id: "19",
@@ -64,12 +64,13 @@ export const projects: Project[] = [
       "Desarrollamos la web en React y Vite, componentizada y con animaciones de aparición al hacer scroll que respetan la preferencia de movimiento reducido. La accesibilidad se cuidó desde el diseño: foco visible, áreas táctiles amplias y formularios con etiquetas.",
       "Cerramos con una sección de contacto que reduce la fricción: formulario sencillo, acceso directo a WhatsApp con mensaje predefinido y una cita de Nise da Silveira, la psiquiatra que inspira su forma de trabajar.",
     ],
-    image: "",
+    image: "/images/projects/laura-serafini-arteterapia/cover.webp",
     images: projectImages["laura-serafini-arteterapia"],
     results: [],
     services: ["Diseño Web", "Desarrollo Web", "UX/UI"],
     slug: "laura-serafini-arteterapia",
     featured: false,
+    url: "https://www.lauraserafini-arteterapia.com/",
   },
   {
     id: "17",
@@ -93,6 +94,7 @@ export const projects: Project[] = [
     services: ["Identidad Visual", "Diseño Web", "Desarrollo Web", "UX/UI"],
     slug: "julian-ortega",
     featured: false,
+    url: "https://www.julianortegapsicologo.com/",
   },
   {
     id: "1",
@@ -165,6 +167,7 @@ export const projects: Project[] = [
     services: ["Diseño Web", "Desarrollo Web", "UX/UI", "Inteligencia Artificial"],
     slug: "encuentra-tu-libro",
     featured: false,
+    url: "https://troba-el-teu-llibre.vercel.app/",
   },
   {
     id: "2",

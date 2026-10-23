@@ -11,13 +11,14 @@ type MolinilloProps = {
 
 // Firma gráfica: el gesto. Toma el color del texto que acompaña (currentColor).
 // Las alas giran media vuelta al pasar el cursor sobre el enlace o botón que lo contiene.
+// overflow-visible: las puntas de las alas salen del viewBox al girar y no deben cortarse.
 export function Molinillo({ className, spinning, eyesStyle, alasClassName }: MolinilloProps) {
   return (
     <svg
       viewBox="-136 -136 272 272"
       fill="currentColor"
       aria-hidden="true"
-      className={cn("molinillo inline-block shrink-0", spinning && "molinillo-spin", className)}
+      className={cn("molinillo inline-block shrink-0 overflow-visible", spinning && "molinillo-spin", className)}
     >
       <g className={cn("molinillo-alas", alasClassName)}>
         <polygon points="30,0 100.5,-16 136,-80 78.5,-67 64,-57" />

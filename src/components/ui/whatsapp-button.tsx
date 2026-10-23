@@ -14,6 +14,7 @@ function WhatsAppIcon({ className }: { className?: string }) {
   );
 }
 
+// Botón flotante en la paleta de la web (blanco; negro al pasar el cursor), sin el verde de la marca de WhatsApp
 export function WhatsAppButton() {
   const whatsappNumber = "34672340061"; // Número de WhatsApp de MAZZMKT
   const message = "¡Hola! Me gustaría saber más sobre vuestros servicios.";
@@ -24,7 +25,7 @@ export function WhatsAppButton() {
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-lg hover:bg-[#20bd5a] transition-colors"
+      className="fixed bottom-6 right-6 z-50 rounded-full border border-dark bg-light p-4 text-dark shadow-lg transition-colors duration-300 hover:border-dark hover:bg-dark hover:text-light"
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ delay: 1, duration: 0.3 }}

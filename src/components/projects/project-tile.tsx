@@ -68,7 +68,7 @@ export function ProjectTile({
           <Isotipo className="absolute bottom-4 right-4 h-[26px] w-[28px] text-light/85 drop-shadow-[0_1px_6px_rgba(0,0,0,0.45)]" />
         </div>
         <div className="flex items-baseline justify-between gap-4 pt-3 md:pt-4">
-          <h3 className="text-[16px] md:text-[20px] font-bold tracking-[-0.02em] text-light">
+          <h3 className="normal-case text-[16px] md:text-[20px] font-bold tracking-[-0.02em] text-light">
             {project.title}
           </h3>
           <span className="font-mono text-[10px] md:text-[12px] uppercase tracking-[0.1em] text-light/50 group-hover:text-light transition-colors text-right">

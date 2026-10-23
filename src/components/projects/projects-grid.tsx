@@ -1,6 +1,7 @@
-import { useState, useMemo, useCallback, useEffect } from "react";
+import { useState, useMemo, useCallback, useEffect, useRef } from "react";
 import { motion, AnimatePresence, LayoutGroup, useMotionValue, useSpring } from "framer-motion";
-import { Check, ChevronDown, Search, Grid3X3, List, X } from "lucide-react";
+import { ArrowDown, Check, ChevronDown, Grid3X3, List, Search, X } from "lucide-react";
+import { FilterToggle } from "@/components/ui/filter-toggle";
 import { ProjectTile } from "./project-tile";
 import { Molinillo } from "@/components/brand/molinillo";
 import type { Project } from "@/types";
@@ -32,6 +33,8 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
   const [viewMode, setViewMode] = useState<ViewMode>("grid");
   const [hoveredProject, setHoveredProject] = useState<Project | null>(null);
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const searchRef = useRef<HTMLInputElement>(null);
 
   // Extract unique categories
   const categories = useMemo(() => {
@@ -66,6 +69,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
 
   const clearFilters = () => {
     setSearchQuery("");
+    setIsSearchOpen(false);
     setActiveCategory(null);
     setIsMobileFilterOpen(false);
   };
@@ -89,68 +93,114 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
 
   return (
     <div className="space-y-5 md:space-y-9">
-      {/* Search and Filters Bar */}
-      <div className="flex flex-col gap-3 md:gap-4 md:flex-row md:items-center md:justify-between">
-        {/* Search Input */}
-        <div className="hidden md:flex items-center gap-2">
-          <div className="relative flex-1 md:max-w-md">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-dark/67 md:text-light/67" />
-            <input
-              type="text"
-              placeholder="Buscar..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-10 py-3 bg-transparent border border-dark/13 text-dark placeholder:text-dark/67 focus:border-dark focus:outline-none transition-colors text-[13px] rounded-sm md:border-light/30 md:text-light md:placeholder:text-light/67 md:focus:border-light font-mono"
-            />
-            {searchQuery && (
-              <button
-                onClick={() => setSearchQuery("")}
-                className="absolute right-2 top-1/2 -translate-y-1/2 p-2 text-dark/67 hover:text-dark transition-colors md:text-light/67 md:hover:text-light"
-              >
-                <X className="h-4 w-4" />
-              </button>
-            )}
-          </div>
-        </div>
+      {/* Barra de escritorio, en una sola línea: filtros a la izquierda (la acción principal);
+          a la derecha, las herramientas: la lupa (se despliega al usarla) y el cambio de vista.
+          Las FAQs usan el mismo toggle, en el mismo sitio de la página. */}
+      <div className="hidden md:flex items-center justify-between gap-3">
+        <FilterToggle
+          label="Filtrar por categoría"
+          layoutId="project-filter-pill"
+          value={activeCategory}
+          onChange={setActiveCategory}
+          options={[
+            { value: null, label: "Todo" },
+            ...categories.map((c) => ({ value: c as string | null, label: mobileLabel[c] ?? c })),
+          ]}
+        />
 
-        {/* View Mode Toggle — hidden on mobile */}
-        <div className="hidden md:flex items-center gap-2 border border-light/30 p-1 rounded-sm">
-          <button
-            onClick={() => setViewMode("showcase")}
-            className={`p-2 transition-colors ${
-              viewMode === "showcase"
-                ? "bg-light text-dark"
-                : "text-light/67 hover:text-light"
-            }`}
-            title="Vista un proyecto por fila"
-          >
-            <svg className="h-4 w-4" viewBox="0 0 16 16" fill="currentColor">
-              <rect x="0" y="0" width="16" height="6" />
-              <rect x="0" y="9" width="16" height="6" />
-            </svg>
-          </button>
-          <button
-            onClick={() => setViewMode("grid")}
-            className={`p-2 transition-colors ${
-              viewMode === "grid"
-                ? "bg-light text-dark"
-                : "text-light/67 hover:text-light"
-            }`}
-            title="Vista cuadrícula"
-          >
-            <Grid3X3 className="h-4 w-4" />
-          </button>
-          <button
-            onClick={() => setViewMode("list")}
-            className={`p-2 transition-colors ${
-              viewMode === "list"
-                ? "bg-light text-dark"
-                : "text-light/67 hover:text-light"
-            }`}
-            title="Vista lista"
-          >
-            <List className="h-4 w-4" />
-          </button>
+        <div className="flex items-center gap-3">
+          {/* Buscador: una lupa que se despliega en campo de texto */}
+          <div className="flex items-center rounded-full border border-light/30 transition-colors focus-within:border-light">
+            <button
+              type="button"
+              onClick={() => {
+                setIsSearchOpen(true);
+                requestAnimationFrame(() => searchRef.current?.focus());
+              }}
+              className="flex h-11 w-11 shrink-0 items-center justify-center text-light/67 transition-colors hover:text-light"
+              aria-label="Buscar proyectos"
+              aria-expanded={isSearchOpen}
+            >
+              <Search className="h-4 w-4" />
+            </button>
+            <motion.div
+              initial={false}
+              animate={{ width: isSearchOpen ? 200 : 0 }}
+              transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+              className="relative overflow-hidden"
+            >
+              <input
+                ref={searchRef}
+                type="text"
+                placeholder="Buscar..."
+                value={searchQuery}
+                tabIndex={isSearchOpen ? 0 : -1}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onBlur={() => {
+                  if (searchQuery === "") setIsSearchOpen(false);
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Escape") {
+                    setSearchQuery("");
+                    setIsSearchOpen(false);
+                  }
+                }}
+                className="w-[200px] bg-transparent py-3 pr-9 font-mono text-[13px] text-light placeholder:text-light/67 focus:outline-none"
+              />
+              {searchQuery && (
+                <button
+                  onClick={() => {
+                    setSearchQuery("");
+                    setIsSearchOpen(false);
+                  }}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-light/67 transition-colors hover:text-light"
+                  aria-label="Borrar búsqueda"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              )}
+            </motion.div>
+          </div>
+
+          {/* View Mode Toggle — hidden on mobile */}
+          <div className="flex items-center gap-1 rounded-full border border-light/30 p-1">
+            <button
+              onClick={() => setViewMode("showcase")}
+              className={`rounded-full p-2 transition-colors ${
+                viewMode === "showcase"
+                  ? "bg-light text-dark"
+                  : "text-light/67 hover:text-light"
+              }`}
+              title="Vista un proyecto por fila"
+            >
+              <svg className="h-4 w-4" viewBox="0 0 16 16" fill="currentColor">
+                <rect x="0" y="0" width="16" height="6" />
+                <rect x="0" y="9" width="16" height="6" />
+              </svg>
+            </button>
+            <button
+              onClick={() => setViewMode("grid")}
+              className={`rounded-full p-2 transition-colors ${
+                viewMode === "grid"
+                  ? "bg-light text-dark"
+                  : "text-light/67 hover:text-light"
+              }`}
+              title="Vista cuadrícula"
+            >
+              <Grid3X3 className="h-4 w-4" />
+            </button>
+            <button
+              onClick={() => setViewMode("list")}
+              className={`rounded-full p-2 transition-colors ${
+                viewMode === "list"
+                  ? "bg-light text-dark"
+                  : "text-light/67 hover:text-light"
+              }`}
+              title="Vista lista"
+            >
+              <List className="h-4 w-4" />
+            </button>
+          </div>
         </div>
       </div>
 
@@ -223,43 +273,6 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
             </motion.div>
           )}
         </AnimatePresence>
-      </div>
-
-      {/* Desktop Category Filters */}
-      <div className="hidden md:flex gap-2 flex-wrap overflow-x-visible">
-        <motion.button
-          onClick={() => setActiveCategory(null)}
-          className={`snap-start shrink-0 whitespace-nowrap px-4 py-2 text-xs font-semibold uppercase transition-all duration-300 cursor-pointer font-mono rounded-sm md:text-[13px] ${
-            activeCategory === null
-              ? "bg-dark text-light md:bg-light md:text-dark"
-              : "border border-dark/19 text-dark hover:border-dark md:border-light/30 md:text-light md:hover:border-light"
-          }`}
-          style={{ letterSpacing: "0.09em" }}
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-        >
-          <span>Todos ({projects.length})</span>
-        </motion.button>
-        {categories.map((category) => {
-          const count = projects.filter((p) => p.category === category).length;
-          const isActive = activeCategory === category;
-          return (
-            <motion.button
-              key={category}
-              onClick={() => selectCategory(category)}
-              className={`snap-start shrink-0 whitespace-nowrap px-4 py-2 text-xs font-semibold uppercase transition-all duration-300 cursor-pointer font-mono rounded-sm md:text-[13px] ${
-                isActive
-                  ? "bg-dark text-light md:bg-light md:text-dark"
-                  : "border border-dark/19 text-dark hover:border-dark md:border-light/30 md:text-light md:hover:border-light"
-              }`}
-              style={{ letterSpacing: "0.09em" }}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <span>{filterLabel[category] ?? category} ({count})</span>
-            </motion.button>
-          );
-        })}
       </div>
 
       {/* Active Filters Indicator */}
@@ -345,8 +358,9 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
             viewport={{ once: true }}
             className="text-center pt-8"
           >
-            <button className="px-8 py-[15px] border border-light/30 text-light text-[13px] font-semibold uppercase hover:border-light transition-colors duration-300 rounded-sm font-mono" style={{ letterSpacing: "0.09em" }}>
+            <button className="inline-flex items-center justify-center gap-3 px-8 py-[15px] border border-light/30 text-light text-[13px] font-semibold uppercase hover:border-light transition-colors duration-300 rounded-[40px] font-mono" style={{ letterSpacing: "0.09em" }}>
               Cargar más proyectos
+              <ArrowDown className="h-4 w-4" strokeWidth={1.5} />
             </button>
           </motion.div>
         )}
@@ -390,7 +404,7 @@ function ProjectListItem({
         <span className="text-[10px] font-semibold tracking-widest uppercase text-light/67 group-hover:text-light transition-colors font-mono">
           {project.category}
         </span>
-        <h3 className="text-xl font-bold text-[#ffffff] truncate transition-colors">
+        <h3 className="normal-case text-xl font-bold text-[#ffffff] truncate transition-colors">
           {project.title}
         </h3>
         <p className="text-sm text-light/67 group-hover:text-light transition-colors">

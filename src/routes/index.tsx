@@ -1,9 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SEOHead } from "@/components/seo/SEOHead";
 import { Hero } from "@/components/sections/hero";
-import { Marquee } from "@/components/sections/marquee";
-import { HowWeWork } from "@/components/sections/how-we-work";
-import { Intro } from "@/components/sections/intro";
 import { Services } from "@/components/sections/services";
 import { AiAgents } from "@/components/sections/ai-agents";
 import { Projects } from "@/components/sections/projects";
@@ -34,11 +31,9 @@ function HomePage() {
         jsonLd={homeSchema}
       />
       <Hero />
-      <Marquee />
-      <HowWeWork />
-      <AiAgents />
+      {/* 01 Lo que hacemos · Recepcionista IA (producto propio) · 02 Proyectos */}
       <Services />
-      <Intro />
+      <AiAgents />
       <Projects />
     </>
   );

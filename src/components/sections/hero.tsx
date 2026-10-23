@@ -1,22 +1,15 @@
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import { TransitionLink } from "@/components/transition/transition-link";
 import { trackEvent } from "@/lib/analytics";
 import { Molinillo } from "@/components/brand/molinillo";
+import { HeroGlow } from "@/components/sections/hero-glow";
 
 export function Hero() {
   return (
     <section className="bg-dark pt-[100px] pb-7 md:pt-32 md:pb-16 md:min-h-[calc(100svh-58px)] md:flex md:items-end relative overflow-hidden">
-      <div
-        className="absolute -inset-x-[2%] inset-y-0 bg-no-repeat opacity-50 md:opacity-85"
-        style={{
-          backgroundImage: `url('/images/hero-home.webp')`,
-          backgroundPosition: "right center",
-          backgroundSize: "cover",
-        }}
-      />
-      {/* Degradados: titular legible a la izquierda y transición suave hacia el marquee */}
-      <div className="absolute inset-0 bg-gradient-to-r from-dark via-dark/60 to-transparent md:via-dark/40" />
-      <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-dark to-transparent" />
+      {/* Sin imagen: un destello que sigue al cursor */}
+      <HeroGlow />
       <div className="container mx-auto px-5 md:px-6 relative w-full">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -111,20 +104,21 @@ export function Hero() {
           >
             <TransitionLink
               to="/proyectos"
-              className="inline-flex items-center justify-center gap-3 rounded-sm border border-light/30 px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono"
+              className="inline-flex items-center justify-center gap-3 rounded-[40px] border border-light/30 px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono"
               style={{ letterSpacing: "0.09em" }}
               onClick={() => trackEvent("cta_click", { location: "hero", label: "ver_proyectos" })}
             >
               VER PROYECTOS
-              <Molinillo className="h-[14px] w-[14px]" />
+              <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
             </TransitionLink>
             <TransitionLink
               to="/contacto"
-              className="inline-flex items-center justify-center gap-3 rounded-sm border border-light/30 px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono"
+              className="inline-flex items-center justify-center gap-3 rounded-[40px] border border-light/30 px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono"
               style={{ letterSpacing: "0.09em" }}
               onClick={() => trackEvent("cta_click", { location: "hero", label: "contactar" })}
             >
               CONTACTAR
+              <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
             </TransitionLink>
           </motion.div>
         </motion.div>

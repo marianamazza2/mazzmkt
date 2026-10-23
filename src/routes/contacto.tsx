@@ -1,17 +1,21 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { SEOHead } from "@/components/seo/SEOHead";
-import { Mail, MessageCircle, Phone, MapPin } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { useState } from "react";
 import { trackEvent } from "@/lib/analytics";
 import { PageHero } from "@/components/sections/page-hero";
 import { Molinillo } from "@/components/brand/molinillo";
 
 export const Route = createFileRoute("/contacto")({
+  validateSearch: (search: Record<string, unknown>) => ({
+    service: typeof search.service === "string" ? search.service : undefined,
+  }),
   component: ContactoPage,
 });
 
 function ContactoPage() {
+  const { service } = Route.useSearch();
   const whatsappUrl = `https://wa.me/34672340061?text=${encodeURIComponent(
     "Hola! Quiero hablar sobre un proyecto."
   )}`;
@@ -19,7 +23,7 @@ function ContactoPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    message: "",
+    message: service ? `Hola, me interesa el área de ${service}.` : "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -61,21 +65,22 @@ function ContactoPage() {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-3 rounded-sm border border-light/30 px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono"
+                className="inline-flex items-center justify-center gap-3 rounded-[40px] border border-light/30 px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono"
                 style={{ letterSpacing: "0.09em" }}
                 onClick={() => trackEvent("whatsapp_click", { location: "contacto" })}
               >
                 <MessageCircle className="h-4 w-4" strokeWidth={1.8} />
                 WHATSAPP
-                <Molinillo className="h-[14px] w-[14px]" />
+                <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
               </a>
               <a
                 href="mailto:mazzmkt360@gmail.com"
-                className="inline-flex items-center justify-center rounded-sm border border-light/30 px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono"
+                className="inline-flex items-center justify-center gap-3 rounded-[40px] border border-light/30 px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono"
                 style={{ letterSpacing: "0.09em" }}
                 onClick={() => trackEvent("email_click", { location: "contacto" })}
               >
                 ESCRIBIR MAIL
+                <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
               </a>
           </>
         }
@@ -138,11 +143,12 @@ function ContactoPage() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full inline-flex items-center justify-center gap-3 rounded-sm border border-light/30 px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light disabled:opacity-50 font-mono"
+                    className="w-full inline-flex items-center justify-center gap-3 rounded-[40px] border border-light/30 px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light disabled:opacity-50 font-mono"
                     style={{ letterSpacing: "0.09em" }}
                   >
                     {isSubmitting ? "ENVIANDO" : "ENVIAR MENSAJE"}
-                    <Molinillo spinning={isSubmitting} className="h-[14px] w-[14px]" />
+                    {/* Mientras se envía, el molinillo gira como indicador de carga */}
+                    {isSubmitting ? <Molinillo spinning className="h-[14px] w-[14px]" /> : <ArrowRight className="h-4 w-4" strokeWidth={1.5} />}
                   </button>
                 </form>
               )}
@@ -160,7 +166,7 @@ function ContactoPage() {
                 <p className="font-mono text-[10px] md:text-[13px] font-medium uppercase tracking-[0.13em] text-[#a1a1a1] mb-2 md:mb-5">
                   Contacto directo
                 </p>
-                <h2 className="normal-case font-heading text-[30px] md:text-[clamp(42px,4vw,56px)] font-bold leading-[1] md:leading-[0.92] tracking-[-0.045em] text-light mb-4 md:mb-6">
+                <h2 className="normal-case font-heading text-subsection-title font-bold leading-[1] md:leading-[0.92] tracking-[-0.045em] text-light mb-4 md:mb-6">
                   Información de contacto
                 </h2>
                 <p className="text-body text-[#a1a1a1] max-w-md">

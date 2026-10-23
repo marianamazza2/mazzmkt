@@ -2,14 +2,16 @@ import { useState, useEffect } from "react";
 import { trackEvent } from "@/lib/analytics";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouterState } from "@tanstack/react-router";
-import { Menu, X, Instagram, Linkedin, Phone } from "lucide-react";
+import { ArrowRight, Instagram, Linkedin, Menu, Phone, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { TransitionLink } from "@/components/transition/transition-link";
 import { Isotipo } from "@/components/brand/isotipo";
+import { receptionist } from "@/data/products";
 
 const navigation = [
   { title: "HOME", href: "/" },
-  { title: "IA & AGENTES", href: "/agentes-ia" },
+  { title: "SERVICIOS", href: "/servicios" },
+  { title: receptionist.name.toUpperCase(), href: receptionist.href },
   { title: "PROYECTOS", href: "/proyectos" },
   { title: "MAZZMKT", href: "/sobre-mi" },
   { title: "FAQS", href: "/faqs" },
@@ -147,10 +149,11 @@ export function Header() {
                   setIsMobileMenuOpen(false);
                   trackEvent("cta_click", { location: "header_mobile", label: "hablemos_de_tu_proyecto" });
                 }}
-                className="flex w-full items-center justify-center rounded-sm border border-light/30 px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono mb-5"
+                className="flex w-full items-center justify-center gap-3 rounded-[40px] border border-light/30 px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono mb-5"
                 style={{ letterSpacing: "0.09em" }}
               >
                 HABLEMOS DE TU PROYECTO
+                <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
               </TransitionLink>
               <div className="flex justify-center gap-2">
                 {socials.map(({ href, icon: SocialIcon, label }) => (

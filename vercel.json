@@ -4,6 +4,36 @@
   "outputDirectory": "dist",
   "installCommand": "npm install --legacy-peer-deps",
   "rewrites": [
-    { "source": "/((?!sitemap\\.xml|robots\\.txt|favicon\\.png|images/.*).*)", "destination": "/index.html" }
+    {
+      "source": "/((?!sitemap\\.xml|robots\\.txt|favicon\\.png|images/.*).*)",
+      "destination": "/index.html"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/servicios/marketing-ia",
+      "destination": "/servicios#automatizamos",
+      "permanent": true
+    },
+    {
+      "source": "/servicios/desarrollo-web",
+      "destination": "/servicios#programamos",
+      "permanent": true
+    },
+    {
+      "source": "/servicios/growth-marketing",
+      "destination": "/servicios#automatizamos",
+      "permanent": true
+    },
+    {
+      "source": "/servicios/analytics-tracking",
+      "destination": "/servicios#automatizamos",
+      "permanent": true
+    },
+    {
+      "source": "/servicios/branding-digital",
+      "destination": "/servicios#disenamos",
+      "permanent": true
+    }
   ]
 }

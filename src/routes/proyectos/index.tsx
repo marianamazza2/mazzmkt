@@ -24,7 +24,7 @@ function ProyectosPage() {
       />
 
       {/* Projects Section */}
-      <section id="proyectos" className="bg-dark pt-4 pb-7 md:py-20">
+      <section id="proyectos" className="bg-dark pt-10 pb-7 md:pt-16 md:pb-20">
         <div className="container mx-auto px-5 md:px-6">
           <ProjectsGrid projects={projects} />
         </div>

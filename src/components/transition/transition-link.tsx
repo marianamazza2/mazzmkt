@@ -15,7 +15,9 @@ export function TransitionLink({ children, onClick, ...props }: LinkProps) {
 
     const to = props.to as string;
     const params = props.params as Record<string, string> | undefined;
-    navigateWithTransition(to, params);
+    const hash = props.hash as string | undefined;
+    const search = props.search as Record<string, string> | undefined;
+    navigateWithTransition(to, params, hash, search);
   };
 
   return (

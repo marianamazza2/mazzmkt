@@ -15,16 +15,29 @@ const legalLinks = [
   { to: "/privacidad", label: "Privacidad" },
 ];
 
-const label = "font-mono text-[10px] md:text-[13px] uppercase tracking-[0.13em] text-[#a1a1a1]";
+const label = "font-mono text-[13px] uppercase tracking-[0.08em] text-light/50";
 
 export function Footer() {
   return (
     <footer className="bg-dark text-light border-t border-light/6">
-      <div className="container mx-auto px-5 md:px-6 pt-7 pb-6 md:pt-10 md:pb-8">
-        {/* Logotipo y redes */}
-        <div className="flex items-center justify-between gap-6 pb-5 md:pb-7 border-b border-light/6">
-          <LogotipoReducido className="h-[16px] w-auto text-light" />
-          <div className="flex gap-2">
+      <div className="container mx-auto flex flex-col gap-5 px-5 py-7 md:px-6 md:py-8 lg:flex-row lg:items-center lg:justify-between lg:gap-6">
+        <LogotipoReducido className="h-[16px] w-auto shrink-0 text-light" />
+
+        <nav className="flex flex-wrap gap-x-5 md:gap-x-6">
+          {legalLinks.map(({ to, label: name }) => (
+            <TransitionLink
+              key={to}
+              to={to}
+              className={`${label} inline-flex min-h-[44px] items-center whitespace-nowrap hover:text-light transition-colors`}
+            >
+              {name}
+            </TransitionLink>
+          ))}
+        </nav>
+
+        <p className={`${label} whitespace-nowrap`}>&copy; {new Date().getFullYear()} MAZZMKT. Todos los derechos reservados.</p>
+
+        <div className="flex shrink-0 gap-2">
             {socials.map(({ href, icon: Icon, label: name }) => (
               <a
                 key={name}
@@ -38,23 +51,6 @@ export function Footer() {
                 <Icon size={14} />
               </a>
             ))}
-          </div>
-        </div>
-
-        {/* Legales y copyright */}
-        <div className="flex flex-col gap-2 pt-3 md:pt-5 lg:flex-row lg:items-center lg:justify-between lg:gap-6">
-          <nav className="flex flex-wrap gap-x-5 md:gap-x-6">
-            {legalLinks.map(({ to, label: name }) => (
-              <TransitionLink
-                key={to}
-                to={to}
-                className={`${label} inline-flex min-h-[44px] items-center hover:text-light transition-colors`}
-              >
-                {name}
-              </TransitionLink>
-            ))}
-          </nav>
-          <p className={label}>&copy; {new Date().getFullYear()} MAZZMKT. Todos los derechos reservados.</p>
         </div>
       </div>
     </footer>

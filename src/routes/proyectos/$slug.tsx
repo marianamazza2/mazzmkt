@@ -1,4 +1,5 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
+import { ArrowUpRight, ChevronDown } from "lucide-react";
 import { TransitionLink } from "@/components/transition/transition-link";
 import { motion, AnimatePresence } from "framer-motion";
 import { SEOHead } from "@/components/seo/SEOHead";
@@ -33,6 +34,7 @@ function ProjectPage() {
   const { project } = Route.useLoaderData();
   const [sliderOpen, setSliderOpen] = useState(false);
   const [sliderIndex, setSliderIndex] = useState(0);
+  const [openDetail, setOpenDetail] = useState<string | null>(null);
   const touchStartX = useRef(0);
   const images = project.images ?? [];
 
@@ -92,9 +94,84 @@ function ProjectPage() {
 
       <PageHero
         size="cta"
+        compact
+        glow={false}
         crumbs={[{ label: "Proyectos", to: "/proyectos" }, { label: project.category }]}
         title={project.title}
       />
+
+      <section className="bg-dark pb-10 md:pb-16">
+        <div className="container mx-auto px-5 md:px-6">
+          <div className="border-b border-light/13 [&>div:first-child]:border-t-0">
+            <ProjectAccordion
+              id="project"
+              title="El proyecto"
+              isOpen={openDetail === "project"}
+              onToggle={() => setOpenDetail(openDetail === "project" ? null : "project")}
+              contentClassName="max-w-none"
+            >
+              <div className="grid gap-6 md:grid-cols-[minmax(0,1fr)_auto] md:items-end">
+                <div className="max-w-4xl space-y-4">
+                  <p>
+                    {project.description}
+                    <Molinillo className="ml-2 inline-block h-[0.7em] w-[0.7em] align-baseline" />
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {project.services.map((service) => (
+                      <span key={service} className="rounded-full border border-light px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.09em] text-light">
+                        {service}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                {project.url && !project.urlDisabled && (
+                  <a
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-3 justify-self-end rounded-[40px] border border-light/30 px-8 py-[15px] font-mono text-[13px] font-semibold uppercase tracking-[0.09em] text-light transition-colors hover:border-light"
+                  >
+                    {project.category === "WebApp" ? "Ver webapp" : "Ver website"}
+                    <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
+                  </a>
+                )}
+                {project.url && project.urlDisabled && (
+                  <span className="inline-flex items-center gap-2 justify-self-end pt-1 text-[10px] font-mono uppercase tracking-[0.09em] text-light/50">
+                    Acceso privado <span aria-hidden="true">🔒</span>
+                  </span>
+                )}
+              </div>
+            </ProjectAccordion>
+            {project.about && (
+              <ProjectAccordion
+                id="context"
+                title="El punto de partida"
+                isOpen={openDetail === "context"}
+                onToggle={() => setOpenDetail(openDetail === "context" ? null : "context")}
+              >
+                <p>{project.about}</p>
+              </ProjectAccordion>
+            )}
+            {project.work && project.work.length > 0 && (
+              <ProjectAccordion
+                id="work"
+                title="Qué hicimos"
+                isOpen={openDetail === "work"}
+                onToggle={() => setOpenDetail(openDetail === "work" ? null : "work")}
+              >
+                <ol className="space-y-4">
+                  {project.work.map((item, index) => (
+                    <li key={index} className="flex items-baseline gap-4">
+                      <span className="shrink-0 font-mono text-[11px] text-light/40">{String(index + 1).padStart(2, "0")}</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ol>
+              </ProjectAccordion>
+            )}
+          </div>
+        </div>
+      </section>
 
       {/* Project Gallery */}
       <section className="bg-dark pb-10 md:pb-20">
@@ -209,91 +286,6 @@ function ProjectPage() {
         )}
       </AnimatePresence>
 
-      {/* Project Details */}
-      <section className="bg-dark py-14 md:py-24">
-        <div className="container mx-auto px-6">
-          <div className="grid lg:grid-cols-3 gap-16">
-            {/* Left: Info + Work */}
-            <div className="lg:col-span-2 space-y-14">
-              {/* Info del Proyecto */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-              >
-                <h2 className="text-[13px] font-medium text-light/67 mb-4 uppercase tracking-widest font-mono">
-                  Info del Proyecto
-                </h2>
-                <p className="text-body text-light">
-                  {project.about ?? project.description}
-                  <Molinillo className="ml-2 h-[0.7em] w-[0.7em] align-baseline" />
-                </p>
-              </motion.div>
-
-              {/* Qué hicimos */}
-              {project.work && (
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.1 }}
-                >
-                  <h2 className="text-[13px] font-medium text-light/67 mb-4 uppercase tracking-widest font-mono">
-                    Qué hicimos
-                  </h2>
-                  <ul className="space-y-4">
-                    {project.work.map((item, i) => (
-                      <li key={i} className="text-body flex gap-4 text-light">
-                        <span className="mt-2 w-1.5 h-1.5 rounded-full bg-light shrink-0" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
-              )}
-            </div>
-
-            {/* Right: Services + CTA */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-            >
-              <h2 className="text-sm font-medium text-light/67 mb-4 uppercase tracking-widest">
-                Servicios
-              </h2>
-              <ul className="space-y-2 mb-8">
-                {project.services.map((service) => (
-                  <li key={service} className="text-body text-light">
-                    {service}
-                  </li>
-                ))}
-              </ul>
-              {project.url && (
-                project.urlDisabled ? (
-                  <span className="inline-flex items-center gap-3 bg-light/40 text-dark/30 px-8 py-4 text-sm font-semibold uppercase tracking-wide cursor-not-allowed select-none">
-                    Acceso privado
-                    <span>🔒</span>
-                  </span>
-                ) : (
-                  <a
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-3 rounded-sm border border-light/30 text-light px-8 py-[15px] text-[13px] font-semibold uppercase tracking-[0.09em] hover:border-light transition-colors font-mono"
-                  >
-                    {project.category === "WebApp" ? "Ver webapp" : "Ver website"}
-                    <Molinillo className="h-[14px] w-[14px]" />
-                  </a>
-                )
-              )}
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
       {/* Results */}
       {project.results.length > 0 && <section className="bg-dark py-14 md:py-24">
         <div className="container mx-auto px-6">
@@ -346,5 +338,56 @@ function ProjectPage() {
       </section>}
 
     </>
+  );
+}
+
+function ProjectAccordion({
+  id,
+  title,
+  isOpen,
+  onToggle,
+  children,
+  contentClassName = "max-w-4xl",
+}: {
+  id: string;
+  title: string;
+  isOpen: boolean;
+  onToggle: () => void;
+  children: React.ReactNode;
+  contentClassName?: string;
+}) {
+  return (
+    <div className="border-t border-light/13">
+      <button
+        type="button"
+        onClick={onToggle}
+        aria-expanded={isOpen}
+        aria-controls={`project-${id}-content`}
+        className="group flex w-full items-center gap-4 py-5 text-left md:py-6"
+      >
+        <span className="flex-1 font-heading text-[18px] font-bold tracking-[-0.025em] text-light md:text-[22px]">
+          {title}
+        </span>
+        <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border transition-colors duration-300 md:h-10 md:w-10 ${isOpen ? "border-light bg-light text-dark" : "border-light/30 text-light group-hover:border-light"}`}>
+          <ChevronDown className={`h-4 w-4 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} strokeWidth={1.5} />
+        </span>
+      </button>
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            id={`project-${id}-content`}
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="overflow-hidden"
+          >
+            <div className={`text-body space-y-4 pb-6 text-light/67 md:pb-8 ${contentClassName}`}>
+              {children}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 }

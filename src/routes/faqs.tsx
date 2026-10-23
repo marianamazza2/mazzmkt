@@ -3,11 +3,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { SEOHead } from "@/components/seo/SEOHead";
 import { useState } from "react";
 import { PageHero } from "@/components/sections/page-hero";
+import { FilterToggle } from "@/components/ui/filter-toggle";
 import {
   Check,
   ChevronDown,
-  Plus,
-  Minus,
   Zap,
 } from "lucide-react";
 
@@ -44,9 +43,9 @@ const faqs: FAQ[] = [
    {
     id: 21,
     category: "GENERAL",
-    question: "¿Se pide una seña inicial para comenzar?",
+    question: "¿Se pide una señal inicial para comenzar?",
     answer:
-      "Sí. Para reservar tu lugar en agenda y dar inicio al proyecto, solicitamos una seña del 50% del valor total acordado. El 50% restante se abona al finalizar y antes de la entrega. Esto nos permite planificar tiempos y dedicación real a tu proyecto desde el primer día.",
+      "Sí. Para reservar tu lugar en agenda y dar inicio al proyecto, solicitamos una señal del 50% del valor total acordado. El 50% restante se abona al finalizar y antes de la entrega. Esto nos permite planificar tiempos y dedicación real a tu proyecto desde el primer día.",
     highlight: "50% para comenzar, 50% a la entrega. Sin sorpresas.",
   },
   {
@@ -202,18 +201,18 @@ const faqs: FAQ[] = [
   {
     id: 11,
     category: "REDES SOCIALES",
-    question: "¿Gestionáis redes sociales? ¿Qué incluye?",
+    question: "¿Qué hacéis en redes sociales?",
     answer:
-      "Sí. Ofrecemos gestión integral de redes: estrategia de contenido, calendario editorial, diseño de piezas, copywriting, publicación, community management, y reportes mensuales.",
-    highlight: "Estrategia + contenido + gestión. No solo postear.",
+      "Nos centramos en el diseño: creamos la línea visual de tu feed y diseñamos las piezas que necesitas (posts, carruseles, historias y portadas), siempre coherentes con tu marca. No llevamos la gestión diaria ni la publicación; te entregamos un feed con identidad y piezas listas para que las publiques tú o tu equipo.",
+    highlight: "Diseñamos tu feed y tus piezas. La publicación queda en tus manos.",
   },
   {
     id: 12,
     category: "REDES SOCIALES",
-    question: "¿Puedo ver resultados de la gestión de redes?",
+    question: "¿Me dais plantillas para seguir publicando por mi cuenta?",
     answer:
-      "Por supuesto. Entregamos reportes mensuales con métricas reales: alcance, engagement, crecimiento de seguidores, clicks, y conversiones. No nos quedamos en vanity metrics (likes). Lo que importa es si tus redes están generando comunidad, confianza y, en última instancia, ventas.",
-    highlight: "Reportes mensuales. Métricas que importan, no vanity metrics.",
+      "Sí. Además de las piezas, podemos diseñarte plantillas editables (por ejemplo en Canva o Figma) para que sigas creando contenido sin perder la coherencia visual. Así tu feed mantiene el mismo estilo aunque publiques tú, sin depender de nosotros para cada post.",
+    highlight: "Plantillas editables para que tu feed siga siendo tuyo y coherente.",
   },
   // ANALYTICS
   {
@@ -240,6 +239,31 @@ const faqs: FAQ[] = [
     answer:
       "Sí, y nos ayuda a ser mucho más eficientes. Herramientas como Claude Code y Codex nos permiten desarrollar más rápido, con menos errores, y explorar soluciones que antes nos llevaban días, en horas. La IA nos da una ventaja competitiva real: iteramos más rápido, entregamos mejor, y el resultado final es superior. No lo usamos para hacer lo mismo de siempre, lo usamos para hacer cosas que antes no eran posibles.",
     highlight: "IA = ventaja competitiva real. Más rápido, mejor, sin límites. IA para acelerar, humanos para decidir.",
+  },
+  // IA · Recepcionista IA
+  {
+    id: 31,
+    category: "IA",
+    question: "¿Tengo que cambiar mi web para instalar el Recepcionista IA?",
+    answer:
+      "No. Se instala en cualquier web (WordPress, Shopify, Webflow o una hecha a medida) sin tocar tu diseño. Lo instalamos nosotros.",
+    highlight: "Funciona con tu web tal como está.",
+  },
+  {
+    id: 32,
+    category: "IA",
+    question: "¿Qué pasa si el Recepcionista IA no sabe responder?",
+    answer:
+      "Te pasa la conversación a ti o a tu equipo, con lo que ha preguntado el cliente. Y lo afinamos para que la próxima vez sí sepa hacerlo.",
+    highlight: "Si no sabe, te avisa. Y aprende para la próxima.",
+  },
+  {
+    id: 33,
+    category: "IA",
+    question: "¿Y si mi agenda está en otra herramienta?",
+    answer:
+      "Conectamos el Recepcionista IA con Google Calendar, Calendly y las herramientas que ya usas. Si usas otra, la integramos.",
+    highlight: "Se adapta a tu agenda, no al revés.",
   },
 ];
 
@@ -302,36 +326,21 @@ function FAQsPage() {
         subtitle="Lo que necesitas saber antes de trabajar juntos. Sin letra pequeña, sin rodeos."
       />
 
-      {/* Category Filter  oculto en mobile, visible en desktop */}
-      <section className="hidden md:block bg-dark py-7 border-b border-light/6">
-        <div className="container mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="flex flex-wrap gap-3"
-          >
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setActiveCategory(category)}
-                className={`rounded-sm px-4 py-2 text-[13px] font-semibold uppercase transition-all duration-300 font-mono ${
-                  activeCategory === category
-                    ? "bg-light text-[#0a0a0a]"
-                    : "bg-transparent text-light/67 border border-light/13 hover:border-light hover:text-light"
-                }`}
-                style={{ letterSpacing: "0.09em" }}
-              >
-                {category}
-              </button>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
       {/* FAQs Section */}
-      <section id="faqs" className="bg-dark py-8 md:py-20">
+      <section id="faqs" className="bg-dark pt-10 pb-8 md:pt-16 md:pb-20">
         <div className="container mx-auto px-5 md:px-6">
+          {/* Filtros de escritorio: el mismo toggle que en /proyectos y en el mismo sitio
+              (arriba de la sección, alineado a la izquierda) */}
+          <div className="hidden md:flex mb-9">
+            <FilterToggle
+              label="Filtrar preguntas por categoría"
+              layoutId="faq-filter-pill"
+              value={activeCategory}
+              onChange={setActiveCategory}
+              options={categories.map((c) => ({ value: c, label: c === "TODOS" ? "Todo" : c }))}
+            />
+          </div>
+
           {/* Dropdown filtro  solo mobile */}
           <div className="relative md:hidden mb-5">
             <button
@@ -402,7 +411,6 @@ function FAQsPage() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
-              className="space-y-0.5 md:space-y-5"
             >
               {filteredFaqs.map((faq, index) => {
                 const isOpen = openId === faq.id;
@@ -413,50 +421,43 @@ function FAQsPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, delay: index * 0.05 }}
-                    className={`rounded-sm border transition-all duration-500 ${
-                      isOpen
-                        ? "border-light bg-light"
-                        : "border-light/13 bg-transparent hover:border-light/38"
-                    }`}
+                    // Como los acordeones de /servicios: preguntas separadas por una línea, sin tarjeta
+                    className="border-t border-light/13 first:border-t-0 last:border-b"
                   >
                     <button
                       onClick={() => toggleFaq(faq.id)}
-                      className="w-full py-3.5 px-4 md:p-7 lg:p-8 flex items-center gap-3 md:gap-5 lg:gap-6 text-left"
+                      className="group w-full py-6 md:py-8 flex items-center gap-4 md:gap-6 text-left"
                     >
                       {/* Content */}
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 md:gap-3 mb-1.5 md:mb-2">
                           <span
-                            className={`text-[10px] md:text-xs font-semibold tracking-[1.5px] md:tracking-widest transition-colors duration-300 font-mono ${
-                              isOpen ? "text-[#0a0a0aaa]" : "text-light/67"
-                            }`}
+                            className="font-mono text-[10px] md:text-[13px] font-medium uppercase text-[#a1a1a1]"
+                            style={{ letterSpacing: "0.13em" }}
                           >
                             {faq.category}
                           </span>
                         </div>
                         <h2
-                          className={`text-sm md:text-[22px] lg:text-[24px] font-bold leading-tight transition-colors duration-300 ${
-                            isOpen ? "text-[#0a0a0a]" : "text-light"
-                          }`}
+                          className="normal-case text-[18px] md:text-[22px] lg:text-[24px] font-bold leading-tight text-light"
                           style={{ letterSpacing: "-0.025em" }}
                         >
                           {faq.question}
                         </h2>
                       </div>
 
-                      {/* Toggle Icon */}
+                      {/* Toggle: el mismo círculo con flecha que los acordeones de /servicios */}
                       <div
-                        className={`w-7 h-7 md:w-10 md:h-10 flex items-center justify-center border transition-all duration-300 flex-shrink-0 ${
+                        className={`h-9 w-9 md:h-12 md:w-12 flex items-center justify-center rounded-full border transition-colors duration-300 flex-shrink-0 ${
                           isOpen
-                            ? "border-[#0a0a0a30] text-[#0a0a0a]"
-                            : "border-light/13 text-light"
+                            ? "border-light bg-light text-dark"
+                            : "border-light/30 text-light group-hover:border-light"
                         }`}
                       >
-                        {isOpen ? (
-                          <Minus className="w-4 h-4 md:w-5 md:h-5" strokeWidth={1.5} />
-                        ) : (
-                          <Plus className="w-4 h-4 md:w-5 md:h-5" strokeWidth={1.5} />
-                        )}
+                        <ChevronDown
+                          className={`w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+                          strokeWidth={1.5}
+                        />
                       </div>
                     </button>
 
@@ -470,8 +471,8 @@ function FAQsPage() {
                           transition={{ duration: 0.3, ease: "easeInOut" }}
                           className="overflow-hidden"
                         >
-                          <div className="px-4 md:px-7 lg:px-8 pb-4 md:pb-8 lg:pb-10">
-                            <div className="text-body max-w-4xl text-[#0a0a0aaa] mb-3 md:mb-6 space-y-4">
+                          <div className="pb-6 md:pb-10">
+                            <div className="text-body max-w-4xl text-[#a1a1a1] mb-4 md:mb-6 space-y-4">
                               {faq.answer.split("\n\n").map((paragraph, i) => (
                                 <p key={i}>{paragraph}</p>
                               ))}
@@ -481,13 +482,13 @@ function FAQsPage() {
                                 initial={{ opacity: 0, x: -10 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: 0.2 }}
-                                className="inline-flex items-center gap-2 md:gap-3 px-3 py-2.5 md:px-4 md:py-3 bg-[#0a0a0a10] border-l-2 border-[#0a0a0a]"
+                                className="inline-flex items-center gap-2 md:gap-3 px-3 py-2.5 md:px-4 md:py-3 bg-light/5 border-l-2 border-light"
                               >
                                 <Zap
-                                  className="w-3 h-3 md:w-4 md:h-4 text-[#0a0a0a] flex-shrink-0"
+                                  className="w-3 h-3 md:w-4 md:h-4 text-light flex-shrink-0"
                                   strokeWidth={1.5}
                                 />
-                                <span className="text-[#0a0a0a] text-[11px] md:text-[15px] font-medium">
+                                <span className="text-light text-[13px] md:text-[15px] font-medium">
                                   {faq.highlight}
                                 </span>
                               </motion.div>
@@ -520,9 +521,8 @@ function FAQsPage() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-3 md:grid-cols-3 gap-8 md:gap-12 justify-items-center text-center">
+          <div className="grid grid-cols-2 gap-8 md:gap-12 justify-items-center text-center">
             {[
-              { number: "2-3", label: "DÍAS DESARROLLO", sublabel: "con código" },
               { number: "50%", label: "SEÑAL INICIAL", sublabel: "para comenzar" },
               { number: "24H", label: "RESPUESTA", sublabel: "garantizada" },
             ].map((stat, index) => (

@@ -1,10 +1,15 @@
-export interface Service {
-  id: string;
+export interface ServiceItem {
   title: string;
-  shortDescription: string;
+  subtitle: string;
   description: string;
-  features: string[];
-  slug: string;
+}
+
+export interface ServiceGroup {
+  id: "disenamos" | "programamos" | "automatizamos";
+  verb: string;
+  title: string;
+  intro: string;
+  items: ServiceItem[];
 }
 
 export interface Project {
