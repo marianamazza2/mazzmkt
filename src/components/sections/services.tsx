@@ -11,13 +11,13 @@ import type { ServiceGroup } from "@/types";
 // Los títulos son los mismos que en /servicios (group.title), para que las dos páginas hablen igual.
 const journey: Record<ServiceGroup["id"], { text: string }> = {
   disenamos: {
-    text: "Creación de marca o rediseño de una existente. Definimos su estrategia, su identidad visual y cómo se presenta en redes, para que se reconozca y se recuerde.",
+    text: "Estrategia e identidad visual para que tu marca se reconozca y se recuerde.",
   },
   programamos: {
-    text: "Para marcas que todavía no tienen presencia digital o necesitan dar el salto. Webs, tiendas online, web apps, CRM y plataformas a medida.",
+    text: "Webs, tiendas online y plataformas a medida para llevar tu negocio al mundo digital.",
   },
   automatizamos: {
-    text: "Para negocios que ya operan en digital y quieren escalar sin más carga de trabajo. Automatizamos procesos, conectamos herramientas e incorporamos IA.",
+    text: "Conectamos herramientas y automatizamos procesos para que tu negocio crezca sin sumar tareas.",
   },
 };
 
@@ -40,7 +40,7 @@ function JourneyStep({ group, index }: { group: ServiceGroup; index: number }) {
             {group.title}
           </span>
         </span>
-        <h3 className="normal-case mt-6 md:mt-10 mb-3 flex items-center gap-3 text-[20px] md:text-[24px] leading-[1.1] tracking-[-0.025em] font-bold text-light">
+        <h3 className="normal-case mt-4 md:mt-10 mb-2 md:mb-3 flex items-center gap-3 text-[20px] md:text-[24px] leading-[1.1] tracking-[-0.025em] font-bold text-light">
           {group.verb}
           {/* "Ver más": flecha en círculo junto al verbo; al pasar el cursor el círculo se rellena de blanco
               (la flecha no se desplaza, para que no parezca que cambia de tamaño) */}
@@ -56,10 +56,10 @@ function JourneyStep({ group, index }: { group: ServiceGroup; index: number }) {
 
 export function Services() {
   return (
-    // Arriba, el mismo aire que hay entre esta sección y el bloque del Recepcionista
-    <section className="bg-dark pt-18 pb-8 md:pt-30 md:pb-18">
+    // Mantiene un margen amplio antes del recorrido de servicios en la home.
+    <section className="bg-dark pt-12 pb-10 md:pt-30 md:pb-18">
       <div className="container mx-auto px-5 md:px-6">
-        <div className="mb-12 md:mb-20 grid gap-6 md:grid-cols-[1fr_auto] md:gap-x-10 md:gap-y-0">
+        <div className="mb-8 md:mb-20 grid gap-6 md:grid-cols-[1fr_auto] md:gap-x-10 md:gap-y-0">
           <SectionHeading number="01" label="Soluciones digitales en Barcelona" title="Lo que hacemos" className="" />
 
           <motion.p
@@ -68,10 +68,9 @@ export function Services() {
             viewport={{ once: true, amount: 0.8 }}
             className="text-body text-[#a1a1a1] max-w-2xl lg:max-w-[60rem] -mt-3 md:col-start-1 md:mt-6"
           >
-            Creamos <Mark step={0}>tu marca desde cero</Mark> o le damos una nueva vida. Después{" "}
-            <Mark step={1}>la llevamos al mundo digital</Mark> con una web o una plataforma hecha a medida. Y cuando tu
-            negocio ya vive en digital, <Mark step={2}>lo automatizamos</Mark> para que trabaje por ti. Un solo equipo, de
-            punta a punta, con código real.
+            Creamos <Mark step={0}>tu marca</Mark>, desarrollamos <Mark step={1}>tu web o plataforma</Mark> y{" "}
+            <Mark step={2}>automatizamos procesos</Mark> para que tu negocio funcione mejor. Un solo equipo, de la
+            estrategia al código.
           </motion.p>
 
         </div>
@@ -87,7 +86,7 @@ export function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mt-8 flex justify-start md:mt-10 md:justify-end"
+          className="mt-6 flex justify-start md:mt-10 md:justify-end"
         >
           <TransitionLink
             to="/servicios"

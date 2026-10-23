@@ -27,14 +27,14 @@ function HomePage() {
     <>
       <SEOHead
         title="MAZZMKT | Digital Studio Barcelona"
-        description="Digital Studio en Barcelona. Webs con código real, branding, web apps, automatización e IA. Proyectos a medida en días, no en meses."
+        description="Digital Studio en Barcelona. Diseñamos webs, creamos marcas y automatizamos procesos con código real e IA. Soluciones digitales adaptadas a lo que tu negocio necesita."
         jsonLd={homeSchema}
       />
       <Hero />
-      {/* 01 Lo que hacemos · Recepcionista IA (nuestro producto) · 02 Proyectos */}
+      {/* 01 Lo que hacemos · 02 Proyectos · 03 Nuestro producto */}
       <Services />
-      <AiAgents />
       <Projects />
+      <AiAgents />
     </>
   );
 }

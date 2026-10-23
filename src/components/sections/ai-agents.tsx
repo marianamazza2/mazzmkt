@@ -6,13 +6,13 @@ import { ProductSpotlight } from "@/components/product/product-spotlight";
 // Bloque blanco (el único de la home) solo para nuestro producto, con su tarjeta en negro.
 export function AiAgents() {
   return (
-    <section className="bg-dark py-8 md:py-12">
+    <section className="bg-dark py-10 md:py-12">
       <div className="container mx-auto px-5 md:px-6">
         <div className="relative overflow-hidden rounded-sm bg-light text-dark">
-          <div className="relative px-5 py-10 md:p-14 lg:p-20 grid gap-10 xl:grid-cols-[1.2fr_1fr] xl:gap-16 xl:items-center">
+          <div className="relative px-5 py-8 md:p-14 lg:p-20 grid gap-7 md:gap-10 xl:grid-cols-[1.2fr_1fr] xl:gap-16 xl:items-center">
             <SectionHeading
               onLight
-              number=""
+              number="03"
               label="Inteligencia artificial"
               title={
                 <>
@@ -30,7 +30,7 @@ export function AiAgents() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <ProductSpotlight onLight detailed />
+              <ProductSpotlight onLight />
             </motion.div>
           </div>
         </div>

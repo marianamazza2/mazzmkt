@@ -16,7 +16,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <motion.h1
+          <motion.p
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -25,9 +25,9 @@ export function Hero() {
           >
             <Molinillo className="h-[0.95em] w-[0.95em] opacity-50" alasClassName="molinillo-intro" />
             MAZZMKT — Digital Studio · Barcelona
-          </motion.h1>
+          </motion.p>
 
-          <h2
+          <h1
             className="font-bold normal-case text-[#ffffff] mb-5 md:mb-6"
             style={{
               fontSize: "var(--font-display)",
@@ -85,7 +85,7 @@ export function Hero() {
             >
               tu negocio digital
             </motion.span>
-          </h2>
+          </h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -93,7 +93,7 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-body text-light/67 max-w-xl mb-6 md:mb-9"
           >
-            Webs, marcas y automatización con código real e inteligencia artificial. Proyectos a medida, listos en días.
+            Diseñamos webs, creamos marcas y automatizamos procesos con código e inteligencia artificial. Soluciones digitales adaptadas a lo que tu negocio necesita.
           </motion.p>
 
           <motion.div

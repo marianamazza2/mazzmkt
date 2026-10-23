@@ -31,7 +31,7 @@ export function SectionHeading({
       className={className}
     >
       <p
-        className={`font-mono text-[10px] md:text-[13px] font-medium uppercase ${muted} mb-2 md:mb-5`}
+        className={`font-mono text-[11px] md:text-[13px] font-medium uppercase ${muted} mb-2 md:mb-5`}
         style={{ letterSpacing: "0.13em" }}
       >
         {number && (

@@ -11,11 +11,14 @@ export function ProjectTile({
   project,
   index,
   wide = false,
+  revealOnScroll = true,
 }: {
   project: Project;
   index: number;
   /** Un proyecto por fila a todo el ancho: imagen apaisada */
   wide?: boolean;
+  /** Anima la tarjeta al entrar en pantalla; se desactiva para previews parciales en carruseles. */
+  revealOnScroll?: boolean;
 }) {
   const isOwnProject = project.client.toLowerCase().startsWith("proyecto propio");
   const imageRef = useRef<HTMLDivElement>(null);
@@ -24,7 +27,7 @@ export function ProjectTile({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
+      initial={revealOnScroll ? { opacity: 0, y: 40 } : { opacity: 1, y: 0 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.6, delay: (index % 2) * 0.1 }}
@@ -67,11 +70,11 @@ export function ProjectTile({
           </AnimatePresence>
           <Isotipo className="absolute bottom-4 right-4 h-[26px] w-[28px] text-light/85 drop-shadow-[0_1px_6px_rgba(0,0,0,0.45)]" />
         </div>
-        <div className="flex items-baseline justify-between gap-4 pt-3 md:pt-4">
-          <h3 className="normal-case text-[16px] md:text-[20px] font-bold tracking-[-0.02em] text-light">
+        <div className="flex flex-col gap-1 pt-3 md:flex-row md:items-baseline md:justify-between md:gap-4 md:pt-4">
+          <h3 className="normal-case text-[18px] md:text-[20px] font-bold tracking-[-0.02em] text-light">
             {project.title}
           </h3>
-          <span className="font-mono text-[10px] md:text-[12px] uppercase tracking-[0.1em] text-light/50 group-hover:text-light transition-colors text-right">
+          <span className="font-mono text-[11px] md:text-[12px] uppercase tracking-[0.1em] text-left text-light/50 group-hover:text-light transition-colors md:text-right">
             {project.category}
             {!isOwnProject && ` · ${project.client}`}
           </span>
