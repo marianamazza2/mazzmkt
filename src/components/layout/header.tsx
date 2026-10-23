@@ -149,7 +149,7 @@ export function Header() {
                   setIsMobileMenuOpen(false);
                   trackEvent("cta_click", { location: "header_mobile", label: "hablemos_de_tu_proyecto" });
                 }}
-                className="flex w-full items-center justify-center gap-3 rounded-[40px] border border-light/30 px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono mb-5"
+                className="flex w-full items-center justify-center gap-3 rounded-[40px] border border-light/30 px-4 md:px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono mb-5"
                 style={{ letterSpacing: "0.09em" }}
               >
                 HABLEMOS DE TU PROYECTO

@@ -174,7 +174,7 @@ export function ReceptionistDemo() {
             >
               <TransitionLink
                 to="/contacto"
-                className="inline-flex items-center justify-center gap-3 rounded-[40px] border border-light/30 px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono"
+                className="inline-flex items-center justify-center gap-3 rounded-[40px] border border-light/30 px-4 md:px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono"
                 style={{ letterSpacing: "0.09em" }}
                 onClick={() => trackEvent("cta_click", { location: "producto_demo", label: "pide_una_demo" })}
               >

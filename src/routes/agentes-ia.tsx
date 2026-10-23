@@ -121,7 +121,7 @@ function CapabilityCard({ cap, index }: { cap: (typeof capabilities)[number]; in
 }
 
 const ctaClass =
-  "inline-flex items-center justify-center gap-3 rounded-[40px] border border-light/30 px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono";
+  "inline-flex items-center justify-center gap-3 rounded-[40px] border border-light/30 px-4 md:px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono";
 
 function AgentesIAPage() {
   return (
@@ -314,6 +314,7 @@ function AgentesIAPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-left md:text-center"
           >
             <TransitionLink
               to="/contacto"

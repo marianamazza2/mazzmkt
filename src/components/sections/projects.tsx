@@ -32,17 +32,6 @@ export function Projects() {
             </p>
           </div>
 
-          {/* Como en "Lo que hacemos": el botón a la derecha del titular */}
-          <div className="shrink-0">
-            <TransitionLink
-              to="/proyectos"
-              className="inline-flex items-center justify-center gap-3 rounded-[40px] border border-light/30 px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono"
-              style={{ letterSpacing: "0.09em" }}
-            >
-              VER TODOS LOS PROYECTOS
-              <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
-            </TransitionLink>
-          </div>
         </motion.div>
 
         {/* Projects list */}
@@ -51,6 +40,23 @@ export function Projects() {
             <ProjectTile key={project.id} project={project} index={index} />
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mt-6 md:mt-10"
+        >
+          <TransitionLink
+            to="/proyectos"
+            className="inline-flex items-center justify-center gap-3 rounded-[40px] border border-light/30 px-4 md:px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono"
+            style={{ letterSpacing: "0.09em" }}
+          >
+            VER TODOS LOS PROYECTOS
+            <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
+          </TransitionLink>
+        </motion.div>
       </div>
     </section>
   );

@@ -87,11 +87,11 @@ export function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mt-8 flex justify-end md:mt-10"
+          className="mt-8 flex justify-start md:mt-10 md:justify-end"
         >
           <TransitionLink
             to="/servicios"
-            className="inline-flex items-center justify-center gap-3 rounded-[40px] border border-light/30 px-8 py-[15px] font-mono text-[13px] font-semibold uppercase text-light transition-colors hover:border-light"
+            className="inline-flex items-center justify-center gap-3 rounded-[40px] border border-light/30 px-4 md:px-8 py-[15px] font-mono text-[13px] font-semibold uppercase text-light transition-colors hover:border-light"
             style={{ letterSpacing: "0.09em" }}
           >
             VER TODOS LOS SERVICIOS

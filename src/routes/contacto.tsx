@@ -65,7 +65,7 @@ function ContactoPage() {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-3 rounded-[40px] border border-light/30 px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono"
+                className="inline-flex items-center justify-center gap-3 rounded-[40px] border border-light/30 px-4 md:px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono"
                 style={{ letterSpacing: "0.09em" }}
                 onClick={() => trackEvent("whatsapp_click", { location: "contacto" })}
               >
@@ -75,7 +75,7 @@ function ContactoPage() {
               </a>
               <a
                 href="mailto:mazzmkt360@gmail.com"
-                className="inline-flex items-center justify-center gap-3 rounded-[40px] border border-light/30 px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono"
+                className="inline-flex items-center justify-center gap-3 rounded-[40px] border border-light/30 px-4 md:px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono"
                 style={{ letterSpacing: "0.09em" }}
                 onClick={() => trackEvent("email_click", { location: "contacto" })}
               >
@@ -143,7 +143,7 @@ function ContactoPage() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full inline-flex items-center justify-center gap-3 rounded-[40px] border border-light/30 px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light disabled:opacity-50 font-mono"
+                    className="w-full inline-flex items-center justify-center gap-3 rounded-[40px] border border-light/30 px-4 md:px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light disabled:opacity-50 font-mono"
                     style={{ letterSpacing: "0.09em" }}
                   >
                     {isSubmitting ? "ENVIANDO" : "ENVIAR MENSAJE"}

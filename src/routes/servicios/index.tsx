@@ -139,11 +139,11 @@ function ServiciosPage() {
                             <ServiceCard key={service.title} service={service} index={index} />
                           ))}
                         </div>
-                        <div className="mt-8 flex justify-end md:mt-10">
+                        <div className="mt-8 flex justify-start md:mt-10 md:justify-end">
                           <TransitionLink
                             to="/contacto"
                             search={{ service: group.title }}
-                            className="inline-flex items-center justify-center gap-3 rounded-[40px] border border-light/30 px-8 py-[15px] font-mono text-[13px] font-semibold uppercase text-light transition-colors hover:border-light"
+                            className="inline-flex items-center justify-center gap-3 rounded-[40px] border border-light/30 px-4 md:px-8 py-[15px] font-mono text-[13px] font-semibold uppercase text-light transition-colors hover:border-light"
                             style={{ letterSpacing: "0.09em" }}
                           >
                             HABLEMOS DE TU PROYECTO
