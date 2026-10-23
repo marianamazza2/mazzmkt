@@ -140,11 +140,13 @@
 
   html {
     background-color: var(--color-background);
+    overflow-x: clip;
   }
 
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    overflow-x: clip;
     /* Tamaño base del texto corrido, igual que .text-body */
     font-size: 15px;
     line-height: 1.6;

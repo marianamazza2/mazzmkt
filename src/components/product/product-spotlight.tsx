@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { Molinillo } from "@/components/brand/molinillo";
 import { receptionist } from "@/data/products";
 
-// Tarjeta destacada del producto propio. Siempre contrasta con su fondo:
+// Tarjeta destacada de nuestro producto. Siempre contrasta con su fondo:
 // blanca sobre el negro (home y /servicios); negra si algún día va sobre fondo blanco.
 // "detailed" añade la descripción larga y las ventajas (versión de la home; en escritorio ancho comparte fila
 // con el titular del bloque, por eso su nombre y su padding se reducen un poco ahí).

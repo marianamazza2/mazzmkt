@@ -3,7 +3,7 @@ import { SectionHeading } from "@/components/sections/section-heading";
 import { ProductSpotlight } from "@/components/product/product-spotlight";
 
 // Home · 02 Inteligencia artificial.
-// Bloque blanco (el único de la home) solo para el producto propio, con su tarjeta en negro.
+// Bloque blanco (el único de la home) solo para nuestro producto, con su tarjeta en negro.
 export function AiAgents() {
   return (
     <section className="bg-dark py-8 md:py-12">

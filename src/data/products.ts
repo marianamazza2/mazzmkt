@@ -1,7 +1,7 @@
-// Productos propios del estudio. El nombre del recepcionista es provisional:
+// Productos del estudio. El nombre del recepcionista es provisional:
 // cuando esté definido, se cambia aquí y se actualiza en toda la web.
 export const receptionist = {
-  label: "Producto propio",
+  label: "Nuestro producto",
   name: "Recepcionista IA",
   tagline: "Un asistente en tu web que atiende, agenda y responde las 24 horas.",
   description:

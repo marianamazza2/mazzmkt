@@ -128,7 +128,7 @@ function AgentesIAPage() {
     <>
       <SEOHead
         title="Recepcionista IA para tu web | MAZZMKT"
-        description="Recepcionista IA: un asistente que se instala en tu web, atiende 24/7, responde dudas y agenda citas por tu negocio. Producto propio de MAZZMKT, Barcelona."
+        description="Recepcionista IA: un asistente que se instala en tu web, atiende 24/7, responde dudas y agenda citas por tu negocio. Nuestro producto, creado por MAZZMKT en Barcelona."
         jsonLd={jsonLd}
       />
 

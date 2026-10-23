@@ -158,7 +158,7 @@ function ServiciosPage() {
             );
           })}
 
-          {/* El producto propio, siempre visible y aparte de los servicios a medida */}
+          {/* Nuestro producto, siempre visible y aparte de los servicios a medida */}
           <div className="mt-10 md:mt-16">
             <ProductSpotlight detailed wide />
           </div>

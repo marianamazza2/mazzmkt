@@ -3,7 +3,7 @@ import type { ServiceGroup } from "@/types";
 // Catálogo completo de servicios, ordenado con los tres verbos del hero.
 // Las introducciones cuentan el recorrido del cliente: marca → web → automatización.
 // Lo usan la home ("Lo que hacemos" y la sección de IA) y la página /servicios.
-// Los productos propios (como el recepcionista IA) viven aparte, en data/products.ts.
+// Los productos del estudio (como el recepcionista IA) viven aparte, en data/products.ts.
 // En las introducciones, [[corchetes dobles]] marcan las frases que se subrayan solas en /servicios.
 export const serviceGroups: ServiceGroup[] = [
   {

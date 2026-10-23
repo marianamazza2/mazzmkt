@@ -31,7 +31,7 @@ function HomePage() {
         jsonLd={homeSchema}
       />
       <Hero />
-      {/* 01 Lo que hacemos · Recepcionista IA (producto propio) · 02 Proyectos */}
+      {/* 01 Lo que hacemos · Recepcionista IA (nuestro producto) · 02 Proyectos */}
       <Services />
       <AiAgents />
       <Projects />
