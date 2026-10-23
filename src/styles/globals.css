@@ -140,6 +140,10 @@
 
   html {
     background-color: var(--color-background);
+    overflow-x: hidden;
+  }
+
+  #root {
     overflow-x: clip;
   }
 

@@ -1,9 +1,9 @@
 import { useEffect, useRef } from "react";
-import { animate, motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 
 // Destello del hero de la home: una luz blanca y gris que sigue al cursor con retraso,
 // un núcleo que respira, un destello horizontal tipo lente y grano fino donde hay luz.
-// En pantallas táctiles (sin cursor) la luz deriva sola, despacio.
+// En pantallas táctiles se desactiva; solo sigue al puntero en dispositivos con ratón.
 // Se coloca como primer hijo de una sección con position: relative.
 // "intensity" la atenúa: 1 en la home, más baja en los heros interiores.
 
@@ -41,31 +41,10 @@ export function HeroGlow({ intensity = 1 }: { intensity?: number }) {
     coreX.jump(x.get());
     coreY.jump(y.get());
 
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const touch = window.matchMedia("(hover: none)").matches;
 
-    // Sin cursor: la luz queda encendida a medias y se desplaza sola
-    if (touch) {
-      active.set(reduced ? 0.45 : 0.6);
-      if (reduced) return;
-      const r = section.getBoundingClientRect();
-      const ax = animate(x, [r.width * 0.75, r.width * 0.3, r.width * 0.65], {
-        duration: 18,
-        repeat: Infinity,
-        repeatType: "mirror",
-        ease: "easeInOut",
-      });
-      const ay = animate(y, [r.height * 0.3, r.height * 0.6, r.height * 0.4], {
-        duration: 13,
-        repeat: Infinity,
-        repeatType: "mirror",
-        ease: "easeInOut",
-      });
-      return () => {
-        ax.stop();
-        ay.stop();
-      };
-    }
+    // En dispositivos táctiles no mostramos el brillo ni lo movemos automáticamente.
+    if (touch) return;
 
     const move = (e: PointerEvent) => {
       const r = section.getBoundingClientRect();
@@ -94,7 +73,7 @@ export function HeroGlow({ intensity = 1 }: { intensity?: number }) {
   }, [x, y, active, slowX, slowY, coreX, coreY]);
 
   return (
-    <div ref={ref} aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+    <div ref={ref} aria-hidden className="pointer-events-none absolute inset-0 hidden overflow-hidden md:block">
       <motion.div style={{ opacity }} className="absolute inset-0 mix-blend-screen">
         {/* Halo grande, blanco que se apaga en gris */}
         <motion.div
