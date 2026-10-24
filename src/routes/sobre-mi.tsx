@@ -43,8 +43,8 @@ function SobreMiPage() {
               transition={{ duration: 0.6 }}
             >
               <p
-                className="text-[10px] uppercase mb-1 md:text-[13px] md:mb-5 md:font-medium font-mono"
-                style={{ letterSpacing: "0.13em", color: "#ffffff" }}
+                className="text-[10px] uppercase mb-1 md:text-[13px] md:mb-5 md:font-medium font-mono text-light/60"
+                style={{ letterSpacing: "0.13em" }}
               >
                 CREEMOS EN
               </p>
@@ -91,8 +91,8 @@ function SobreMiPage() {
             className="max-w-3xl"
           >
             <p
-              className="text-[10px] uppercase mb-1 md:text-[13px] md:mb-5 md:font-medium font-mono"
-                style={{ letterSpacing: "0.13em", color: "#ffffff" }}
+              className="text-[10px] uppercase mb-1 md:text-[13px] md:mb-5 md:font-medium font-mono text-light/60"
+                style={{ letterSpacing: "0.13em" }}
             >
               DETRÁS DE MAZZMKT
             </p>

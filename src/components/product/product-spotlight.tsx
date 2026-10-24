@@ -51,7 +51,7 @@ export function ProductSpotlight({
       <div className={wide ? "lg:flex lg:h-full lg:flex-col" : undefined}>
         <p
           className={`mb-3 inline-flex items-center gap-2 font-mono text-[10px] md:text-[13px] font-medium uppercase ${
-            onLight ? "text-light" : "text-dark"
+            onLight ? "text-light/70" : "text-dark/70"
           }`}
           style={{ letterSpacing: "0.13em" }}
         >

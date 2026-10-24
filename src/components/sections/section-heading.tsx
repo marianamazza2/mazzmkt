@@ -8,6 +8,7 @@ export function SectionHeading({
   subtitle,
   className = "mb-6 md:mb-10",
   onLight = false,
+  brightLabel = false,
   titleSize = "text-section-title",
 }: {
   number?: string;
@@ -17,10 +18,12 @@ export function SectionHeading({
   className?: string;
   /** Sobre fondo blanco: textos en oscuro */
   onLight?: boolean;
+  /** Mantiene la etiqueta en blanco puro en los encabezados del catálogo de servicios. */
+  brightLabel?: boolean;
   /** Tamaño del titular, por si la sección necesita uno distinto */
   titleSize?: string;
 }) {
-  const muted = onLight ? "text-[#6b6b6b]" : "text-light";
+  const muted = onLight ? "text-[#6b6b6b]" : "text-light/60";
 
   return (
     <motion.div
@@ -31,7 +34,7 @@ export function SectionHeading({
       className={className}
     >
       <p
-        className={`font-mono text-[11px] md:text-[13px] font-medium uppercase ${muted} mb-2 md:mb-5`}
+        className={`font-mono text-[11px] md:text-[13px] font-medium uppercase ${brightLabel && !onLight ? "text-light" : muted} mb-2 md:mb-5`}
         style={{ letterSpacing: "0.13em" }}
       >
         {number && (

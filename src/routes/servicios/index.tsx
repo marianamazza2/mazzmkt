@@ -64,7 +64,7 @@ function ServiciosPage() {
                 key={group.id}
                 href={`#${group.id}`}
                 onClick={() => setOpen((prev) => new Set(prev).add(group.id))}
-                className="inline-flex items-center gap-2 font-mono text-[13px] font-medium uppercase text-light transition-colors"
+                className="inline-flex items-center gap-2 font-mono text-[13px] font-medium uppercase text-light/60 transition-colors hover:text-light"
                 style={{ letterSpacing: "0.13em" }}
               >
                 <span>{String(i + 1).padStart(2, "0")} /</span>
@@ -96,6 +96,7 @@ function ServiciosPage() {
                     label={group.title}
                     title={group.verb}
                     className="flex-1"
+                    brightLabel
                   />
                   <button
                     type="button"

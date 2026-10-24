@@ -257,7 +257,7 @@ function AgentesIAPage() {
           >
             <div className="md:max-w-xs">
               <p
-                className="text-[10px] uppercase mb-2 md:text-[13px] md:mb-3 md:font-medium font-mono text-light"
+                className="text-[10px] uppercase mb-2 md:text-[13px] md:mb-3 md:font-medium font-mono text-light/60"
                 style={{ letterSpacing: "0.13em" }}
               >
                 Se conecta con

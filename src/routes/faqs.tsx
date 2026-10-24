@@ -432,7 +432,7 @@ function FAQsPage() {
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 md:gap-3 mb-1.5 md:mb-2">
                           <span
-                            className="font-mono text-[10px] md:text-[13px] font-medium uppercase text-light"
+                            className="font-mono text-[10px] md:text-[13px] font-medium uppercase text-light/60"
                             style={{ letterSpacing: "0.13em" }}
                           >
                             {faq.category}
@@ -515,8 +515,8 @@ function FAQsPage() {
             transition={{ duration: 0.6 }}
             className="mb-10 md:mb-12"
           >
-            <p className="text-[10px] md:text-[13px] font-medium text-light mb-6 md:mb-5 uppercase tracking-[0.13em] flex items-center gap-3 font-mono">
-              <span className="inline-block w-8 h-[1px] bg-[#ffffff]" />
+            <p className="text-[10px] md:text-[13px] font-medium text-light/60 mb-6 md:mb-5 uppercase tracking-[0.13em] flex items-center gap-3 font-mono">
+              <span className="inline-block w-8 h-[1px] bg-light/60" />
               EN NÚMEROS
             </p>
           </motion.div>

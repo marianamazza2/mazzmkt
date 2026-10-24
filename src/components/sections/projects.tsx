@@ -34,8 +34,8 @@ export function Projects() {
         >
           <div>
             <p
-              className="text-[11px] uppercase mb-2 md:text-[13px] md:mb-5 md:font-medium font-mono"
-              style={{ letterSpacing: "0.13em", color: "#ffffff" }}
+              className="text-[11px] uppercase mb-2 md:text-[13px] md:mb-5 md:font-medium font-mono text-light/60"
+              style={{ letterSpacing: "0.13em" }}
             >
               <span>02 /</span> NUESTRO TRABAJO
             </p>
