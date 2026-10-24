@@ -169,7 +169,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
               className={`rounded-full p-2 transition-colors ${
                 viewMode === "showcase"
                   ? "bg-light text-dark"
-                  : "text-light/67 hover:text-light"
+                  : "text-light"
               }`}
               title="Vista un proyecto por fila"
             >
@@ -183,7 +183,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
               className={`rounded-full p-2 transition-colors ${
                 viewMode === "grid"
                   ? "bg-light text-dark"
-                  : "text-light/67 hover:text-light"
+                  : "text-light"
               }`}
               title="Vista cuadrícula"
             >
@@ -194,7 +194,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
               className={`rounded-full p-2 transition-colors ${
                 viewMode === "list"
                   ? "bg-light text-dark"
-                  : "text-light/67 hover:text-light"
+                  : "text-light"
               }`}
               title="Vista lista"
             >
@@ -218,7 +218,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
               {mobileBtnLabel}
             </span>
           </span>
-          <span className="flex items-center gap-2 text-light/60">
+          <span className="flex items-center gap-2 text-light">
             <span className="font-mono text-[11px]">{filteredProjects.length}</span>
             <ChevronDown
               className={`h-4 w-4 transition-transform ${isMobileFilterOpen ? "rotate-180" : ""}`}
@@ -257,14 +257,14 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
                     className={`flex w-full items-center justify-between rounded-[2px] px-3 py-2.5 text-left transition-colors ${
                       isActive
                         ? "bg-light text-dark"
-                        : "text-light/80 hover:bg-light/5 hover:text-[#ffffff]"
+                        : "text-light hover:bg-light/5"
                     }`}
                   >
                     <span className="font-mono text-[12px] font-semibold uppercase tracking-[0.08em]">
                       {option.label}
                     </span>
                     <span className="flex items-center gap-2">
-                      <span className="font-mono text-[11px] opacity-70">{option.count}</span>
+                      <span className="font-mono text-[11px]">{option.count}</span>
                       {isActive && <Check className="h-3.5 w-3.5" />}
                     </span>
                   </button>
@@ -282,7 +282,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="flex items-center gap-3 text-[13px] text-light/67 font-mono"
+            className="flex items-center gap-3 text-[13px] text-light font-mono"
           >
             <span>
               Mostrando {filteredProjects.length} de {projects.length} proyectos
@@ -395,13 +395,13 @@ function ProjectListItem({
       onMouseLeave={onMouseLeave}
     >
       {/* Number */}
-      <span className="font-mono text-[13px] text-light/50 group-hover:text-light transition-colors w-10 shrink-0">
+          <span className="font-mono text-[13px] text-light transition-colors w-10 shrink-0">
         {String(total - index).padStart(2, "0")}
       </span>
 
       {/* Content */}
       <div className="flex-1 min-w-0">
-        <span className="text-[10px] font-semibold tracking-widest uppercase text-light/67 group-hover:text-light transition-colors font-mono">
+        <span className="text-[10px] font-semibold tracking-widest uppercase text-light transition-colors font-mono">
           {project.category}
         </span>
         <h3 className="normal-case text-xl font-bold text-[#ffffff] truncate transition-colors">
@@ -419,7 +419,7 @@ function ProjectListItem({
             <p className="text-lg font-bold text-[#ffffff] transition-colors">
               {result.value}
             </p>
-            <p className="text-[10px] uppercase tracking-wider text-light/67 group-hover:text-light transition-colors">
+            <p className="text-[10px] uppercase tracking-wider text-light transition-colors">
               {result.metric}
             </p>
           </div>

@@ -23,7 +23,7 @@ function CookiesPage() {
 
             {/* Intro */}
             <div>
-              <p className="text-sm text-light/67 mb-4">Última actualización: mayo de 2026</p>
+              <p className="text-sm text-light mb-4">Última actualización: mayo de 2026</p>
               <p className="text-body">
                 Esta política explica qué cookies y tecnologías similares utiliza el sitio web <strong>mazzmkt.com</strong> (en adelante, «el Sitio»), operado por Mariana Mazzariello bajo la marca MAZZMKT, para qué sirven y cómo puedes controlarlas.
               </p>

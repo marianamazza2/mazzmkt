@@ -64,10 +64,10 @@ function ServiciosPage() {
                 key={group.id}
                 href={`#${group.id}`}
                 onClick={() => setOpen((prev) => new Set(prev).add(group.id))}
-                className="inline-flex items-center gap-2 font-mono text-[13px] font-medium uppercase text-[#a1a1a1] hover:text-light transition-colors"
+                className="inline-flex items-center gap-2 font-mono text-[13px] font-medium uppercase text-light transition-colors"
                 style={{ letterSpacing: "0.13em" }}
               >
-                <span className="opacity-50">{String(i + 1).padStart(2, "0")} /</span>
+                <span>{String(i + 1).padStart(2, "0")} /</span>
                 {group.verb}
               </a>
             ))}

@@ -30,7 +30,7 @@ export function FilterToggle<T extends string | null>({
             aria-selected={isActive}
             onClick={() => onChange(option.value)}
             className={`relative rounded-full px-4 xl:px-5 py-2 font-mono text-[13px] uppercase whitespace-nowrap transition-colors duration-300 ${
-              isActive ? "text-dark" : "text-light/67 hover:text-light"
+              isActive ? "text-dark" : "text-light"
             }`}
             style={{ letterSpacing: "0.09em" }}
           >

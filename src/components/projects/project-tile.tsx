@@ -74,7 +74,7 @@ export function ProjectTile({
           <h3 className="normal-case text-[18px] md:text-[20px] font-bold tracking-[-0.02em] text-light">
             {project.title}
           </h3>
-          <span className="font-mono text-[11px] md:text-[12px] uppercase tracking-[0.1em] text-left text-light/50 group-hover:text-light transition-colors md:text-right">
+          <span className="font-mono text-[11px] md:text-[12px] uppercase tracking-[0.1em] text-left text-light/50 transition-colors group-hover:text-light md:text-right">
             {project.category}
             {!isOwnProject && ` · ${project.client}`}
           </span>

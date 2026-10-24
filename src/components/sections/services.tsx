@@ -34,8 +34,8 @@ function JourneyStep({ group, index }: { group: ServiceGroup; index: number }) {
       transition={{ duration: 0.5, delay: index * 0.1 }}
     >
       <TransitionLink to="/servicios" hash={group.id} className="group block border-t border-light/13 pt-5 md:pt-6">
-        <span className="block font-mono text-[13px] text-light/50">
-          {String(index + 1).padStart(2, "0")} <span className="opacity-60">/</span>{" "}
+        <span className="block font-mono text-[13px] text-light">
+          {String(index + 1).padStart(2, "0")} /{" "}
           <span className="uppercase" style={{ letterSpacing: "0.08em" }}>
             {group.title}
           </span>

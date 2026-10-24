@@ -6,21 +6,16 @@ import { cn } from "@/lib/utils";
 export function CardRail({
   children,
   columns = 3,
-  mobileOnlyLast = false,
   onScroll,
   className,
   ariaLabel,
 }: {
   children: React.ReactNode;
   columns?: 2 | 3;
-  /** Mantiene la última tarjeta en la fila móvil y la oculta en la cuadrícula de escritorio. */
-  mobileOnlyLast?: boolean;
   onScroll?: React.UIEventHandler<HTMLDivElement>;
   className?: string;
   ariaLabel?: string;
 }) {
-  const childCount = Children.count(children);
-
   return (
     <div
       className={cn(
@@ -33,13 +28,8 @@ export function CardRail({
       aria-label={ariaLabel}
       role={ariaLabel ? "region" : undefined}
     >
-      {Children.map(children, (child, index) => (
-        <div
-          className={cn(
-            "snap-start shrink-0 w-[80vw] max-w-[340px] md:w-auto md:max-w-none",
-            mobileOnlyLast && index === childCount - 1 && "md:hidden"
-          )}
-        >
+      {Children.map(children, (child) => (
+        <div className="snap-start shrink-0 w-[80vw] max-w-[340px] md:w-auto md:max-w-none">
           {child}
         </div>
       ))}

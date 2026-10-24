@@ -36,7 +36,7 @@ export function ServiceCard({ service, index }: { service: ServiceItem; index: n
       />
 
       <div className="relative z-10 flex h-full flex-col p-5 md:p-8">
-        <span className="block mb-10 md:mb-14 font-mono text-[13px] text-light/50 group-hover:text-dark/60 transition-colors duration-300">
+        <span className="block mb-10 md:mb-14 font-mono text-[13px] text-light group-hover:text-dark transition-colors duration-300">
           {String(index + 1).padStart(2, "0")}
         </span>
 
@@ -45,7 +45,7 @@ export function ServiceCard({ service, index }: { service: ServiceItem; index: n
         </h3>
 
         <p
-          className="font-mono text-[13px] font-medium uppercase text-light/76 group-hover:text-dark/72 mb-4 transition-colors"
+          className="font-mono text-[13px] font-medium uppercase text-light group-hover:text-dark mb-4 transition-colors"
           style={{ letterSpacing: "0.08em" }}
         >
           {service.subtitle}

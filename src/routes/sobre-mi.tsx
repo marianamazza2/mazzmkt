@@ -44,7 +44,7 @@ function SobreMiPage() {
             >
               <p
                 className="text-[10px] uppercase mb-1 md:text-[13px] md:mb-5 md:font-medium font-mono"
-                style={{ letterSpacing: "0.13em", color: "#b3b3b3" }}
+                style={{ letterSpacing: "0.13em", color: "#ffffff" }}
               >
                 CREEMOS EN
               </p>
@@ -92,7 +92,7 @@ function SobreMiPage() {
           >
             <p
               className="text-[10px] uppercase mb-1 md:text-[13px] md:mb-5 md:font-medium font-mono"
-              style={{ letterSpacing: "0.13em", color: "#b3b3b3" }}
+                style={{ letterSpacing: "0.13em", color: "#ffffff" }}
             >
               DETRÁS DE MAZZMKT
             </p>

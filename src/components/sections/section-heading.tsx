@@ -20,7 +20,7 @@ export function SectionHeading({
   /** Tamaño del titular, por si la sección necesita uno distinto */
   titleSize?: string;
 }) {
-  const muted = onLight ? "text-[#6b6b6b]" : "text-[#a1a1a1]";
+  const muted = onLight ? "text-[#6b6b6b]" : "text-light";
 
   return (
     <motion.div
@@ -36,7 +36,7 @@ export function SectionHeading({
       >
         {number && (
           <>
-            <span className="opacity-50">{number} /</span>{" "}
+            <span>{number} /</span>{" "}
           </>
         )}
         {label}

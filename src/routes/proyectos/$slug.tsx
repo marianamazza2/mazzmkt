@@ -21,7 +21,7 @@ export const Route = createFileRoute("/proyectos/$slug")({
         <h1 className="text-4xl font-bold text-[#ffffff] mb-4">Proyecto no encontrado</h1>
         <TransitionLink
           to="/proyectos"
-          className="text-light/67 hover:text-light transition-colors"
+          className="text-light transition-colors hover:opacity-80"
         >
           Volver a proyectos
         </TransitionLink>
@@ -136,7 +136,7 @@ function ProjectPage() {
                   </a>
                 )}
                 {project.url && project.urlDisabled && (
-                  <span className="inline-flex items-center gap-2 justify-self-end pt-1 text-[10px] font-mono uppercase tracking-[0.09em] text-light/50">
+                  <span className="inline-flex items-center gap-2 justify-self-end pt-1 text-[10px] font-mono uppercase tracking-[0.09em] text-light">
                     Acceso privado <span aria-hidden="true">🔒</span>
                   </span>
                 )}
@@ -162,7 +162,7 @@ function ProjectPage() {
                 <ol className="space-y-4">
                   {project.work.map((item, index) => (
                     <li key={index} className="flex items-baseline gap-4">
-                      <span className="shrink-0 font-mono text-[11px] text-light/40">{String(index + 1).padStart(2, "0")}</span>
+                      <span className="shrink-0 font-mono text-[11px] text-light">{String(index + 1).padStart(2, "0")}</span>
                       <span>{item}</span>
                     </li>
                   ))}
@@ -278,7 +278,7 @@ function ProjectPage() {
               </div>
 
               {/* Counter */}
-              <p className="text-center text-light/50 text-xs font-mono tracking-widest">
+              <p className="text-center text-light text-xs font-mono tracking-widest">
                 {sliderIndex + 1} / {images.length}
               </p>
             </div>
@@ -296,7 +296,7 @@ function ProjectPage() {
             transition={{ duration: 0.6 }}
             className="mb-10 md:mb-16"
           >
-            <h2 className="text-[13px] font-medium text-light/67 mb-6 tracking-widest font-mono">
+            <h2 className="text-[13px] font-medium text-light mb-6 tracking-widest font-mono">
               RESULTADOS
             </h2>
             <p
@@ -328,7 +328,7 @@ function ProjectPage() {
                 >
                   {result.value}
                 </p>
-                <p className="text-[13px] font-medium text-light/67 uppercase tracking-widest font-mono">
+                <p className="text-[13px] font-medium text-light uppercase tracking-widest font-mono">
                   {result.metric}
                 </p>
               </motion.div>

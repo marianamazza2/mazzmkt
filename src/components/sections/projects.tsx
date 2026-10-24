@@ -17,7 +17,7 @@ export function Projects() {
 
     const gap = Number.parseFloat(window.getComputedStyle(rail).columnGap) || 0;
     const slideIndex = Math.round(rail.scrollLeft / (firstSlide.offsetWidth + gap));
-    const nextSlide = Math.min(2, slideIndex);
+    const nextSlide = Math.min(1, slideIndex);
     setActiveSlide((current) => (current === nextSlide ? current : nextSlide));
   }
 
@@ -35,9 +35,9 @@ export function Projects() {
           <div>
             <p
               className="text-[11px] uppercase mb-2 md:text-[13px] md:mb-5 md:font-medium font-mono"
-              style={{ letterSpacing: "0.13em", color: "#a1a1a1" }}
+              style={{ letterSpacing: "0.13em", color: "#ffffff" }}
             >
-              <span className="opacity-50">02 /</span> NUESTRO TRABAJO
+              <span>02 /</span> NUESTRO TRABAJO
             </p>
             <h2
               className="block normal-case text-section-title font-bold leading-none tracking-[-0.04em] text-light font-heading md:font-bold md:leading-[0.92] md:tracking-[-0.045em] md:text-[#ffffff]"
@@ -47,10 +47,9 @@ export function Projects() {
           </div>
         </motion.div>
 
-        {/* Mobile: proyectos con snap y tarjeta final de acceso a todos. */}
+        {/* Mobile: carrusel de proyectos con snap y una parte de la siguiente tarjeta visible. */}
         <CardRail
           columns={2}
-          mobileOnlyLast
           onScroll={updateActiveSlide}
           className="md:hidden"
           ariaLabel="Proyectos destacados; desliza para ver más"
@@ -58,41 +57,39 @@ export function Projects() {
           {latestProjects.map((project, index) => (
             <ProjectTile key={project.id} project={project} index={index} revealOnScroll={false} />
           ))}
-          <TransitionLink
-            to="/proyectos"
-            aria-label="Ver todos los proyectos"
-            className="group flex aspect-[4/3] flex-col justify-between rounded-sm border border-light/20 bg-[#111111] p-6 transition-colors hover:border-light/50"
-          >
-            <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-light/50">
-              MAZZMKT · PROYECTOS
-            </span>
-            <span className="flex items-end justify-between gap-4 font-heading text-[24px] font-bold leading-[1.05] tracking-[-0.04em] text-light">
-              Ver todos los proyectos
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-light/30 transition-colors group-hover:border-light group-hover:bg-light group-hover:text-dark">
-                <ArrowRight className="h-5 w-5" strokeWidth={1.5} />
-              </span>
-            </span>
-          </TransitionLink>
         </CardRail>
 
         <div className="mt-4 flex items-center gap-3 md:hidden" aria-live="polite">
-          <span className="font-mono text-[11px] text-light/55">
-            {String(activeSlide + 1).padStart(2, "0")} <span className="text-light/30">/ 03</span>
+          <span className="flex items-center gap-1.5 font-mono text-[11px]">
+            <span className={activeSlide === 0 ? "text-light" : "text-light/45"}>01</span>
+            <span className="text-light/35">/</span>
+            <span className={activeSlide === 1 ? "text-light" : "text-light/45"}>02</span>
           </span>
           <div
             role="progressbar"
             aria-label="Recorrido de proyectos"
             aria-valuemin={1}
-            aria-valuemax={3}
+            aria-valuemax={2}
             aria-valuenow={activeSlide + 1}
-            className="h-px flex-1 overflow-hidden bg-light/20"
+            className="h-px flex-1 overflow-hidden bg-light/15"
           >
             <div
               className="h-full bg-light transition-[width] duration-200"
-              style={{ width: `${((activeSlide + 1) / 3) * 100}%` }}
+              style={{ width: `${((activeSlide + 1) / 2) * 100}%` }}
             />
           </div>
           <span className="font-mono text-[10px] uppercase tracking-[0.08em] text-light/45">Desliza</span>
+        </div>
+
+        <div className="mt-5 md:hidden">
+          <TransitionLink
+            to="/proyectos"
+            className="inline-flex items-center justify-center gap-3 rounded-[40px] border border-light/30 px-4 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono"
+            style={{ letterSpacing: "0.09em" }}
+          >
+            VER TODOS LOS PROYECTOS
+            <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
+          </TransitionLink>
         </div>
 
         {/* Desktop mantiene su cuadrícula y el CTA inferior. */}
@@ -107,7 +104,7 @@ export function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mt-6 hidden md:block md:mt-10"
+          className="mt-6 hidden md:mt-10 md:flex md:justify-end"
         >
           <TransitionLink
             to="/proyectos"

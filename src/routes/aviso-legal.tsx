@@ -23,7 +23,7 @@ function AvisoLegalPage() {
 
             {/* Intro */}
             <div>
-              <p className="text-sm text-light/67 mb-4">Última actualización: mayo de 2026</p>
+              <p className="text-sm text-light mb-4">Última actualización: mayo de 2026</p>
               <p className="text-body">
                 En cumplimiento de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se pone a disposición de los usuarios la siguiente información sobre el titular del sitio web <strong>mazzmkt.com</strong>.
               </p>

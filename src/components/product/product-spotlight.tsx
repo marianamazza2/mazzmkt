@@ -25,7 +25,7 @@ export function ProductSpotlight({
         <li
           key={feature}
           className={`flex items-center gap-2.5 border-t pt-3 font-mono text-[11px] md:text-[12px] uppercase ${
-            onLight ? "border-light/13 text-light/80" : "border-dark/13 text-dark/80"
+            onLight ? "border-light/13 text-light" : "border-dark/13 text-dark"
           }`}
           style={{ letterSpacing: "0.08em" }}
         >
@@ -51,7 +51,7 @@ export function ProductSpotlight({
       <div className={wide ? "lg:flex lg:h-full lg:flex-col" : undefined}>
         <p
           className={`mb-3 inline-flex items-center gap-2 font-mono text-[10px] md:text-[13px] font-medium uppercase ${
-            onLight ? "text-[#a1a1a1]" : "text-[#6b6b6b]"
+            onLight ? "text-light" : "text-dark"
           }`}
           style={{ letterSpacing: "0.13em" }}
         >

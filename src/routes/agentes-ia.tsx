@@ -175,7 +175,7 @@ function AgentesIAPage() {
               className="mb-5 md:mb-7"
             />
 
-            <span className="inline-flex items-center gap-2 rounded-full border border-light/18 px-3 py-[6px] mb-6 text-[12px] md:text-[13px] text-[#d4d4d4]">
+            <span className="inline-flex items-center gap-2 rounded-full border border-light/18 px-3 py-[6px] mb-6 text-[12px] md:text-[13px] text-light">
               <Clock size={14} strokeWidth={1.5} className="text-[#a1a1a1]" />
               23:41 · Martes
             </span>
@@ -239,7 +239,7 @@ function AgentesIAPage() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="border-t border-light/13 pt-5 md:pt-6"
               >
-                <span className="font-mono text-[13px] text-light/50">{String(index + 1).padStart(2, "0")}</span>
+                <span className="font-mono text-[13px] text-light">{String(index + 1).padStart(2, "0")}</span>
                 <h3 className="mt-6 md:mt-10 mb-3 text-[20px] md:text-[24px] leading-[1.1] tracking-[-0.025em] font-bold text-light">
                   {step.title}
                 </h3>
@@ -257,7 +257,7 @@ function AgentesIAPage() {
           >
             <div className="md:max-w-xs">
               <p
-                className="text-[10px] uppercase mb-2 md:text-[13px] md:mb-3 md:font-medium font-mono text-[#a1a1a1]"
+                className="text-[10px] uppercase mb-2 md:text-[13px] md:mb-3 md:font-medium font-mono text-light"
                 style={{ letterSpacing: "0.13em" }}
               >
                 Se conecta con
@@ -271,7 +271,7 @@ function AgentesIAPage() {
               {integrations.map((tool) => (
                 <span
                   key={tool}
-                  className="inline-flex items-center gap-2 text-[12px] md:text-[14px] px-3 py-[7px] md:px-4 md:py-[9px] rounded-full border border-light/18 text-[#d4d4d4]"
+                  className="inline-flex items-center gap-2 text-[12px] md:text-[14px] px-3 py-[7px] md:px-4 md:py-[9px] rounded-full border border-light/18 text-light"
                 >
                   <Plug size={13} strokeWidth={1.5} className="text-[#a1a1a1]" />
                   {tool}

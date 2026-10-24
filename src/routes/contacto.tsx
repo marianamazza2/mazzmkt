@@ -105,7 +105,7 @@ function ContactoPage() {
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5 md:space-y-6">
                   <div>
-                    <label htmlFor="contacto-nombre" className="block font-mono text-[10px] md:text-[13px] font-medium uppercase tracking-[0.13em] text-[#a1a1a1] mb-2 md:mb-3">Nombre</label>
+                    <label htmlFor="contacto-nombre" className="block font-mono text-[10px] md:text-[13px] font-medium uppercase tracking-[0.13em] text-light mb-2 md:mb-3">Nombre</label>
                     <input
                       id="contacto-nombre"
                       type="text"
@@ -117,7 +117,7 @@ function ContactoPage() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="contacto-email" className="block font-mono text-[10px] md:text-[13px] font-medium uppercase tracking-[0.13em] text-[#a1a1a1] mb-2 md:mb-3">Email</label>
+                    <label htmlFor="contacto-email" className="block font-mono text-[10px] md:text-[13px] font-medium uppercase tracking-[0.13em] text-light mb-2 md:mb-3">Email</label>
                     <input
                       id="contacto-email"
                       type="email"
@@ -129,7 +129,7 @@ function ContactoPage() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="contacto-mensaje" className="block font-mono text-[10px] md:text-[13px] font-medium uppercase tracking-[0.13em] text-[#a1a1a1] mb-2 md:mb-3">Mensaje</label>
+                    <label htmlFor="contacto-mensaje" className="block font-mono text-[10px] md:text-[13px] font-medium uppercase tracking-[0.13em] text-light mb-2 md:mb-3">Mensaje</label>
                     <textarea
                       id="contacto-mensaje"
                       required
@@ -163,7 +163,7 @@ function ContactoPage() {
               className="space-y-8"
             >
               <div>
-                <p className="font-mono text-[10px] md:text-[13px] font-medium uppercase tracking-[0.13em] text-[#a1a1a1] mb-2 md:mb-5">
+                <p className="font-mono text-[10px] md:text-[13px] font-medium uppercase tracking-[0.13em] text-light mb-2 md:mb-5">
                   Contacto directo
                 </p>
                 <h2 className="normal-case font-heading text-subsection-title font-bold leading-[1] md:leading-[0.92] tracking-[-0.045em] text-light mb-4 md:mb-6">
@@ -195,7 +195,7 @@ function ContactoPage() {
               </div>
 
               <div className="pt-6 md:pt-8 border-t border-light/13">
-                <p className="font-mono text-[10px] md:text-[13px] font-medium uppercase tracking-[0.13em] text-[#a1a1a1] mb-4">
+                <p className="font-mono text-[10px] md:text-[13px] font-medium uppercase tracking-[0.13em] text-light mb-4">
                   Síguenos
                 </p>
                 <div className="flex gap-2 md:gap-3">
@@ -244,7 +244,7 @@ function ContactItem({
     <div className="flex items-start gap-4 md:gap-5">
       <Icon className="h-5 w-5 md:h-6 md:w-6 text-light mt-0.5 flex-shrink-0" strokeWidth={1.5} />
       <div>
-        <p className="font-mono text-[10px] md:text-[13px] font-medium uppercase tracking-[0.13em] text-[#a1a1a1] mb-1">
+        <p className="font-mono text-[10px] md:text-[13px] font-medium uppercase tracking-[0.13em] text-light mb-1">
           {label}
         </p>
         <div className="text-body text-light">{children}</div>

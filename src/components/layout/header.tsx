@@ -63,7 +63,7 @@ export function Header() {
                     "text-sm font-bold transition-colors tracking-wide uppercase",
                     pathname === item.href
                       ? "text-[#ffffff]"
-                      : "text-[#ffffffcc] hover:text-[#ffffff]"
+                      : "text-light hover:opacity-80"
                   )}
                   style={{ fontFamily: "var(--font-mono)" }}
                 >
@@ -130,7 +130,7 @@ export function Header() {
                       isActive ? "text-light" : "text-light/60 hover:text-light"
                     )}
                   >
-                    <span className="font-mono text-[11px] tracking-[0.13em] text-[#a1a1a1]">
+                    <span className="font-mono text-[11px] tracking-[0.13em] text-light">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <span className="font-heading text-[30px] font-bold leading-none tracking-[-0.03em] uppercase">

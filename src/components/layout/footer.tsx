@@ -15,7 +15,7 @@ const legalLinks = [
   { to: "/privacidad", label: "Privacidad" },
 ];
 
-const label = "font-mono text-[13px] uppercase tracking-[0.08em] text-light/50";
+const label = "font-mono text-[13px] uppercase tracking-[0.08em] text-light";
 
 export function Footer() {
   return (

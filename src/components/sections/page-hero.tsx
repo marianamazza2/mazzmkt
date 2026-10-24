@@ -38,15 +38,15 @@ export function PageHero({ crumbs, title, subtitle, actions, heading = "title", 
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="font-mono text-[11px] md:text-[13px] font-medium uppercase tracking-[0.13em] text-light/80 mb-4 md:mb-6 flex flex-wrap items-center gap-3"
+            className="font-mono text-[11px] md:text-[13px] font-medium uppercase tracking-[0.13em] text-light mb-4 md:mb-6 flex flex-wrap items-center gap-3"
           >
             <Molinillo className="h-[0.95em] w-[0.95em] opacity-50" alasClassName="molinillo-intro" />
-            <span className="opacity-50">MAZZMKT</span>
+            <span>MAZZMKT</span>
             {crumbs.map((crumb) => (
               <span key={crumb.label} className="contents">
                 <span className="opacity-30">/</span>
                 {crumb.to ? (
-                  <TransitionLink to={crumb.to} className="opacity-50 hover:opacity-80 transition-opacity">
+                  <TransitionLink to={crumb.to} className="text-light hover:opacity-80 transition-opacity">
                     {crumb.label}
                   </TransitionLink>
                 ) : (
