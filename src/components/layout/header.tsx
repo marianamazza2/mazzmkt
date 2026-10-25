@@ -9,13 +9,13 @@ import { Isotipo } from "@/components/brand/isotipo";
 import { receptionist } from "@/data/products";
 
 const navigation = [
-  { title: "HOME", href: "/" },
-  { title: "SERVICIOS", href: "/servicios" },
-  { title: receptionist.name.toUpperCase(), href: receptionist.href },
-  { title: "PROYECTOS", href: "/proyectos" },
-  { title: "MAZZMKT", href: "/sobre-mi" },
-  { title: "FAQS", href: "/faqs" },
-  { title: "CONTACTO", href: "/contacto" },
+  { title: "Home", href: "/" },
+  { title: "Servicios", href: "/servicios" },
+  { title: receptionist.name, href: receptionist.href },
+  { title: "Proyectos", href: "/proyectos" },
+  { title: "Mazzmkt", href: "/sobre-mi" },
+  { title: "FAQs", href: "/faqs" },
+  { title: "Contacto", href: "/contacto" },
 ];
 
 const socials = [
@@ -126,14 +126,14 @@ export function Header() {
                     onClick={() => setIsMobileMenuOpen(false)}
                     aria-current={isActive ? "page" : undefined}
                     className={cn(
-                      "flex items-baseline gap-4 py-4 border-b border-light/13 first:border-t transition-colors",
+                      "flex items-baseline gap-4 py-3.5 border-b border-light/13 first:border-t transition-colors",
                       isActive ? "text-light" : "text-light/60 hover:text-light"
                     )}
                   >
                     <span className="font-mono text-[11px] tracking-[0.13em] text-light">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <span className="font-heading text-[30px] font-bold leading-none tracking-[-0.03em] uppercase">
+                    <span className="font-heading text-[20px] font-bold leading-[1.1] tracking-[-0.025em] normal-case">
                       {item.title}
                     </span>
                   </TransitionLink>
