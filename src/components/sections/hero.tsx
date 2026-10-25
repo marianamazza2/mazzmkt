@@ -20,7 +20,7 @@ export function Hero() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="font-mono flex items-center gap-3 text-[11px] md:text-[13px] font-medium uppercase text-light mb-[14px] md:mb-5"
+            className="font-mono flex items-center gap-3 text-[11px] md:text-[13px] font-medium uppercase text-light/60 mb-[14px] md:mb-5"
             style={{ letterSpacing: "0.13em" }}
           >
             <Molinillo className="h-[0.95em] w-[0.95em] opacity-50" alasClassName="molinillo-intro" />
