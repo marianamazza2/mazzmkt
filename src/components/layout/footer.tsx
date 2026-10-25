@@ -15,15 +15,31 @@ const legalLinks = [
   { to: "/privacidad", label: "Privacidad" },
 ];
 
-const label = "font-mono text-[13px] uppercase tracking-[0.08em] text-light";
+const label = "font-mono text-[10px] uppercase tracking-[0.08em] text-light md:text-[13px]";
 
 export function Footer() {
   return (
     <footer className="bg-dark text-light border-t border-light/6">
-      <div className="container mx-auto flex flex-col gap-5 px-5 py-7 md:px-6 md:py-8 lg:flex-row lg:items-center lg:justify-between lg:gap-6">
-        <LogotipoReducido className="h-[16px] w-auto shrink-0 text-light" />
+      <div className="container mx-auto grid grid-cols-[1fr_auto] items-center gap-x-4 gap-y-2 px-5 py-5 md:px-6 md:py-8 lg:flex lg:items-center lg:justify-between lg:gap-6">
+        <LogotipoReducido className="h-[14px] w-auto shrink-0 text-light lg:h-[16px]" />
 
-        <nav className="flex flex-wrap gap-x-5 md:gap-x-6">
+        <div className="flex justify-end gap-2 lg:order-last">
+          {socials.map(({ href, icon: Icon, label: name }) => (
+            <a
+              key={name}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={name}
+              className="flex h-11 w-11 items-center justify-center rounded-sm border border-light/13 text-[#a1a1a1] transition-colors hover:border-light hover:text-light lg:h-8 lg:w-8"
+              onClick={name === "WhatsApp" ? () => trackEvent("whatsapp_click", { location: "footer" }) : undefined}
+            >
+              <Icon size={14} />
+            </a>
+          ))}
+        </div>
+
+        <nav className="col-span-2 flex flex-wrap justify-center gap-x-3 lg:col-span-1 lg:justify-start lg:gap-x-6">
           {legalLinks.map(({ to, label: name }) => (
             <TransitionLink
               key={to}
@@ -35,23 +51,10 @@ export function Footer() {
           ))}
         </nav>
 
-        <p className={`${label} whitespace-nowrap`}>&copy; {new Date().getFullYear()} MAZZMKT. Todos los derechos reservados.</p>
-
-        <div className="flex shrink-0 gap-2">
-            {socials.map(({ href, icon: Icon, label: name }) => (
-              <a
-                key={name}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={name}
-                className="flex h-11 w-11 md:h-8 md:w-8 items-center justify-center rounded-sm border border-light/13 text-[#a1a1a1] transition-colors hover:border-light hover:text-light"
-                onClick={name === "WhatsApp" ? () => trackEvent("whatsapp_click", { location: "footer" }) : undefined}
-              >
-                <Icon size={14} />
-              </a>
-            ))}
-        </div>
+        <p className={`${label} col-span-2 mx-auto max-w-[280px] text-center leading-relaxed text-light/65 lg:col-span-1 lg:mx-0 lg:max-w-none lg:whitespace-nowrap lg:text-left lg:text-light`}>
+          &copy; {new Date().getFullYear()} MAZZMKT.<br className="lg:hidden" />{" "}
+          <span>Todos los derechos reservados.</span>
+        </p>
       </div>
     </footer>
   );

@@ -98,8 +98,8 @@
     --font-section: clamp(32px, 9.5vw, 40px);
     --lh-section: 1;
     --font-subsection: clamp(28px, 8vw, 32px);
-    --font-cta: clamp(36px, 10vw, 48px);
-    --lh-cta: 1.15;
+    --font-cta: var(--font-section);
+    --lh-cta: var(--lh-section);
     --font-h2: clamp(20px, 5vw, 26px);
     --lh-h2: 1.25;
     --font-stat: clamp(18px, 5vw, 32px);
