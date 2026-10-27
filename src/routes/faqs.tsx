@@ -43,9 +43,9 @@ const faqs: FAQ[] = [
    {
     id: 21,
     category: "GENERAL",
-    question: "¿Se pide una señal inicial para comenzar?",
+    question: "¿Se pide una seña inicial para comenzar?",
     answer:
-      "Sí. Para reservar tu lugar en agenda y dar inicio al proyecto, solicitamos una señal del 50% del valor total acordado. El 50% restante se abona al finalizar y antes de la entrega. Esto nos permite planificar tiempos y dedicación real a tu proyecto desde el primer día.",
+      "Sí. Para reservar tu lugar en agenda y dar inicio al proyecto, solicitamos una seña del 50% del valor total acordado. El 50% restante se abona al finalizar y antes de la entrega. Esto nos permite planificar tiempos y dedicación real a tu proyecto desde el primer día.",
     highlight: "50% para comenzar, 50% a la entrega. Sin sorpresas.",
   },
   {
