@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { TransitionLink } from "@/components/transition/transition-link";
 import { Molinillo } from "@/components/brand/molinillo";
 import { HeroGlow } from "@/components/sections/hero-glow";
+import { Marks } from "@/components/ui/underline-mark";
 
 type Crumb = { label: string; to?: string };
 
@@ -69,13 +70,17 @@ export function PageHero({ crumbs, title, subtitle, actions, heading = "title", 
           </TitleTag>
 
           {subtitle && (
+            // Si el subtítulo es un texto con [[frases]], esas frases se subrayan solas al cargar
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.35 }}
+              initial="hidden"
+              animate="shown"
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                shown: { opacity: 1, y: 0, transition: { duration: 0.6, delay: 0.35 } },
+              }}
               className="text-body mt-5 md:mt-8 max-w-2xl lg:max-w-[60rem] text-light/67"
             >
-              {subtitle}
+              {typeof subtitle === "string" && subtitle.includes("[[") ? <Marks text={subtitle} /> : subtitle}
             </motion.p>
           )}
 

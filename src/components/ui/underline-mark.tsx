@@ -23,13 +23,12 @@ export function Mark({ step, children }: { step: number; children: React.ReactNo
   );
 }
 
-// Párrafo cuyo texto marca con [[corchetes dobles]] las frases a subrayar, en orden.
+// Convierte un texto con [[corchetes dobles]] en fragmentos, subrayando en orden las frases marcadas.
 // Ej.: "Llevamos [[tu marca al mundo digital]] con [[código real]]."
-export function MarkedText({ text, className }: { text: string; className?: string }) {
-  const parts = text.split(/\[\[(.+?)\]\]/);
+export function Marks({ text }: { text: string }) {
   return (
-    <motion.p initial="hidden" whileInView="shown" viewport={{ once: true, amount: 0.8 }} className={className}>
-      {parts.map((part, i) =>
+    <>
+      {text.split(/\[\[(.+?)\]\]/).map((part, i) =>
         i % 2 === 1 ? (
           <Mark key={i} step={(i - 1) / 2}>
             {part}
@@ -38,6 +37,15 @@ export function MarkedText({ text, className }: { text: string; className?: stri
           <Fragment key={i}>{part}</Fragment>
         )
       )}
+    </>
+  );
+}
+
+// Párrafo con frases marcadas que se subrayan al entrar en pantalla
+export function MarkedText({ text, className }: { text: string; className?: string }) {
+  return (
+    <motion.p initial="hidden" whileInView="shown" viewport={{ once: true, amount: 0.8 }} className={className}>
+      <Marks text={text} />
     </motion.p>
   );
 }

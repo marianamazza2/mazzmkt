@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Marks } from "@/components/ui/underline-mark";
 
 // Cabecera de sección: "01 / ETIQUETA", titular grande y subtítulo opcional.
 export function SectionHeading({
@@ -47,7 +48,20 @@ export function SectionHeading({
       <h2 className={`normal-case font-heading ${titleSize} font-bold leading-[1] md:leading-[0.92] tracking-[-0.04em] md:tracking-[-0.045em] ${onLight ? "text-dark" : "text-light"}`}>
         {title}
       </h2>
-      {subtitle && <p className={`text-body ${muted} mt-3 md:mt-6 max-w-2xl lg:max-w-[60rem]`}>{subtitle}</p>}
+      {subtitle &&
+        (typeof subtitle === "string" && subtitle.includes("[[") ? (
+          // Las [[frases]] se subrayan solas al entrar en pantalla
+          <motion.p
+            initial="hidden"
+            whileInView="shown"
+            viewport={{ once: true, amount: 0.8 }}
+            className={`text-body ${muted} mt-3 md:mt-6 max-w-2xl lg:max-w-[60rem]`}
+          >
+            <Marks text={subtitle} />
+          </motion.p>
+        ) : (
+          <p className={`text-body ${muted} mt-3 md:mt-6 max-w-2xl lg:max-w-[60rem]`}>{subtitle}</p>
+        ))}
     </motion.div>
   );
 }

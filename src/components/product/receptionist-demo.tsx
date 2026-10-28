@@ -1,26 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { ArrowRight, CalendarCheck, Clock, Globe, MessageCircle } from "lucide-react";
-import { TransitionLink } from "@/components/transition/transition-link";
-import { trackEvent } from "@/lib/analytics";
+import { CalendarCheck, Clock, Globe, MessageCircle } from "lucide-react";
 import { Molinillo } from "@/components/brand/molinillo";
 import { SectionHeading } from "@/components/sections/section-heading";
 import { receptionist } from "@/data/products";
 
 type Msg = { from: "user" | "agent"; text: string };
-
-const conversation: Msg[] = [
-  { from: "user", text: "Hola, quería pedir cita para corte y color 💇‍♀️" },
-  {
-    from: "agent",
-    text: "¡Hola! Claro 😊 Tengo hueco mañana a las 10:30 o el jueves a las 17:00. ¿Cuál te viene mejor?",
-  },
-  { from: "user", text: "Mañana a las 10:30 perfecto" },
-  {
-    from: "agent",
-    text: "¡Reservado! ✅ Martes 10:30 con Laura. Te envío un recordatorio el día antes. ¿Necesitas algo más?",
-  },
-];
 
 // Las mismas ventajas que la tarjeta del producto, cada una con su icono
 const featureIcons = [Globe, CalendarCheck, Clock, MessageCircle];
@@ -35,7 +20,7 @@ function TypingDots() {
   );
 }
 
-function ChatMockup() {
+function ChatMockup({ businessName, conversation }: { businessName: string; conversation: Msg[] }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const [visible, setVisible] = useState(0);
@@ -69,7 +54,7 @@ function ChatMockup() {
       cancelled = true;
       timers.forEach(clearTimeout);
     };
-  }, [inView]);
+  }, [inView, conversation]);
 
   return (
     <div
@@ -89,7 +74,7 @@ function ChatMockup() {
           <MessageCircle size={18} strokeWidth={2} style={{ color: "#0a0a0a" }} />
         </div>
         <div className="flex-1">
-          <p className="text-[13px] font-semibold text-light leading-tight">Peluquería Lúa · Asistente web</p>
+          <p className="text-[13px] font-semibold text-light leading-tight">{businessName}</p>
           <p className="text-[11px] flex items-center gap-1.5" style={{ color: "#7ecb8f" }}>
             <span className="block w-[6px] h-[6px] rounded-full" style={{ background: "#7ecb8f" }} />
             En línea
@@ -133,20 +118,28 @@ function ChatMockup() {
   );
 }
 
-// Página del producto · demostración: el chat animado con sus ventajas
-export function ReceptionistDemo() {
+// Página del producto · demostración: el chat animado con sus ventajas y el CTA de la página
+export function ReceptionistDemo({
+  number,
+  title,
+  subtitle,
+  businessName,
+  conversation,
+  cta,
+}: {
+  number: string;
+  title: string;
+  subtitle: string;
+  businessName: string;
+  conversation: Msg[];
+  cta: React.ReactNode;
+}) {
   return (
-    <section id="demo" className="bg-dark py-9 md:py-20 scroll-mt-20">
+    <section id="demo" className="bg-dark pt-10 pb-10 md:pt-16 md:pb-20 scroll-mt-20">
       <div className="container mx-auto px-5 md:px-6">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <div>
-            <SectionHeading
-              number="01"
-              label="Míralo en acción"
-              title="Así atiende a tus clientes"
-              subtitle="Responde a cualquier hora, ofrece los huecos libres de tu agenda y confirma la cita. No son guiones rígidos: entiende a tus clientes y actúa como lo haría tu mejor recepcionista."
-              className="mb-8"
-            />
+            <SectionHeading number={number} label="Míralo en acción" title={title} subtitle={subtitle} className="mb-8" />
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -172,15 +165,7 @@ export function ReceptionistDemo() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <TransitionLink
-                to="/contacto"
-                className="inline-flex items-center justify-center gap-3 rounded-[40px] border border-light/30 px-4 md:px-8 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono"
-                style={{ letterSpacing: "0.09em" }}
-                onClick={() => trackEvent("cta_click", { location: "producto_demo", label: "pide_una_demo" })}
-              >
-                PIDE UNA DEMO
-                <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
-              </TransitionLink>
+              {cta}
             </motion.div>
           </div>
 
@@ -190,7 +175,7 @@ export function ReceptionistDemo() {
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
-            <ChatMockup />
+            <ChatMockup businessName={businessName} conversation={conversation} />
           </motion.div>
         </div>
       </div>
