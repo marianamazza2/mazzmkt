@@ -83,65 +83,63 @@ function CapabilityCard({ cap, index }: { cap: (typeof capabilities)[number]; in
   );
 }
 
-// "Mientras tú trabajas": acordeón con la misma cabecera que los bloques de /servicios
-// (etiqueta, titular y círculo con flecha). Al abrirlo aparecen las capacidades.
-function CapabilitiesAccordion() {
+// Bloque desplegable con la misma cabecera que los de /servicios (etiqueta numerada, titular y círculo con flecha).
+// Van seguidos y separados por una línea; empiezan cerrados.
+function SectionAccordion({
+  id,
+  number,
+  label,
+  title,
+  subtitle,
+  children,
+}: {
+  id: string;
+  number: string;
+  label: string;
+  title: string;
+  subtitle: string;
+  children: React.ReactNode;
+}) {
   const [open, setOpen] = useState(false);
   return (
-    <section className="bg-dark py-10 md:py-20">
-      <div className="container mx-auto px-5 md:px-6">
-        <div className="border-b border-light/13">
-          <div
-            onClick={() => setOpen((v) => !v)}
-            className={`group flex cursor-pointer items-start justify-between gap-6 transition-[padding] duration-300 ${
-              open ? "pb-6 md:pb-10" : "pb-10 md:pb-16"
-            }`}
-          >
-            <SectionHeading
-              number="02"
-              label="Lo que hace"
-              title="Mientras tú trabajas"
-              subtitle="Seis cosas que hace por tu negocio, a cualquier hora."
-              className="flex-1"
-            />
-            <button
-              type="button"
-              aria-expanded={open}
-              aria-controls="capacidades"
-              aria-label={open ? "Cerrar lo que hace" : "Ver lo que hace"}
-              onClick={(e) => {
-                e.stopPropagation();
-                setOpen((v) => !v);
-              }}
-              className={`mt-8 md:mt-14 flex h-11 w-11 md:h-14 md:w-14 shrink-0 items-center justify-center rounded-full border transition-colors duration-300 ${
-                open ? "border-light bg-light text-dark" : "border-light/30 text-light group-hover:border-light"
-              }`}
-            >
-              <ChevronDown className={`h-5 w-5 transition-transform duration-300 ${open ? "rotate-180" : ""}`} strokeWidth={1.5} />
-            </button>
-          </div>
-          <AnimatePresence initial={false}>
-            {open && (
-              <motion.div
-                id="capacidades"
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: "auto", opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.45, ease: [0.4, 0, 0.2, 1] }}
-                className="overflow-hidden"
-              >
-                <div className="pb-10 md:pb-16">
-                  <CardRail>
-                    {capabilities.map((cap, index) => (
-                      <CapabilityCard key={cap.title} cap={cap} index={index} />
-                    ))}
-                  </CardRail>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
+    <section id={id} className="scroll-mt-20 border-t border-light/13 first:border-t-0 last:border-b">
+      <div
+        onClick={() => setOpen((v) => !v)}
+        className={`group flex cursor-pointer items-start justify-between gap-6 pt-10 md:pt-16 transition-[padding] duration-300 ${
+          open ? "pb-6 md:pb-10" : "pb-10 md:pb-16"
+        }`}
+      >
+        <SectionHeading number={number} label={label} title={title} subtitle={subtitle} className="flex-1" />
+        <button
+          type="button"
+          aria-expanded={open}
+          aria-controls={`${id}-panel`}
+          aria-label={`${open ? "Cerrar" : "Ver"} ${label.toLowerCase()}`}
+          onClick={(e) => {
+            e.stopPropagation();
+            setOpen((v) => !v);
+          }}
+          className={`mt-8 md:mt-14 flex h-11 w-11 md:h-14 md:w-14 shrink-0 items-center justify-center rounded-full border transition-colors duration-300 ${
+            open ? "border-light bg-light text-dark" : "border-light/30 text-light group-hover:border-light"
+          }`}
+        >
+          <ChevronDown className={`h-5 w-5 transition-transform duration-300 ${open ? "rotate-180" : ""}`} strokeWidth={1.5} />
+        </button>
       </div>
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            id={`${id}-panel`}
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.45, ease: [0.4, 0, 0.2, 1] }}
+            className="overflow-hidden"
+          >
+            <div className="pb-10 md:pb-16">{children}</div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
@@ -199,7 +197,7 @@ function AgentesIAPage() {
   // Los testimonios solo aparecen cuando los hay; la numeración se ajusta sola
   const hasTestimonials = testimonials.length > 0;
   const n = (i: number) => String(i).padStart(2, "0");
-  const processNumber = hasTestimonials ? 5 : 4;
+  const faqNumber = hasTestimonials ? 6 : 5;
 
   return (
     <>
@@ -262,80 +260,135 @@ function AgentesIAPage() {
         </div>
       </section>
 
-      {/* 02 · Lo que hace: un acordeón como los de /servicios */}
-      <CapabilitiesAccordion />
-
-      {/* 03 · Opciones: qué compras, sin precio a la vista (se da en la llamada) */}
-      <section className="bg-dark py-10 md:py-20">
+      {/* 02 · 03 · 04: bloques desplegables seguidos, como en /servicios. Los contenidos no se animan
+          por su cuenta: aparecen con el despliegue */}
+      <div className="bg-dark">
         <div className="container mx-auto px-5 md:px-6">
-          <SectionHeading
+          <SectionAccordion
+            id="lo-que-hace"
+            number="02"
+            label="Lo que hace"
+            title="Mientras tú trabajas"
+            subtitle="Seis cosas que hace por tu negocio, a cualquier hora."
+          >
+            <CardRail>
+              {capabilities.map((cap, index) => (
+                <CapabilityCard key={cap.title} cap={cap} index={index} />
+              ))}
+            </CardRail>
+          </SectionAccordion>
+
+          <SectionAccordion
+            id="opciones"
             number="03"
             label="Opciones"
             title="Elige cómo empezar"
             subtitle="Dos formas de tenerlo funcionando en tu negocio. Precio cerrado y cuota fija, sin cargos por uso: te damos el precio exacto en una llamada corta."
-          />
-
-          {/* Cards que se vuelven blancas al pasar el cursor. Subgrid: etiqueta, nombre, descripción y lista
-              comparten filas, así las dos opciones quedan alineadas */}
-          <div className="grid gap-4 md:grid-cols-2 md:gap-x-6 md:gap-y-0">
-            {plans.map((plan, index) => (
-              <motion.div
-                key={plan.name}
-                {...reveal}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group flex flex-col rounded-sm border border-light/13 p-6 md:p-8 transition-colors duration-300 hover:border-light hover:bg-light md:grid md:grid-rows-subgrid md:row-span-4 md:gap-y-0"
-              >
-                <span className="font-mono text-[13px] text-light/50 group-hover:text-dark/60 transition-colors">
-                  {n(index + 1)} <span className="opacity-60">/</span>{" "}
-                  <span className="uppercase" style={{ letterSpacing: "0.08em" }}>
-                    Opción
+          >
+            {/* Cards que se vuelven blancas al pasar el cursor. Subgrid: etiqueta, nombre, descripción y lista
+                comparten filas, así las dos opciones quedan alineadas */}
+            <div className="grid gap-4 md:grid-cols-2 md:gap-x-6 md:gap-y-0">
+              {plans.map((plan, index) => (
+                <div
+                  key={plan.name}
+                  className="group flex flex-col rounded-sm border border-light/13 p-6 md:p-8 transition-colors duration-300 hover:border-light hover:bg-light md:grid md:grid-rows-subgrid md:row-span-4 md:gap-y-0"
+                >
+                  <span className="font-mono text-[13px] text-light/50 group-hover:text-dark/60 transition-colors">
+                    {n(index + 1)} <span className="opacity-60">/</span>{" "}
+                    <span className="uppercase" style={{ letterSpacing: "0.08em" }}>
+                      Opción
+                    </span>
                   </span>
-                </span>
-                <h3 className="normal-case mt-6 md:mt-10 mb-3 text-[26px] md:text-[32px] leading-[1] tracking-[-0.035em] font-bold text-light group-hover:text-dark transition-colors">
-                  {plan.name}
-                </h3>
-                <p className="text-body text-[#a1a1a1] group-hover:text-dark/70 transition-colors max-w-md">{plan.for}</p>
+                  <h3 className="normal-case mt-6 md:mt-10 mb-3 text-[26px] md:text-[32px] leading-[1] tracking-[-0.035em] font-bold text-light group-hover:text-dark transition-colors">
+                    {plan.name}
+                  </h3>
+                  <p className="text-body text-[#a1a1a1] group-hover:text-dark/70 transition-colors max-w-md">{plan.for}</p>
 
-                <ul className="mt-6 md:mt-8">
-                  {plan.includes.map((item) => (
+                  <ul className="mt-6 md:mt-8">
+                    {plan.includes.map((item) => (
+                      <li
+                        key={item}
+                        className="flex items-center gap-3 border-t border-light/13 group-hover:border-dark/13 py-3 font-mono text-[12px] md:text-[13px] uppercase text-light/80 group-hover:text-dark/80 transition-colors"
+                        style={{ letterSpacing: "0.08em" }}
+                      >
+                        <Check className="h-4 w-4 shrink-0 text-light group-hover:text-dark transition-colors" strokeWidth={1.5} />
+                        {item}
+                      </li>
+                    ))}
                     <li
-                      key={item}
-                      className="flex items-center gap-3 border-t border-light/13 group-hover:border-dark/13 py-3 font-mono text-[12px] md:text-[13px] uppercase text-light/80 group-hover:text-dark/80 transition-colors"
+                      className="flex items-center gap-3 border-t border-light/13 group-hover:border-dark/13 pt-3 font-mono text-[12px] md:text-[13px] uppercase text-light group-hover:text-dark transition-colors"
                       style={{ letterSpacing: "0.08em" }}
                     >
-                      <Check className="h-4 w-4 shrink-0 text-light group-hover:text-dark transition-colors" strokeWidth={1.5} />
-                      {item}
+                      <Clock className="h-4 w-4 shrink-0" strokeWidth={1.5} />
+                      {plan.timing}
                     </li>
-                  ))}
-                  <li
-                    className="flex items-center gap-3 border-t border-light/13 group-hover:border-dark/13 pt-3 font-mono text-[12px] md:text-[13px] uppercase text-light group-hover:text-dark transition-colors"
-                    style={{ letterSpacing: "0.08em" }}
-                  >
-                    <Clock className="h-4 w-4 shrink-0" strokeWidth={1.5} />
-                    {plan.timing}
-                  </li>
-                </ul>
-              </motion.div>
-            ))}
-          </div>
+                  </ul>
+                </div>
+              ))}
+            </div>
 
-          <motion.div
-            {...reveal}
-            className="mt-10 md:mt-14 flex flex-col gap-5 md:flex-row md:items-center md:justify-between"
+            <div className="mt-10 md:mt-14 flex flex-col gap-5 md:flex-row md:items-center md:justify-between"
+            >
+              <p className="text-body text-light max-w-xl">
+                ¿No sabes cuál encaja con tu negocio? Lo vemos juntos y te damos el precio cerrado en la misma llamada.
+              </p>
+              <BookCallButton location="agentes_opciones" />
+            </div>
+          </SectionAccordion>
+
+          <SectionAccordion
+            id="proceso"
+            number="04"
+            label="El proceso"
+            title="Así lo ponemos en marcha"
+            subtitle="Tres pasos, y lo probamos contigo antes de que hable con tus clientes."
           >
-            <p className="text-body text-light max-w-xl">
-              ¿No sabes cuál encaja con tu negocio? Lo vemos juntos y te damos el precio cerrado en la misma llamada.
-            </p>
-            <BookCallButton location="agentes_opciones" />
-          </motion.div>
-        </div>
-      </section>
+            <div className="grid gap-8 md:grid-cols-3 md:gap-6">
+              {steps.map((step, index) => (
+                <div
+                  key={step.title}
+                  className="border-t border-light/13 pt-5 md:pt-6"
+                >
+                  <span className="font-mono text-[13px] text-light/50">{n(index + 1)}</span>
+                  <h3 className="normal-case mt-6 md:mt-10 mb-3 text-[20px] md:text-[24px] leading-[1.1] tracking-[-0.025em] font-bold text-light">
+                    {step.title}
+                  </h3>
+                  <p className="text-body text-[#a1a1a1]">{step.description}</p>
+                </div>
+              ))}
+            </div>
 
-      {/* 04 · Testimonios (solo cuando los haya) */}
+            <div className="mt-12 md:mt-20 border-t border-light/13 pt-10 md:pt-16 flex flex-col md:flex-row md:items-center md:justify-between gap-5"
+            >
+              <div className="md:max-w-xs">
+                <p className="text-[10px] uppercase mb-2 md:text-[13px] md:mb-3 md:font-medium font-mono text-light/60" style={{ letterSpacing: "0.13em" }}>
+                  Se conecta con
+                </p>
+                <p className="text-body text-[#b3b3b3]">
+                  Se instala en la web de tu negocio y se conecta con tu agenda. Si usas otra herramienta, la integramos.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-2 md:gap-3 md:justify-end md:max-w-xl">
+                {integrations.map((tool) => (
+                  <span
+                    key={tool}
+                    className="inline-flex items-center gap-2 text-[12px] md:text-[14px] px-3 py-[7px] md:px-4 md:py-[9px] rounded-full border border-light/18 text-light"
+                  >
+                    <Plug size={13} strokeWidth={1.5} className="text-[#a1a1a1]" />
+                    {tool}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </SectionAccordion>
+        </div>
+      </div>
+
+      {/* 05 · Testimonios (solo cuando los haya) */}
       {hasTestimonials && (
         <section className="bg-dark py-10 md:py-20">
           <div className="container mx-auto px-5 md:px-6">
-            <SectionHeading number="04" label="Negocios que ya lo usan" title="Lo que dicen" />
+            <SectionHeading number="05" label="Negocios que ya lo usan" title="Lo que dicen" />
             <div className="grid gap-8 md:grid-cols-2 md:gap-6">
               {testimonials.map((t) => (
                 <motion.figure key={t.name} {...reveal} className="border-t border-light/13 pt-6">
@@ -352,61 +405,13 @@ function AgentesIAPage() {
         </section>
       )}
 
-      {/* El proceso, cerrado con las integraciones */}
-      <section className="bg-dark py-10 md:py-20">
-        <div className="container mx-auto px-5 md:px-6">
-          <SectionHeading number={n(processNumber)} label="El proceso" title="Así lo ponemos en marcha" />
-
-          <div className="grid gap-8 md:grid-cols-3 md:gap-6">
-            {steps.map((step, index) => (
-              <motion.div
-                key={step.title}
-                {...reveal}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="border-t border-light/13 pt-5 md:pt-6"
-              >
-                <span className="font-mono text-[13px] text-light/50">{n(index + 1)}</span>
-                <h3 className="normal-case mt-6 md:mt-10 mb-3 text-[20px] md:text-[24px] leading-[1.1] tracking-[-0.025em] font-bold text-light">
-                  {step.title}
-                </h3>
-                <p className="text-body text-[#a1a1a1]">{step.description}</p>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.div
-            {...reveal}
-            className="mt-12 md:mt-20 border-t border-light/13 pt-10 md:pt-16 flex flex-col md:flex-row md:items-center md:justify-between gap-5"
-          >
-            <div className="md:max-w-xs">
-              <p className="text-[10px] uppercase mb-2 md:text-[13px] md:mb-3 md:font-medium font-mono text-light/60" style={{ letterSpacing: "0.13em" }}>
-                Se conecta con
-              </p>
-              <p className="text-body text-[#b3b3b3]">
-                Se instala en la web de tu negocio y se conecta con tu agenda. Si usas otra herramienta, la integramos.
-              </p>
-            </div>
-            <div className="flex flex-wrap gap-2 md:gap-3 md:justify-end md:max-w-xl">
-              {integrations.map((tool) => (
-                <span
-                  key={tool}
-                  className="inline-flex items-center gap-2 text-[12px] md:text-[14px] px-3 py-[7px] md:px-4 md:py-[9px] rounded-full border border-light/18 text-light"
-                >
-                  <Plug size={13} strokeWidth={1.5} className="text-[#a1a1a1]" />
-                  {tool}
-                </span>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Preguntas frecuentes: las objeciones antes de decir que sí */}
-      <section className="bg-dark py-10 md:py-20">
+      {/* Preguntas frecuentes: las objeciones antes de decir que sí. Arriba, el mismo aire que hay entre
+          la línea de un bloque desplegable y su etiqueta (64px / 40px) */}
+      <section className="bg-dark pt-10 pb-10 md:pt-16 md:pb-20">
         <div className="container mx-auto px-5 md:px-6">
           {/* Misma cabecera que "Lo que hacemos" en la home: titular a la izquierda, botón a su altura a la derecha */}
           <div className="mb-6 md:mb-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <SectionHeading number={n(processNumber + 1)} label="Preguntas" title="Antes de decir que sí" className="" />
+            <SectionHeading number={n(faqNumber)} label="Preguntas" title="Antes de decir que sí" className="" />
             <div className="shrink-0">
               <BookCallButton location="agentes_faqs" />
             </div>

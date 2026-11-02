@@ -24,7 +24,9 @@ function ProyectosPage() {
       />
 
       {/* Projects Section */}
-      <section id="proyectos" className="bg-dark pt-10 pb-7 md:pt-16 md:pb-20">
+      {/* El titular de esta página ocupa una línea más que el de /servicios: restamos esa línea al espacio
+          superior para que los filtros empiecen a la misma altura que "01 / Marca y contenido" */}
+      <section id="proyectos" className="bg-dark pt-10 pb-7 md:pt-[max(16px,calc(150px-0.92*var(--font-display)))] md:pb-20">
         <div className="container mx-auto px-5 md:px-6">
           <ProjectsGrid projects={projects} />
         </div>

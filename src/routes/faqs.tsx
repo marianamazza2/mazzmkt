@@ -327,7 +327,8 @@ function FAQsPage() {
       />
 
       {/* FAQs Section */}
-      <section id="faqs" className="bg-dark pt-10 pb-8 md:pt-16 md:pb-20">
+      {/* Igual que /proyectos: titular a dos líneas, así que restamos esa línea al espacio superior */}
+      <section id="faqs" className="bg-dark pt-10 pb-8 md:pt-[max(16px,calc(150px-0.92*var(--font-display)))] md:pb-20">
         <div className="container mx-auto px-5 md:px-6">
           {/* Filtros de escritorio: el mismo toggle que en /proyectos y en el mismo sitio
               (arriba de la sección, alineado a la izquierda) */}

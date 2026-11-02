@@ -2,20 +2,77 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 
 import { SEOHead } from "@/components/seo/SEOHead";
-import { ArrowUpRight, CheckCircle2 } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { PageHero } from "@/components/sections/page-hero";
+import { SectionHeading } from "@/components/sections/section-heading";
 import { Molinillo } from "@/components/brand/molinillo";
 
 export const Route = createFileRoute("/sobre-mi")({
   component: SobreMiPage,
 });
 
-const creencias = [
-  { text: "La autenticidad como base de cada marca." },
-  { text: "Simplicidad como la estrategia mas poderosa." },
-  { text: "Cercania para construir juntos y disfrutar el proceso." },
-  { text: "Resultados reales que impulsan el crecimiento de tu marca." },
+// Los cuatro valores, cada uno con cómo se nota en la práctica
+const valores = [
+  {
+    title: "Claridad",
+    text: "Siempre sabes en qué estamos trabajando y por qué. Sin tecnicismos, y si se nos escapa uno, te lo explicamos.",
+  },
+  {
+    title: "Cercanía",
+    text: "Te escuchamos de verdad y hablamos como personas, no como una agencia.",
+  },
+  {
+    title: "Autenticidad",
+    text: "Nada de plantillas ni fórmulas copiadas: tu marca se parece a ti, no a la de al lado.",
+  },
+  {
+    title: "Calidad que se ve",
+    text: "No te la prometemos, te la enseñamos en cada entrega.",
+  },
 ];
+
+// Cómo trabajamos: el orden de trabajo, con los límites claros desde el principio
+const pasos = [
+  { title: "Escuchamos", text: "Una reunión para entender tu negocio, lo que quieres y a quién le vendes." },
+  { title: "Creamos", text: "Marca y web a medida, con fechas claras y rondas de cambios pactadas desde el principio." },
+  { title: "Automatizamos", text: "Ponemos tu negocio a funcionar solo: citas, respuestas, procesos." },
+  { title: "Te acompañamos", text: "Después de entregar seguimos ahí, con mantenimiento si lo necesitas." },
+];
+
+// La persona detrás. Foto en public/images; mientras "photo" esté vacío se muestra un hueco reservado.
+const fundadora = {
+  name: "Hola, soy Mariana",
+  role: "Fundadora · Diseño, código y automatización",
+  photo:"/images/IMG_7931.webp",
+  bio: "Vengo de recursos humanos, me enamoré del diseño y acabé programando. Creé mazzmkt para hacer las cosas como me hubiera gustado que me las hicieran a mí: con alguien que escucha, que explica y que se ocupa de todo, de la marca al código.",
+  equipo:
+    "Cuando un proyecto lo necesita, se suman manos, especialistas de confianza (fotografía, copy, desarrollo, diseño, publicidad etc) que trabajan con el mismo método. En equipo, siempre es mejor.",
+};
+
+// Fila de columnas separadas por una línea arriba (número en mono, titular y texto),
+// la misma pieza que los pasos del proceso en /agentes-ia y "Lo que hacemos" en la home
+function Columnas({ items }: { items: { title: string; text: string }[] }) {
+  return (
+    <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4 md:gap-6">
+      {items.map((item, index) => (
+        <motion.div
+          key={item.title}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: index * 0.1 }}
+          className="border-t border-light/13 pt-5 md:pt-6"
+        >
+          <span className="font-mono text-[13px] text-light/50">{String(index + 1).padStart(2, "0")}</span>
+          <h3 className="normal-case mt-6 md:mt-10 mb-3 text-[20px] md:text-[24px] leading-[1.1] tracking-[-0.025em] font-bold text-light">
+            {item.title}
+          </h3>
+          <p className="text-body text-[#a1a1a1] max-w-[340px]">{item.text}</p>
+        </motion.div>
+      ))}
+    </div>
+  );
+}
 
 function SobreMiPage() {
   return (
@@ -29,81 +86,42 @@ function SobreMiPage() {
         heading="crumbs"
         crumbs={[{ label: "Quiénes somos" }]}
         title={<>Humano<br />y digital</>}
-        subtitle="Estrategia, creatividad y tecnología para que las marcas brillen con intención."
+        subtitle="Creamos tu marca, la llevamos a lo digital y la ponemos a funcionar sola. Todo en uno, y tú tranquila."
       />
 
-      {/* Valores */}
-      <section className="bg-dark py-7 md:py-20">
+      {/* 01 · Valores */}
+      <section className="bg-dark pt-10 pb-10 md:pt-16 md:pb-20">
         <div className="container mx-auto px-5 md:px-6">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-20">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <p
-                className="text-[10px] uppercase mb-1 md:text-[13px] md:mb-5 md:font-medium font-mono text-light/60"
-                style={{ letterSpacing: "0.13em" }}
-              >
-                CREEMOS EN
-              </p>
-              <h2 className="text-section-title font-bold leading-[1] tracking-[-0.04em] text-[#ffffff] normal-case font-heading md:font-bold md:leading-[0.92] md:tracking-[-0.045em]">
-                Nuestros
-                <br />
-                valores
-              </h2>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="flex flex-col gap-3 md:gap-5"
-            >
-              {creencias.map((creencia, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.1 * index }}
-                  className="flex items-center gap-2.5 md:gap-4 py-3.5 px-4 md:p-6 border border-light/30 hover:border-light transition-colors rounded-sm"
-                >
-                  <CheckCircle2 className="h-[18px] w-[18px] md:h-6 md:w-6 text-[#b3b3b3] md:text-light flex-shrink-0" strokeWidth={1.5} />
-                  <p className="text-body text-light/67">{creencia.text}</p>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
+          <SectionHeading number="01" label="Creemos en" title="Valores" />
+          <Columnas items={valores} />
         </div>
       </section>
 
-      {/* Quiénes somos */}
-      <section id="quienes-somos" className="bg-dark py-7 md:py-20">
+      {/* 02 · Historia */}
+      <section id="quienes-somos" className="bg-dark py-10 md:py-20">
         <div className="container mx-auto px-5 md:px-6">
+          <SectionHeading number="02" label="Detrás de MAZZMKT" title="Historia" />
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
             className="max-w-3xl"
           >
-            <p
-              className="text-[10px] uppercase mb-1 md:text-[13px] md:mb-5 md:font-medium font-mono text-light/60"
-                style={{ letterSpacing: "0.13em" }}
-            >
-              DETRÁS DE MAZZMKT
-            </p>
-            <h2 className="text-section-title font-bold leading-[1] tracking-[-0.04em] text-light normal-case font-heading md:font-bold md:leading-[0.92] md:tracking-[-0.045em] mb-3 md:mb-8">
-              Nuestra historia
-            </h2>
             <p className="text-body text-[#a1a1a1] mb-4 md:mb-6">
-              MazzMkt nació de una combinación poco usual: recursos humanos, código, diseño y marketing. Venimos de entender a las personas antes que a los píxeles, y eso lo cambió todo. Aprendimos que el marketing que realmente funciona, escucha, entiende y conecta.
+              MAZZMKT nació de las ganas de tener algo propio, de divertirnos trabajando y de estar a la vanguardia de
+              todo lo que hoy permite la inteligencia artificial. Detrás hay una mezcla poco habitual: recursos humanos,
+              diseño y código. Primero entendemos a las personas; después, los píxeles.
+            </p>
+            <p className="text-body text-[#a1a1a1] mb-4 md:mb-6">
+              Somos un estudio pequeño, y eso juega a tu favor: quien diseña tu marca es quien la programa y quien
+              automatiza tu negocio. Sin plantillas, sin intermediarios y sin teléfono escacharrado. Llegas sin marca y
+              te vas con una identidad que te representa, una web que no se parece a ninguna otra y procesos que
+              funcionan solos.
             </p>
             <p className="text-body text-[#a1a1a1] mb-5 md:mb-8">
-              Hoy somos una agencia pequeña con propósito grande. Trabajamos con marcas que quieren más que visibilidad: quieren crecer, diferenciarse y ser recordadas. Combinamos estrategia, creatividad e inteligencia artificial para construir identidades que se ven bien, se sienten bien y convierten. Sin fórmulas copiadas, sin promesas vacías.
+              Trabajamos con negocios que quieren verse y funcionar a la altura de lo que valen. Nuestro trabajo es
+              darles movimiento.
               <Molinillo className="ml-2 h-[0.7em] w-[0.7em] align-baseline" />
             </p>
 
@@ -139,6 +157,60 @@ function SobreMiPage() {
         </div>
       </section>
 
+      {/* 03 · La persona detrás: el único bloque en primera persona */}
+      <section className="bg-dark py-10 md:py-20">
+        <div className="container mx-auto px-5 md:px-6">
+          <SectionHeading number="03" label="La fundadora" title="Quién está detrás" />
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="grid gap-8 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] md:gap-12 lg:gap-16 md:items-center"
+          >
+            <div className="aspect-[4/5] w-full max-w-[460px] overflow-hidden rounded-sm border border-light/13 bg-light/[0.03]">
+              {fundadora.photo ? (
+                <img
+                  src={fundadora.photo}
+                  alt={`${fundadora.name}, fundadora de MAZZMKT`}
+                  className="h-full w-full object-cover grayscale"
+                  loading="lazy"
+                />
+              ) : (
+                <div className="flex h-full w-full items-center justify-center">
+                  <Molinillo className="h-12 w-12 text-light/20" />
+                </div>
+              )}
+            </div>
+
+            <div>
+              <p className="mb-3 md:mb-5 font-mono text-[11px] md:text-[13px] font-medium uppercase text-light/60" style={{ letterSpacing: "0.13em" }}>
+                {fundadora.role}
+              </p>
+              <h3 className="normal-case font-heading text-subsection-title font-bold leading-[1] md:leading-[0.92] tracking-[-0.04em] md:tracking-[-0.045em] text-light">
+                {fundadora.name}
+              </h3>
+              <p className="text-body text-[#a1a1a1] mt-5 md:mt-8 max-w-xl">{fundadora.bio}</p>
+              <p className="text-body text-light mt-6 md:mt-8 pt-6 md:pt-8 border-t border-light/13 max-w-xl">
+                {fundadora.equipo}
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* 04 · Cómo trabajamos */}
+      <section className="bg-dark py-10 md:py-20">
+        <div className="container mx-auto px-5 md:px-6">
+          <SectionHeading
+            number="04"
+            label="Cómo trabajamos"
+            title="Paso a paso, sin sorpresas"
+            subtitle="Un orden claro de principio a fin, con fechas y rondas de cambios pactadas desde el primer día."
+          />
+          <Columnas items={pasos} />
+        </div>
+      </section>
     </>
   );
 }

@@ -59,7 +59,7 @@ export function ProductSpotlight({
           {receptionist.label}
         </p>
         <h3
-          className={`flex items-center gap-3 md:gap-4 font-heading text-[28px] md:text-[40px] font-bold uppercase leading-[0.95] tracking-[-0.03em] ${
+          className={`flex items-center gap-3 md:gap-4 font-heading text-[28px] md:text-[40px] font-bold uppercase leading-[0.95] tracking-[-0.025em] ${
             detailed && !wide ? "xl:text-[32px]" : ""
           }`}
         >

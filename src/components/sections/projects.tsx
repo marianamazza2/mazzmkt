@@ -37,7 +37,7 @@ export function Projects() {
               className="text-[11px] uppercase mb-2 md:text-[13px] md:mb-5 md:font-medium font-mono text-light/60"
               style={{ letterSpacing: "0.13em" }}
             >
-              <span>02 /</span> NUESTRO TRABAJO
+              <span>03 /</span> NUESTRO TRABAJO
             </p>
             <h2
               className="block normal-case text-section-title font-bold leading-none tracking-[-0.04em] text-light font-heading md:font-bold md:leading-[0.92] md:tracking-[-0.045em] md:text-[#ffffff]"

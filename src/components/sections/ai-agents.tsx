@@ -12,7 +12,7 @@ export function AiAgents() {
           <div className="relative px-5 py-8 md:p-14 lg:p-20 grid gap-7 md:gap-10 xl:grid-cols-[1.2fr_1fr] xl:gap-16 xl:items-center">
             <SectionHeading
               onLight
-              number="03"
+              number="04"
               label="Inteligencia artificial"
               title={
                 <>

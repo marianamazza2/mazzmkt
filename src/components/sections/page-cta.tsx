@@ -61,17 +61,38 @@ export function PageCTA() {
                   <AnimatedText text="Hagamos crecer" delay={0} />
                 </div>
               </div>
-              <div
-                aria-hidden
-                className="overflow-hidden pb-[0.16em] -mb-[0.16em] pr-[0.08em] -mr-[0.08em] font-bold normal-case text-[#ffffff]"
-                style={{
-                  fontSize: "var(--font-cta)",
-                  fontFamily: "var(--font-heading)",
-                  lineHeight: "var(--lh-cta)",
-                  letterSpacing: "-0.045em",
-                }}
-              >
-                <AnimatedText text="tus ideas" delay={0.4} />
+              {/* En escritorio el botón va justo después de "ideas", en la misma línea */}
+              <div className="md:flex md:items-center md:gap-8 lg:gap-10">
+                <div
+                  aria-hidden
+                  className="overflow-hidden pb-[0.16em] -mb-[0.16em] pr-[0.08em] -mr-[0.08em] font-bold normal-case text-[#ffffff]"
+                  style={{
+                    fontSize: "var(--font-cta)",
+                    fontFamily: "var(--font-heading)",
+                    lineHeight: "var(--lh-cta)",
+                    letterSpacing: "-0.045em",
+                  }}
+                >
+                  <AnimatedText text="tus ideas" delay={0.4} />
+                </div>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.8 }}
+                  // Centrado con la altura de las minúsculas de "tus ideas"
+                  className="hidden md:block shrink-0 md:translate-y-[calc(var(--font-cta)*0.09)]"
+                >
+                <TransitionLink
+                  to="/contacto"
+                  className="inline-flex items-center justify-center gap-3 rounded-[40px] border border-light/30 px-4 py-[15px] text-[13px] font-semibold uppercase text-light transition-colors hover:border-light font-mono md:px-8"
+                  style={{ letterSpacing: "0.09em" }}
+                  onClick={() => trackEvent("cta_click", { location: "page_cta", label: "comenzar" })}
+                >
+                  COMENZAR
+                  <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
+                </TransitionLink>
+                </motion.div>
               </div>
             </div>
           </div>
@@ -81,7 +102,8 @@ export function PageCTA() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.8 }}
-            className="shrink-0 md:ml-8 md:translate-y-[calc(var(--font-cta)*0.09)] lg:ml-10"
+            // En móvil el botón va debajo del titular
+            className="shrink-0 md:hidden"
           >
             <TransitionLink
               to="/contacto"

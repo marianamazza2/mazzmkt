@@ -56,11 +56,11 @@ function JourneyStep({ group, index }: { group: ServiceGroup; index: number }) {
 
 export function Services() {
   return (
-    // Mantiene un margen amplio antes del recorrido de servicios en la home.
-    <section className="bg-dark pt-12 pb-10 md:pt-30 md:pb-18">
+    // Va después de "Por qué MAZZMKT": arriba, el mismo aire que hay entre las demás secciones de la home
+    <section className="bg-dark pt-7 pb-10 md:pt-20 md:pb-18">
       <div className="container mx-auto px-5 md:px-6">
         <div className="mb-8 md:mb-20 grid gap-6 md:grid-cols-[1fr_auto] md:gap-x-10 md:gap-y-0">
-          <SectionHeading number="01" label="Soluciones digitales en Barcelona" title="Lo que hacemos" className="" />
+          <SectionHeading number="02" label="Soluciones digitales en Barcelona" title="Lo que hacemos" className="" />
 
           <motion.p
             initial="hidden"

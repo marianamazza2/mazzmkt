@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SEOHead } from "@/components/seo/SEOHead";
 import { Hero } from "@/components/sections/hero";
 import { Services } from "@/components/sections/services";
+import { WhyUs } from "@/components/sections/why-us";
 import { AiAgents } from "@/components/sections/ai-agents";
 import { Projects } from "@/components/sections/projects";
 
@@ -31,7 +32,8 @@ function HomePage() {
         jsonLd={homeSchema}
       />
       <Hero />
-      {/* 01 Lo que hacemos · 02 Proyectos · 03 Nuestro producto */}
+      {/* 01 Por qué MAZZMKT · 02 Lo que hacemos · 03 Proyectos · 04 Nuestro producto */}
+      <WhyUs />
       <Services />
       <Projects />
       <AiAgents />
