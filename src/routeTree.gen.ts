@@ -15,6 +15,7 @@ import { Route as FaqsRouteImport } from './routes/faqs'
 import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as ContactoRouteImport } from './routes/contacto'
 import { Route as AvisoLegalRouteImport } from './routes/aviso-legal'
+import { Route as AuditorRouteImport } from './routes/auditor'
 import { Route as AgentesIaRouteImport } from './routes/agentes-ia'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServiciosIndexRouteImport } from './routes/servicios/index'
@@ -51,6 +52,11 @@ const AvisoLegalRoute = AvisoLegalRouteImport.update({
   path: '/aviso-legal',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuditorRoute = AuditorRouteImport.update({
+  id: '/auditor',
+  path: '/auditor',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AgentesIaRoute = AgentesIaRouteImport.update({
   id: '/agentes-ia',
   path: '/agentes-ia',
@@ -80,6 +86,7 @@ const ProyectosSlugRoute = ProyectosSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/agentes-ia': typeof AgentesIaRoute
+  '/auditor': typeof AuditorRoute
   '/aviso-legal': typeof AvisoLegalRoute
   '/contacto': typeof ContactoRoute
   '/cookies': typeof CookiesRoute
@@ -93,6 +100,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/agentes-ia': typeof AgentesIaRoute
+  '/auditor': typeof AuditorRoute
   '/aviso-legal': typeof AvisoLegalRoute
   '/contacto': typeof ContactoRoute
   '/cookies': typeof CookiesRoute
@@ -107,6 +115,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/agentes-ia': typeof AgentesIaRoute
+  '/auditor': typeof AuditorRoute
   '/aviso-legal': typeof AvisoLegalRoute
   '/contacto': typeof ContactoRoute
   '/cookies': typeof CookiesRoute
@@ -122,6 +131,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/agentes-ia'
+    | '/auditor'
     | '/aviso-legal'
     | '/contacto'
     | '/cookies'
@@ -135,6 +145,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/agentes-ia'
+    | '/auditor'
     | '/aviso-legal'
     | '/contacto'
     | '/cookies'
@@ -148,6 +159,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/agentes-ia'
+    | '/auditor'
     | '/aviso-legal'
     | '/contacto'
     | '/cookies'
@@ -162,6 +174,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AgentesIaRoute: typeof AgentesIaRoute
+  AuditorRoute: typeof AuditorRoute
   AvisoLegalRoute: typeof AvisoLegalRoute
   ContactoRoute: typeof ContactoRoute
   CookiesRoute: typeof CookiesRoute
@@ -217,6 +230,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AvisoLegalRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/auditor': {
+      id: '/auditor'
+      path: '/auditor'
+      fullPath: '/auditor'
+      preLoaderRoute: typeof AuditorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/agentes-ia': {
       id: '/agentes-ia'
       path: '/agentes-ia'
@@ -258,6 +278,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AgentesIaRoute: AgentesIaRoute,
+  AuditorRoute: AuditorRoute,
   AvisoLegalRoute: AvisoLegalRoute,
   ContactoRoute: ContactoRoute,
   CookiesRoute: CookiesRoute,

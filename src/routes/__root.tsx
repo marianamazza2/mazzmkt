@@ -38,7 +38,7 @@ const organizationSchema = {
 
 function RootComponent() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const hidePageCTA = pathname === "/agentes-ia";
+  const hidePageCTA = pathname === "/agentes-ia" || pathname === "/auditor";
 
   return (
     <HelmetProvider>
