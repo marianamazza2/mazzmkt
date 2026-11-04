@@ -15,6 +15,8 @@ export type InformeAuditor = {
   tipo: "plantilla" | "a_medida" | "dudoso";
   constructor: string | null;
   anio: number | null;
+  // La web se monta con JavaScript al abrirse: lo que no vemos no se da por ausente
+  dinamica: boolean;
   restantes: number;
 };
 
@@ -82,6 +84,8 @@ function nombreConstructor(valor: string | null) {
 }
 
 const noComprobado = "No hemos podido comprobarlo desde aquí. Escríbenos y la miramos contigo.";
+const montadaConJs =
+  "Tu web se monta con JavaScript al abrirse, y esa parte no nos llega cuando la leemos desde aquí.";
 
 export function puntosDelInforme(r: InformeAuditor, anioActual = new Date().getFullYear()): Punto[] {
   const constructor = nombreConstructor(r.constructor);
@@ -143,12 +147,18 @@ export function puntosDelInforme(r: InformeAuditor, anioActual = new Date().getF
               texto:
                 "Tu web dice que las citas son por teléfono o WhatsApp. Quien te escribe a las 11 de la noche tiene que esperar a mañana, y a veces reserva en otro sitio.",
             }
-          : {
-              veredicto: "dudoso" as const,
-              titular: "No hemos encontrado cómo reservar",
-              texto:
-                "No vemos ninguna forma de pedir cita desde la web. Si la tienes, puede que esté escondida: tus clientes tampoco la encontrarán fácil.",
-            }),
+          : r.dinamica
+            ? {
+                veredicto: "dudoso" as const,
+                titular: "No lo hemos podido ver",
+                texto: `${montadaConJs} Si tienes reserva online, no hemos podido verla. Escríbenos y la miramos contigo.`,
+              }
+            : {
+                veredicto: "dudoso" as const,
+                titular: "No hemos encontrado cómo reservar",
+                texto:
+                  "No vemos ninguna forma de pedir cita desde la web. Si la tienes, puede que esté escondida: tus clientes tampoco la encontrarán fácil.",
+              }),
     },
     {
       id: "cta",
@@ -196,23 +206,29 @@ export function puntosDelInforme(r: InformeAuditor, anioActual = new Date().getF
     {
       id: "anio",
       etiqueta: "Año de la web",
-      ...(r.anio === null
+      ...(r.anio === null && r.dinamica
         ? {
             veredicto: "dudoso" as const,
-            titular: "Sin año a la vista",
-            texto: "No hemos encontrado el año en el pie de tu web, ese «© 2024» que suele ir abajo del todo.",
+            titular: "No hemos podido leer el pie",
+            texto: `${montadaConJs} Baja hasta abajo del todo y mira si el «©» lleva el año actual.`,
           }
-        : r.anio >= anioActual - 1
+        : r.anio === null
           ? {
-              veredicto: "bien" as const,
-              titular: `El pie dice ${r.anio}`,
-              texto: "Es el año del «copyright», abajo del todo. Señal de que alguien la mantiene al día.",
+              veredicto: "dudoso" as const,
+              titular: "Sin año a la vista",
+              texto: "No hemos encontrado el año en el pie de tu web, ese «© 2024» que suele ir abajo del todo.",
             }
-          : {
-              veredicto: "mejorar" as const,
-              titular: `El pie dice ${r.anio}`,
-              texto: `Es el año del «copyright», abajo del todo. Si nadie lo ha cambiado desde ${r.anio}, lo más probable es que la web tampoco se haya tocado.`,
-            }),
+          : r.anio >= anioActual - 1
+            ? {
+                veredicto: "bien" as const,
+                titular: `El pie dice ${r.anio}`,
+                texto: "Es el año del «copyright», abajo del todo. Señal de que alguien la mantiene al día.",
+              }
+            : {
+                veredicto: "mejorar" as const,
+                titular: `El pie dice ${r.anio}`,
+                texto: `Es el año del «copyright», abajo del todo. Si nadie lo ha cambiado desde ${r.anio}, lo más probable es que la web tampoco se haya tocado.`,
+              }),
     },
   ];
 }
