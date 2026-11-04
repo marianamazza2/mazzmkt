@@ -28,6 +28,8 @@ export type InformeAuditor = {
   tipo: ResultadoAnalisisWeb["tipo_web"];
   constructor: string | null;
   anio: number | null;
+  // La home se monta con JavaScript: su HTML no basta para dar por ausente nada
+  dinamica: boolean;
   restantes: number;
 };
 
@@ -72,6 +74,7 @@ function aInforme(r: ResultadoAnalisisWeb, restantes: number): InformeAuditor {
     tipo: r.tipo_web,
     constructor: r.tema_wordpress ? `wordpress:${r.tema_wordpress}` : r.constructor_web,
     anio: r.copyright_anio,
+    dinamica: r.limitaciones.includes("contenido_dinamico"),
     restantes,
   };
 }
