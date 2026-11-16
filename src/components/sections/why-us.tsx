@@ -20,7 +20,7 @@ export function WhyUs() {
           number="01"
           label="Por qué MAZZMKT"
           title="Todo en un mismo lugar"
-          subtitle="[[Para tener una marca, una web y un negocio]] que funcione solo, [[lo normal es contratar]] a tres equipos distintos: [[un estudio]] de branding que cree tu marca, [[una agencia]] que la lleve a una web o una tienda online y, cuando ya está en digital, [[alguien técnico]] que automatice tus procesos. [[Tres presupuestos]], [[tres calendarios]] y [[volver a explicarle tu marca]] [[a cada uno]] desde cero. En mazzmkt comprendemos tu negocio, [[creamos tu marca]], la [[programamos]], la [[llevamos al mundo digital]] y luego la [[automatizamos]]."
+          subtitle="[[Crear tu marca]], [[lanzar tu web]] y [[automatizar tu negocio]] suele implicar [[tres equipos]], [[tres presupuestos]] y [[contar lo mismo desde cero]] a distintas agencias. En mazzmkt [[conocemos tu marca desde el inicio]] y [[la hacemos crecer contigo]]: desde su creación hasta la automatización de tus procesos."
           className="mb-8 md:mb-12"
         />
 

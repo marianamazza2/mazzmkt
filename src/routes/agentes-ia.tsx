@@ -97,7 +97,7 @@ function SectionAccordion({
   number: string;
   label: string;
   title: string;
-  subtitle: string;
+  subtitle?: string;
   children: React.ReactNode;
 }) {
   const [open, setOpen] = useState(false);
@@ -241,24 +241,6 @@ function AgentesIAPage() {
         conversation={demo.conversation}
         cta={<BookCallButton location="agentes_demo" />}
       />
-
-      {/* El problema, en una banda corta: corta el ritmo entre la demo y lo que hace, sin alargar la página */}
-      <section className="bg-dark py-6 md:py-10">
-        <div className="container mx-auto px-5 md:px-6">
-          <motion.div
-            {...reveal}
-            className="border-t border-b border-light/13 py-8 md:py-12 flex flex-col gap-5 lg:flex-row lg:items-center lg:gap-12"
-          >
-            <span className="inline-flex shrink-0 self-start lg:self-center items-center gap-2 rounded-full border border-light/18 px-3 py-[6px] text-[12px] md:text-[13px] text-light">
-              <Clock size={14} strokeWidth={1.5} className="text-[#a1a1a1]" />
-              21:47 · Martes
-            </span>
-            <p className="normal-case font-heading text-[22px] md:text-[32px] font-bold leading-[1.15] tracking-[-0.03em] text-light">
-              Alguien te escribe pidiendo cita y nadie responde. A la mañana siguiente ya ha reservado en otro sitio.
-            </p>
-          </motion.div>
-        </div>
-      </section>
 
       {/* 02 · 03 · 04: bloques desplegables seguidos, como en /servicios. Los contenidos no se animan
           por su cuenta: aparecen con el despliegue */}
@@ -405,20 +387,22 @@ function AgentesIAPage() {
         </section>
       )}
 
-      {/* Preguntas frecuentes: las objeciones antes de decir que sí. Arriba, el mismo aire que hay entre
-          la línea de un bloque desplegable y su etiqueta (64px / 40px) */}
-      <section className="bg-dark pt-10 pb-10 md:pt-16 md:pb-20">
+      {/* Preguntas frecuentes: bloque cerrado inicialmente, como los anteriores. */}
+      <div className="bg-dark">
         <div className="container mx-auto px-5 md:px-6">
-          {/* Misma cabecera que "Lo que hacemos" en la home: titular a la izquierda, botón a su altura a la derecha */}
-          <div className="mb-6 md:mb-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <SectionHeading number={n(faqNumber)} label="Preguntas" title="Antes de decir que sí" className="" />
-            <div className="shrink-0">
+          <SectionAccordion
+            id="preguntas"
+            number={n(faqNumber)}
+            label="Preguntas"
+            title="Antes de decir que sí"
+          >
+            <Faqs />
+            <div className="mt-6 md:mt-10">
               <BookCallButton location="agentes_faqs" />
             </div>
-          </div>
-          <Faqs />
+          </SectionAccordion>
         </div>
-      </section>
+      </div>
 
       {/* CTA final */}
       <section className="bg-dark pt-8 pb-10 md:py-24 relative overflow-hidden">

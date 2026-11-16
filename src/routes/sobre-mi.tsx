@@ -44,7 +44,7 @@ const fundadora = {
   name: "Hola, soy Mariana",
   role: "Fundadora · Diseño, código y automatización",
   photo:"/images/IMG_7931.webp",
-  bio: "Vengo de recursos humanos, me enamoré del diseño y acabé programando. Creé mazzmkt para hacer las cosas como me hubiera gustado que me las hicieran a mí: con alguien que escucha, que explica y que se ocupa de todo, de la marca al código.",
+  bio: "Vengo de recursos humanos, me enamoré del diseño y acabé programando. Creé mazzmkt para escucharte, encontrar soluciones y dar forma a tus ideas: desde tu marca hasta tu web y la automatización de tu negocio. Me implico en todo el proceso con un objetivo: que el resultado te represente, funcione y que te sientas feliz con lo que hemos creado juntos.",
   equipo:
     "Cuando un proyecto lo necesita, se suman manos, especialistas de confianza (fotografía, copy, desarrollo, diseño, publicidad etc) que trabajan con el mismo método. En equipo, siempre es mejor.",
 };
