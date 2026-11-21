@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet-async";
+import { useRouterState } from "@tanstack/react-router";
 
-const SITE_URL = "https://mazzmkt.com";
+const SITE_URL = "https://www.mazzmkt.com";
 const DEFAULT_OG_IMAGE = `${SITE_URL}/images/og-image.webp`;
 
 interface SEOHeadProps {
@@ -12,7 +13,9 @@ interface SEOHeadProps {
 }
 
 export function SEOHead({ title, description, image, noindex, jsonLd }: SEOHeadProps) {
-  const canonical = typeof window !== "undefined" ? window.location.href : SITE_URL;
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  // Siempre con www y sin parámetros ni barra final, igual en el servidor y en el navegador
+  const canonical = `${SITE_URL}${pathname === "/" ? "/" : pathname.replace(/\/$/, "")}`;
   const ogImage = image ?? DEFAULT_OG_IMAGE;
 
   return (
