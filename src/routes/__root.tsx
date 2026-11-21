@@ -1,5 +1,5 @@
 import { createRootRoute, Outlet, useRouterState } from "@tanstack/react-router";
-import { Helmet, HelmetProvider } from "react-helmet-async";
+import { Helmet } from "react-helmet-async";
 import { SmoothScroll } from "@/components/effects/smooth-scroll";
 import { TransitionProvider } from "@/components/transition/transition-context";
 import { PageTransition } from "@/components/transition/page-transition";
@@ -41,7 +41,7 @@ function RootComponent() {
   const hidePageCTA = pathname === "/agentes-ia" || pathname === "/auditor";
 
   return (
-    <HelmetProvider>
+    <>
       <Helmet>
         <script type="application/ld+json">
           {JSON.stringify(organizationSchema)}
@@ -60,7 +60,7 @@ function RootComponent() {
           <PageTransition />
         </TransitionProvider>
       </SmoothScroll>
-    </HelmetProvider>
+    </>
   );
 }
 

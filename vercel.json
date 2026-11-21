@@ -6,7 +6,7 @@
   "rewrites": [
     {
       "source": "/((?!api/|sitemap\\.xml|robots\\.txt|favicon\\.png|images/.*).*)",
-      "destination": "/index.html"
+      "destination": "/_shell"
     }
   ],
   "redirects": [
@@ -35,5 +35,6 @@
       "destination": "/servicios#disenamos",
       "permanent": true
     }
-  ]
+  ],
+  "cleanUrls": true
 }

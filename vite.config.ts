@@ -35,4 +35,8 @@ export default defineConfig({
   resolve: {
     alias: { '@': path.resolve(__dirname, './src') },
   },
+  // Build de servidor para el prerender: react-helmet-async es CommonJS y se empaqueta
+  ssr: {
+    noExternal: ['react-helmet-async'],
+  },
 })
