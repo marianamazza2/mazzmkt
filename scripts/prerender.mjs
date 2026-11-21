@@ -1,4 +1,5 @@
-// Genera un HTML por ruta a partir del build de cliente (dist) y el de servidor (dist-ssr).
+// Genera un HTML por ruta a partir del build de cliente (dist) y el de servidor (dist-ssr),
+// y el sitemap.xml con esas mismas rutas.
 import { readFileSync, writeFileSync, mkdirSync, rmSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
@@ -31,5 +32,17 @@ for (const route of routes) {
   writeFileSync(file, page);
   console.log(`prerender ${route} → ${file.replace(dist, "dist")}`);
 }
+
+// Mapa del sitio con las mismas rutas del prerender (menos la 404), siempre con www
+const SITE_URL = "https://www.mazzmkt.com";
+const urls = routes
+  .filter((route) => route !== "/404")
+  .map((route) => `  <url>\n    <loc>${SITE_URL}${route}</loc>\n  </url>`)
+  .join("\n");
+writeFileSync(
+  join(dist, "sitemap.xml"),
+  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`
+);
+console.log(`sitemap ${routes.length - 1} direcciones → dist/sitemap.xml`);
 
 rmSync(ssrDir, { recursive: true, force: true });
