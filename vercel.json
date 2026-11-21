@@ -6,7 +6,7 @@
   "rewrites": [
     {
       "source": "/((?!api/|sitemap\\.xml|robots\\.txt|favicon\\.png|images/.*).*)",
-      "destination": "/_shell.html"
+      "destination": "/_shell"
     }
   ],
   "redirects": [
