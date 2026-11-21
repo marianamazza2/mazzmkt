@@ -1,6 +1,5 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { ArrowUpRight, ChevronDown } from "lucide-react";
-import { TransitionLink } from "@/components/transition/transition-link";
 import { motion, AnimatePresence } from "framer-motion";
 import { SEOHead } from "@/components/seo/SEOHead";
 import { projects } from "@/data/projects";
@@ -15,19 +14,6 @@ export const Route = createFileRoute("/proyectos/$slug")({
     return { project };
   },
   component: ProjectPage,
-  notFoundComponent: () => (
-    <div className="min-h-screen bg-dark flex items-center justify-center">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold text-[#ffffff] mb-4">Proyecto no encontrado</h1>
-        <TransitionLink
-          to="/proyectos"
-          className="text-light transition-colors hover:opacity-80"
-        >
-          Volver a proyectos
-        </TransitionLink>
-      </div>
-    </div>
-  ),
 });
 
 function ProjectPage() {
@@ -77,9 +63,9 @@ function ProjectPage() {
     creator: {
       "@type": "Organization",
       name: "MAZZMKT",
-      url: "https://mazzmkt.com",
+      url: "https://www.mazzmkt.com",
     },
-    ...(project.image && { image: `https://mazzmkt.com${project.image}` }),
+    ...(project.image && { image: `https://www.mazzmkt.com${project.image}` }),
     ...(project.url && { url: project.url }),
     keywords: project.services.join(", "),
   };

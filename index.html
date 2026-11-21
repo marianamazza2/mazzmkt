@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=IBM+Plex+Mono:wght@400;500;600&family=Inter+Tight:wght@600;700;800&display=swap" rel="stylesheet" />
+    <!-- Fuentes sin bloquear la primera pintura: se cargan en paralelo y sustituyen a la de sistema (display=swap) -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=Inter+Tight:wght@600;700&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=Inter+Tight:wght@600;700&amp;display=swap" /></noscript>
     <link rel="icon" type="image/png" href="/favicon.png" />
     <title>MAZZMKT | Estrategia & Creatividad</title>
-    <meta name="description" content="Agencia de marketing digital. Diseñamos marcas que se entienden, se sienten y responden." />
+    <meta name="description" content="Soluciones digitales en Barcelona: diseño web, branding y desarrollo a medida. Diseñamos marcas y webs con código propio, y automatizamos procesos con IA." />
   </head>
   <body class="font-sans antialiased" style="background-color: #0a0a0a;">
     <div id="root"></div>

@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { TransitionLink } from "@/components/transition/transition-link";
 import { trackEvent } from "@/lib/analytics";
@@ -11,21 +10,14 @@ export function Hero() {
       {/* Sin imagen: un destello que sigue al cursor */}
       <HeroGlow />
       <div className="container mx-auto px-5 md:px-6 relative w-full">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <motion.p
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="font-mono flex items-center gap-3 text-[11px] md:text-[13px] font-medium uppercase text-light/60 mb-[14px] md:mb-5"
-            style={{ letterSpacing: "0.13em" }}
+        <div className="enter">
+          <p
+            className="enter font-mono flex items-center gap-3 text-[11px] md:text-[13px] font-medium uppercase text-light/60 mb-[14px] md:mb-5"
+            style={{ letterSpacing: "0.13em", "--enter-x": "-20px", "--enter-y": "0px", "--enter-delay": "0.2s" } as React.CSSProperties}
           >
             <Molinillo className="h-[0.95em] w-[0.95em] opacity-50" alasClassName="molinillo-intro" />
             MAZZMKT — Digital Studio · Barcelona
-          </motion.p>
+          </p>
 
           <h1
             className="font-bold normal-case text-[#ffffff] mb-5 md:mb-6"
@@ -37,70 +29,56 @@ export function Hero() {
               letterSpacing: "-0.045em",
             }}
           >
-            <motion.span
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-bold text-[#ffffff]"
-              style={{ display: "block", fontSize: "inherit", lineHeight: "inherit", fontWeight: "inherit" }}
+            <span
+              className="enter font-bold text-[#ffffff]"
+              style={{ "--enter-delay": "0.1s", display: "block", fontSize: "inherit", lineHeight: "inherit", fontWeight: "inherit" } as React.CSSProperties}
             >
               Diseñamos,
-            </motion.span>
-            <motion.span
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="font-bold text-[#ffffff]"
-              style={{ display: "block", fontSize: "inherit", lineHeight: "inherit", fontWeight: "inherit" }}
+            </span>
+            <span
+              className="enter font-bold text-[#ffffff]"
+              style={{ "--enter-delay": "0.2s", display: "block", fontSize: "inherit", lineHeight: "inherit", fontWeight: "inherit" } as React.CSSProperties}
             >
               programamos y
-            </motion.span>
-            <motion.span
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="font-bold"
+            </span>
+            <span
+              className="enter font-bold"
               style={{
+                "--enter-delay": "0.3s",
                 display: "block",
                 fontSize: "inherit",
                 lineHeight: "inherit",
                 fontWeight: "inherit",
                 color: "#ffffff",
-              }}
+              } as React.CSSProperties}
             >
               automatizamos
-            </motion.span>
-            <motion.span
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="font-bold"
+            </span>
+            <span
+              className="enter font-bold"
               style={{
+                "--enter-delay": "0.3s",
                 display: "block",
                 fontSize: "inherit",
                 lineHeight: "inherit",
                 fontWeight: "inherit",
                 color: "#ffffff",
-              }}
+              } as React.CSSProperties}
             >
               tu negocio digital
-            </motion.span>
+            </span>
           </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-body text-light/67 max-w-xl mb-6 md:mb-9"
+          <p
+            className="enter text-body text-light/67 max-w-xl mb-6 md:mb-9"
+            style={{ "--enter-y": "20px", "--enter-delay": "0.4s" } as React.CSSProperties}
           >
             Diseñamos webs, creamos marcas y automatizamos procesos con código e inteligencia artificial. Soluciones digitales adaptadas a lo que tu negocio necesita.
-          </motion.p>
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="flex flex-wrap items-center gap-3"
+          <div
+            className="enter flex flex-wrap items-center gap-3"
+            style={{ "--enter-y": "20px", "--enter-delay": "0.5s" } as React.CSSProperties}
           >
             <TransitionLink
               to="/proyectos"
@@ -120,8 +98,8 @@ export function Hero() {
               CONTACTAR
               <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
             </TransitionLink>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );

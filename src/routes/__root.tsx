@@ -13,26 +13,33 @@ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   name: "MAZZMKT",
-  alternateName: "MazzMkt",
-  url: "https://mazzmkt.com",
-  logo: "https://mazzmkt.com/favicon.png",
-  description: "Agencia de marketing digital. Diseñamos marcas que se entienden, se sienten y responden.",
+  alternateName: ["MazzMkt", "MazzMkt | Soluciones digitales"],
+  url: "https://www.mazzmkt.com",
+  logo: "https://www.mazzmkt.com/favicon.png",
+  description: "Soluciones digitales en Barcelona: diseño web, branding y desarrollo a medida. Diseñamos marcas y webs con código propio, y automatizamos procesos con IA.",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Barcelona",
     addressCountry: "ES",
   },
-  areaServed: "ES",
+  areaServed: {
+    "@type": "City",
+    name: "Barcelona",
+  },
   serviceType: [
-    "Marketing Digital",
-    "Desarrollo Web",
-    "Branding Digital",
-    "Growth Marketing",
-    "Marketing con Inteligencia Artificial",
+    "Diseño y desarrollo web a medida",
+    "Landing pages",
+    "Branding e identidad de marca",
+    "Gestión de Google Ads y Meta Ads",
+    "Aplicaciones web a medida",
+    "Automatización de procesos",
+    "Recepcionista IA",
   ],
   sameAs: [
     "https://instagram.com/mazzmkt",
     "https://linkedin.com/company/mazzmkt",
+    // Ficha de Google (Perfil de Empresa)
+    "https://www.google.com/maps?cid=12119492444743001724",
   ],
 };
 

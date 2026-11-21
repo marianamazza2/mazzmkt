@@ -21,7 +21,7 @@ type PageHeroProps = {
 
 // Hero tipográfico común a todas las páginas interiores: ruta en mono, titular y subtítulo
 export function PageHero({ crumbs, title, subtitle, actions, heading = "title", size = "display", compact = false, glow = true }: PageHeroProps) {
-  const CrumbsTag = heading === "crumbs" ? motion.h1 : motion.p;
+  const CrumbsTag = heading === "crumbs" ? "h1" : "p";
   const TitleTag = heading === "title" ? "h1" : "p";
 
   return (
@@ -29,17 +29,11 @@ export function PageHero({ crumbs, title, subtitle, actions, heading = "title", 
       {/* La firma de luz de la home, más tenue */}
       {glow && <HeroGlow intensity={0.5} />}
       <div className="container mx-auto px-5 md:px-6 relative">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="max-w-5xl"
-        >
+        {/* Entrada en CSS (clase enter): el titular se ve en cuanto llega el HTML, sin esperar al JavaScript */}
+        <div className="enter max-w-5xl">
           <CrumbsTag
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="font-mono text-[11px] md:text-[13px] font-medium uppercase tracking-[0.13em] text-light/60 mb-4 md:mb-6 flex flex-wrap items-center gap-3"
+            style={{ "--enter-x": "-20px", "--enter-y": "0px", "--enter-delay": "0.2s" } as React.CSSProperties}
+            className="enter font-mono text-[11px] md:text-[13px] font-medium uppercase tracking-[0.13em] text-light/60 mb-4 md:mb-6 flex flex-wrap items-center gap-3"
           >
             <Molinillo className="h-[0.95em] w-[0.95em] opacity-50" alasClassName="molinillo-intro" />
             <span>MAZZMKT</span>
@@ -74,27 +68,24 @@ export function PageHero({ crumbs, title, subtitle, actions, heading = "title", 
             <motion.p
               initial="hidden"
               animate="shown"
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                shown: { opacity: 1, y: 0, transition: { duration: 0.6, delay: 0.35 } },
-              }}
-              className="text-body mt-5 md:mt-8 max-w-2xl lg:max-w-[60rem] text-light/67"
+              // Las variantes solo reparten "shown" a los subrayados; la entrada la hace la clase enter
+              variants={{ hidden: {}, shown: {} }}
+              style={{ "--enter-y": "20px", "--enter-delay": "0.35s" } as React.CSSProperties}
+              className="enter text-body mt-5 md:mt-8 max-w-2xl lg:max-w-[60rem] text-light/67"
             >
               {typeof subtitle === "string" && subtitle.includes("[[") ? <Marks text={subtitle} /> : subtitle}
             </motion.p>
           )}
 
           {actions && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className={`flex flex-wrap gap-[10px] md:gap-3 ${compact ? "mt-4 md:mt-5" : "mt-7 md:mt-10"}`}
+            <div
+              style={{ "--enter-y": "20px", "--enter-delay": "0.5s" } as React.CSSProperties}
+              className={`enter flex flex-wrap gap-[10px] md:gap-3 ${compact ? "mt-4 md:mt-5" : "mt-7 md:mt-10"}`}
             >
               {actions}
-            </motion.div>
+            </div>
           )}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

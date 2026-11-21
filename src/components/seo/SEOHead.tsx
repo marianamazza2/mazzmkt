@@ -23,10 +23,10 @@ export function SEOHead({ title, description, image, noindex, jsonLd }: SEOHeadP
       <title>{title}</title>
       <meta name="description" content={description} />
       {noindex && <meta name="robots" content="noindex, follow" />}
-      <link rel="canonical" href={canonical} />
+      {!noindex && <link rel="canonical" href={canonical} />}
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      <meta property="og:url" content={canonical} />
+      {!noindex && <meta property="og:url" content={canonical} />}
       <meta property="og:image" content={ogImage} />
       <meta property="og:type" content="website" />
       <meta property="og:locale" content="es_ES" />

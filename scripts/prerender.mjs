@@ -1,4 +1,5 @@
-// Genera un HTML por ruta a partir del build de cliente (dist) y el de servidor (dist-ssr).
+// Genera un HTML por ruta a partir del build de cliente (dist) y el de servidor (dist-ssr),
+// y el sitemap.xml con esas mismas rutas.
 import { readFileSync, writeFileSync, mkdirSync, rmSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
@@ -8,10 +9,29 @@ const dist = join(root, "dist");
 const ssrDir = join(root, "dist-ssr");
 
 const template = readFileSync(join(dist, "index.html"), "utf8");
-const { render, routes } = await import(pathToFileURL(join(ssrDir, "entry-server.js")).href);
+const manifest = JSON.parse(readFileSync(join(dist, ".vite", "manifest.json"), "utf8"));
 
-// Shell vacío para las rutas que no se prerenderizan (se montan en el navegador)
-writeFileSync(join(dist, "_shell.html"), template);
+// Archivo de cada ruta en src/routes (la 404 no tiene trozo propio)
+function routeSource(route) {
+  if (route === "/") return "src/routes/index.tsx";
+  if (route.startsWith("/proyectos/")) return "src/routes/proyectos/$slug.tsx";
+  if (route === "/servicios" || route === "/proyectos") return `src/routes${route}/index.tsx`;
+  return `src/routes${route}.tsx`;
+}
+
+// Trozos de JS de la página (y los que importa), para precargarlos junto al JS principal
+function pagePreloads(route) {
+  const files = new Set();
+  const visit = (key) => {
+    const entry = manifest[key];
+    if (!entry || entry.isEntry || files.has(entry.file)) return;
+    files.add(entry.file);
+    (entry.imports ?? []).forEach(visit);
+  };
+  visit(`${routeSource(route)}?tsr-split=component`);
+  return [...files].map((file) => `<link rel="modulepreload" crossorigin href="/${file}">`);
+}
+const { render, routes } = await import(pathToFileURL(join(ssrDir, "entry-server.js")).href);
 
 // Sin el título y la descripción genéricos: cada página trae los suyos
 const base = template
@@ -24,14 +44,29 @@ for (const route of routes) {
   // o la hidratación no coincide con el HTML.
   const preloads = rendered.html.match(/^(<link [^>]*\/>)+/)?.[0] ?? "";
   const html = rendered.html.slice(preloads.length);
-  const head = [rendered.head, preloads].filter(Boolean).join("\n    ");
+  const head = [rendered.head, preloads, ...pagePreloads(route)].filter(Boolean).join("\n    ");
   const page = base
     .replace("</head>", `    ${head}\n  </head>`)
-    .replace('<div id="root"></div>', `<div id="root">${html}</div>`);
+    // La 404 se sirve en cualquier dirección: se marca para montarla de nuevo en vez de hidratarla
+    .replace('<div id="root"></div>', `<div id="root"${route === "/404" ? " data-not-found" : ""}>${html}</div>`);
   const file = route === "/" ? join(dist, "index.html") : join(dist, `${route.slice(1)}.html`);
   mkdirSync(dirname(file), { recursive: true });
   writeFileSync(file, page);
   console.log(`prerender ${route} → ${file.replace(dist, "dist")}`);
 }
 
+// Mapa del sitio con las mismas rutas del prerender (menos la 404), siempre con www
+const SITE_URL = "https://www.mazzmkt.com";
+const urls = routes
+  .filter((route) => route !== "/404")
+  .map((route) => `  <url>\n    <loc>${SITE_URL}${route}</loc>\n  </url>`)
+  .join("\n");
+writeFileSync(
+  join(dist, "sitemap.xml"),
+  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`
+);
+console.log(`sitemap ${routes.length - 1} direcciones → dist/sitemap.xml`);
+
 rmSync(ssrDir, { recursive: true, force: true });
+// El manifiesto solo sirve para el build: no se publica
+rmSync(join(dist, ".vite"), { recursive: true, force: true });

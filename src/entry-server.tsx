@@ -18,6 +18,7 @@ export const routes = [
   "/privacidad",
   "/aviso-legal",
   "/cookies",
+  "/404",
 ];
 
 export async function render(url: string) {
