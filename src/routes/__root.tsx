@@ -13,10 +13,10 @@ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   name: "MAZZMKT",
-  alternateName: "MazzMkt",
+  alternateName: ["MazzMkt", "MazzMkt | Soluciones digitales"],
   url: "https://www.mazzmkt.com",
   logo: "https://www.mazzmkt.com/favicon.png",
-  description: "Estudio de diseño web, branding y desarrollo a medida en Barcelona. Diseñamos marcas y webs con código propio, y automatizamos procesos con IA.",
+  description: "Soluciones digitales en Barcelona: diseño web, branding y desarrollo a medida. Diseñamos marcas y webs con código propio, y automatizamos procesos con IA.",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Barcelona",
@@ -38,6 +38,8 @@ const organizationSchema = {
   sameAs: [
     "https://instagram.com/mazzmkt",
     "https://linkedin.com/company/mazzmkt",
+    // Ficha de Google (Perfil de Empresa)
+    "https://www.google.com/maps?cid=12119492444743001724",
   ],
 };
 
