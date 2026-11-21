@@ -9,6 +9,28 @@ const dist = join(root, "dist");
 const ssrDir = join(root, "dist-ssr");
 
 const template = readFileSync(join(dist, "index.html"), "utf8");
+const manifest = JSON.parse(readFileSync(join(dist, ".vite", "manifest.json"), "utf8"));
+
+// Archivo de cada ruta en src/routes (la 404 no tiene trozo propio)
+function routeSource(route) {
+  if (route === "/") return "src/routes/index.tsx";
+  if (route.startsWith("/proyectos/")) return "src/routes/proyectos/$slug.tsx";
+  if (route === "/servicios" || route === "/proyectos") return `src/routes${route}/index.tsx`;
+  return `src/routes${route}.tsx`;
+}
+
+// Trozos de JS de la página (y los que importa), para precargarlos junto al JS principal
+function pagePreloads(route) {
+  const files = new Set();
+  const visit = (key) => {
+    const entry = manifest[key];
+    if (!entry || entry.isEntry || files.has(entry.file)) return;
+    files.add(entry.file);
+    (entry.imports ?? []).forEach(visit);
+  };
+  visit(`${routeSource(route)}?tsr-split=component`);
+  return [...files].map((file) => `<link rel="modulepreload" crossorigin href="/${file}">`);
+}
 const { render, routes } = await import(pathToFileURL(join(ssrDir, "entry-server.js")).href);
 
 // Sin el título y la descripción genéricos: cada página trae los suyos
@@ -22,7 +44,7 @@ for (const route of routes) {
   // o la hidratación no coincide con el HTML.
   const preloads = rendered.html.match(/^(<link [^>]*\/>)+/)?.[0] ?? "";
   const html = rendered.html.slice(preloads.length);
-  const head = [rendered.head, preloads].filter(Boolean).join("\n    ");
+  const head = [rendered.head, preloads, ...pagePreloads(route)].filter(Boolean).join("\n    ");
   const page = base
     .replace("</head>", `    ${head}\n  </head>`)
     // La 404 se sirve en cualquier dirección: se marca para montarla de nuevo en vez de hidratarla
@@ -46,3 +68,5 @@ writeFileSync(
 console.log(`sitemap ${routes.length - 1} direcciones → dist/sitemap.xml`);
 
 rmSync(ssrDir, { recursive: true, force: true });
+// El manifiesto solo sirve para el build: no se publica
+rmSync(join(dist, ".vite"), { recursive: true, force: true });

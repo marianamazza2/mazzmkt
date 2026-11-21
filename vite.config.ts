@@ -27,7 +27,7 @@ export default defineConfig({
   plugins: [
     webpPlugin(),
     projectImagesPlugin(),
-    TanStackRouterVite({ routesDirectory: './src/routes' }),
+    TanStackRouterVite({ routesDirectory: './src/routes', autoCodeSplitting: true }),
     react(),
     tailwindcss(),
     apiAuditorDev(),
@@ -38,5 +38,9 @@ export default defineConfig({
   // Build de servidor para el prerender: react-helmet-async es CommonJS y se empaqueta
   ssr: {
     noExternal: ['react-helmet-async'],
+  },
+  // El manifiesto dice qué trozo de JS lleva cada página (lo usa el prerender para precargarlo)
+  build: {
+    manifest: true,
   },
 })

@@ -63,9 +63,9 @@ function ProjectPage() {
     creator: {
       "@type": "Organization",
       name: "MAZZMKT",
-      url: "https://mazzmkt.com",
+      url: "https://www.mazzmkt.com",
     },
-    ...(project.image && { image: `https://mazzmkt.com${project.image}` }),
+    ...(project.image && { image: `https://www.mazzmkt.com${project.image}` }),
     ...(project.url && { url: project.url }),
     keywords: project.services.join(", "),
   };

@@ -13,13 +13,13 @@ export const Route = createFileRoute("/")({
 const homeSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "@id": "https://mazzmkt.com/#website",
-  "url": "https://mazzmkt.com",
-  "name": "MAZZMKT | Digital Studio Barcelona",
+  "@id": "https://www.mazzmkt.com/#website",
+  "url": "https://www.mazzmkt.com",
+  "name": "MAZZMKT | Soluciones digitales",
   "publisher": {
     "@type": "Organization",
     "name": "MAZZMKT",
-    "url": "https://mazzmkt.com",
+    "url": "https://www.mazzmkt.com",
   },
 };
 

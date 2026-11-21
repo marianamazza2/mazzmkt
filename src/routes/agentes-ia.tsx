@@ -53,7 +53,7 @@ const jsonLd = {
   provider: {
     "@type": "Organization",
     name: "MAZZMKT",
-    url: "https://mazzmkt.com",
+    url: "https://www.mazzmkt.com",
   },
   areaServed: "ES",
   description:
