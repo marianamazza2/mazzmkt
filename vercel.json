@@ -3,12 +3,6 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "installCommand": "npm install --legacy-peer-deps",
-  "rewrites": [
-    {
-      "source": "/((?!api/|sitemap\\.xml|robots\\.txt|favicon\\.png|images/.*).*)",
-      "destination": "/_shell"
-    }
-  ],
   "redirects": [
     {
       "source": "/servicios/marketing-ia",
